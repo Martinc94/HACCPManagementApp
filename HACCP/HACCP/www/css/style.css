@@ -17,8 +17,8 @@
     text-align: center;
     font-weight: 300;
     height:100%;  
+    border-top:solid 2px black;
 }
-
 
 
 
@@ -55,6 +55,17 @@
     background-color: #f0c419;
     height:100%;
 }
+
+
+.ion-ios-customicon,
+.ion-md-customicon {
+  content: url(../../assets/img/ui/truck.svg);
+  width: 24px;
+  height: 32px;
+  padding: 6px 4px 2px;
+  opacity: 0.9;
+}
+
 
 
 
@@ -102,7 +113,7 @@
     height: 0;
     border-style: solid;
     border-width: 0 1.1em 1.1em 1.1em;
-    border-color: transparent transparent #0398dc transparent;
+    border-color: transparent transparent gray transparent;
     position: absolute;
     content: "";
     display: block;
