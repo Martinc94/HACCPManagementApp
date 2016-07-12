@@ -36,6 +36,18 @@ angular.module('starter.controllers', [])
     }
 })
 
+.controller('SignUpCtrl', function($scope) {
+
+})
+
+
+
+//end Auth controllers
+
+
+
+
+
 .controller('HomeCtrl', function($scope) {
 
 })
