@@ -26,7 +26,7 @@ angular.module('starter.controllers', [])
 
     $scope.login = function () {
         LoginService.loginUser($scope.data.username, $scope.data.password).success(function (data) {
-            $state.go('tab.dash');
+            $state.go('tab.home');
         }).error(function (data) {
             var alertPopup = $ionicPopup.alert({
                 title: 'Login failed!',
@@ -42,7 +42,7 @@ angular.module('starter.controllers', [])
 
 
 .controller('IntroCtrl', function($scope, $state, $ionicSlideBoxDelegate) {
- 
+
     // Called to navigate to the main app
     $scope.startApp = function() {
         $state.go('main');
@@ -62,7 +62,7 @@ angular.module('starter.controllers', [])
 
 .controller('MainCtrl', function($scope, $state) {
     console.log('MainCtrl');
-  
+
     $scope.toIntro = function(){
         $state.go('intro');
     }
