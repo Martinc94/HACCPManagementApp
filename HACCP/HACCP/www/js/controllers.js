@@ -21,7 +21,12 @@ angular.module('starter.controllers', [])
   $scope.chat = Chats.get($stateParams.chatId);
 })
 
-.controller('LoginCtrl', function ($scope, LoginService, $ionicPopup, $state) {
+
+
+
+
+//original controller for login
+/*.controller('LoginCtrl', function ($scope, LoginService, $ionicPopup, $state) {
     $scope.data = {};
 
     $scope.login = function () {
@@ -34,15 +39,37 @@ angular.module('starter.controllers', [])
             });
         });
     }
-})
+})*/
 
-.controller('SignUpCtrl', function($scope) {
+/*.controller('SignUpCtrl', function($scope) {
 
-})
-
-
+})*/
 
 //end Auth controllers
+
+
+.controller('LoginCtrl', function($scope, AuthService, $ionicPopup, $state) {
+  $scope.user = {
+    name: '',
+    password: ''
+  };
+
+  $scope.login = function() {
+    AuthService.login($scope.user).then(function(msg) {
+      $state.go('tab.home');
+    }, function(errMsg) {
+      var alertPopup = $ionicPopup.alert({
+        title: 'Login failed!',
+        template: errMsg
+      });
+    });
+  };
+})
+
+
+
+
+
 
 
 

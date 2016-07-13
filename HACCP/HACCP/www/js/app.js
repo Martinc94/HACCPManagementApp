@@ -23,7 +23,6 @@ angular.module('starter', ['ionic', 'starter.controllers', 'starter.services','t
     }
   });
 })
-
 .config(function($stateProvider, $urlRouterProvider) {
 
   // Ionic uses AngularUI Router which uses the concept of states
@@ -35,14 +34,22 @@ angular.module('starter', ['ionic', 'starter.controllers', 'starter.services','t
        .state('login', {
            url: '/login',
            templateUrl: 'templates/login.html',
-           controller: 'LoginCtrl'
+           //causes error
+           //controller: 'LoginCtrl'
        })
 
        .state('signup', {
            url: '/signup',
            templateUrl: 'templates/signup.html',
-           controller: 'SignupCtrl'
+           //controller: 'SignupCtrl'
        })
+
+
+
+
+
+
+
 
 
 
@@ -79,7 +86,6 @@ angular.module('starter', ['ionic', 'starter.controllers', 'starter.services','t
 
 
   // if none of the above states are matched, use this as the fallback
-  //$urlRouterProvider.otherwise('/tab/dash');
   $urlRouterProvider.otherwise('/login');
 
 });
