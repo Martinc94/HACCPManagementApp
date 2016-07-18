@@ -35,7 +35,7 @@ angular.module('starter', ['ionic', 'starter.controllers', 'starter.services','t
            url: '/login',
            templateUrl: 'templates/login.html',
            //causes error
-           //controller: 'LoginCtrl'
+           controller: 'LoginCtrl'
        })
 
        .state('signup', {
