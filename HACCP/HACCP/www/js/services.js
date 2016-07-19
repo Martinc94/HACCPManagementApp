@@ -51,8 +51,10 @@ angular.module('starter.services', [])
           if (result.data.success) {
             storeUserCredentials(result.data.token);
             resolve(result.data.msg);
+          //  console.log("authenticated");
           } else {
             reject(result.data.msg);
+            //console.log("Not authenticated");
           }
         });
       });
@@ -81,6 +83,7 @@ angular.module('starter.services', [])
           401: AUTH_EVENTS.notAuthenticated,
         }[response.status], response);
         return $q.reject(response);
+        //console.log("Not authenticated");
       }
     };
   })
