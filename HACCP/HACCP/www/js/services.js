@@ -48,13 +48,12 @@ angular.module('starter.services', [])
     var login = function(user) {
       return $q(function(resolve, reject) {
         $http.post(API_ENDPOINT.url + '/authenticate', user).then(function(result) {
+        //console.log(user);
           if (result.data.success) {
             storeUserCredentials(result.data.token);
             resolve(result.data.msg);
-          //  console.log("authenticated");
           } else {
             reject(result.data.msg);
-            //console.log("Not authenticated");
           }
         });
       });
