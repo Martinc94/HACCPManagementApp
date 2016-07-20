@@ -59,6 +59,11 @@ angular.module('starter.services', [])
       });
     };
 
+    var forgot = function() {
+      
+    };
+
+
     var logout = function() {
       destroyUserCredentials();
     };

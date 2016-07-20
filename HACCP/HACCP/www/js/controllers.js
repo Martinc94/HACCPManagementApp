@@ -65,6 +65,12 @@ angular.module('starter.controllers', [])
 
 //end Auth controllers
 
+.controller('ForgotCtrl', function($scope) {
+
+})
+
+
+
 
 
 

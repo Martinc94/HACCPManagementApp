@@ -51,7 +51,7 @@ angular.module('starter', ['ionic', 'starter.controllers', 'starter.services','t
        .state('forgot', {
            url: '/forgot',
            templateUrl: 'templates/forgot.html',
-           //controller: 'ForgotCtrl'
+           controller: 'ForgotCtrl'
        })
 
 
