@@ -5,15 +5,22 @@
 // the 2nd parameter is an array of 'requires'
 // 'starter.services' is found in services.js
 // 'starter.controllers' is found in controllers.js
-angular.module('starter', ['ionic', 'starter.controllers', 'starter.services'])
+
+
+angular.module('starter', ['ionic', 'starter.controllers', 'starter.services','tabSlideBox'])
 
 .run(function($ionicPlatform) {
   $ionicPlatform.ready(function() {
     // Hide the accessory bar by default (remove this to show the accessory bar above the keyboard
     // for form inputs)
+    try {
       if (cordova.platformId === 'ios' && window.cordova && window.cordova.plugins && window.cordova.plugins.Keyboard) {
         cordova.plugins.Keyboard.hideKeyboardAccessoryBar(true);
         cordova.plugins.Keyboard.disableScroll(true);
+    }
+
+    } catch (e) {
+      //console.log("Caught cordova Simulation Error");
     }
     if (window.StatusBar) {
       // org.apache.cordova.statusbar required
@@ -21,7 +28,6 @@ angular.module('starter', ['ionic', 'starter.controllers', 'starter.services'])
     }
   });
 })
-
 .config(function($stateProvider, $urlRouterProvider) {
 
   // Ionic uses AngularUI Router which uses the concept of states
@@ -36,6 +42,29 @@ angular.module('starter', ['ionic', 'starter.controllers', 'starter.services'])
            controller: 'LoginCtrl'
        })
 
+       .state('signup', {
+           url: '/signup',
+           templateUrl: 'templates/signup.html',
+           controller: 'SignupCtrl'
+       })
+
+       .state('forgot', {
+           url: '/forgot',
+           templateUrl: 'templates/forgot.html',
+           //controller: 'ForgotCtrl'
+       })
+
+
+
+
+
+
+
+
+
+
+
+
   // setup an abstract state for the tabs directive
     .state('tab', {
     url: '/tab',
@@ -44,32 +73,12 @@ angular.module('starter', ['ionic', 'starter.controllers', 'starter.services'])
   })
 
   // Each tab has its own nav history stack:
-
-  .state('tab.dash', {
-    url: '/dash',
-    views: {
-      'tab-dash': {
-        templateUrl: 'templates/tab-dash.html',
-        controller: 'DashCtrl'
-      }
-    }
-  })
-
-  .state('tab.chats', {
-      url: '/chats',
+  .state('tab.home', {
+      url: '/home',
       views: {
-        'tab-chats': {
-          templateUrl: 'templates/tab-chats.html',
-          controller: 'ChatsCtrl'
-        }
-      }
-    })
-    .state('tab.chat-detail', {
-      url: '/chats/:chatId',
-      views: {
-        'tab-chats': {
-          templateUrl: 'templates/chat-detail.html',
-          controller: 'ChatDetailCtrl'
+          'tab-home': {
+              templateUrl: 'templates/tab-home.html',
+              controller: 'IntroCtrl'
         }
       }
     })
@@ -84,8 +93,19 @@ angular.module('starter', ['ionic', 'starter.controllers', 'starter.services'])
     }
   });
 
-  // if none of the above states are matched, use this as the fallback
-  //$urlRouterProvider.otherwise('/tab/dash');
-  $urlRouterProvider.otherwise('/login');
 
+  // if none of the above states are matched, use this as the fallback
+  $urlRouterProvider.otherwise('/login');
+})
+
+.run(function ($rootScope, $state, AuthService, AUTH_EVENTS) {
+  $rootScope.$on('$stateChangeStart', function (event,next, nextParams, fromState) {
+    if (!AuthService.isAuthenticated()) {
+      //console.log(next.name);
+      if (next.name !== 'login' && next.name !== 'register') {
+        event.preventDefault();
+        $state.go('login');
+      }
+    }
+  });
 });
