@@ -48,6 +48,11 @@ angular.module('starter', ['ionic', 'starter.controllers', 'starter.services','t
            controller: 'SignupCtrl'
        })
 
+       .state('forgot', {
+           url: '/forgot',
+           templateUrl: 'templates/forgot.html',
+           //controller: 'ForgotCtrl'
+       })
 
 
 
