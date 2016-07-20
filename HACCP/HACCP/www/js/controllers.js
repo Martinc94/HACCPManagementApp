@@ -65,8 +65,21 @@ angular.module('starter.controllers', [])
 
 //end Auth controllers
 
-.controller('ForgotCtrl', function($scope) {
+.controller('ForgotCtrl', function($scope, AuthService, $ionicPopup, $state) {
+  $scope.user = {
+    email: ''
+  };
 
+  $scope.forgot = function() {
+    AuthService.forgot($scope.user).then(function(msg) {
+      //$state.go('login');
+    }, function(errMsg) {
+      var alertPopup = $ionicPopup.alert({
+        title: 'password',
+        template: errMsg
+      });
+    });
+  };
 })
 
 

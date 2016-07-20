@@ -48,7 +48,6 @@ angular.module('starter.services', [])
     var login = function(user) {
       return $q(function(resolve, reject) {
         $http.post(API_ENDPOINT.url + '/authenticate', user).then(function(result) {
-        //console.log(user);
           if (result.data.success) {
             storeUserCredentials(result.data.token);
             resolve(result.data.msg);
@@ -59,9 +58,21 @@ angular.module('starter.services', [])
       });
     };
 
-    var forgot = function() {
-      
+    var forgot = function(user) {
+      return $q(function(resolve, reject) {
+        $http.post(API_ENDPOINT.url + '/forgot', user).then(function(result) {
+        //console.log(user);
+          if (result.data.success) {
+            //storeUserCredentials(result.data.token);
+            resolve(result.data.msg);
+          } else {
+            reject(result.data.msg);
+          }
+        });
+      });
     };
+
+
 
 
     var logout = function() {
@@ -75,6 +86,7 @@ angular.module('starter.services', [])
    return {
       login: login,
       register: register,
+      forgot: forgot,
       logout: logout,
       isAuthenticated: function() {return isAuthenticated;},
     };
