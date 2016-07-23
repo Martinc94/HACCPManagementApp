@@ -61,7 +61,7 @@ angular.module('starter.services', [])
     var forgot = function(user) {
       return $q(function(resolve, reject) {
         $http.post(API_ENDPOINT.url + '/forgot', user).then(function(result) {
-        //console.log(user);
+        console.log(user);
           if (result.data.success) {
             //storeUserCredentials(result.data.token);
             resolve(result.data.msg);
