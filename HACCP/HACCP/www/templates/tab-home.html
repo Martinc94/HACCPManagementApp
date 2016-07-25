@@ -11,42 +11,113 @@
                     <a href="javascript:;" class="ion-clipboard"></a>
                     <a href="javascript:;" class="ion-person"></a>
                     <a href="javascript:;" class="ion-medkit"></a>
+                    <a href="javascript:;" class="ion-clipboard"></a>
                     <a href="javascript:;" class="ion-model-s"></a>
 
                 </div>
             </div>
             <ion-slide-box show-pager="false" on-slide-changed="slideHasChanged($index)">
-                
-                <ion-slide>
-                    <div class="food-delivery"><h3>Food Delivery Records</h3></div>
-                    </ion-slide>
 
                 <ion-slide>
-                    <div class="refridgeration"><h3>Refrigeration Records</h3></div>
+                    <div class="food-delivery"><h3>Food Delivery Records</h3>
+                      <p>Take Photo option here</p>
+
+                    </div>
                 </ion-slide>
 
                 <ion-slide>
-                    <div class="cook-reheat-records"><h3>Cooking/Cooling/Reheating Records</h3></div>
+                    <div class="refridgeration"><h3>Refrigeration Records</h3>
+                      <div class="list">
+                        <!--List must be dynamic from saved amount of fridges -->
+                        <div class="item item-input-inset">
+                          <label class="item-input-wrapper">
+                            <span class="input-label">Fridge 1</span>
+                            <input type="text" placeholder="Degree">
+                          </label>
+                          <button class="button button-small">Save</button>
+                        </div>
+
+                        <div class="item item-input-inset">
+                          <label class="item-input-wrapper">
+                            <span class="input-label">Fridge 2</span>
+                            <input type="text" placeholder="Degree">
+                          </label>
+                          <button class="button button-small">Save</button>
+                        </div>
+
+                      </div>
+                    </div>
                 </ion-slide>
 
                 <ion-slide>
-                    <div class="hot-Holding"><h3>Hot Holding/Display Records</h3></div>
+                    <div class="cook-reheat-records"><h3>Cooking/Cooling/Reheating Records</h3>
+                      <div class="button-bar">
+                        <a class="button">Duck</a>
+                        <a class="button">09:25-11:05</a>
+                        <a class="button">81°C</a>
+                        <a class="button">Edit</a>
+                      </div>
+
+                      <div class="button-bar">
+                        <a class="button">BBQ Ribs</a>
+                        <a class="button">09:25-11:05</a>
+                        <a class="button">89°C</a>
+                        <a class="button">Edit</a>
+                      </div>
+
+                    </div>
                 </ion-slide>
 
                 <ion-slide>
-                    <div class="hygiene-Inspection"><h3>Hygiene Inspection Checklist</h3></div>
+                    <div class="hot-Holding"><h3>Hot Holding/Display Records</h3>
+                      <div class="button-bar">
+                        <a class="button">Soup</a>
+                        <a class="button">91°C</a>
+                        <a class="button">11:35</a>
+                        <a class="button">Edit</a>
+                      </div>
+
+                      <div class="button-bar">
+                        <a class="button">Chowder</a>
+                        <a class="button">88°C</a>
+                        <a class="button">11:43</a>
+                        <a class="button">Edit</a>
+                      </div>
+
+                      <div class="button-bar">
+                        <a class="button">Pepper sc</a>
+                        <a class="button">89°C</a>
+                        <a class="button">11:35</a>
+                        <a class="button">Edit</a>
+                      </div>
+                    </div>
                 </ion-slide>
 
                 <ion-slide>
-                    <div class="hygiene-Training "><h3>Hygiene Training Records</h3></div>
+                    <div class="hygiene-Inspection"><h3>Hygiene Inspection Checklist</h3>
+                      <p>Questions will popup here<p>
+                        <!-- can use ionic popup service confirm()
+                        http://ionicframework.com/docs/api/service/$ionicPopup/
+                      -->
+                    </div>
                 </ion-slide>
 
                 <ion-slide>
-                    <div class="fitness-to-Work"><h3>Fitness to Work Assessment Form</h3></div>
+                    <div class="hygiene-Training "><h3>Hygiene Training Records</h3>
+                      <p>Hygene Training info here<p>
+                    </div>
                 </ion-slide>
 
                 <ion-slide>
-                    <div class="transport-and-Delivery"><h3>Transport and Delivery Record</h3></div>
+                    <div class="fitness-to-Work"><h3>Fitness to Work Assessment Form</h3>
+                      <p>Fitness to work Questions will popup here<p>
+                    </div>
+                </ion-slide>
+
+                <ion-slide>
+                    <div class="transport-and-Delivery"><h3>Transport and Delivery Record</h3>
+                        <p>Transport and Delivery Questions will popup here<p>
+                    </div>
                 </ion-slide>
 
             </ion-slide-box>
