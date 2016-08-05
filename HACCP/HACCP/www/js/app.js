@@ -60,7 +60,10 @@ angular.module('starter', ['ionic', 'starter.controllers', 'starter.services','t
            templateUrl: 'templates/tab-home.html',
        })
 
-
+       .state('fitness', {
+           url: '/fitness',
+           templateUrl: 'templates/fitness.html',
+       })
 
 
 

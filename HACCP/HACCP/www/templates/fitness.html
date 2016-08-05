@@ -1,0 +1,29 @@
+<ion-view view-title="Fitness To Work" name="ftw-view">
+  <ion-nav-bar>
+  <ion-nav-back-button>
+    <i class="ion-arrow-left-c"></i> Back
+  </ion-nav-back-button>
+</ion-nav-bar>
+
+    <ion-content class="padding">
+        <div class="list list-inset">
+            <label class="item item-input">
+                <input type="text" placeholder="Employee Name" ng-model="emp.Name">
+            </label>
+            <!--Get date of accessment from phone-->
+
+
+            <label class="item item-input">
+              <p>Are you sick: </p>
+            </label>
+              <label class="item item-input">
+              <ion-radio ng-model="choice" ng-value="'yes'">Yes</ion-radio>
+              <ion-radio ng-model="choice" ng-value="'no'">No</ion-radio>
+            </label>
+
+
+
+        </div>
+        <button class="button button-block button-assertive" ng-click="forgot()">Submit Form</button>
+    </ion-content>
+</ion-view>
