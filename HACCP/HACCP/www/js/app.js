@@ -54,6 +54,12 @@ angular.module('starter', ['ionic', 'starter.controllers', 'starter.services','t
            controller: 'ForgotCtrl'
        })
 
+//temp link to home for mock up
+       .state('home', {
+           url: '/tab/home',
+           templateUrl: 'templates/tab-home.html',
+       })
+
 
 
 
