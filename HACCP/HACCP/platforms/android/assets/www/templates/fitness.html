@@ -1,0 +1,96 @@
+<ion-view view-title="Fitness to Work">
+ 
+	<ion-content class="fitness-to-Work">
+
+
+
+
+        	<h3>Fitness to Work Assessment Form</h3>
+        
+<form ng-submit="submitForm()">
+	<div class="list">
+  		<label class="item item-input">
+    		<span class="input-label">Name of Employee</span>
+    		<input type="text" placeholder="John Smith" ng-model="empName">
+  		</label>
+  		<label class="item item-input">
+    		<span class="input-label">Date of Assessment</span>
+    		<input type="date" placeholder="16/04/16" ng-model="assDate">
+  		</label>
+
+  		<label class="item">
+    		<span class="input-label">Reason for Assessment:</span>
+    	
+    	<ion-radio ng-model="q3Choice" ng-value="'a'">Existing food handler</ion-radio>
+ 		 <ion-radio ng-model="q3Choice" ng-value="'b'">Pre-employment assessment</ion-radio>
+ 		 <ion-radio ng-model="q3Choice" ng-value="'c'">Return to work after illness</ion-radio>
+ 	</label>
+  		
+  		<label class="item item-input item-select item-text-wrap">
+    <div class="input-label">
+      Have you suffered from diarrhoea and/or vomiting within the last 48 hours?
+    </div>
+    <select>
+      <option ng-model="q4Choice" ng-value="'Y'">Yes</option>
+      <option ng-model="q4Choice" ng-value="'N'">No</option>
+    </select>
+  </label>
+
+
+		<label class="item item-text-wrap">
+    		<span class="input-label">At present are you suffering from:</span>
+ 		 <ion-checkbox ng-model="q5Choice" ng-value="'a'">infected wounds, skin infections or sores?</ion-checkbox>
+  		<ion-checkbox ng-model="q5Choice" ng-value="'b'">boils, styes or septic fingers?</ion-checkbox>
+  		<ion-checkbox ng-model="q5Choice" ng-value="'c'">discharge from eye, ear or gums/mouth?</ion-checkbox>
+		</label>
+
+		<label class="item item-input item-select item-text-wrap">
+    <div class="input-label">
+      Have you ever had, or are you known to be a carrier of typhoid or paratyphoid?
+    </div>
+    <select>
+      <option ng-model="q6Choice" ng-value="'Y'">Yes</option>
+      <option ng-model="q6Choice" ng-value="'N'">No</option>
+    </select>
+  </label>
+	
+	<label class="item item-input item-select item-text-wrap">
+    <div class="input-label">
+      In the last 21 days have you been in contact with anyone, at home or abroad, who may have been suffering from typhoid or paratyphoid?
+    </div>
+    <select>
+      <option ng-model="q7Choice" ng-value="'Y'">Yes</option>
+      <option ng-model="q7Choice" ng-value="'Y'">No</option>
+    </select>
+  </label>
+	
+
+	<label class="item item-input">
+    		<span class="input-label">Action taken</span>
+    		<input type="text" placeholder="Action Taken" ng-model="actionTaken">
+  		</label>
+
+  		<label class="item item-input">
+    		<span class="input-label">Owner/Manager</span>
+    		<input type="text" placeholder="John Smith" ng-model="managerName">
+  		</label>
+
+  		<label class="item item-input">
+    		<span class="input-label">Date:</span>
+    		<input type="date" placeholder="16/04/16" ng-model="managerDate">
+  		</label>
+
+  		<button class="button button-full button-clear" ng-click="submitForm">
+  		Submit
+		</button>
+	<br>
+	<br>
+	</div>
+</form>
+
+
+  </ion-content>
+
+</ion-view>
+
+

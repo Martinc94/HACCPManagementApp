@@ -1,0 +1,733 @@
+<ion-view view-title="Hygiene Inspection">
+
+	<ion-content class="hygiene-Inspection">
+
+		
+		<h3>Hygiene of Food Rooms & Equipment</h3>
+		<ion-list can-swipe="listCanSwipe">
+		
+  			<ion-item class="item item-text-wrap">
+				
+				Are food rooms and equipment in good condition and well maintained?
+        		<ion-option-button class="button-positive" 
+                    >
+      			Yes
+    			</ion-option-button>
+    			<ion-option-button class="button-info" ng-click="selectChoice()">
+      			No
+    			</ion-option-button>
+    			<div ng-show="toggle">
+    			<input ng-model="answer" placeholder="Enter corrective action" ng></input>
+    			<button ng-click="submit(answer)">Submit</button>
+    			</div>
+    			</ion-item>
+
+    			<ion-item class="item item-text-wrap">
+				Are food rooms clean and tidy and do staff clean as they go including difficult areas?
+        		<ion-option-button class="button-positive"
+                       ng-click="share(item)">
+      			Yes
+    			</ion-option-button>
+    			<ion-option-button class="button-info" ng-click="selectChoice()">
+      			No
+    			</ion-option-button>
+    			<div ng-show="toggle">
+    			<input ng-model="answer" placeholder="Enter corrective action" ng></input>
+    			<button ng-click="submit(answer)">Submit</button>
+    			</div>
+    			</ion-item>
+
+
+    			<ion-item class="item item-text-wrap">
+				Is equipment easy to clean and kept in a clean condition?
+        		<ion-option-button class="button-positive"
+                       ng-click="share(item)">
+      			Yes
+    			</ion-option-button>
+    			<ion-option-button class="button-info" ng-click="selectChoice()">
+      			No
+    			</ion-option-button>
+    			<div ng-show="toggle">
+    			<input ng-model="answer" placeholder="Enter corrective action" ng></input>
+    			<button ng-click="submit(answer)">Submit</button>
+    			</div>
+    			</ion-item>
+    			
+
+
+    			<ion-item class="item item-text-wrap">
+				Are all food and hand contact surfaces e.g. work surfaces, delivery areas, slicers, fridge handles, food probe, in good condition and cleaned/disinfected regularly?
+        		<ion-option-button class="button-positive"
+                       ng-click="share(item)">
+      			Yes
+    			</ion-option-button>
+    			<ion-option-button class="button-info" ng-click="selectChoice()">
+      			No
+    			</ion-option-button>
+    			<div ng-show="toggle">
+    			<input ng-model="answer" placeholder="Enter corrective action" ng></input>
+    			<button ng-click="submit(answer)">Submit</button>
+    			</div>
+    			</ion-item>
+				
+				<ion-item class="item item-text-wrap">
+				Are suitable cleaning chemicals available and stored correctly and are proper clean methods used?
+        		<ion-option-button class="button-positive"
+                       ng-click="share(item)">
+      			Yes
+    			</ion-option-button>
+    			<ion-option-button class="button-info" ng-click="selectChoice()">
+      			No
+    			</ion-option-button>
+    			<div ng-show="toggle">
+    			<input ng-model="answer" placeholder="Enter corrective action" ng></input>
+    			<button ng-click="submit(answer)">Submit</button>
+    			</div>
+    			</ion-item>
+
+    			<ion-item class="item item-text-wrap">
+				Are cleaning cloths suitable for use and regularly cleaned and disinfected and used properly?
+
+        		<ion-option-button class="button-positive"
+                       ng-click="share(item)">
+      			Yes
+    			</ion-option-button>
+    			<ion-option-button class="button-info" ng-click="selectChoice()">
+      			No
+    			</ion-option-button>
+    			<div ng-show="toggle">
+    			<input ng-model="answer" placeholder="Enter corrective action" ng></input>
+    			<button ng-click="submit(answer)">Submit</button>
+    			</div>
+    			</ion-item>
+
+		</ion-list>
+
+		<h3>Food Storage</h3>
+        <ion-list can-swipe="listCanSwipe">
+  			<ion-item class="item item-text-wrap">
+				Are deliveries appropriately stored immediately?
+        		<ion-option-button class="button-positive"
+                       ng-click="share(item)">
+      			Yes
+    			</ion-option-button>
+    			<ion-option-button class="button-info" ng-click="selectChoice()">
+      			No
+    			</ion-option-button>
+    			<div ng-show="toggle">
+    			<input ng-model="answer" placeholder="Enter corrective action" ng></input>
+    			<button ng-click="submit(answer)">Submit</button>
+    			</div>
+    			</ion-item>
+
+    			<ion-item class="item item-text-wrap">
+				Is ready-to-eat food stored above/separate from raw food in the fridges and freezers?
+        		<ion-option-button class="button-positive"
+                       ng-click="share(item)">
+      			Yes
+    			</ion-option-button>
+    			<ion-option-button class="button-info" ng-click="selectChoice()">
+      			No
+    			</ion-option-button>
+    			<div ng-show="toggle">
+    			<input ng-model="answer" placeholder="Enter corrective action" ng></input>
+    			<button ng-click="submit(answer)">Submit</button>
+    			</div>
+    			</ion-item>
+
+    			<ion-item class="item item-text-wrap">
+				Is food in fridges/freezers covered?
+        		<ion-option-button class="button-positive"
+                       ng-click="share(item)">
+      			Yes
+    			</ion-option-button>
+    			<ion-option-button class="button-info" ng-click="selectChoice()">
+      			No
+    			</ion-option-button>
+    			<div ng-show="toggle">
+    			<input ng-model="answer" placeholder="Enter corrective action" ng></input>
+    			<button ng-click="submit(answer)">Submit</button>
+    			</div>
+    			</ion-item>
+
+    			<ion-item class="item item-text-wrap">
+				Are high risk foods date coded, codes checked daily and stock rotated?
+        		<ion-option-button class="button-positive"
+                       ng-click="share(item)">
+      			Yes
+    			</ion-option-button>
+    			<ion-option-button class="button-info" ng-click="selectChoice()">
+      			No
+    			</ion-option-button>
+    			<div ng-show="toggle">
+    			<input ng-model="answer" placeholder="Enter corrective action" ng></input>
+    			<button ng-click="submit(answer)">Submit</button>
+    			</div>
+    			</ion-item>
+				
+				<ion-item class="item item-text-wrap">
+				Are dried goods stored correctly e.g. in suitable room, off the floor, in covered containers?
+        		<ion-option-button class="button-positive"
+                       ng-click="share(item)">
+      			Yes
+    			</ion-option-button>
+    			<ion-option-button class="button-info" ng-click="selectChoice()">
+      			No
+    			</ion-option-button>
+    			<div ng-show="toggle">
+    			<input ng-model="answer" placeholder="Enter corrective action" ng></input>
+    			<button ng-click="submit(answer)">Submit</button>
+    			</div>
+    			</ion-item>
+
+    			<ion-item class="item item-text-wrap">
+				Are freezers working properly?
+
+        		<ion-option-button class="button-positive"
+                       ng-click="share(item)">
+      			Yes
+    			</ion-option-button>
+    			<ion-option-button class="button-info" ng-click="selectChoice()">
+      			No
+    			</ion-option-button>
+    			<div ng-show="toggle">
+    			<input ng-model="answer" placeholder="Enter corrective action" ng></input>
+    			<button ng-click="submit(answer)">Submit</button>
+    			</div>
+    			</ion-item>
+
+    			<ion-item class="item item-text-wrap">
+				Are fridges and freezers defrosted regularly?
+
+        		<ion-option-button class="button-positive"
+                       ng-click="share(item)">
+      			Yes
+    			</ion-option-button>
+    			<ion-option-button class="button-info" ng-click="selectChoice()">
+      			No
+    			</ion-option-button>
+    			<div ng-show="toggle">
+    			<input ng-model="answer" placeholder="Enter corrective action" ng></input>
+    			<button ng-click="submit(answer)">Submit</button>
+    			</div>
+    			</ion-item>
+
+		</ion-list>
+
+		<h3>Food Handling Practices</h3>
+        <ion-list can-swipe="listCanSwipe">
+  			<ion-item class="item item-text-wrap">
+				Are raw and ready-to-eat foods prepared in separate areas or are the work surfaces cleaned and disinfected between uses?
+        		<ion-option-button class="button-positive"
+                       ng-click="share(item)">
+      			Yes
+    			</ion-option-button>
+    			<ion-option-button class="button-info" ng-click="selectChoice()">
+      			No
+    			</ion-option-button>
+    			<div ng-show="toggle">
+    			<input ng-model="answer" placeholder="Enter corrective action" ng></input>
+    			<button ng-click="submit(answer)">Submit</button>
+    			</div>
+    			</ion-item>
+
+    			<ion-item class="item item-text-wrap">
+				Separate complex equipment (e.g. vacuum packing machines, food mixers, etc) are used for raw and ready-to-eat foods?
+        		<ion-option-button class="button-positive"
+                       ng-click="share(item)">
+      			Yes
+    			</ion-option-button>
+    			<ion-option-button class="button-info" ng-click="selectChoice()">
+      			No
+    			</ion-option-button>
+    			<div ng-show="toggle">
+    			<input ng-model="answer" placeholder="Enter corrective action" ng></input>
+    			<button ng-click="submit(answer)">Submit</button>
+    			</div>
+    			</ion-item>
+
+    			<ion-item class="item item-text-wrap">
+				Are staff handling food as little as possible? (e.g. using tongs)
+        		<ion-option-button class="button-positive"
+                       ng-click="share(item)">
+      			Yes
+    			</ion-option-button>
+    			<ion-option-button class="button-info" ng-click="selectChoice()">
+      			No
+    			</ion-option-button>
+    			<div ng-show="toggle">
+    			<input ng-model="answer" placeholder="Enter corrective action" ng></input>
+    			<button ng-click="submit(answer)">Submit</button>
+    			</div>
+    			</ion-item>
+
+    			<ion-item class="item item-text-wrap">
+				If colour coded equipment is provided (e.g. chopping boards), is it correctly used?
+        		<ion-option-button class="button-positive"
+                       ng-click="share(item)">
+      			Yes
+    			</ion-option-button>
+    			<ion-option-button class="button-info" ng-click="selectChoice()">
+      			No
+    			</ion-option-button>
+    			<div ng-show="toggle">
+    			<input ng-model="answer" placeholder="Enter corrective action" ng></input>
+    			<button ng-click="submit(answer)">Submit</button>
+    			</div>
+    			</ion-item>
+				
+				<ion-item class="item item-text-wrap">
+				Are high risk foods prepared in small batches and returned to the fridge immediately after handling/preparation?
+        		<ion-option-button class="button-positive"
+                       ng-click="share(item)">
+      			Yes
+    			</ion-option-button>
+    			<ion-option-button class="button-info" ng-click="selectChoice()">
+      			No
+    			</ion-option-button>
+    			<div ng-show="toggle">
+    			<input ng-model="answer" placeholder="Enter corrective action" ng></input>
+    			<button ng-click="submit(answer)">Submit</button>
+    			</div>
+    			</ion-item>
+
+    			<ion-item class="item item-text-wrap">
+				Is food cooled as quickly as possible away from raw food and other sources of contamination?
+
+        		<ion-option-button class="button-positive"
+                       ng-click="share(item)">
+      			Yes
+    			</ion-option-button>
+    			<ion-option-button class="button-info" ng-click="selectChoice()">
+      			No
+    			</ion-option-button>
+    			<div ng-show="toggle">
+    			<input ng-model="answer" placeholder="Enter corrective action" ng></input>
+    			<button ng-click="submit(answer)">Submit</button>
+    			</div>
+    			</ion-item>
+
+    			<ion-item class="item item-text-wrap">
+				Are ready to eat fruits/salads/vegetables trimmed and washed thoroughly?
+
+        		<ion-option-button class="button-positive"
+                       ng-click="share(item)">
+      			Yes
+    			</ion-option-button>
+    			<ion-option-button class="button-info" ng-click="selectChoice()">
+      			No
+    			</ion-option-button>
+    			<div ng-show="toggle">
+    			<input ng-model="answer" placeholder="Enter corrective action" ng></input>
+    			<button ng-click="submit(answer)">Submit</button>
+    			</div>
+    			</ion-item>
+
+    			<ion-item class="item item-text-wrap">
+				Is food on display screened from customers?
+
+        		<ion-option-button class="button-positive"
+                       ng-click="share(item)">
+      			Yes
+    			</ion-option-button>
+    			<ion-option-button class="button-info" ng-click="selectChoice()">
+      			No
+    			</ion-option-button>
+    			<div ng-show="toggle">
+    			<input ng-model="answer" placeholder="Enter corrective action" ng></input>
+    			<button ng-click="submit(answer)">Submit</button>
+    			</div>
+    			</ion-item>
+
+    			<ion-item class="item item-text-wrap">
+				Are adequate clean utensils available for self service?
+
+        		<ion-option-button class="button-positive"
+                       ng-click="share(item)">
+      			Yes
+    			</ion-option-button>
+    			<ion-option-button class="button-info" ng-click="selectChoice()">
+      			No
+    			</ion-option-button>
+    			<div ng-show="toggle">
+    			<input ng-model="answer" placeholder="Enter corrective action" ng></input>
+    			<button ng-click="submit(answer)">Submit</button>
+    			</div>
+    			</ion-item>
+
+    			<ion-item class="item item-text-wrap">
+				Are frozen foods defrosted safely?
+
+        		<ion-option-button class="button-positive"
+                       ng-click="share(item)">
+      			Yes
+    			</ion-option-button>
+    			<ion-option-button class="button-info" ng-click="selectChoice()">
+      			No
+    			</ion-option-button>
+    			<div ng-show="toggle">
+    			<input ng-model="answer" placeholder="Enter corrective action" ng></input>
+    			<button ng-click="submit(answer)">Submit</button>
+    			</div>
+    			</ion-item>
+
+    			<ion-item class="item item-text-wrap">
+				Are controls in place to prevent contamination by chemicals/foreign bodies e.g. glass, packaging materials, bolts, rust, cleaning chemicals?
+
+        		<ion-option-button class="button-positive"
+                       ng-click="share(item)">
+      			Yes
+    			</ion-option-button>
+    			<ion-option-button class="button-info" ng-click="selectChoice()">
+      			No
+    			</ion-option-button>
+    			<div ng-show="toggle">
+    			<input ng-model="answer" placeholder="Enter corrective action" ng></input>
+    			<button ng-click="submit(answer)">Submit</button>
+    			</div>
+    			</ion-item>
+
+    			<ion-item class="item item-text-wrap">
+				Are staff aware of food alergy hazards?
+
+        		<ion-option-button class="button-positive"
+                       ng-click="share(item)">
+      			Yes
+    			</ion-option-button>
+    			<ion-option-button class="button-info" ng-click="selectChoice()">
+      			No
+    			</ion-option-button>
+    			<div ng-show="toggle">
+    			<input ng-model="answer" placeholder="Enter corrective action" ng></input>
+    			<button ng-click="submit(answer)">Submit</button>
+    			</div>
+    			</ion-item>
+
+    			<ion-item class="item item-text-wrap">
+				Are probe thermometers correctly used and cleaned/disinfected before and after use?
+
+        		<ion-option-button class="button-positive"
+                       ng-click="share(item)">
+      			Yes
+    			</ion-option-button>
+    			<ion-option-button class="button-info" ng-click="selectChoice()">
+      			No
+    			</ion-option-button>
+    			<div ng-show="toggle">
+    			<input ng-model="answer" placeholder="Enter corrective action" ng></input>
+    			<button ng-click="submit(answer)">Submit</button>
+    			</div>
+    			</ion-item>
+
+		</ion-list>
+
+		<h3>Personal Hygiene</h3>
+        <ion-list can-swipe="listCanSwipe">
+  			<ion-item class="item item-text-wrap">
+				Are staff fit to work, wearing clean, suitable protective clothing and following personal hygiene rules particularly hand washing?
+        		<ion-option-button class="button-positive"
+                       ng-click="share(item)">
+      			Yes
+    			</ion-option-button>
+    			<ion-option-button class="button-info" ng-click="selectChoice()">
+      			No
+    			</ion-option-button>
+    			<div ng-show="toggle">
+    			<input ng-model="answer" placeholder="Enter corrective action" ng></input>
+    			<button ng-click="submit(answer)">Submit</button>
+    			</div>
+    			</ion-item>
+
+    			<ion-item class="item item-text-wrap">
+				Are wash hand basins clean with warm water, soap and hygienic hand drying facilities?
+        		<ion-option-button class="button-positive"
+                       ng-click="share(item)">
+      			Yes
+    			</ion-option-button>
+    			<ion-option-button class="button-info" ng-click="selectChoice()">
+      			No
+    			</ion-option-button>
+    			<div ng-show="toggle">
+    			<input ng-model="answer" placeholder="Enter corrective action" ng></input>
+    			<button ng-click="submit(answer)">Submit</button>
+    			</div>
+    			</ion-item>
+
+    			<ion-item class="item item-text-wrap">
+				Are wash hand basins used for hand washing only and used regularly by staff?
+        		<ion-option-button class="button-positive"
+                       ng-click="share(item)">
+      			Yes
+    			</ion-option-button>
+    			<ion-option-button class="button-info" ng-click="selectChoice()">
+      			No
+    			</ion-option-button>
+    			<div ng-show="toggle">
+    			<input ng-model="answer" placeholder="Enter corrective action" ng></input>
+    			<button ng-click="submit(answer)">Submit</button>
+    			</div>
+    			</ion-item>
+
+    			<ion-item class="item item-text-wrap">
+				Are staff handling food as little as possible?
+        		<ion-option-button class="button-positive"
+                       ng-click="share(item)">
+      			Yes
+    			</ion-option-button>
+    			<ion-option-button class="button-info" ng-click="selectChoice()">
+      			No
+    			</ion-option-button>
+    			<div ng-show="toggle">
+    			<input ng-model="answer" placeholder="Enter corrective action" ng></input>
+    			<button ng-click="submit(answer)">Submit</button>
+    			</div>
+    			</ion-item>
+				
+				<ion-item class="item item-text-wrap">
+				Are staff toilets and changing facilities clean and tidy?
+        		<ion-option-button class="button-positive"
+                       ng-click="share(item)">
+      			Yes
+    			</ion-option-button>
+    			<ion-option-button class="button-info" ng-click="selectChoice()">
+      			No
+    			</ion-option-button>
+    			<div ng-show="toggle">
+    			<input ng-model="answer" placeholder="Enter corrective action" ng></input>
+    			<button ng-click="submit(answer)">Submit</button>
+    			</div>
+    			</ion-item>
+    			
+		</ion-list>
+
+		<h3>Pest Control</h3>
+        <ion-list can-swipe="listCanSwipe">
+  			<ion-item class="item item-text-wrap">
+				Are premises pest proofed and free from any signs of pests?
+        		<ion-option-button class="button-positive"
+                       ng-click="share(item)">
+      			Yes
+    			</ion-option-button>
+    			<ion-option-button class="button-info" ng-click="selectChoice()">
+      			No
+    			</ion-option-button>
+    			<div ng-show="toggle">
+    			<input ng-model="answer" placeholder="Enter corrective action" ng></input>
+    			<button ng-click="submit(answer)">Submit</button>
+    			</div>
+    			</ion-item>
+
+    			<ion-item class="item item-text-wrap">
+				Where necessary are external doors/windows fitted with suitable flyscreens?
+        		<ion-option-button class="button-positive"
+                       ng-click="share(item)">
+      			Yes
+    			</ion-option-button>
+    			<ion-option-button class="button-info" ng-click="selectChoice()">
+      			No
+    			</ion-option-button>
+    			<div ng-show="toggle">
+    			<input ng-model="answer" placeholder="Enter corrective action" ng></input>
+    			<button ng-click="submit(answer)">Submit</button>
+    			</div>
+    			</ion-item>
+
+    			<ion-item class="item item-text-wrap">
+				Are insectocutors (if provided) properly maintained?
+        		<ion-option-button class="button-positive"
+                       ng-click="share(item)">
+      			Yes
+    			</ion-option-button>
+    			<ion-option-button class="button-info" ng-click="selectChoice()">
+      			No
+    			</ion-option-button>
+    			<div ng-show="toggle">
+    			<input ng-model="answer" placeholder="Enter corrective action" ng></input>
+    			<button ng-click="submit(answer)">Submit</button>
+    			</div>
+    			</ion-item>
+
+    			<ion-item class="item item-text-wrap">
+				Is food properly protected from risk of contamination by pests?
+        		<ion-option-button class="button-positive"
+                       ng-click="share(item)">
+      			Yes
+    			</ion-option-button>
+    			<ion-option-button class="button-info" ng-click="selectChoice()">
+      			No
+    			</ion-option-button>
+    			<div ng-show="toggle">
+    			<input ng-model="answer" placeholder="Enter corrective action" ng></input>
+    			<button ng-click="submit(answer)">Submit</button>
+    			</div>
+    			</ion-item>
+				    			
+		</ion-list>
+
+
+		<h3>Waste Control</h3>
+        <ion-list can-swipe="listCanSwipe">
+  			<ion-item class="item item-text-wrap">
+				Is waste in food rooms stored correctly?
+        		<ion-option-button class="button-positive"
+                       ng-click="share(item)">
+      			Yes
+    			</ion-option-button>
+    			<ion-option-button class="button-info" ng-click="selectChoice()">
+      			No
+    			</ion-option-button>
+    			<div ng-show="toggle">
+    			<input ng-model="answer" placeholder="Enter corrective action" ng></input>
+    			<button ng-click="submit(answer)">Submit</button>
+    			</div>
+    			</ion-item>
+
+    			<ion-item class="item item-text-wrap">
+				Is food waste stored correctly outside and is the refuse area kept clean?
+        		<ion-option-button class="button-positive"
+                       ng-click="share(item)">
+      			Yes
+    			</ion-option-button>
+    			<ion-option-button class="button-info" ng-click="selectChoice()">
+      			No
+    			</ion-option-button>
+    			<div ng-show="toggle">
+    			<input ng-model="answer" placeholder="Enter corrective action" ng></input>
+    			<button ng-click="submit(answer)">Submit</button>
+    			</div>
+    			</ion-item>
+
+    			<ion-item class="item item-text-wrap">
+				Is unfit food clearly labelled and stored separately from other foods?
+        		<ion-option-button class="button-positive"
+                       ng-click="share(item)">
+      			Yes
+    			</ion-option-button>
+    			<ion-option-button class="button-info" ng-click="selectChoice()">
+      			No
+    			</ion-option-button>
+    			<div ng-show="toggle">
+    			<input ng-model="answer" placeholder="Enter corrective action" ng></input>
+    			<button ng-click="submit(answer)">Submit</button>
+    			</div>
+    			</ion-item>
+    			
+		</ion-list>
+
+		<h3>Checks and Record Keeping</h3>
+        <ion-list can-swipe="listCanSwipe">
+  			<ion-item class="item item-text-wrap">
+				Are all checks properly taken and recorded?
+        		<ion-option-button class="button-positive"
+                       ng-click="share(item)">
+      			Yes
+    			</ion-option-button>
+    			<ion-option-button class="button-info" ng-click="selectChoice()">
+      			No
+    			</ion-option-button>
+    			<div ng-show="toggle">
+    			<input ng-model="answer" placeholder="Enter corrective action" ng></input>
+    			<button ng-click="submit(answer)">Submit</button>
+    			</div>
+    			</ion-item>
+
+    			<ion-item class="item item-text-wrap">
+				Has appropriate corrective action been taken where necessary?
+        		<ion-option-button class="button-positive"
+                       ng-click="share(item)">
+      			Yes
+    			</ion-option-button>
+    			<ion-option-button class="button-info" ng-click="selectChoice()">
+      			No
+    			</ion-option-button>
+    			<div ng-show="toggle">
+    			<input ng-model="answer" placeholder="Enter corrective action" ng></input>
+    			<button ng-click="submit(answer)">Submit</button>
+    			</div>
+    			</ion-item>
+
+    			<ion-item class="item item-text-wrap">
+				Are record forms up-to-date, checked and verified?
+        		<ion-option-button class="button-positive"
+                       ng-click="share(item)">
+      			Yes
+    			</ion-option-button>
+    			<ion-option-button class="button-info" ng-click="selectChoice()">
+      			No
+    			</ion-option-button>
+    			<div ng-show="toggle">
+    			<input ng-model="answer" placeholder="Enter corrective action" ng></input>
+    			<button ng-click="submit(answer)">Submit</button>
+    			</div>
+    			</ion-item>
+
+    			<ion-item class="item item-text-wrap">
+				Are equipment time/temperature combinations specified and regularly cross-checked?
+        		<ion-option-button class="button-positive"
+                       ng-click="share(item)">
+      			Yes
+    			</ion-option-button>
+    			<ion-option-button class="button-info" ng-click="selectChoice()">
+      			No
+    			</ion-option-button>
+    			<div ng-show="toggle">
+    			<input ng-model="answer" placeholder="Enter corrective action" ng></input>
+    			<button ng-click="submit(answer)">Submit</button>
+    			</div>
+    			</ion-item>
+    			
+		</ion-list>
+
+		<h3>Review (4 Weekly)</h3>
+        <ion-list can-swipe="listCanSwipe">
+  			<ion-item class="item item-text-wrap">
+				Any new suppliers and approved list updated?
+        		<ion-option-button class="button-positive"
+                       ng-click="share(item)">
+      			Yes
+    			</ion-option-button>
+    			<ion-option-button class="button-info" ng-click="selectChoice()">
+      			No
+    			</ion-option-button>
+    			<div ng-show="toggle">
+    			<input ng-model="answer" placeholder="Enter corrective action" ng></input>
+    			<button ng-click="submit(answer)">Submit</button>
+    			</div>
+    			</ion-item>
+
+    			<ion-item class="item item-text-wrap">
+				Any new menu items and steps in safe catering updated?
+        		<ion-option-button class="button-positive"
+                       ng-click="share(item)">
+      			Yes
+    			</ion-option-button>
+    			<ion-option-button class="button-info" ng-click="selectChoice()">
+      			No
+    			</ion-option-button>
+    			<div ng-show="toggle">
+    			<input ng-model="answer" placeholder="Enter corrective action" ng></input>
+    			<button ng-click="submit(answer)">Submit</button>
+    			</div>
+    			</ion-item>
+
+    			<ion-item class="item item-text-wrap">
+				Any new food handling methods or equipment and steps in safe catering updated?
+        		<ion-option-button class="button-positive"
+                       ng-click="share(item)">
+      			Yes
+    			</ion-option-button>
+    			<ion-option-button class="button-info" ng-click="selectChoice()">
+      			No
+    			</ion-option-button>
+    			<div ng-show="toggle">
+    			<input ng-model="answer" placeholder="Enter corrective action" ng></input>
+    			<button ng-click="submit(answer)">Submit</button>
+    			</div>
+    			</ion-item>
+    			
+		</ion-list>
+
+
+  </ion-content>
+
+</ion-view>

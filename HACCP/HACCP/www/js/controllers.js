@@ -1,25 +1,4 @@
-angular.module('starter.controllers', [])
-
-.controller('DashCtrl', function($scope) {})
-
-.controller('ChatsCtrl', function($scope, Chats) {
-  // With the new view caching in Ionic, Controllers are only called
-  // when they are recreated or on app start, instead of every page change.
-  // To listen for when this page is active (for example, to refresh data),
-  // listen for the $ionicView.enter event:
-  //
-  //$scope.$on('$ionicView.enter', function(e) {
-  //});
-
-  $scope.chats = Chats.all();
-  $scope.remove = function(chat) {
-    Chats.remove(chat);
-  };
-})
-
-.controller('ChatDetailCtrl', function($scope, $stateParams, Chats) {
-  $scope.chat = Chats.get($stateParams.chatId);
-})
+angular.module('starter.controllers', ['ionic.wheel'])
 
 //Auth controllers
 .controller('LoginCtrl', function($scope, AuthService, $ionicPopup, $state) {
@@ -82,9 +61,51 @@ angular.module('starter.controllers', [])
   };
 })
 
+.controller('MenuCtrl', function($scope) {
 
+  var circles = document.getElementsByClassName('circle');
 
+  $scope.circlesHidden = true;
 
+  $scope.showCircles= function() {
+    var $circles = angular.element(circles);
+    if ($scope.circlesHidden) {
+      $circles.addClass('active');
+    } else {
+      $circles.removeClass('active');
+    }
+    $scope.toggleCirclesHidden();
+  };
+
+  $scope.toggleCirclesHidden = function() {
+    return $scope.circlesHidden = !$scope.circlesHidden;
+  };
+
+})
+
+//controller for Fitness to Work Assessment Page
+.controller('FittCtrl', function($scope) {
+   
+  $scope.formData = {};  
+
+  
+  //prints formData array to DOM console after form is filled and submitted
+  $scope.submitForm = function(formData) {
+    console.log($scope.formData.q1);
+    console.log($scope.formData.q2);
+    console.log($scope.formData.q3);
+    console.log($scope.formData.q4);
+    console.log($scope.formData.q5);
+    console.log($scope.formData.q6);
+    console.log($scope.formData.q7);
+    console.log($scope.formData.q8);
+    console.log($scope.formData.q9);
+    console.log($scope.formData.q10);
+    console.log($scope.formData.q11);
+    console.log($scope.formData.q12);
+  };
+
+})
 
 
 
@@ -118,19 +139,41 @@ angular.module('starter.controllers', [])
     $scope.toIntro = function(){
         $state.go('intro');
     }
+
+
+
 })
 
+.controller('ListCtrl', function($scope){
+  $scope.shouldShowDelete = false;
+ $scope.shouldShowReorder = false;
+ $scope.listCanSwipe = true;
+ $scope.toggle=false;
+ 
+ $scope.selectChoice=function(answer){
+ 
+    $scope.toggle=true;
+    this.answer=null;
+}
 
-.controller('PlaylistsCtrl', function($scope) {
-    $scope.playlists = [
-      { title: 'Reggae', id: 1 },
-      { title: 'Chill', id: 2 },
-      { title: 'Dubstep', id: 3 },
-      { title: 'Indie', id: 4 },
-      { title: 'Rap', id: 5 },
-      { title: 'Cowbell', id: 6 }
-    ];
+  $scope.submit=function(){
+ 
+    $scope.toggle=false;
+}
+
+
+
 })
 
-.controller('PlaylistCtrl', function($scope, $stateParams) {
+.controller('NavCtrl', function($scope, $ionicSideMenuDelegate) {
+  $scope.showMenu = function () {
+    $ionicSideMenuDelegate.toggleLeft();
+  };
+  $scope.showRightMenu = function () {
+    $ionicSideMenuDelegate.toggleRight();
+  };
+
+
 });
+
+

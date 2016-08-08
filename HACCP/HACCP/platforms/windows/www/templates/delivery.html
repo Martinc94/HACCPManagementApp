@@ -1,0 +1,22 @@
+
+<ion-side-menus>
+    <ion-view>
+      <ion-side-menu-content ng-controller="NavCtrl" >
+        <ion-nav-bar >
+        <ion-nav-title><h3> Food Delivery Records</h3></ion-nav-title>
+          <ion-nav-buttons side="left">
+            <a class="icon ion-icon-logo" href="#menu"></a>
+            </ion-nav-buttons>
+
+        </ion-nav-bar>
+	<ion-content scroll="false" class="food-delivery">
+       	
+    <ion-label>Date:</ion-label>
+    <ion-datetime displayFormat="MM/DD/YYYY">{{currdate}}</ion-datetime>
+    <p>Take Photo option here</p>
+
+
+  </ion-content>
+
+</ion-view>
+</ion-side-menus>
