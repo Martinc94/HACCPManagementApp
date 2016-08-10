@@ -23,7 +23,7 @@ angular.module('starter.routes', [])
                 controller: 'ListCtrl'
               }
             }
-            
+
         })
 
       .state('app.delivery', {
@@ -34,7 +34,7 @@ angular.module('starter.routes', [])
                 controller: ''
               }
             }
-            
+
         })
 
       .state('app.transport', {
@@ -45,7 +45,7 @@ angular.module('starter.routes', [])
                 controller: ''
               }
             }
-            
+
         })
 
       .state('app.fitness', {
@@ -56,7 +56,7 @@ angular.module('starter.routes', [])
                 controller: 'FittCtrl'
               }
             }
-            
+
         })
 
       .state('app.training', {
@@ -67,10 +67,10 @@ angular.module('starter.routes', [])
                 controller: ''
               }
             }
-            
+
         })
 
-      
+
 
       .state('app.hothold', {
             url: '/hothold',
@@ -80,7 +80,7 @@ angular.module('starter.routes', [])
                 controller: ''
               }
             }
-            
+
         })
 
       .state('app.temperature', {
@@ -91,7 +91,7 @@ angular.module('starter.routes', [])
                 controller: ''
               }
             }
-            
+
         })
 
       .state('app.refridgeration', {
@@ -102,7 +102,7 @@ angular.module('starter.routes', [])
                 controller: ''
               }
             }
-            
+
         })
 
 
@@ -125,9 +125,9 @@ angular.module('starter.routes', [])
            controller: 'ForgotCtrl'
        })
 
-       
 
-       
+
+
 
 
   // setup an abstract state for the tabs directive
@@ -160,5 +160,5 @@ angular.module('starter.routes', [])
 
 
   // if none of the above states are matched, use this as the fallback
-  $urlRouterProvider.otherwise('/app/hygiene');
+  $urlRouterProvider.otherwise('/app/fitness');
 });

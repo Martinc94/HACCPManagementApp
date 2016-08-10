@@ -84,11 +84,11 @@ angular.module('starter.controllers', ['ionic.wheel'])
 })
 
 //controller for Fitness to Work Assessment Page
-.controller('FittCtrl', function($scope) {
-   
-  $scope.formData = {};  
+.controller('FittCtrl', function($scope, AuthService, $ionicPopup, $state) {
 
-  
+  $scope.formData = {};
+
+
   //prints formData array to DOM console after form is filled and submitted
   $scope.submitForm = function(formData) {
     console.log($scope.formData.q1);
@@ -103,6 +103,22 @@ angular.module('starter.controllers', ['ionic.wheel'])
     console.log($scope.formData.q10);
     console.log($scope.formData.q11);
     console.log($scope.formData.q12);
+  };
+
+  $scope.submit = function() {
+    AuthService.fitness($scope.formData).then(function(msg) {
+      //redirect to home??
+      //$state.go('login');
+      var alertPopup = $ionicPopup.alert({
+        title: 'Success!',
+        template: msg
+        });
+    }, function(errMsg) {
+      var alertPopup = $ionicPopup.alert({
+        title: 'Error',
+        template: errMsg
+      });
+    });
   };
 
 })
@@ -149,15 +165,15 @@ angular.module('starter.controllers', ['ionic.wheel'])
  $scope.shouldShowReorder = false;
  $scope.listCanSwipe = true;
  $scope.toggle=false;
- 
+
  $scope.selectChoice=function(answer){
- 
+
     $scope.toggle=true;
     this.answer=null;
 }
 
   $scope.submit=function(){
- 
+
     $scope.toggle=false;
 }
 
@@ -175,5 +191,3 @@ angular.module('starter.controllers', ['ionic.wheel'])
 
 
 });
-
-

@@ -72,6 +72,24 @@ angular.module('starter.services', [])
       });
     };
 
+    var fitness = function(formData) {
+      return $q(function(resolve, reject) {
+        $http.post(API_ENDPOINT.url + '/fitnessToWork', formData).then(function(result) {
+        console.log(formData);
+          if (result.data.success) {
+            //
+
+            resolve(result.data.msg);
+          } else {
+            reject(result.data.msg);
+          }
+        });
+      });
+    };
+
+
+
+
 
 
 
@@ -88,6 +106,7 @@ angular.module('starter.services', [])
       register: register,
       forgot: forgot,
       logout: logout,
+      fitness: fitness,
       isAuthenticated: function() {return isAuthenticated;},
     };
   })
