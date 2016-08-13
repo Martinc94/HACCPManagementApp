@@ -28,11 +28,11 @@
  		 <ion-radio name="q3" ng-model="formData.q3" ng-value="'Return to work after illness'">Return to work after illness</ion-radio>
  	</label>
   		
-  		<label class="item item-input item-select item-text-wrap">
-    <div class="input-label">
+  		<label class="item item-select item-text-wrap">
+    <div class="input-label" style="width: 1000px">
       Have you suffered from diarrhoea and/or vomiting within the last 48 hours?
     </div>
-    <select ng-model="formData.q4">
+    <select ng-model="formData.q4" style="width: 20">
       <option ng-value="'Yes'">Yes</option>
       <option ng-value="'No'">No</option>
     </select>
@@ -40,14 +40,14 @@
 
 
 		<label class="item item-text-wrap">
-    		<span class="input-label">At present are you suffering from:</span>
+    		<span class="input-label" style="width: 500px">At present are you suffering from:</span>
  		 <ion-checkbox ng-model="formData.q5" ng-value="'infected wounds, skin infections or sores'">infected wounds, skin infections or sores?</ion-checkbox>
   		<ion-checkbox ng-model="formData.q6" ng-value="'boils, styes or septic fingers'">boils, styes or septic fingers?</ion-checkbox>
   		<ion-checkbox ng-model="formData.q7" ng-value="'discharge from eye, ear or gums/mouth'">discharge from eye, ear or gums/mouth?</ion-checkbox>
 		</label>
 
 		<label class="item item-input item-select item-text-wrap">
-    <div class="input-label">
+    <div class="input-label" style="width: 500px">
       Have you ever had, or are you known to be a carrier of typhoid or paratyphoid?
     </div>
     <select ng-model="formData.q8">
@@ -57,7 +57,7 @@
   </label>
 	
 	<label class="item item-input item-select item-text-wrap">
-    <div class="input-label">
+    <div class="input-label" style="width: 500px">
       In the last 21 days have you been in contact with anyone, at home or abroad, who may have been suffering from typhoid or paratyphoid?
     </div>
     <select ng-model="formData.q9">

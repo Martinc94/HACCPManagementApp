@@ -27,4 +27,13 @@ gulp.task('sass', function(done) {
     .on('end', done);
 });
 
+gulp.task('watch', function(){
+    /** Watch any changes */
+    gulp.watch( "./stylesheets/**/*.scss", ["stylesheets"] );
+
+    /** Watch any html changes */
+    gulp.watch( "./html/**/*.html", ["html"] );
+});
+
+
 
