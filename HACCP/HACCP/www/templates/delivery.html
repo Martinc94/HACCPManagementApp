@@ -1,15 +1,92 @@
 <ion-view view-title="Food Delivery Records">
 
        
-	<ion-content class="food-delivery">
+	<ion-content>
+
+		<div class="bar bar-header bar-royal">
+
+  			<div class="h1 title">Food Delivery Records</div>
+ 			 <button class="button button-icon icon ion-camera"></button>
+		</div>
+		
 
        	
-        <!-- <a class="icon ion-icon-logo" href="#menu"></a> -->
-    <ion-label>Date:</ion-label>
-    <ion-datetime displayFormat="MM/DD/YYYY">{{currdate}}</ion-datetime>
-    <p>Take Photo option here</p>
+    <form name="deliveryForm" ng-submit="submitForm(deliveryForm)">
+	<div class="list">
 
+		<label class="item item-input">
+    		Date
+    		<input type="date" placeholder="16/04/16" ng-model="deliveryForm.date">
+  		</label>
 
+  		<label class="item item-select item-text-wrap">
+    <div class="input-label" style="width: 1000px">
+     Food Item
+    </div>
+    <select ng-model="deliveryForm.food" style="width: 20">
+      <option ng-value="'Yes'">Chicken</option>
+      <option ng-value="'No'">Beef</option>
+    </select>
+  </label>
+
+  		<label class="item item-input">
+    		<span class="input-label">Batch Code</span>
+    		<input type="text" placeholder="" ng-model="deliveryForm.batch">
+  		</label>
+
+  		<label class="item item-select item-text-wrap">
+    <div class="input-label" style="width: 1000px">
+    Supplied By
+    </div>
+    <select ng-model="deliveryForm.supplier" style="width: 20">
+      <option ng-value="'Yes'">McDonnells</option>
+      <option ng-value="'No'">O'Haras</option>
+    </select>
+  </label>
+
+  <label class="item item-input">
+    		<span class="input-label">'Use-by' Date</span>
+    		<input type="date" placeholder="16/04/16" ng-model="deliveryForm.useby">
+  		</label>
+
+  		<label class="item item-input">
+    		<span class="input-label">Temp * °C</span>
+    		<input type="number" placeholder="4" ng-model="deliveryForm.temp">
+  		</label>
+
+  		<label class="item item-input">
+    		<span class="input-label">Delivery Vehicle Check</span>
+    		<input type="text" placeholder="Dirty" ng-model="deliveryForm.vehicle">
+  		</label>
+
+  		<label class="item item-input">
+    		<span class="input-label">Comments/Action</span>
+    		<input type="text" placeholder="" ng-model="deliveryForm.comment">
+  		</label>
+
+  		<label class="item item-input">
+    		<span class="input-label">Sign</span>
+    		<input type="text" placeholder="" ng-model="deliveryForm.sign">
+  		</label>
+
+  		<label class="item item-input">
+    		<span class="input-label">Manager/Supervisor check on</span>
+    		<input type="date" placeholder="16/04/16" ng-model="deliveryForm.checkon">
+  		</label>
+  		  		
+
+  		<label class="item item-input">
+    		<span class="input-label">Manager/Supervisor Sign</span>
+    		<input type="text" placeholder="John Smith" ng-model="deliveryForm.managersign">
+  		</label>
+
+  		<button class="button button-full button-royal" type="submit">
+  		Submit
+		</button>
+	<br>
+	<br>
+	</div>
+</form>
   </ion-content>
 
 </ion-view>

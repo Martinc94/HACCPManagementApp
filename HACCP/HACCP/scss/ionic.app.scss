@@ -15,7 +15,21 @@ $royal:                           #886aea !default;
 $dark:                            #444 !default;
 */
 
-$energized:                        pink !default;
+/* $button-positive-bg:              #26b99b !default;//hygiene
+$button-calm-bg:                  #e64c3c !default;//fridge
+$button-assertive-bg:             #9858a3 !default;//hothold
+$button-light-bg:                 #60b36d !default;//fitness
+$button-stable-bg:                #f0c419 !default; //transport
+$button-balanced-bg:              #e57d25 !default;//delivery
+ */
+
+$royal:                           #e57d25 !default; //delivery
+$energized:                       #26b99b !default; //hygiene
+
+.hygiene{
+  background-color:    $energized;
+}
+
 
 .food-delivery {
     background-color:#e57d24;
@@ -36,7 +50,6 @@ $energized:                        pink !default;
 }
 .hygiene-Inspection {
     background-color: #25b99a;
-    height: 20%;
 }
 .hygiene-Training {
     background-color: #9757a3;
@@ -48,7 +61,7 @@ $energized:                        pink !default;
 }
 .transport-and-Delivery {
     background-color: #f0c419;
-    height:100%;
+    height: auto;
 }
 
 // The path for our ionicons font files, relative to the built CSS in www/css

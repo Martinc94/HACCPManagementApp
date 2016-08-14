@@ -227,6 +227,22 @@ angular.module('starter.controllers', ['ionic.wheel'])
 
 })//ListCtrl
 
+
+.controller('DeliveryCtrl', function($scope) {
+  
+  $scope.submitForm=function(deliveryForm){
+    //push signature details to array
+    /*$scope.formData.push(
+      $scope.signData.name + " " + $scope.signData.position + " " + $scope.signData.sign + " " + $scope.signData.date + " " + $scope.signData.frequency
+    );
+    //for testing only
+    for(j=0; j<i+1; j++){
+     console.log($scope.formData[j]);
+      }*/
+  }//submitForm
+
+})
+
 .controller('NavCtrl', function($scope, $ionicSideMenuDelegate) {
   $scope.showMenu = function () {
     $ionicSideMenuDelegate.toggleLeft();

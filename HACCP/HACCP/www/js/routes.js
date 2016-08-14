@@ -31,7 +31,7 @@ angular.module('starter.routes', [])
             views: {
               'menuContent': {
                 templateUrl: 'templates/delivery.html',
-                controller: ''
+                controller: 'DeliveryCtrl'
               }
             }
             
