@@ -31,7 +31,7 @@ angular.module('starter.routes', [])
             views: {
               'menuContent': {
                 templateUrl: 'templates/delivery.html',
-                controller: ''
+                controller: 'DeliveryCtrl'
               }
             }
             
@@ -53,7 +53,7 @@ angular.module('starter.routes', [])
             views: {
               'menuContent': {
                 templateUrl: 'templates/fitness.html',
-                controller: ''
+                controller: 'FittCtrl'
               }
             }
             
@@ -88,7 +88,7 @@ angular.module('starter.routes', [])
             views: {
               'menuContent': {
                 templateUrl: 'templates/temperature.html',
-                controller: ''
+                controller: 'TemperatureCtrl'
               }
             }
             
@@ -107,13 +107,7 @@ angular.module('starter.routes', [])
 
 
 
-        /*.state('menu', {
-            url: '/menu',
-            templateUrl: 'templates/menu.html',
-            controller: 'MenuCtrl'
-       })*/
-
-        /*.state('login', {
+        .state('login', {
             url: '/login',
             templateUrl: 'templates/login.html',
             controller: 'LoginCtrl'
@@ -129,51 +123,11 @@ angular.module('starter.routes', [])
            url: '/forgot',
            templateUrl: 'templates/forgot.html',
            controller: 'ForgotCtrl'
-       })*/
+       })
 
        
 
-       .state('delivery', {
-            url: '/delivery',
-            templateUrl: 'templates/delivery.html',
-        })
-
-       .state('transport', {
-            url: '/transport',
-            templateUrl: 'templates/transport.html',
-           
-       })
        
-       .state('fitness', {
-            url: '/fitness',
-            templateUrl: 'templates/fitness.html'
-       })
-
-       .state('training', {
-            url: '/training',
-            templateUrl: 'templates/training.html'
-       })
-
-       .state('hygiene', {
-            url: '/hygiene',
-            templateUrl: 'templates/hygiene.html',
-            controller: 'ListCtrl'
-       })
-
-       .state('hothold', {
-            url: '/hothold',
-            templateUrl: 'templates/hothold.html'
-       })
-
-       .state('temperature', {
-            url: '/temperature',
-            templateUrl: 'templates/temperature.html'
-       })
-
-       .state('refridgeration', {
-            url: '/refridgeration',
-            templateUrl: 'templates/refridgeration.html'
-       })
 
 
   // setup an abstract state for the tabs directive

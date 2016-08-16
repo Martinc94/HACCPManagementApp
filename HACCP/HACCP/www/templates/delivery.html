@@ -12,7 +12,7 @@
 
        	
     <form name="deliveryForm" ng-submit="submitForm(deliveryForm)">
-	<div class="list">
+	     <div class="list">
 
 		<label class="item item-input">
     		Date
@@ -69,14 +69,18 @@
     		<input type="text" placeholder="" ng-model="deliveryForm.sign">
   		</label>
 
+      <div class="food-delivery">
+       <h3>Manager/Supervisor</h3>
+      </div>
+
   		<label class="item item-input">
-    		<span class="input-label">Manager/Supervisor check on</span>
+    		<span class="input-label">Check on date</span>
     		<input type="date" placeholder="16/04/16" ng-model="deliveryForm.checkon">
   		</label>
   		  		
 
   		<label class="item item-input">
-    		<span class="input-label">Manager/Supervisor Sign</span>
+    		<span class="input-label">Sign</span>
     		<input type="text" placeholder="John Smith" ng-model="deliveryForm.managersign">
   		</label>
 

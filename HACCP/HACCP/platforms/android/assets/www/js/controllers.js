@@ -83,7 +83,29 @@ angular.module('starter.controllers', ['ionic.wheel'])
 
 })
 
+//controller for Fitness to Work Assessment Page
+.controller('FittCtrl', function($scope) {
+   
+  $scope.formData = {};  
 
+  
+  //prints formData array to DOM console after form is filled and submitted
+  $scope.submitForm = function(formData) {
+    console.log($scope.formData.q1);
+    console.log($scope.formData.q2);
+    console.log($scope.formData.q3);
+    console.log($scope.formData.q4);
+    console.log($scope.formData.q5);
+    console.log($scope.formData.q6);
+    console.log($scope.formData.q7);
+    console.log($scope.formData.q8);
+    console.log($scope.formData.q9);
+    console.log($scope.formData.q10);
+    console.log($scope.formData.q11);
+    console.log($scope.formData.q12);
+  };
+
+})
 
 
 
@@ -121,25 +143,118 @@ angular.module('starter.controllers', ['ionic.wheel'])
 
 
 })
-
-.controller('ListCtrl', function($scope){
-  $scope.shouldShowDelete = false;
- $scope.shouldShowReorder = false;
- $scope.listCanSwipe = true;
- $scope.toggle=false;
+//hygiene page controller
+.controller('ListCtrl', function($scope, $ionicPopup){
+  
+ //variable for page data to be sent to server
+ $scope.formData = [];
+ //variable for manager signing details
+ $scope.signData = {};
+ //controls question number
+ var i=0;
  
- $scope.selectChoice=function(answer){
- 
-    $scope.toggle=true;
-    this.answer=null;
-}
+ //function for yes/no selection
+ $scope.selectChoice=function(selection){
+    //increment i for every question answered
+    i++;
+    //if user selects No, show popup for corrective action input
+    if(selection=='No'){
+      showPopup();
+    }
+    else{
+      //if user selects Yes, push question number and answer to array
+      $scope.formData.push(
+      "q" + i + " " + selection 
+    );
+    }
 
-  $scope.submit=function(){
- 
-    $scope.toggle=false;
-}
+  }//selectChoice
+
+  //when submit button is clicked at bottom of page, send signData answers
+  $scope.submitForm=function(signData){
+    //push signature details to array
+    $scope.formData.push(
+      $scope.signData.name + " " + $scope.signData.position + " " + $scope.signData.sign + " " + $scope.signData.date + " " + $scope.signData.frequency
+    );
+    //for testing only
+    for(j=0; j<i+1; j++){
+     console.log($scope.formData[j]);
+      }
+  }//submitForm
+
+  //text input popup if user selects no to a question
+ showPopup = function() {
+  //variable for text input
+   $scope.data = {}
+
+   // custom popup with user instructions. Has Cancel and Save buttons
+   var myPopup = $ionicPopup.show({
+     template: '<input type="text" ng-model="data.correctiveAction">',
+     title: 'Enter Corrective Action',
+     scope: $scope,
+     buttons: [
+       { text: 'Cancel' },
+       {
+         text: '<b>Save</b>',
+         type: 'button-positive',
+         onTap: function(e) {
+           if (!$scope.data.correctiveAction) {
+             //don't allow the user to save if text has not been entered
+             e.preventDefault();
+           } else {
+              //push the question number and corrective answer to the array
+              $scope.formData.push(
+                "q" + i + " No " + $scope.data.correctiveAction 
+              );
+             return $scope.data.correctiveAction;
+           }
+         }
+       },
+     ]
+   });  
+
+   //for testing
+   /*myPopup.then(function(res) {
+     console.log('Tapped!', res);
+     for(j=0; j<i; j++){
+     console.log($scope.arrayActions[j]);
+      }
+   });*/
+   
+  };//popup
 
 
+
+})//ListCtrl
+
+
+.controller('DeliveryCtrl', function($scope) {
+  
+  $scope.submitForm=function(deliveryForm){
+    //push signature details to array
+    /*$scope.formData.push(
+      $scope.signData.name + " " + $scope.signData.position + " " + $scope.signData.sign + " " + $scope.signData.date + " " + $scope.signData.frequency
+    );
+    //for testing only
+    for(j=0; j<i+1; j++){
+     console.log($scope.formData[j]);
+      }*/
+  }//submitForm
+
+})
+
+.controller('TemperatureCtrl', function($scope) {
+  
+  $scope.submitForm=function(cookcoolForm){
+    //push signature details to array
+    /*$scope.formData.push(
+      $scope.signData.name + " " + $scope.signData.position + " " + $scope.signData.sign + " " + $scope.signData.date + " " + $scope.signData.frequency
+    );
+    //for testing only
+    for(j=0; j<i+1; j++){
+     console.log($scope.formData[j]);
+      }*/
+  }//submitForm
 
 })
 

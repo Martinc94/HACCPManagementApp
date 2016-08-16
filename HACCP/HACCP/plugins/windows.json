@@ -24,6 +24,9 @@
         },
         "cordova-plugin-ionic-keyboard": {
             "PACKAGE_NAME": "ionic-tabs"
+        },
+        "cordova-plugin-datepicker": {
+            "PACKAGE_NAME": "ionic-tabs"
         }
     },
     "dependent_plugins": {}

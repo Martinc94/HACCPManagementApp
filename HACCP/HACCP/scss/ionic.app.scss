@@ -64,6 +64,22 @@ $energized:                       #26b99b !default; //hygiene
     height: auto;
 }
 
+button.align-left {
+    display:inline;
+    float: left; 
+    clear: both; 
+    padding: 0 0px 0px 15px; 
+    text-align: left;
+    margin: 0;
+    border: none; 
+    height: 70px;
+    text-align: left;
+    width: 400px;
+    font: inherit;
+    font-size: 100%;
+    background-color: #fff;
+}
+
 // The path for our ionicons font files, relative to the built CSS in www/css
 $ionicons-font-path: "../lib/ionic/fonts" !default;
 

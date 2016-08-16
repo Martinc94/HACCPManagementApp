@@ -68,6 +68,22 @@ module.exports = [
         "id": "cordova-plugin-ionic-keyboard.KeyboardProxy",
         "pluginId": "cordova-plugin-ionic-keyboard",
         "runs": true
+    },
+    {
+        "file": "plugins/cordova-plugin-datepicker/www/windows/DatePicker.js",
+        "id": "cordova-plugin-datepicker.DatePicker",
+        "pluginId": "cordova-plugin-datepicker",
+        "clobbers": [
+            "datePicker"
+        ]
+    },
+    {
+        "file": "plugins/cordova-plugin-datepicker/src/windows/DatePickerProxy.js",
+        "id": "cordova-plugin-datepicker.DatePickerProxy",
+        "pluginId": "cordova-plugin-datepicker",
+        "merges": [
+            ""
+        ]
     }
 ];
 module.exports.metadata = 
@@ -78,7 +94,8 @@ module.exports.metadata =
     "cordova-plugin-whitelist": "1.2.2",
     "cordova-plugin-statusbar": "2.1.3",
     "ionic-plugin-keyboard": "1.0.9",
-    "cordova-plugin-ionic-keyboard": "1.0.5"
+    "cordova-plugin-ionic-keyboard": "1.0.5",
+    "cordova-plugin-datepicker": "0.9.2"
 }
 // BOTTOM OF METADATA
 });

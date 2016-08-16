@@ -8,13 +8,106 @@ angular.module('starter.routes', [])
   // Each state's controller can be found in controllers.js
   $stateProvider
 
-        .state('menu', {
-            url: '/menu',
+      .state('app', {
+            url: '/app',
+            abstract: true,
             templateUrl: 'templates/menu.html',
             controller: 'MenuCtrl'
        })
 
-        /*.state('login', {
+      .state('app.hygiene', {
+            url: '/hygiene',
+            views: {
+              'menuContent': {
+                templateUrl: 'templates/hygiene.html',
+                controller: 'ListCtrl'
+              }
+            }
+            
+        })
+
+      .state('app.delivery', {
+            url: '/delivery',
+            views: {
+              'menuContent': {
+                templateUrl: 'templates/delivery.html',
+                controller: 'DeliveryCtrl'
+              }
+            }
+            
+        })
+
+      .state('app.transport', {
+            url: '/transport',
+            views: {
+              'menuContent': {
+                templateUrl: 'templates/transport.html',
+                controller: ''
+              }
+            }
+            
+        })
+
+      .state('app.fitness', {
+            url: '/fitness',
+            views: {
+              'menuContent': {
+                templateUrl: 'templates/fitness.html',
+                controller: 'FittCtrl'
+              }
+            }
+            
+        })
+
+      .state('app.training', {
+            url: '/training',
+            views: {
+              'menuContent': {
+                templateUrl: 'templates/training.html',
+                controller: ''
+              }
+            }
+            
+        })
+
+      
+
+      .state('app.hothold', {
+            url: '/hothold',
+            views: {
+              'menuContent': {
+                templateUrl: 'templates/hothold.html',
+                controller: ''
+              }
+            }
+            
+        })
+
+      .state('app.temperature', {
+            url: '/temperature',
+            views: {
+              'menuContent': {
+                templateUrl: 'templates/temperature.html',
+                controller: 'TemperatureCtrl'
+              }
+            }
+            
+        })
+
+      .state('app.refridgeration', {
+            url: '/refridgeration',
+            views: {
+              'menuContent': {
+                templateUrl: 'templates/refridgeration.html',
+                controller: ''
+              }
+            }
+            
+        })
+
+
+
+        .state('login', {
             url: '/login',
             templateUrl: 'templates/login.html',
             controller: 'LoginCtrl'
@@ -30,53 +123,11 @@ angular.module('starter.routes', [])
            url: '/forgot',
            templateUrl: 'templates/forgot.html',
            controller: 'ForgotCtrl'
-       })*/
+       })
 
        
 
-       .state('delivery', {
-            url: '/delivery',
-            templateUrl: 'templates/delivery.html',
-            controller: ''
-        })
-
-       .state('transport', {
-            url: '/transport',
-            templateUrl: 'templates/transport.html',
-            controller: ''
-           
-       })
        
-       .state('fitness', {
-            url: '/fitness',
-            templateUrl: 'templates/fitness.html'
-       })
-
-       .state('training', {
-            url: '/training',
-            templateUrl: 'templates/training.html'
-       })
-
-       .state('hygiene', {
-            url: '/hygiene',
-            templateUrl: 'templates/hygiene.html',
-            controller: 'ListCtrl'
-       })
-
-       .state('hothold', {
-            url: '/hothold',
-            templateUrl: 'templates/hothold.html'
-       })
-
-       .state('temperature', {
-            url: '/temperature',
-            templateUrl: 'templates/temperature.html'
-       })
-
-       .state('refridgeration', {
-            url: '/refridgeration',
-            templateUrl: 'templates/refridgeration.html'
-       })
 
 
   // setup an abstract state for the tabs directive
@@ -109,5 +160,5 @@ angular.module('starter.routes', [])
 
 
   // if none of the above states are matched, use this as the fallback
-  $urlRouterProvider.otherwise('/menu');
+  $urlRouterProvider.otherwise('/app/hygiene');
 });

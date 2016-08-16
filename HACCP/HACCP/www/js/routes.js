@@ -88,7 +88,7 @@ angular.module('starter.routes', [])
             views: {
               'menuContent': {
                 templateUrl: 'templates/temperature.html',
-                controller: ''
+                controller: 'TemperatureCtrl'
               }
             }
             
