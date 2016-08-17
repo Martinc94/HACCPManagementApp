@@ -71,6 +71,16 @@ button.align-left {
   font-size: 100%;
   background-color: #fff; }
 
+p.text-normal {
+  text-align: left;
+  margin: 0;
+  border: none;
+  height: 70px;
+  text-align: left;
+  font: inherit;
+  font-size: 100%;
+  background-color: #fff; }
+
 /*!
   Ionicons, v2.0.1
   Created by Ben Sperry for the Ionic Framework, http://ionicons.com/

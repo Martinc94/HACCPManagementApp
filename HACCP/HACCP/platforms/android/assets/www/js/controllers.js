@@ -241,20 +241,75 @@ angular.module('starter.controllers', ['ionic.wheel'])
       }*/
   }//submitForm
 
+  
+
+
 })
 
-.controller('TemperatureCtrl', function($scope) {
+.controller('TemperatureCtrl', function($scope, ionicTimePicker) {
   
-  $scope.submitForm=function(cookcoolForm){
-    //push signature details to array
-    /*$scope.formData.push(
-      $scope.signData.name + " " + $scope.signData.position + " " + $scope.signData.sign + " " + $scope.signData.date + " " + $scope.signData.frequency
-    );
-    //for testing only
-    for(j=0; j<i+1; j++){
-     console.log($scope.formData[j]);
-      }*/
-  }//submitForm
+  $scope.cookcoolForm = {}; 
+
+  $scope.openTimePicker=function(value){
+
+    var ipObj1 = {
+    callback: function (val) {      
+      if (typeof (val) === 'undefined') {
+        console.log('Time not selected');
+      }
+      else {
+        var selectedTime = new Date(val * 1000);
+        $scope.time=selectedTime.getUTCHours() + 'H :' + selectedTime.getUTCMinutes() + 'M';
+        //console.log('Selected epoch is : ', val, 'and the time is ', selectedTime.getUTCHours(), 'H :', selectedTime.getUTCMinutes(), 'M');
+            
+        if(value===1){
+          $scope.cookcoolForm.startTime=$scope.time;
+        }
+        else if(value===2){
+          $scope.cookcoolForm.finishTime=$scope.time;
+        }
+        else if(value===3){
+          $scope.cookcoolForm.fridgeTime=$scope.time;
+        }
+
+  
+      }
+    },
+    inputTime: 50400,  
+    format: 12,         
+    step: 1,          
+    setLabel: 'Select'
+  };
+
+  ionicTimePicker.openTimePicker(ipObj1);
+  };
+
+
+
+  
+  //prints formData array to DOM console after form is filled and submitted
+  $scope.submitForm = function(cookcoolForm) {
+   
+    /* Testing
+    console.log($scope.cookcoolForm.date);
+    console.log($scope.cookcoolForm.food);
+    console.log($scope.cookcoolForm.startTime);
+    console.log($scope.cookcoolForm.finishTime);
+    console.log($scope.cookcoolForm.cookTemp);
+    console.log($scope.cookcoolForm.cookSign);
+    console.log($scope.cookcoolForm.fridgeTime);
+    console.log($scope.cookcoolForm.coolSign);
+    console.log($scope.cookcoolForm.reheatTemp);
+    console.log($scope.cookcoolForm.reheatSign);
+    console.log($scope.cookcoolForm.comment);
+    console.log($scope.cookcoolForm.checkon);
+    console.log($scope.cookcoolForm.managersign);*/
+  };
+
+  
+  
+
+  
 
 })
 

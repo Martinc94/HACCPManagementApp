@@ -77,7 +77,7 @@ angular.module('starter.routes', [])
             views: {
               'menuContent': {
                 templateUrl: 'templates/hothold.html',
-                controller: ''
+                controller: 'HotholdCtrl'
               }
             }
             
@@ -105,6 +105,16 @@ angular.module('starter.routes', [])
             
         })
 
+      .state('app.settings', {
+          url: '/settings',
+          views: {
+              'menuContent': {
+              templateUrl: 'templates/settings.html',
+              //controller: 'AccountCtrl'
+      }
+    }
+  })
+
 
 
         .state('login', {
@@ -124,39 +134,8 @@ angular.module('starter.routes', [])
            templateUrl: 'templates/forgot.html',
            controller: 'ForgotCtrl'
        })
-
-       
-
-       
-
-
-  // setup an abstract state for the tabs directive
-    .state('tab', {
-    url: '/tab',
-    abstract: true,
-    templateUrl: 'templates/tabs.html'
-  })
-
-  // Each tab has its own nav history stack:
-  .state('tab.home', {
-      url: '/home',
-      views: {
-          'tab-home': {
-              templateUrl: 'templates/tab-home.html',
-              controller: 'IntroCtrl'
-        }
-      }
-    })
-
-  .state('tab.account', {
-    url: '/account',
-    views: {
-      'tab-account': {
-        templateUrl: 'templates/tab-account.html',
-        //controller: 'AccountCtrl'
-      }
-    }
-  })
+ 
+        
 
 
   // if none of the above states are matched, use this as the fallback

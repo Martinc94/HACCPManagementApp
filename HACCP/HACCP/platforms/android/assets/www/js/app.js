@@ -7,7 +7,7 @@
 // 'starter.controllers' is found in controllers.js
 
 
-angular.module('starter', ['ionic', 'starter.controllers', 'starter.services','tabSlideBox', 'ionic.wheel', 'starter.routes'])
+angular.module('starter', ['ionic', 'starter.controllers', 'starter.services','tabSlideBox', 'ionic.wheel', 'starter.routes', 'ionic-timepicker'])
 
 .run(function($ionicPlatform) {
   $ionicPlatform.ready(function() {

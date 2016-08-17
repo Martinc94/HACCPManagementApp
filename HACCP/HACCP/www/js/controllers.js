@@ -114,25 +114,6 @@ angular.module('starter.controllers', ['ionic.wheel'])
 })
 
 
-.controller('IntroCtrl', function($scope, $state, $ionicSlideBoxDelegate) {
-
-    // Called to navigate to the main app
-    $scope.startApp = function() {
-        $state.go('main');
-    };
-    $scope.next = function() {
-        $ionicSlideBoxDelegate.next();
-    };
-    $scope.previous = function() {
-        $ionicSlideBoxDelegate.previous();
-    };
-
-    // Called each time the slide changes
-    $scope.slideChanged = function(index) {
-        $scope.slideIndex = index;
-    };
-})
-
 .controller('MainCtrl', function($scope, $state) {
     console.log('MainCtrl');
 
@@ -312,6 +293,51 @@ angular.module('starter.controllers', ['ionic.wheel'])
   
 
 })
+
+.controller('HotholdCtrl', function($scope, ionicTimePicker) {
+  
+  $scope.hotholdForm = {}; 
+
+  $scope.openTimePicker=function(){
+
+    var ipObj1 = {
+    callback: function (val) {      
+      if (typeof (val) === 'undefined') {
+        console.log('Time not selected');
+      }
+      else {
+        var selectedTime = new Date(val * 1000);
+        $scope.hotholdForm.time=selectedTime.getUTCHours() + 'H :' + selectedTime.getUTCMinutes() + 'M';
+        //console.log('Selected epoch is : ', val, 'and the time is ', selectedTime.getUTCHours(), 'H :', selectedTime.getUTCMinutes(), 'M');
+     
+      }
+    },
+    inputTime: 50400,  
+    format: 12,         
+    step: 1,          
+    setLabel: 'Select'
+  };
+
+  ionicTimePicker.openTimePicker(ipObj1);
+  };
+
+  //prints formData array to DOM console after form is filled and submitted
+  $scope.submitForm = function(hotholdForm) {
+   
+    /*Testing
+    console.log($scope.hotholdForm.date);
+    console.log($scope.hotholdForm.food);
+    console.log($scope.hotholdForm.time);
+    console.log($scope.hotholdForm.firstTemp);
+    console.log($scope.hotholdForm.secondTemp);
+    console.log($scope.hotholdForm.thirdTemp);
+    console.log($scope.hotholdForm.comment);
+    console.log($scope.hotholdForm.sign);
+    console.log($scope.hotholdForm.checkon);
+    console.log($scope.hotholdForm.managersign);*/
+  };
+
+})//hothold
 
 .controller('NavCtrl', function($scope, $ionicSideMenuDelegate) {
   $scope.showMenu = function () {

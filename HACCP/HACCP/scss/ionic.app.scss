@@ -80,6 +80,18 @@ button.align-left {
     background-color: #fff;
 }
 
+p.text-normal{
+    text-align: left;
+    margin: 0;
+    border: none; 
+    height: 70px;
+    text-align: left;
+    font: inherit;
+    font-size: 100%;
+    background-color: #fff;
+}
+
+
 // The path for our ionicons font files, relative to the built CSS in www/css
 $ionicons-font-path: "../lib/ionic/fonts" !default;
 
