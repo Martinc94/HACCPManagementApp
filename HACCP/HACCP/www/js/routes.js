@@ -42,7 +42,7 @@ angular.module('starter.routes', [])
             views: {
               'menuContent': {
                 templateUrl: 'templates/transport.html',
-                controller: ''
+                controller: 'TransportCtrl'
               }
             }
             
@@ -64,7 +64,7 @@ angular.module('starter.routes', [])
             views: {
               'menuContent': {
                 templateUrl: 'templates/training.html',
-                controller: ''
+                controller: 'TrainingCtrl'
               }
             }
             
@@ -99,7 +99,7 @@ angular.module('starter.routes', [])
             views: {
               'menuContent': {
                 templateUrl: 'templates/refridgeration.html',
-                controller: ''
+                controller: 'FridgeCtrl'
               }
             }
             

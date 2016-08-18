@@ -71,15 +71,9 @@ button.align-left {
   font-size: 100%;
   background-color: #fff; }
 
-p.text-normal {
-  text-align: left;
-  margin: 0;
-  border: none;
-  height: 70px;
-  text-align: left;
-  font: inherit;
-  font-size: 100%;
-  background-color: #fff; }
+.wrapping-list .item-content, .wrapping-list .item {
+  overflow: initial;
+  white-space: initial; }
 
 /*!
   Ionicons, v2.0.1

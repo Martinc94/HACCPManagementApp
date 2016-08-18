@@ -211,21 +211,27 @@ angular.module('starter.controllers', ['ionic.wheel'])
 
 .controller('DeliveryCtrl', function($scope) {
   
+  $scope.deliveryForm={};
+
   $scope.submitForm=function(deliveryForm){
-    //push signature details to array
-    /*$scope.formData.push(
-      $scope.signData.name + " " + $scope.signData.position + " " + $scope.signData.sign + " " + $scope.signData.date + " " + $scope.signData.frequency
-    );
-    //for testing only
-    for(j=0; j<i+1; j++){
-     console.log($scope.formData[j]);
-      }*/
+    // Testing
+    console.log($scope.deliveryForm.date);
+    console.log($scope.deliveryForm.food);
+    console.log($scope.deliveryForm.batch);
+    console.log($scope.deliveryForm.supplier);
+    console.log($scope.deliveryForm.useby);
+    console.log($scope.deliveryForm.temp);
+    console.log($scope.deliveryForm.vehicle);
+    console.log($scope.deliveryForm.comment);
+    console.log($scope.deliveryForm.sign);
+    console.log($scope.deliveryForm.checkon);
+    console.log($scope.deliveryForm.managersign);
   }//submitForm
 
   
 
 
-})
+})//DeliveryCtrl
 
 .controller('TemperatureCtrl', function($scope, ionicTimePicker) {
   
@@ -287,12 +293,7 @@ angular.module('starter.controllers', ['ionic.wheel'])
     console.log($scope.cookcoolForm.managersign);*/
   };
 
-  
-  
-
-  
-
-})
+})//TemperatureCtrl
 
 .controller('HotholdCtrl', function($scope, ionicTimePicker) {
   
@@ -337,7 +338,70 @@ angular.module('starter.controllers', ['ionic.wheel'])
     console.log($scope.hotholdForm.managersign);*/
   };
 
-})//hothold
+})//HotholdCtrl
+
+.controller('FridgeCtrl', function($scope) {
+  
+  $scope.units=[{
+    name: 'Fridge 1',
+    temp: ''
+  }, {
+    name: 'Fridge 2',
+    temp: ''
+  }]
+
+  
+
+
+})//FridgeCtrl
+
+//controller for Hygiene Training Page
+.controller('TrainingCtrl', function($scope) {
+   
+  $scope.trainingForm = {};  
+
+  
+  //prints formData array to DOM console after form is filled and submitted
+  $scope.submitForm = function(trainingForm) {
+    console.log($scope.trainingForm.name);
+    console.log($scope.trainingForm.position);
+    console.log($scope.trainingForm.dateEmp);
+    console.log($scope.trainingForm.type);
+    console.log($scope.trainingForm.date);
+    console.log($scope.trainingForm.trainer);
+    console.log($scope.trainingForm.empsign);
+    console.log($scope.trainingForm.furthertraining);
+    console.log($scope.trainingForm.provider);
+    console.log($scope.trainingForm.furtherdate);
+    console.log($scope.trainingForm.empsignfurther);
+    console.log($scope.trainingForm.empsignfurther);
+  };
+
+})//TrainingCtrl
+
+.controller('TransportCtrl', function($scope) {
+  
+  $scope.transportForm={};
+
+  $scope.submitForm=function(transportForm){
+    // Testing
+    console.log($scope.transportForm.date);
+    console.log($scope.transportForm.food);
+    console.log($scope.transportForm.batch);
+    console.log($scope.transportForm.customer);
+    console.log($scope.transportForm.separation);
+    console.log($scope.transportForm.temp);
+    console.log($scope.transportForm.comment);
+    console.log($scope.transportForm.sign);
+    console.log($scope.transportForm.checkon);
+    console.log($scope.transportForm.managersign);
+   
+  }//submitForm
+
+  
+
+
+})//TransportCtrl 
 
 .controller('NavCtrl', function($scope, $ionicSideMenuDelegate) {
   $scope.showMenu = function () {
