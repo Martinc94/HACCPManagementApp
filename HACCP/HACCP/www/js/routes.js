@@ -110,7 +110,7 @@ angular.module('starter.routes', [])
           views: {
               'menuContent': {
               templateUrl: 'templates/settings.html',
-              //controller: 'AccountCtrl'
+              controller: 'SettingsCtrl'
       }
     }
   })

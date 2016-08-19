@@ -403,6 +403,93 @@ angular.module('starter.controllers', ['ionic.wheel'])
 
 })//TransportCtrl 
 
+//controls Settings page
+.controller('SettingsCtrl', function($scope) {
+  
+  $scope.suppliersSelect=false;
+  $scope.shouldShowDelete = false;
+  $scope.listCanSwipe = true;
+  $scope.refridgerationSelect=false;
+  $scope.foodSelect=false;
+  //arrays to store information pulled from server and pushed to server
+  $scope.suppliers=[];
+  $scope.units=[];
+  $scope.foods=[];
+
+  //open/close Suppliers menu
+  $scope.openSuppliers = function(){
+
+      if($scope.suppliersSelect==true){
+        $scope.suppliersSelect=false;
+      }
+      else{
+        $scope.suppliersSelect=true;
+      }
+  }
+  //add new supplier to suppliers array
+  $scope.addSupplier = function(supplier) {
+    $scope.suppliers.push({
+      name: supplier.name
+    });
+    supplier.name = "";
+  };
+  //delete selected supplier (slide selection and delete)
+  $scope.deleteSupplier = function(supplier) {
+      
+    $scope.suppliers.splice($scope.suppliers.indexOf(supplier), 1);
+      
+  };
+  
+  //open/close Refridgeration menu
+  $scope.openRefridgeration = function(){
+
+      if($scope.refridgerationSelect==true){
+        $scope.refridgerationSelect=false;
+      }
+      else{
+        $scope.refridgerationSelect=true;
+      }
+  }
+  //add new unit to (refridgeration) units array
+  $scope.addUnit = function(unit) {
+    $scope.units.push({
+      name: unit.name
+    });
+    unit.name = "";
+  };
+  //delete selected unit (slide selection and delete)
+  $scope.deleteUnit = function(unit) {
+      
+    $scope.units.splice($scope.units.indexOf(unit), 1);
+      
+  };
+
+  //open/close Food menu
+  $scope.openFood = function(){
+
+      if($scope.foodSelect==true){
+        $scope.foodSelect=false;
+      }
+      else{
+        $scope.foodSelect=true;
+      }
+  }
+  //add new food to foods array
+  $scope.addFood = function(food) {
+    $scope.foods.push({
+      name: food.name
+    });
+    food.name = "";
+  };
+  //delete selected food (slide selection and delete)
+  $scope.deleteFood = function(food) {
+      
+    $scope.foods.splice($scope.foods.indexOf(food), 1);
+      
+  };
+
+})//SettingsCtrl
+
 .controller('NavCtrl', function($scope, $ionicSideMenuDelegate) {
   $scope.showMenu = function () {
     $ionicSideMenuDelegate.toggleLeft();
