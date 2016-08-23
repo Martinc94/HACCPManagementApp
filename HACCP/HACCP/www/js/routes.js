@@ -20,7 +20,7 @@ angular.module('starter.routes', [])
             views: {
               'menuContent': {
                 templateUrl: 'templates/hygiene.html',
-                controller: 'ListCtrl'
+                controller: 'HygieneCtrl'
               }
             }
             

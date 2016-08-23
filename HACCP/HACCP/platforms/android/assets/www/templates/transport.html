@@ -1,10 +1,82 @@
 <ion-view view-title="Transport and Delivery">
        
-  <ion-content scroll="false" class="transport-and-Delivery">
+  <ion-content class="transport-and-Delivery">
 
-			<h3>Transport and Delivery Records</h3>
-        	<p>Transport and Delivery Questions will popup here<p>
+	<h3>Transport and Delivery Records</h3>
+   	
+    <form name="transForm" ng-submit="submitForm(transportForm)">
+	     <div class="list">
 
+  		<label class="item item-input">
+    		<span class="input-label">Date</span>
+    		<input type="date" placeholder="16/04/16" ng-model="transportForm.date">
+  		</label>
+
+  		<label class="item item-select item-text-wrap">
+		    <div class="input-label" style="width: 1000px">
+		     Food Item
+		    </div>
+		    <select ng-model="transportForm.food" style="width: 20">
+		      <option ng-value="'Yes'">Chicken</option>
+		      <option ng-value="'No'">Beef</option>
+		    </select>
+		  </label>
+
+  		<label class="item item-input">
+    		<span class="input-label">Batch Code/'Use-by' Date</span>
+    		<input type="Date" placeholder="" ng-model="transportForm.batch">
+  		</label>
+
+  		<label class="item item-input">
+    		<span class="input-label">Customer Details</span>
+    		<input type="text" placeholder="" ng-model="transportForm.customer">
+  		</label>
+
+  		<label class="item item-select item-text-wrap">
+		    <div class="input-label" style="width: 1000px">
+		    Adequate Separation of Raw and Ready-to-Eat Foods
+		    </div>
+		    <select ng-model="transportForm.separation" style="width: 20">
+		      <option ng-value="'Yes'">Yes</option>
+		      <option ng-value="'No'">No</option>
+		    </select>
+		  </label>
+
+		<label class="item item-input">
+    		<span class="input-label wrapping-list">Delivery Temperature °C</span>
+    		<input type="number" placeholder="0" ng-model="transportForm.temp">
+  		</label>
+
+  		<label class="item item-input">
+    		<span class="input-label">Comments/Action</span>
+    		<input type="text" placeholder="" ng-model="transportForm.comment">
+  		</label>
+
+  		<label class="item item-input">
+    		<span class="input-label">Sign</span>
+    		<input type="text" placeholder="" ng-model="transportForm.sign">
+  		</label>
+
+      <div class="transport-and-Delivery">
+       <h3>Manager/Supervisor</h3>
+      </div>
+
+  		<label class="item item-input">
+    		<span class="input-label">Check on date</span>
+    		<input type="date" placeholder="16/04/16" ng-model="transportForm.checkon">
+  		</label>
+  		  		
+
+  		<label class="item item-input">
+    		<span class="input-label">Sign</span>
+    		<input type="text" placeholder="John Smith" ng-model="transportForm.managersign">
+  		</label>
+
+  		<button class="button button-full button-clear" type="submit">
+  		Submit
+		</button>
+	</div>
+</form>
 
   </ion-content>
 

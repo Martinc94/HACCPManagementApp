@@ -125,7 +125,7 @@ angular.module('starter.controllers', ['ionic.wheel'])
 
 })
 //hygiene page controller
-.controller('ListCtrl', function($scope, $ionicPopup){
+.controller('HygieneCtrl', function($scope, $ionicPopup){
   
  //variable for page data to be sent to server
  $scope.formData = [];
@@ -206,7 +206,7 @@ angular.module('starter.controllers', ['ionic.wheel'])
 
 
 
-})//ListCtrl
+})//HygieneCtrl
 
 
 .controller('DeliveryCtrl', function($scope) {

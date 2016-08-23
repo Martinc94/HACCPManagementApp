@@ -114,25 +114,6 @@ angular.module('starter.controllers', ['ionic.wheel'])
 })
 
 
-.controller('IntroCtrl', function($scope, $state, $ionicSlideBoxDelegate) {
-
-    // Called to navigate to the main app
-    $scope.startApp = function() {
-        $state.go('main');
-    };
-    $scope.next = function() {
-        $ionicSlideBoxDelegate.next();
-    };
-    $scope.previous = function() {
-        $ionicSlideBoxDelegate.previous();
-    };
-
-    // Called each time the slide changes
-    $scope.slideChanged = function(index) {
-        $scope.slideIndex = index;
-    };
-})
-
 .controller('MainCtrl', function($scope, $state) {
     console.log('MainCtrl');
 
@@ -144,7 +125,7 @@ angular.module('starter.controllers', ['ionic.wheel'])
 
 })
 //hygiene page controller
-.controller('ListCtrl', function($scope, $ionicPopup){
+.controller('HygieneCtrl', function($scope, $ionicPopup){
   
  //variable for page data to be sent to server
  $scope.formData = [];
@@ -225,26 +206,32 @@ angular.module('starter.controllers', ['ionic.wheel'])
 
 
 
-})//ListCtrl
+})//HygieneCtrl
 
 
 .controller('DeliveryCtrl', function($scope) {
   
+  $scope.deliveryForm={};
+
   $scope.submitForm=function(deliveryForm){
-    //push signature details to array
-    /*$scope.formData.push(
-      $scope.signData.name + " " + $scope.signData.position + " " + $scope.signData.sign + " " + $scope.signData.date + " " + $scope.signData.frequency
-    );
-    //for testing only
-    for(j=0; j<i+1; j++){
-     console.log($scope.formData[j]);
-      }*/
+    // Testing
+    console.log($scope.deliveryForm.date);
+    console.log($scope.deliveryForm.food);
+    console.log($scope.deliveryForm.batch);
+    console.log($scope.deliveryForm.supplier);
+    console.log($scope.deliveryForm.useby);
+    console.log($scope.deliveryForm.temp);
+    console.log($scope.deliveryForm.vehicle);
+    console.log($scope.deliveryForm.comment);
+    console.log($scope.deliveryForm.sign);
+    console.log($scope.deliveryForm.checkon);
+    console.log($scope.deliveryForm.managersign);
   }//submitForm
 
   
 
 
-})
+})//DeliveryCtrl
 
 .controller('TemperatureCtrl', function($scope, ionicTimePicker) {
   
@@ -306,12 +293,202 @@ angular.module('starter.controllers', ['ionic.wheel'])
     console.log($scope.cookcoolForm.managersign);*/
   };
 
+})//TemperatureCtrl
+
+.controller('HotholdCtrl', function($scope, ionicTimePicker) {
   
+  $scope.hotholdForm = {}; 
+
+  $scope.openTimePicker=function(){
+
+    var ipObj1 = {
+    callback: function (val) {      
+      if (typeof (val) === 'undefined') {
+        console.log('Time not selected');
+      }
+      else {
+        var selectedTime = new Date(val * 1000);
+        $scope.hotholdForm.time=selectedTime.getUTCHours() + 'H :' + selectedTime.getUTCMinutes() + 'M';
+        //console.log('Selected epoch is : ', val, 'and the time is ', selectedTime.getUTCHours(), 'H :', selectedTime.getUTCMinutes(), 'M');
+     
+      }
+    },
+    inputTime: 50400,  
+    format: 12,         
+    step: 1,          
+    setLabel: 'Select'
+  };
+
+  ionicTimePicker.openTimePicker(ipObj1);
+  };
+
+  //prints formData array to DOM console after form is filled and submitted
+  $scope.submitForm = function(hotholdForm) {
+   
+    /*Testing
+    console.log($scope.hotholdForm.date);
+    console.log($scope.hotholdForm.food);
+    console.log($scope.hotholdForm.time);
+    console.log($scope.hotholdForm.firstTemp);
+    console.log($scope.hotholdForm.secondTemp);
+    console.log($scope.hotholdForm.thirdTemp);
+    console.log($scope.hotholdForm.comment);
+    console.log($scope.hotholdForm.sign);
+    console.log($scope.hotholdForm.checkon);
+    console.log($scope.hotholdForm.managersign);*/
+  };
+
+})//HotholdCtrl
+
+.controller('FridgeCtrl', function($scope) {
   
+  $scope.units=[{
+    name: 'Fridge 1',
+    temp: ''
+  }, {
+    name: 'Fridge 2',
+    temp: ''
+  }]
 
   
 
-})
+
+})//FridgeCtrl
+
+//controller for Hygiene Training Page
+.controller('TrainingCtrl', function($scope) {
+   
+  $scope.trainingForm = {};  
+
+  
+  //prints formData array to DOM console after form is filled and submitted
+  $scope.submitForm = function(trainingForm) {
+    console.log($scope.trainingForm.name);
+    console.log($scope.trainingForm.position);
+    console.log($scope.trainingForm.dateEmp);
+    console.log($scope.trainingForm.type);
+    console.log($scope.trainingForm.date);
+    console.log($scope.trainingForm.trainer);
+    console.log($scope.trainingForm.empsign);
+    console.log($scope.trainingForm.furthertraining);
+    console.log($scope.trainingForm.provider);
+    console.log($scope.trainingForm.furtherdate);
+    console.log($scope.trainingForm.empsignfurther);
+    console.log($scope.trainingForm.empsignfurther);
+  };
+
+})//TrainingCtrl
+
+.controller('TransportCtrl', function($scope) {
+  
+  $scope.transportForm={};
+
+  $scope.submitForm=function(transportForm){
+    // Testing
+    console.log($scope.transportForm.date);
+    console.log($scope.transportForm.food);
+    console.log($scope.transportForm.batch);
+    console.log($scope.transportForm.customer);
+    console.log($scope.transportForm.separation);
+    console.log($scope.transportForm.temp);
+    console.log($scope.transportForm.comment);
+    console.log($scope.transportForm.sign);
+    console.log($scope.transportForm.checkon);
+    console.log($scope.transportForm.managersign);
+   
+  }//submitForm
+
+  
+
+
+})//TransportCtrl 
+
+//controls Settings page
+.controller('SettingsCtrl', function($scope) {
+  
+  $scope.suppliersSelect=false;
+  $scope.shouldShowDelete = false;
+  $scope.listCanSwipe = true;
+  $scope.refridgerationSelect=false;
+  $scope.foodSelect=false;
+  //arrays to store information pulled from server and pushed to server
+  $scope.suppliers=[];
+  $scope.units=[];
+  $scope.foods=[];
+
+  //open/close Suppliers menu
+  $scope.openSuppliers = function(){
+
+      if($scope.suppliersSelect==true){
+        $scope.suppliersSelect=false;
+      }
+      else{
+        $scope.suppliersSelect=true;
+      }
+  }
+  //add new supplier to suppliers array
+  $scope.addSupplier = function(supplier) {
+    $scope.suppliers.push({
+      name: supplier.name
+    });
+    supplier.name = "";
+  };
+  //delete selected supplier (slide selection and delete)
+  $scope.deleteSupplier = function(supplier) {
+      
+    $scope.suppliers.splice($scope.suppliers.indexOf(supplier), 1);
+      
+  };
+  
+  //open/close Refridgeration menu
+  $scope.openRefridgeration = function(){
+
+      if($scope.refridgerationSelect==true){
+        $scope.refridgerationSelect=false;
+      }
+      else{
+        $scope.refridgerationSelect=true;
+      }
+  }
+  //add new unit to (refridgeration) units array
+  $scope.addUnit = function(unit) {
+    $scope.units.push({
+      name: unit.name
+    });
+    unit.name = "";
+  };
+  //delete selected unit (slide selection and delete)
+  $scope.deleteUnit = function(unit) {
+      
+    $scope.units.splice($scope.units.indexOf(unit), 1);
+      
+  };
+
+  //open/close Food menu
+  $scope.openFood = function(){
+
+      if($scope.foodSelect==true){
+        $scope.foodSelect=false;
+      }
+      else{
+        $scope.foodSelect=true;
+      }
+  }
+  //add new food to foods array
+  $scope.addFood = function(food) {
+    $scope.foods.push({
+      name: food.name
+    });
+    food.name = "";
+  };
+  //delete selected food (slide selection and delete)
+  $scope.deleteFood = function(food) {
+      
+    $scope.foods.splice($scope.foods.indexOf(food), 1);
+      
+  };
+
+})//SettingsCtrl
 
 .controller('NavCtrl', function($scope, $ionicSideMenuDelegate) {
   $scope.showMenu = function () {
