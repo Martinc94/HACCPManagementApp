@@ -1,0 +1,110 @@
+<ion-view view-title="Hygiene Training Records">
+
+  <ion-content class="hygiene-Training">
+
+	<h3>Hygiene Training Records</h3>
+     
+     <form name="tForm" ng-submit="submitForm(trainingForm)">
+       <div class="list">
+
+       	<label class="item item-input">
+        <span class="input-label">Name</span>
+        <input type="text" placeholder="A Jones" ng-model="trainingForm.name">
+      </label>
+
+      <label class="item item-input">
+        <span class="input-label">Position</span>
+        <input type="text" placeholder="Chef" ng-model="trainingForm.position">
+      </label>
+
+    <label class="item item-input">
+        <span class="input-label">Date of employment</span>
+        <input type="date" placeholder="16/04/16" ng-model="trainingForm.dateEmp">
+      </label>
+
+      <div class="hygiene-Training">
+       <h3>In House Training/Instruction on Safe Catering Pack</h3>
+      </div> 
+
+      <label class="item">
+    		<span class="input-label">Nature of Training</span>
+    	
+    	<ion-radio class="wrapping-list" ng-model="trainingForm.type" ng-value="'Instruction on Basic Hygiene Rules'">Instruction on Basic Hygiene Rules</ion-radio>
+ 		 <ion-radio class="wrapping-list" ng-model="trainingForm.type" ng-value="'Purchase, Delivery/Receipt, Collection'">Purchase, Delivery/Receipt, Collection</ion-radio>
+ 		 <ion-radio class="wrapping-list" ng-model="trainingForm.type" ng-value="'Storage'">Storage</ion-radio>
+ 		 <ion-radio class="wrapping-list" ng-model="trainingForm.type" ng-value="'Preparation and Handling'">Preparation and Handling</ion-radio>
+ 		 <ion-radio class="wrapping-list" ng-model="trainingForm.type" ng-value="'Cold Serve/Display'">Cold Serve/Display</ion-radio>
+ 		 <ion-radio class="wrapping-list" ng-model="trainingForm.type" ng-value="'Defrosting'">Defrosting</ion-radio>
+ 		 <ion-radio class="wrapping-list" ng-model="trainingForm.type" ng-value="'Cooking'">Cooking</ion-radio>
+ 		 <ion-radio class="wrapping-list" ng-model="trainingForm.type" ng-value="'Cooling/Freezing'">Cooling/Freezing</ion-radio>
+ 		 <ion-radio class="wrapping-list" ng-model="trainingForm.type" ng-value="'Hot Hold/Display'">Hot Hold/Display</ion-radio>
+ 		 <ion-radio class="wrapping-list" ng-model="trainingForm.type" ng-value="'Physical/Chemical Contamination'">Physical/Chemical Contamination</ion-radio>
+ 		 <ion-radio class="wrapping-list" ng-model="trainingForm.type" ng-value="'Other Step(s)'">Other Step(s)</ion-radio>
+ 		 <ion-radio class="wrapping-list" ng-model="trainingForm.type" ng-value="'Cleaning'">Cleaning</ion-radio>
+ 		 <ion-radio class="wrapping-list" ng-model="trainingForm.type" ng-value="'Pest Control'">Pest Control</ion-radio>
+ 		 <ion-radio class="wrapping-list" ng-model="trainingForm.type" ng-value="'Waste'">Waste</ion-radio>
+ 		 <ion-radio class="wrapping-list" ng-model="trainingForm.type" ng-value="'Maintenance'">Maintenance</ion-radio>
+ 		 <ion-radio class="wrapping-list" ng-model="trainingForm.type" ng-value="'Personal Hygiene'">Personal Hygiene</ion-radio>
+ 		 <ion-radio class="wrapping-list" ng-model="trainingForm.type" ng-value="'Training/Supervision'">Training/Supervision</ion-radio>
+ 		 <ion-radio class="wrapping-list" ng-model="trainingForm.type" ng-value="'Advice on using a Thermometer'">Advice on using a Thermometer</ion-radio>
+ 		 <ion-radio class="wrapping-list" ng-model="trainingForm.type" ng-value="'Food Allergies'">Food Allergies</ion-radio>
+ 	</label>
+
+      <label class="item item-input">
+        <span class="input-label">Date</span>
+        <input type="date" placeholder="16/04/16" ng-model="trainingForm.date">
+      </label>
+            
+
+      <label class="item item-input">
+        <span class="input-label">Trainer</span>
+        <input type="text" placeholder="John Smith" ng-model="trainingForm.trainer">
+      </label>
+
+      <label class="item item-input">
+        <span class="input-label">Employee Signature</span>
+        <input type="text" placeholder="John Smith" ng-model="trainingForm.empsign">
+      </label>
+
+      <div class="hygiene-Training">
+       <h3>Further Training</h3>
+      </div> 
+
+      <label class="item item-input">
+        <span class="input-label">Nature of Training</span>
+        <input type="text" placeholder="External/In-house/Refresher" ng-model="trainingForm.furthertraining">
+      </label>
+
+      <label class="item item-input">
+        <span class="input-label">Course Provider</span>
+        <input type="text" ng-model="trainingForm.provider">
+      </label>
+
+		<label class="item item-input">
+        <span class="input-label">Date Completed</span>
+        <input type="date" placeholder="16/04/16" ng-model="trainingForm.furtherdate">
+      </label>
+
+      <label class="item item-input">
+        <span class="input-label">Employee Signature</span>
+        <input type="text" placeholder="John Smith" ng-model="trainingForm.empsignfurther">
+      </label>
+   
+      <label class="item item-input">
+        <span class="input-label">Employee Signature</span>
+        <input type="text" placeholder="John Smith" ng-model="trainingForm.empsignfurther">
+      </label>
+
+
+      <button class="button button-full button-clear" type="submit">
+      Submit
+    </button>
+  
+  </div>
+</form>
+
+
+  </ion-content>
+
+</ion-view>
+

@@ -1,0 +1,102 @@
+<ion-view view-title="Settings">
+    <ion-content>
+    
+        <ul class="list">
+          <li class="item item-toggle">
+             Setting 1
+             <label class="toggle toggle-assertive">
+               <input type="checkbox">
+               <div class="track">
+                 <div class="handle"></div>
+               </div>
+             </label>
+          </li>
+
+          <li class="item item-toggle">
+             Setting 2
+             <label class="toggle toggle-assertive">
+               <input type="checkbox">
+               <div class="track">
+                 <div class="handle"></div>
+               </div>
+             </label>
+          </li>
+
+          <button class="button button-block button-positive" type="button" ng-click="openSuppliers()">
+              Supplier Settings
+          </button>
+
+          <div ng-show="suppliersSelect">
+          <form ng-submit="addSupplier(supplier)">
+          <div class="list">
+          <label class="item item-input">
+            <input type="text" placeholder="Supplier name" ng-model="supplier.name">
+            <button type="submit" class="button button-positive">Add</button>
+            </label>
+        </div>
+      </form>
+
+          <ion-list show-delete="shouldShowDelete" can-swipe="listCanSwipe">
+           <ion-item ng-repeat="supplier in suppliers" >
+            {{supplier.name}}
+             <ion-option-button ng-click="deleteSupplier(supplier)" class="button-positive">
+              Delete
+            </ion-option-button>
+            </ion-item>
+          </ion-list>
+        </div>
+
+        <button class="button button-block button-positive" type="button" ng-click="openRefridgeration()">
+              Refridgeration Settings
+          </button>
+
+          <div ng-show="refridgerationSelect">
+          <form ng-submit="addUnit(unit)">
+          <div class="list">
+          <label class="item item-input">
+            <input type="text" placeholder="Unit name" ng-model="unit.name">
+            <button type="submit" class="button button-positive">Add</button>
+            </label>
+        </div>
+      </form>
+
+          <ion-list show-delete="shouldShowDelete" can-swipe="listCanSwipe">
+           <ion-item ng-repeat="unit in units" >
+            {{unit.name}}
+             <ion-option-button ng-click="deleteUnit(unit)" class="button-positive">
+              Delete
+            </ion-option-button>
+            </ion-item>
+          </ion-list>
+        </div>
+
+          <button class="button button-block button-positive" type="button" ng-click="openFood()">
+              Food Settings
+          </button>
+
+          <div ng-show="foodSelect">
+          <form ng-submit="addFood(food)">
+          <div class="list">
+          <label class="item item-input">
+            <input type="text" placeholder="Food name" ng-model="food.name">
+            <button type="submit" class="button button-positive">Add</button>
+            </label>
+        </div>
+      </form>
+
+          <ion-list show-delete="shouldShowDelete" can-swipe="listCanSwipe">
+           <ion-item ng-repeat="food in foods" >
+            {{food.name}}
+             <ion-option-button ng-click="deleteFood(food)" class="button-positive">
+              Delete
+            </ion-option-button>
+            </ion-item>
+          </ion-list>
+        </div>
+
+
+        </ul>
+
+
+    </ion-content>
+</ion-view>

@@ -15,6 +15,78 @@ $royal:                           #886aea !default;
 $dark:                            #444 !default;
 */
 
+/* $button-positive-bg:              #26b99b !default;//hygiene
+$button-calm-bg:                  #e64c3c !default;//fridge
+$button-assertive-bg:             #9858a3 !default;//hothold
+$button-light-bg:                 #60b36d !default;//fitness
+$button-stable-bg:                #f0c419 !default; //transport
+$button-balanced-bg:              #e57d25 !default;//delivery
+ */
+
+$royal:                           #e57d25 !default; //delivery
+$energized:                       #26b99b !default; //hygiene
+
+.hygiene{
+  background-color:    $energized;
+}
+
+
+.food-delivery {
+    background-color:#e57d24;
+    height:100%;
+}
+
+.refridgeration{
+    background-color: #0398dc;
+    height:100%;
+}
+.cook-reheat-records {
+    background-color: #4eba6e;
+    height:100%;
+}
+.hot-Holding {
+    background-color: #e64b3b;
+    height:100%;
+}
+.hygiene-Inspection {
+    background-color: #25b99a;
+}
+.hygiene-Training {
+    background-color: #9757a3;
+    height:100%;
+}
+.fitness-to-Work {
+    background-color: #60b36d;
+    height:100%;
+}
+.transport-and-Delivery {
+    background-color: #f0c419;
+    height: auto;
+}
+
+button.align-left {
+    display:inline;
+    float: left; 
+    clear: both; 
+    padding: 0 0px 0px 15px; 
+    text-align: left;
+    margin: 0;
+    border: 1; 
+    height: 70px;
+    text-align: left;
+    width: 400px;
+    font: inherit;
+    font-size: 100%;
+    background-color: #fff;
+}
+
+
+ .wrapping-list .item-content, .wrapping-list .item {
+    overflow: initial;
+    white-space: initial;
+}
+
+
 // The path for our ionicons font files, relative to the built CSS in www/css
 $ionicons-font-path: "../lib/ionic/fonts" !default;
 
