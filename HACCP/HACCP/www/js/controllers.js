@@ -41,9 +41,7 @@ angular.module('starter.controllers', ['ionic.wheel'])
   };
 })
 
-
-//end Auth controllers
-
+//Page controllers
 .controller('ForgotCtrl', function($scope, AuthService, $ionicPopup, $state) {
   $scope.user = {
     email: ''
@@ -83,7 +81,6 @@ angular.module('starter.controllers', ['ionic.wheel'])
 
 })
 
-//controller for Fitness to Work Assessment Page
 .controller('FittCtrl', function($scope, AuthService, $ionicPopup, $state) {
 
   $scope.formData = {};
@@ -124,13 +121,6 @@ angular.module('starter.controllers', ['ionic.wheel'])
 
 })
 
-
-
-.controller('HomeCtrl', function($scope) {
-
-})
-
-
 .controller('MainCtrl', function($scope, $state) {
     console.log('MainCtrl');
 
@@ -141,7 +131,7 @@ angular.module('starter.controllers', ['ionic.wheel'])
 
 
 })
-//hygiene page controller
+
 .controller('HygieneCtrl', function($scope, $ionicPopup){
 
  //variable for page data to be sent to server
@@ -224,7 +214,6 @@ angular.module('starter.controllers', ['ionic.wheel'])
 
 
 })//HygieneCtrl
-
 
 .controller('DeliveryCtrl', function($scope) {
 
@@ -372,8 +361,7 @@ angular.module('starter.controllers', ['ionic.wheel'])
 
 })//FridgeCtrl
 
-//controller for Hygiene Training Page
-.controller('TrainingCtrl', function($scope) {
+.controller('TrainingCtrl', function($scope, AuthService, $ionicPopup, $state) {
 
   $scope.trainingForm = {};
 
@@ -392,6 +380,22 @@ angular.module('starter.controllers', ['ionic.wheel'])
     console.log($scope.trainingForm.furtherdate);
     console.log($scope.trainingForm.empsignfurther);
     console.log($scope.trainingForm.empsignfurther);
+  };
+    
+    $scope.submit = function() {
+    AuthService.training($scope.trainingForm).then(function(msg) {
+     //redirect to home??
+      //$state.go('login');
+      var alertPopup = $ionicPopup.alert({
+        title: 'Success!',
+        template: msg
+        });
+     }, function(errMsg) {
+      var alertPopup = $ionicPopup.alert({
+        title: 'Error',
+        template: errMsg
+      });
+    });
   };
 
 })//TrainingCtrl
@@ -420,7 +424,6 @@ angular.module('starter.controllers', ['ionic.wheel'])
 
 })//TransportCtrl
 
-//controls Settings page
 .controller('SettingsCtrl', function($scope) {
 
   $scope.suppliersSelect=false;
@@ -506,6 +509,10 @@ angular.module('starter.controllers', ['ionic.wheel'])
   };
 
 })//SettingsCtrl
+
+.controller('HomeCtrl', function($scope) {
+  //home controller
+})
 
 .controller('NavCtrl', function($scope, $ionicSideMenuDelegate) {
   $scope.showMenu = function () {
