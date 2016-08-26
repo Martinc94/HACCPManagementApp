@@ -1,9 +1,9 @@
 <ion-view view-title="Transport and Delivery">
-       
+
   <ion-content class="transport-and-Delivery">
 
 	<h3>Transport and Delivery Records</h3>
-   	
+
     <form name="transForm" ng-submit="submitForm(transportForm)">
 	     <div class="list">
 
@@ -65,14 +65,14 @@
     		<span class="input-label">Check on date</span>
     		<input type="date" placeholder="16/04/16" ng-model="transportForm.checkon">
   		</label>
-  		  		
+
 
   		<label class="item item-input">
     		<span class="input-label">Sign</span>
     		<input type="text" placeholder="John Smith" ng-model="transportForm.managersign">
   		</label>
 
-  		<button class="button button-full button-clear" type="submit">
+  		<button class="button button-full button-clear" ng-click="submit()" type="submit">
   		Submit
 		</button>
 	</div>
@@ -81,6 +81,3 @@
   </ion-content>
 
 </ion-view>
-
-
-

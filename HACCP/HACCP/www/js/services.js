@@ -86,7 +86,7 @@ angular.module('starter.services', [])
          });
        });
      };
-    
+
     var training = function(trainingForm) {
        return $q(function(resolve, reject) {
          $http.post(API_ENDPOINT.url + '/hygieneTraining', trainingForm).then(function(result) {
@@ -102,6 +102,20 @@ angular.module('starter.services', [])
        });
      };
 
+     var transport = function(transportForm) {
+        return $q(function(resolve, reject) {
+          $http.post(API_ENDPOINT.url + '/transport', transportForm).then(function(result) {
+          console.log(transportForm);
+            if (result.data.success) {
+              //
+
+              resolve(result.data.msg);
+            } else {
+              reject(result.data.msg);
+            }
+          });
+        });
+      };
 
 
 
@@ -120,6 +134,7 @@ angular.module('starter.services', [])
       logout: logout,
       fitness: fitness,
       training: training,
+      transport:transport,
       isAuthenticated: function() {return isAuthenticated;},
     };
   })
