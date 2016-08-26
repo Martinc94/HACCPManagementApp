@@ -117,6 +117,24 @@ angular.module('starter.services', [])
         });
       };
 
+      var getSettings = function() {
+         return $q(function(resolve, reject) {
+           $http.get(API_ENDPOINT.url + '/settings').then(function(result) {
+             if (result.data.success) {
+               //
+               console.log(result.data.msg);
+               console.log(result.data.Nofridges);
+
+               //save to localStorage
+
+               resolve(result.data.msg);
+             } else {
+               reject(result.data.msg);
+             }
+           });
+         });
+       };
+
 
 
     var logout = function() {
@@ -135,6 +153,7 @@ angular.module('starter.services', [])
       fitness: fitness,
       training: training,
       transport:transport,
+      getSettings:getSettings,
       isAuthenticated: function() {return isAuthenticated;},
     };
   })
