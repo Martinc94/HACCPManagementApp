@@ -119,17 +119,20 @@ angular.module('starter.services', [])
 
       var getSettings = function() {
          return $q(function(resolve, reject) {
-           $http.get(API_ENDPOINT.url + '/settings').then(function(result) {
-             if (result.data.success) {
+           $http.get(API_ENDPOINT.url + '/settings').then(function(resp) {
+             if (resp.data.success) {
                //
-               console.log(result.data.msg);
-               console.log(result.data.Nofridges);
+
+               console.log('Success', resp);
+
+               console.log(resp.data.msg);
+               console.log(resp.data.Nofridges);
 
                //save to localStorage
 
-               resolve(result.data.msg);
+               resolve(resp.data.msg);
              } else {
-               reject(result.data.msg);
+               reject(resp.data.msg);
              }
            });
          });
