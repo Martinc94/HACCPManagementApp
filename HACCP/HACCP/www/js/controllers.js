@@ -132,7 +132,7 @@ angular.module('starter.controllers', ['ionic.wheel'])
 
 })
 
-.controller('HygieneCtrl', function($scope, $ionicPopup){
+.controller('HygieneCtrl', function($scope, AuthService, $ionicPopup, $state){
 
  //variable for page data to be sent to server
  $scope.formData = [];
@@ -215,7 +215,7 @@ angular.module('starter.controllers', ['ionic.wheel'])
 
 })//HygieneCtrl
 
-.controller('DeliveryCtrl', function($scope) {
+.controller('DeliveryCtrl', function($scope, AuthService, $ionicPopup, $state) {
 
   $scope.deliveryForm={};
 
@@ -239,7 +239,7 @@ angular.module('starter.controllers', ['ionic.wheel'])
 
 })//DeliveryCtrl
 
-.controller('TemperatureCtrl', function($scope, ionicTimePicker) {
+.controller('TemperatureCtrl', function($scope, AuthService, $ionicPopup, $state, ionicTimePicker) {
 
   $scope.cookcoolForm = {};
 
@@ -301,7 +301,7 @@ angular.module('starter.controllers', ['ionic.wheel'])
 
 })//TemperatureCtrl
 
-.controller('HotholdCtrl', function($scope, ionicTimePicker) {
+.controller('HotholdCtrl', function($scope, AuthService, $ionicPopup, $state, ionicTimePicker) {
 
   $scope.hotholdForm = {};
 
@@ -346,7 +346,7 @@ angular.module('starter.controllers', ['ionic.wheel'])
 
 })//HotholdCtrl
 
-.controller('FridgeCtrl', function($scope) {
+.controller('FridgeCtrl', function($scope, AuthService, $ionicPopup, $state) {
 
   $scope.units=[{
     name: 'Fridge 1',
@@ -381,7 +381,7 @@ angular.module('starter.controllers', ['ionic.wheel'])
     console.log($scope.trainingForm.empsignfurther);
     console.log($scope.trainingForm.empsignfurther);
   };
-    
+
     $scope.submit = function() {
     AuthService.training($scope.trainingForm).then(function(msg) {
      //redirect to home??
@@ -400,7 +400,7 @@ angular.module('starter.controllers', ['ionic.wheel'])
 
 })//TrainingCtrl
 
-.controller('TransportCtrl', function($scope) {
+.controller('TransportCtrl', function($scope, AuthService, $ionicPopup, $state) {
 
   $scope.transportForm={};
 
@@ -419,12 +419,25 @@ angular.module('starter.controllers', ['ionic.wheel'])
 
   }//submitForm
 
-
-
+  $scope.submit = function() {
+  AuthService.transport($scope.transportForm).then(function(msg) {
+   //redirect to home??
+    //$state.go('login');
+    var alertPopup = $ionicPopup.alert({
+      title: 'Success!',
+      template: msg
+      });
+   }, function(errMsg) {
+    var alertPopup = $ionicPopup.alert({
+      title: 'Error',
+      template: errMsg
+    });
+  });
+  };
 
 })//TransportCtrl
 
-.controller('SettingsCtrl', function($scope) {
+.controller('SettingsCtrl', function($scope, AuthService, $ionicPopup, $state) {
 
   $scope.suppliersSelect=false;
   $scope.shouldShowDelete = false;
