@@ -138,6 +138,21 @@ angular.module('starter.services', [])
          });
        };
 
+       var hothold = function(hotholdForm) {
+          return $q(function(resolve, reject) {
+            $http.post(API_ENDPOINT.url + '/hothold', hotholdForm).then(function(result) {
+            console.log(hotholdForm);
+              if (result.data.success) {
+                //
+
+                resolve(result.data.msg);
+              } else {
+                reject(result.data.msg);
+              }
+            });
+          });
+        };
+
 
 
     var logout = function() {
@@ -157,6 +172,7 @@ angular.module('starter.services', [])
       training: training,
       transport:transport,
       getSettings:getSettings,
+      hothold:hothold,
       isAuthenticated: function() {return isAuthenticated;},
     };
   })

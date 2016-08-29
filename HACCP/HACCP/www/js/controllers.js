@@ -344,6 +344,20 @@ angular.module('starter.controllers', ['ionic.wheel'])
     console.log($scope.hotholdForm.managersign);*/
   };
 
+  $scope.submit = function() {
+  AuthService.hothold($scope.hotholdForm).then(function(msg) {
+    var alertPopup = $ionicPopup.alert({
+      title: 'Success!',
+      template: msg
+      });
+   }, function(errMsg) {
+    var alertPopup = $ionicPopup.alert({
+      title: 'Error',
+      template: errMsg
+    });
+  });
+  };
+
 })//HotholdCtrl
 
 .controller('FridgeCtrl', function($scope, AuthService, $ionicPopup, $state) {
