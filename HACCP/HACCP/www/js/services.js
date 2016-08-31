@@ -121,19 +121,16 @@ angular.module('starter.services', [])
          return $q(function(resolve, reject) {
            $http.get(API_ENDPOINT.url + '/settings').then(function(resp) {
              if (resp.data.success) {
-               //
-
-               console.log('Success', resp);
+               //console.log('Success', resp);
 
                console.log(resp.data.msg);
                console.log(resp.data.Nofridges);
 
                //save to localStorage
 
-               resolve(resp.data.msg);
-             } else {
-               reject(resp.data.msg);
-             }
+
+             }//end if
+               
            });
          });
        };

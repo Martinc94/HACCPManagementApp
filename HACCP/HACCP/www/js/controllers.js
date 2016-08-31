@@ -564,6 +564,13 @@ angular.module('starter.controllers', ['ionic.wheel'])
     $scope.foods.splice($scope.foods.indexOf(food), 1);
 
   };
+  //when page is loaded
+  $scope.$on('$ionicView.enter', function(){
+    //calls server for settings
+    AuthService.getSettings();
+    
+  });
+
 
 })//SettingsCtrl
 
