@@ -21,7 +21,7 @@
       <option>Beef</option>
     </select>
   </label>
-  
+
     <div>
         <button class="align-left" type="button" ng-click="openTimePicker()">
         Time Into Hot Hold {{hotholdForm.time}}
@@ -61,17 +61,17 @@
         <span class="input-label">Check on date</span>
         <input type="date" placeholder="16/04/16" ng-model="hotholdForm.checkon">
       </label>
-            
+
 
       <label class="item item-input">
         <span class="input-label">Sign</span>
         <input type="text" placeholder="John Smith" ng-model="hotholdForm.managersign">
       </label>
 
-      <button class="button button-full button-clear" type="submit">
+      <button class="button button-full button-clear" ng-click="submit()" type="submit">
       Submit
     </button>
-  
+
   </div>
 </form>
 
