@@ -20,10 +20,10 @@ angular.module('starter.routes', [])
             views: {
               'menuContent': {
                 templateUrl: 'templates/hygiene.html',
-                controller: 'ListCtrl'
+                controller: 'HygieneCtrl'
               }
             }
-            
+
         })
 
       .state('app.delivery', {
@@ -34,7 +34,7 @@ angular.module('starter.routes', [])
                 controller: 'DeliveryCtrl'
               }
             }
-            
+
         })
 
       .state('app.transport', {
@@ -42,10 +42,10 @@ angular.module('starter.routes', [])
             views: {
               'menuContent': {
                 templateUrl: 'templates/transport.html',
-                controller: ''
+                controller: 'TransportCtrl'
               }
             }
-            
+
         })
 
       .state('app.fitness', {
@@ -56,7 +56,7 @@ angular.module('starter.routes', [])
                 controller: 'FittCtrl'
               }
             }
-            
+
         })
 
       .state('app.training', {
@@ -64,23 +64,23 @@ angular.module('starter.routes', [])
             views: {
               'menuContent': {
                 templateUrl: 'templates/training.html',
-                controller: ''
+                controller: 'TrainingCtrl'
               }
             }
-            
+
         })
 
-      
+
 
       .state('app.hothold', {
             url: '/hothold',
             views: {
               'menuContent': {
                 templateUrl: 'templates/hothold.html',
-                controller: ''
+                controller: 'HotholdCtrl'
               }
             }
-            
+
         })
 
       .state('app.temperature', {
@@ -91,7 +91,7 @@ angular.module('starter.routes', [])
                 controller: 'TemperatureCtrl'
               }
             }
-            
+
         })
 
       .state('app.refridgeration', {
@@ -99,11 +99,21 @@ angular.module('starter.routes', [])
             views: {
               'menuContent': {
                 templateUrl: 'templates/refridgeration.html',
-                controller: ''
+                controller: 'FridgeCtrl'
               }
             }
-            
+
         })
+
+      .state('app.settings', {
+          url: '/settings',
+          views: {
+              'menuContent': {
+              templateUrl: 'templates/settings.html',
+              controller: 'SettingsCtrl'
+      }
+    }
+  })
 
 
 
@@ -125,40 +135,10 @@ angular.module('starter.routes', [])
            controller: 'ForgotCtrl'
        })
 
-       
-
-       
 
 
-  // setup an abstract state for the tabs directive
-    .state('tab', {
-    url: '/tab',
-    abstract: true,
-    templateUrl: 'templates/tabs.html'
-  })
-
-  // Each tab has its own nav history stack:
-  .state('tab.home', {
-      url: '/home',
-      views: {
-          'tab-home': {
-              templateUrl: 'templates/tab-home.html',
-              controller: 'IntroCtrl'
-        }
-      }
-    })
-
-  .state('tab.account', {
-    url: '/account',
-    views: {
-      'tab-account': {
-        templateUrl: 'templates/tab-account.html',
-        //controller: 'AccountCtrl'
-      }
-    }
-  })
 
 
   // if none of the above states are matched, use this as the fallback
-  $urlRouterProvider.otherwise('/app/hygiene');
+  $urlRouterProvider.otherwise('/login');
 });

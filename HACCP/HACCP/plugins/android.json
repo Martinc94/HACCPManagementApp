@@ -10,6 +10,9 @@
         "cordova-plugin-console": {
             "PACKAGE_NAME": "com.ionicframework.ionictabs121641"
         },
+        "cordova-plugin-datepicker": {
+            "PACKAGE_NAME": "com.ionicframework.ionictabs121641"
+        },
         "cordova-plugin-device": {
             "PACKAGE_NAME": "com.ionicframework.ionictabs121641"
         },
@@ -25,9 +28,13 @@
         "ionic-plugin-keyboard": {
             "PACKAGE_NAME": "com.ionicframework.ionictabs121641"
         },
-        "cordova-plugin-datepicker": {
+        "cordova-plugin-camera": {
             "PACKAGE_NAME": "com.ionicframework.ionictabs121641"
         }
     },
-    "dependent_plugins": {}
+    "dependent_plugins": {
+        "cordova-plugin-compat": {
+            "PACKAGE_NAME": "com.ionicframework.ionictabs121641"
+        }
+    }
 }

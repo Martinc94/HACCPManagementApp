@@ -27,7 +27,14 @@
         },
         "cordova-plugin-datepicker": {
             "PACKAGE_NAME": "ionic-tabs"
+        },
+        "cordova-plugin-camera": {
+            "PACKAGE_NAME": "HAACP APZ.com"
         }
     },
-    "dependent_plugins": {}
+    "dependent_plugins": {
+        "cordova-plugin-compat": {
+            "PACKAGE_NAME": "HAACP APZ.com"
+        }
+    }
 }

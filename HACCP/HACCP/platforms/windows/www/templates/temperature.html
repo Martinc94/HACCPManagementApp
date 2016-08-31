@@ -1,10 +1,10 @@
 <ion-view view-title="Cooking/Cooling/Reheating">
 
-  <ion-content scroll="false" class="cook-reheat-records">
+  <ion-content class="cook-reheat-records">
 
     <h3> Cooking/Cooling/Reheating Records</h3>
 
-      <form name="cookcoolForm" ng-submit="submitForm(cookcoolForm)">
+      <form name="ccForm" ng-submit="submitForm(cookcoolForm)">
        <div class="list">
 
     <label class="item item-input">
@@ -13,71 +13,80 @@
       </label>
 
       <label class="item item-select item-text-wrap">
-    <div class="input-label" style="width: 1000px">
+    <div class="input-label" style="width: 90%">
      Food
     </div>
-    <select ng-model="cookcoolForm.food" style="width: 20">
-      <option >Chicken</option>
-      <option >Beef</option>
+    <select ng-model="cookcoolForm.food" >
+      <option>Chicken</option>
+      <option>Beef</option>
     </select>
   </label>
 
-      <label class="item item-input">
-        <span class="input-label">Batch Code</span>
-        <input type="text" placeholder="" ng-model="deliveryForm.batch">
-      </label>
-
-      <label class="item item-select item-text-wrap">
-    <div class="input-label" style="width: 1000px">
-    Supplied By
+  <div class="cook-reheat-records">
+       <h3>Cooking</h3>
+      </div>
+      
+    
+    <div>
+        <button class="align-left" type="button" ng-click="openTimePicker(1)">
+        Time Started Cooking {{cookcoolForm.startTime}}
+        </button>
     </div>
-    <select ng-model="deliveryForm.supplier" style="width: 20">
-      <option ng-value="'Yes'">McDonnells</option>
-      <option ng-value="'No'">O'Haras</option>
-    </select>
-  </label>
 
-  <label class="item item-input">
-        <span class="input-label">'Use-by' Date</span>
-        <input type="date" placeholder="16/04/16" ng-model="deliveryForm.useby">
-      </label>
+    <div>
+        <button class="align-left" type="button" ng-click="openTimePicker(2)">
+        Time Finished Cooking {{cookcoolForm.finishTime}}
+        </button>
+    </div>
 
       <label class="item item-input">
-        <span class="input-label">Temp * °C</span>
-        <input type="number" placeholder="4" ng-model="deliveryForm.temp">
-      </label>
-
-      <label class="item item-input">
-        <span class="input-label">Delivery Vehicle Check</span>
-        <input type="text" placeholder="Dirty" ng-model="deliveryForm.vehicle">
-      </label>
-
-      <label class="item item-input">
-        <span class="input-label">Comments/Action</span>
-        <input type="text" placeholder="" ng-model="deliveryForm.comment">
+        <span class="input-label">Core Temp.</span>
+        <input type="number" placeholder="0" ng-model="cookcoolForm.cookTemp">
       </label>
 
       <label class="item item-input">
         <span class="input-label">Sign</span>
-        <input type="text" placeholder="" ng-model="deliveryForm.sign">
+        <input type="text" placeholder="" ng-model="cookcoolForm.cookSign">
+      </label>
+
+      <div class="cook-reheat-records">
+       <h3>Cooling</h3>
+      </div>
+
+      <div>
+        <button class="align-left" type="button" ng-click="openTimePicker(3)">
+        Time Into Fridge {{cookcoolForm.fridgeTime}}
+        </button>
+    </div>
+
+    <label class="item item-input">
+        <span class="input-label">Sign</span>
+        <input type="text" placeholder="" ng-model="cookcoolForm.coolSign">
+      </label>
+
+      <div class="cook-reheat-records">
+       <h3>Reheating</h3>
+      </div>
+
+      <label class="item item-input">
+        <span class="input-label">Core Temp.</span>
+        <input type="number" placeholder="0" ng-model="cookcoolForm.reheatTemp">
       </label>
 
       <label class="item item-input">
-        <span class="input-label">Manager/Supervisor check on</span>
-        <input type="date" placeholder="16/04/16" ng-model="deliveryForm.checkon">
+        <span class="input-label">Sign</span>
+        <input type="text" placeholder="" ng-model="cookcoolForm.reheatSign">
       </label>
-            
 
       <label class="item item-input">
-        <span class="input-label">Manager/Supervisor Sign</span>
-        <input type="text" placeholder="John Smith" ng-model="deliveryForm.managersign">
+        <span class="input-label">Comments/Action</span>
+        <input type="text" placeholder="" ng-model="cookcoolForm.comment">
       </label>
 
-      <button class="button button-full button-royal" type="submit">
+      <button class="button button-full button-clear" type="submit">
       Submit
     </button>
-  <br>
-  <br>
+  
   </div>
 </form>
 
