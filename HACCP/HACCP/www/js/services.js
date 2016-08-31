@@ -102,7 +102,7 @@ angular.module('starter.services', [])
        });
      };
 
-     var transport = function(transportForm) {
+    var transport = function(transportForm) {
         return $q(function(resolve, reject) {
           $http.post(API_ENDPOINT.url + '/transport', transportForm).then(function(result) {
           console.log(transportForm);
@@ -117,7 +117,7 @@ angular.module('starter.services', [])
         });
       };
 
-      var getSettings = function() {
+    var getSettings = function() {
          return $q(function(resolve, reject) {
            $http.get(API_ENDPOINT.url + '/settings').then(function(resp) {
              if (resp.data.success) {
@@ -138,7 +138,7 @@ angular.module('starter.services', [])
          });
        };
 
-       var hothold = function(hotholdForm) {
+    var hothold = function(hotholdForm) {
           return $q(function(resolve, reject) {
             $http.post(API_ENDPOINT.url + '/hothold', hotholdForm).then(function(result) {
             console.log(hotholdForm);
@@ -153,7 +153,7 @@ angular.module('starter.services', [])
           });
         };
 
-        var temperature = function(cookcoolForm) {
+    var temperature = function(cookcoolForm) {
            return $q(function(resolve, reject) {
              $http.post(API_ENDPOINT.url + '/temperature', cookcoolForm).then(function(result) {
              console.log(cookcoolForm);
@@ -168,6 +168,20 @@ angular.module('starter.services', [])
            });
          };
 
+    var hygieneInspection = function(signData,formData) {
+          return $q(function(resolve, reject) {
+            $http.post(API_ENDPOINT.url + '/hygieneInspection', formData,signData).then(function(result) {
+            console.log(signData,formData);
+              if (result.data.success) {
+                //
+
+                resolve(result.data.msg);
+              } else {
+                reject(result.data.msg);
+              }
+            });
+          });
+        };
 
 
     var logout = function() {
@@ -189,6 +203,7 @@ angular.module('starter.services', [])
       getSettings:getSettings,
       hothold:hothold,
       temperature:temperature,
+      hygieneInspection:hygieneInspection,
       isAuthenticated: function() {return isAuthenticated;},
     };
   })
