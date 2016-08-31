@@ -153,6 +153,21 @@ angular.module('starter.services', [])
           });
         };
 
+        var temperature = function(cookcoolForm) {
+           return $q(function(resolve, reject) {
+             $http.post(API_ENDPOINT.url + '/temperature', cookcoolForm).then(function(result) {
+             console.log(cookcoolForm);
+               if (result.data.success) {
+                 //
+
+                 resolve(result.data.msg);
+               } else {
+                 reject(result.data.msg);
+               }
+             });
+           });
+         };
+
 
 
     var logout = function() {
@@ -173,6 +188,7 @@ angular.module('starter.services', [])
       transport:transport,
       getSettings:getSettings,
       hothold:hothold,
+      temperature:temperature,
       isAuthenticated: function() {return isAuthenticated;},
     };
   })

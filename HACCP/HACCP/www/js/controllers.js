@@ -299,6 +299,20 @@ angular.module('starter.controllers', ['ionic.wheel'])
     console.log($scope.cookcoolForm.managersign);*/
   };
 
+  $scope.submit = function() {
+  AuthService.temperature($scope.cookcoolForm).then(function(msg) {
+    var alertPopup = $ionicPopup.alert({
+      title: 'Success!',
+      template: msg
+      });
+   }, function(errMsg) {
+    var alertPopup = $ionicPopup.alert({
+      title: 'Error',
+      template: errMsg
+    });
+  });
+  };
+
 })//TemperatureCtrl
 
 .controller('HotholdCtrl', function($scope, AuthService, $ionicPopup, $state, ionicTimePicker) {
