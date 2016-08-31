@@ -141,7 +141,7 @@ angular.module('starter.controllers', ['ionic.wheel'])
  //controls question number
  var i=0;
 
- //function for yes/no selection
+  //function for yes/no selection
  $scope.selectChoice=function(selection){
     //increment i for every question answered
     i++;
@@ -159,14 +159,15 @@ angular.module('starter.controllers', ['ionic.wheel'])
   }//selectChoice
 
   //when submit button is clicked at bottom of page, send signData answers
-  $scope.submitForm=function(signData){
+  $scope.submitForm=function(){
     //push signature details to array
-    $scope.formData.push(
-      $scope.signData.name + " " + $scope.signData.position + " " + $scope.signData.sign + " " + $scope.signData.date + " " + $scope.signData.frequency
-    );
+    
+    for (var j = 0; j < $scope.formData.length; ++j){
+    $scope.combinedData[j] = $scope.formData[j];
+  }
     //for testing only
     for(j=0; j<i+1; j++){
-     console.log($scope.formData[j]);
+     console.log($scope.signData[j]);
       }
   }//submitForm
 
@@ -215,9 +216,10 @@ angular.module('starter.controllers', ['ionic.wheel'])
 
 })//HygieneCtrl
 
-.controller('DeliveryCtrl', function($scope, AuthService, $ionicPopup, $state) {
+.controller('DeliveryCtrl', function($scope, AuthService, $ionicPopup, $state, $cordovaCamera) {
 
   $scope.deliveryForm={};
+  $scope.toggle=false;
 
   $scope.submitForm=function(deliveryForm){
     // Testing
@@ -230,11 +232,30 @@ angular.module('starter.controllers', ['ionic.wheel'])
     console.log($scope.deliveryForm.vehicle);
     console.log($scope.deliveryForm.comment);
     console.log($scope.deliveryForm.sign);
-    console.log($scope.deliveryForm.checkon);
-    console.log($scope.deliveryForm.managersign);
+
   }//submitForm
 
-
+  $scope.takePicture = function() {
+        var options = { 
+            quality : 75, 
+            destinationType : Camera.DestinationType.DATA_URL, 
+            sourceType : Camera.PictureSourceType.CAMERA, 
+            allowEdit : true,
+            encodingType: Camera.EncodingType.JPEG,
+            targetWidth: 300,
+            targetHeight: 300,
+            popoverOptions: CameraPopoverOptions,
+            cameraDirection: 1,
+            saveToPhotoAlbum: false
+        };
+ 
+        $cordovaCamera.getPicture(options).then(function(imageData) {
+            $scope.imgURI = "data:image/jpeg;base64," + imageData;
+            $scope.toggle=true;
+        }, function(err) {
+            // An error occured. Show a message to the user
+        });
+    }
 
 
 })//DeliveryCtrl
@@ -295,8 +316,7 @@ angular.module('starter.controllers', ['ionic.wheel'])
     console.log($scope.cookcoolForm.reheatTemp);
     console.log($scope.cookcoolForm.reheatSign);
     console.log($scope.cookcoolForm.comment);
-    console.log($scope.cookcoolForm.checkon);
-    console.log($scope.cookcoolForm.managersign);*/
+*/
   };
 
 })//TemperatureCtrl
@@ -340,8 +360,7 @@ angular.module('starter.controllers', ['ionic.wheel'])
     console.log($scope.hotholdForm.thirdTemp);
     console.log($scope.hotholdForm.comment);
     console.log($scope.hotholdForm.sign);
-    console.log($scope.hotholdForm.checkon);
-    console.log($scope.hotholdForm.managersign);*/
+*/
   };
 
   $scope.submit = function() {
@@ -428,8 +447,6 @@ angular.module('starter.controllers', ['ionic.wheel'])
     console.log($scope.transportForm.temp);
     console.log($scope.transportForm.comment);
     console.log($scope.transportForm.sign);
-    console.log($scope.transportForm.checkon);
-    console.log($scope.transportForm.managersign);
 
   }//submitForm
 
@@ -540,6 +557,8 @@ angular.module('starter.controllers', ['ionic.wheel'])
 .controller('HomeCtrl', function($scope) {
   //home controller
 })
+
+
 
 .controller('NavCtrl', function($scope, $ionicSideMenuDelegate) {
   $scope.showMenu = function () {
