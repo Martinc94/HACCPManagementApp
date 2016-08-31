@@ -166,7 +166,9 @@ angular.module('starter.controllers', ['ionic.wheel'])
     );
     //for testing only
     for(j=0; j<i+1; j++){
-     console.log($scope.formData[j]);
+     //console.log($scope.formData[j]);
+     console.log($scope.formData);
+     //console.log($scope.signData);
       }
   }//submitForm
 
@@ -210,6 +212,20 @@ angular.module('starter.controllers', ['ionic.wheel'])
    });*/
 
   };//popup
+
+  $scope.submit = function() {
+  AuthService.hygieneInspection($scope.formData,$scope.signData).then(function(msg) {
+    var alertPopup = $ionicPopup.alert({
+      title: 'Success!',
+      template: msg
+      });
+   }, function(errMsg) {
+    var alertPopup = $ionicPopup.alert({
+      title: 'Error',
+      template: errMsg
+    });
+  });
+  };
 
 
 
@@ -297,6 +313,20 @@ angular.module('starter.controllers', ['ionic.wheel'])
     console.log($scope.cookcoolForm.comment);
     console.log($scope.cookcoolForm.checkon);
     console.log($scope.cookcoolForm.managersign);*/
+  };
+
+  $scope.submit = function() {
+  AuthService.temperature($scope.cookcoolForm).then(function(msg) {
+    var alertPopup = $ionicPopup.alert({
+      title: 'Success!',
+      template: msg
+      });
+   }, function(errMsg) {
+    var alertPopup = $ionicPopup.alert({
+      title: 'Error',
+      template: errMsg
+    });
+  });
   };
 
 })//TemperatureCtrl
@@ -534,6 +564,13 @@ angular.module('starter.controllers', ['ionic.wheel'])
     $scope.foods.splice($scope.foods.indexOf(food), 1);
 
   };
+  //when page is loaded
+  $scope.$on('$ionicView.enter', function(){
+    //calls server for settings
+    AuthService.getSettings();
+    
+  });
+
 
 })//SettingsCtrl
 

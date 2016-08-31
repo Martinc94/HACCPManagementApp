@@ -25,8 +25,8 @@
   <div class="cook-reheat-records">
        <h3>Cooking</h3>
       </div>
-      
-    
+
+
     <div>
         <button class="align-left" type="button" ng-click="openTimePicker(1)">
         Time Started Cooking {{cookcoolForm.startTime}}
@@ -91,17 +91,17 @@
         <span class="input-label">Check on date</span>
         <input type="date" placeholder="16/04/16" ng-model="cookcoolForm.checkon">
       </label>
-            
+
 
       <label class="item item-input">
         <span class="input-label">Sign</span>
         <input type="text" placeholder="John Smith" ng-model="cookcoolForm.managersign">
       </label>
 
-      <button class="button button-full button-clear" type="submit">
+      <button class="button button-full button-clear" ng-click="submit()" type="submit">
       Submit
     </button>
-  
+
   </div>
 </form>
 
