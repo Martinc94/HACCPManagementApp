@@ -571,6 +571,7 @@ angular.module('starter.controllers', ['ionic.wheel'])
   $scope.$on('$ionicView.enter', function(){
     //calls server for settings
     AuthService.getSettings();
+    AuthService.getRefridgerators();
 
   });
 
@@ -579,7 +580,10 @@ angular.module('starter.controllers', ['ionic.wheel'])
 
     //AuthService.getSettings();
     console.log('Exiting Settings');
-    //Push settings if changes
+    //Push settings if changed
+    //AuthService.putRefridgerators(units);
+    var appData = window.localStorage.getItem( 'Fridge1' );
+    console.log(appData);
   });
 
 
