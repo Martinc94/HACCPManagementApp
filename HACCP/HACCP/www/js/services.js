@@ -117,24 +117,6 @@ angular.module('starter.services', [])
         });
       };
 
-    var getSettings = function() {
-         return $q(function(resolve, reject) {
-           $http.get(API_ENDPOINT.url + '/settings').then(function(resp) {
-             if (resp.data.success) {
-               //console.log('Success', resp);
-
-               console.log(resp.data.msg);
-               console.log(resp.data.Nofridges);
-
-               //save to localStorage
-
-
-             }//end if
-               
-           });
-         });
-       };
-
     var hothold = function(hotholdForm) {
           return $q(function(resolve, reject) {
             $http.post(API_ENDPOINT.url + '/hothold', hotholdForm).then(function(result) {
@@ -165,10 +147,12 @@ angular.module('starter.services', [])
            });
          };
 
-    var hygieneInspection = function(signData,formData) {
+    var hygieneInspection = function(signData,fData) {
           return $q(function(resolve, reject) {
-            $http.post(API_ENDPOINT.url + '/hygieneInspection', formData,signData).then(function(result) {
-            console.log(signData,formData);
+            $http.post(API_ENDPOINT.url + '/hygieneInspection', fData,signData).then(function(result) {
+            //console.log(signData,formData);
+            //console.log(fData);
+            //console.log(signData);
               if (result.data.success) {
                 //
 
@@ -180,10 +164,84 @@ angular.module('starter.services', [])
           });
         };
 
+    var getSettings = function() {
+         return $q(function(resolve, reject) {
+           $http.get(API_ENDPOINT.url + '/settings').then(function(resp) {
+             if (resp.data.success) {
+               //console.log('Success', resp);
+
+               console.log(resp.data.msg);
+               console.log(resp.data.Nofridges);
+
+               //save to localStorage
+
+
+             }//end if
+
+           });
+         });
+       };
+
+    var putSettings = function(settings) {
+          return $q(function(resolve, reject) {
+            $http.post(API_ENDPOINT.url + '/settings', settings).then(function(result) {
+            console.log(settings);
+              if (result.data.success) {
+
+                resolve(result.data.msg);
+              } else {
+                reject(result.data.msg);
+              }
+            });
+          });
+        };
+
+    var getRefridgerators = function() {
+         return $q(function(resolve, reject) {
+           $http.get(API_ENDPOINT.url + '/refridgerationUnit').then(function(resp) {
+             if (resp.data.success) {
+
+               /*console.log(resp.data.msg);
+               console.log(resp.data.Fridge1);
+               console.log(resp.data.Fridge2);
+               console.log(resp.data.Fridge3);
+               console.log(resp.data.Fridge4);
+               console.log(resp.data.Fridge5);
+               console.log(resp.data.Fridge6);*/
+
+               //save to localStorage
+               window.localStorage.setItem( 'Fridge1', resp.data.Fridge1 );
+               window.localStorage.setItem( 'Fridge2', resp.data.Fridge2 );
+               window.localStorage.setItem( 'Fridge3', resp.data.Fridge3 );
+               window.localStorage.setItem( 'Fridge4', resp.data.Fridge4 );
+               window.localStorage.setItem( 'Fridge5', resp.data.Fridge5 );
+               window.localStorage.setItem( 'Fridge6', resp.data.Fridge6 );
+
+             }//end if
+
+           });
+         });
+       };
+
+    var putRefridgerators = function(units) {
+           return $q(function(resolve, reject) {
+             $http.post(API_ENDPOINT.url + '/refridgerationUnit', units).then(function(result) {
+             console.log(units);
+               if (result.data.success) {
+
+                 resolve(result.data.msg);
+               } else {
+                 reject(result.data.msg);
+               }
+             });
+           });
+         };
 
     var logout = function() {
       destroyUserCredentials();
     };
+
+
 
 
 
@@ -201,6 +259,9 @@ angular.module('starter.services', [])
       hothold:hothold,
       temperature:temperature,
       hygieneInspection:hygieneInspection,
+      putSettings:putSettings,
+      getRefridgerators:getRefridgerators,
+      putRefridgerators:putRefridgerators,
       isAuthenticated: function() {return isAuthenticated;},
     };
   })
