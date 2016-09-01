@@ -84,6 +84,46 @@ module.exports = [
         "merges": [
             ""
         ]
+    },
+    {
+        "file": "plugins/cordova-plugin-camera/www/CameraConstants.js",
+        "id": "cordova-plugin-camera.Camera",
+        "pluginId": "cordova-plugin-camera",
+        "clobbers": [
+            "Camera"
+        ]
+    },
+    {
+        "file": "plugins/cordova-plugin-camera/www/CameraPopoverOptions.js",
+        "id": "cordova-plugin-camera.CameraPopoverOptions",
+        "pluginId": "cordova-plugin-camera",
+        "clobbers": [
+            "CameraPopoverOptions"
+        ]
+    },
+    {
+        "file": "plugins/cordova-plugin-camera/www/Camera.js",
+        "id": "cordova-plugin-camera.camera",
+        "pluginId": "cordova-plugin-camera",
+        "clobbers": [
+            "navigator.camera"
+        ]
+    },
+    {
+        "file": "plugins/cordova-plugin-camera/www/CameraPopoverHandle.js",
+        "id": "cordova-plugin-camera.CameraPopoverHandle",
+        "pluginId": "cordova-plugin-camera",
+        "clobbers": [
+            "CameraPopoverHandle"
+        ]
+    },
+    {
+        "file": "plugins/cordova-plugin-camera/src/windows/CameraProxy.js",
+        "id": "cordova-plugin-camera.CameraProxy",
+        "pluginId": "cordova-plugin-camera",
+        "merges": [
+            ""
+        ]
     }
 ];
 module.exports.metadata = 
@@ -95,7 +135,9 @@ module.exports.metadata =
     "cordova-plugin-statusbar": "2.1.3",
     "ionic-plugin-keyboard": "1.0.9",
     "cordova-plugin-ionic-keyboard": "1.0.5",
-    "cordova-plugin-datepicker": "0.9.2"
-}
+    "cordova-plugin-datepicker": "0.9.2",
+    "cordova-plugin-compat": "1.0.0",
+    "cordova-plugin-camera": "2.2.0"
+};
 // BOTTOM OF METADATA
 });

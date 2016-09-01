@@ -72,6 +72,86 @@ angular.module('starter.services', [])
       });
     };
 
+    var fitness = function(formData) {
+       return $q(function(resolve, reject) {
+         $http.post(API_ENDPOINT.url + '/fitnessToWork', formData).then(function(result) {
+         console.log(formData);
+           if (result.data.success) {
+             //
+
+             resolve(result.data.msg);
+           } else {
+             reject(result.data.msg);
+           }
+         });
+       });
+     };
+
+    var training = function(trainingForm) {
+       return $q(function(resolve, reject) {
+         $http.post(API_ENDPOINT.url + '/hygieneTraining', trainingForm).then(function(result) {
+         console.log(trainingForm);
+           if (result.data.success) {
+             //
+
+             resolve(result.data.msg);
+           } else {
+             reject(result.data.msg);
+           }
+         });
+       });
+     };
+
+     var transport = function(transportForm) {
+        return $q(function(resolve, reject) {
+          $http.post(API_ENDPOINT.url + '/transport', transportForm).then(function(result) {
+          console.log(transportForm);
+            if (result.data.success) {
+              //
+
+              resolve(result.data.msg);
+            } else {
+              reject(result.data.msg);
+            }
+          });
+        });
+      };
+
+      var getSettings = function() {
+         return $q(function(resolve, reject) {
+           $http.get(API_ENDPOINT.url + '/settings').then(function(resp) {
+             if (resp.data.success) {
+               //
+
+               console.log('Success', resp);
+
+               console.log(resp.data.msg);
+               console.log(resp.data.Nofridges);
+
+               //save to localStorage
+
+               resolve(resp.data.msg);
+             } else {
+               reject(resp.data.msg);
+             }
+           });
+         });
+       };
+
+       var hothold = function(hotholdForm) {
+          return $q(function(resolve, reject) {
+            $http.post(API_ENDPOINT.url + '/hothold', hotholdForm).then(function(result) {
+            console.log(hotholdForm);
+              if (result.data.success) {
+                //
+
+                resolve(result.data.msg);
+              } else {
+                reject(result.data.msg);
+              }
+            });
+          });
+        };
 
 
 
@@ -88,6 +168,11 @@ angular.module('starter.services', [])
       register: register,
       forgot: forgot,
       logout: logout,
+      fitness: fitness,
+      training: training,
+      transport:transport,
+      getSettings:getSettings,
+      hothold:hothold,
       isAuthenticated: function() {return isAuthenticated;},
     };
   })

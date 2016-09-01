@@ -23,7 +23,7 @@ angular.module('starter.routes', [])
                 controller: 'HygieneCtrl'
               }
             }
-            
+
         })
 
       .state('app.delivery', {
@@ -34,7 +34,7 @@ angular.module('starter.routes', [])
                 controller: 'DeliveryCtrl'
               }
             }
-            
+
         })
 
       .state('app.transport', {
@@ -45,7 +45,7 @@ angular.module('starter.routes', [])
                 controller: 'TransportCtrl'
               }
             }
-            
+
         })
 
       .state('app.fitness', {
@@ -56,7 +56,7 @@ angular.module('starter.routes', [])
                 controller: 'FittCtrl'
               }
             }
-            
+
         })
 
       .state('app.training', {
@@ -67,10 +67,10 @@ angular.module('starter.routes', [])
                 controller: 'TrainingCtrl'
               }
             }
-            
+
         })
 
-      
+
 
       .state('app.hothold', {
             url: '/hothold',
@@ -80,7 +80,7 @@ angular.module('starter.routes', [])
                 controller: 'HotholdCtrl'
               }
             }
-            
+
         })
 
       .state('app.temperature', {
@@ -91,7 +91,7 @@ angular.module('starter.routes', [])
                 controller: 'TemperatureCtrl'
               }
             }
-            
+
         })
 
       .state('app.refridgeration', {
@@ -102,7 +102,7 @@ angular.module('starter.routes', [])
                 controller: 'FridgeCtrl'
               }
             }
-            
+
         })
 
       .state('app.settings', {
@@ -134,10 +134,11 @@ angular.module('starter.routes', [])
            templateUrl: 'templates/forgot.html',
            controller: 'ForgotCtrl'
        })
- 
-        
+
+
+
 
 
   // if none of the above states are matched, use this as the fallback
-  $urlRouterProvider.otherwise('/app/hygiene');
+  $urlRouterProvider.otherwise('/login');
 });
