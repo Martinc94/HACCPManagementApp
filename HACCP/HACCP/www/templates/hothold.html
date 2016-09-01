@@ -13,10 +13,10 @@
       </label>
 
       <label class="item item-select item-text-wrap">
-    <div class="input-label" style="width: 1000px">
+    <div class="input-label" style="width: 90%">
      Food
     </div>
-    <select ng-model="hotholdForm.food" style="width: 20">
+    <select ng-model="hotholdForm.food" >
       <option>Chicken</option>
       <option>Beef</option>
     </select>
@@ -51,21 +51,6 @@
       <label class="item item-input">
         <span class="input-label">Sign</span>
         <input type="text" placeholder="John Smith" ng-model="hotholdForm.sign">
-      </label>
-
-      <div class="hot-Holding">
-       <h3>Manager/Supervisor</h3>
-      </div>
-
-      <label class="item item-input">
-        <span class="input-label">Check on date</span>
-        <input type="date" placeholder="16/04/16" ng-model="hotholdForm.checkon">
-      </label>
-
-
-      <label class="item item-input">
-        <span class="input-label">Sign</span>
-        <input type="text" placeholder="John Smith" ng-model="hotholdForm.managersign">
       </label>
 
       <button class="button button-full button-clear" ng-click="submit()" type="submit">

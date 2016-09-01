@@ -9,7 +9,7 @@ angular.module('starter.controllers', ['ionic.wheel'])
 
   $scope.login = function() {
     AuthService.login($scope.user).then(function(msg) {
-      $state.go('tab.home');
+      $state.go('app.hygiene');
     }, function(errMsg) {
       var alertPopup = $ionicPopup.alert({
         title: 'Login failed!',
@@ -41,9 +41,7 @@ angular.module('starter.controllers', ['ionic.wheel'])
   };
 })
 
-
-//end Auth controllers
-
+//Page controllers
 .controller('ForgotCtrl', function($scope, AuthService, $ionicPopup, $state) {
   $scope.user = {
     email: ''
@@ -83,12 +81,11 @@ angular.module('starter.controllers', ['ionic.wheel'])
 
 })
 
-//controller for Fitness to Work Assessment Page
-.controller('FittCtrl', function($scope) {
-   
-  $scope.formData = {};  
+.controller('FittCtrl', function($scope, AuthService, $ionicPopup, $state) {
 
-  
+  $scope.formData = {};
+
+
   //prints formData array to DOM console after form is filled and submitted
   $scope.submitForm = function(formData) {
     console.log($scope.formData.q1);
@@ -105,14 +102,24 @@ angular.module('starter.controllers', ['ionic.wheel'])
     console.log($scope.formData.q12);
   };
 
+  $scope.submit = function() {
+    AuthService.fitness($scope.formData).then(function(msg) {
+     //redirect to home??
+      //$state.go('login');
+      var alertPopup = $ionicPopup.alert({
+        title: 'Success!',
+        template: msg
+        });
+     }, function(errMsg) {
+      var alertPopup = $ionicPopup.alert({
+        title: 'Error',
+        template: errMsg
+      });
+    });
+  };
+
+
 })
-
-
-
-.controller('HomeCtrl', function($scope) {
-
-})
-
 
 .controller('MainCtrl', function($scope, $state) {
     console.log('MainCtrl');
@@ -124,17 +131,17 @@ angular.module('starter.controllers', ['ionic.wheel'])
 
 
 })
-//hygiene page controller
-.controller('HygieneCtrl', function($scope, $ionicPopup){
-  
+
+.controller('HygieneCtrl', function($scope, AuthService, $ionicPopup, $state){
+
  //variable for page data to be sent to server
  $scope.formData = [];
  //variable for manager signing details
  $scope.signData = {};
  //controls question number
  var i=0;
- 
- //function for yes/no selection
+
+  //function for yes/no selection
  $scope.selectChoice=function(selection){
     //increment i for every question answered
     i++;
@@ -145,21 +152,22 @@ angular.module('starter.controllers', ['ionic.wheel'])
     else{
       //if user selects Yes, push question number and answer to array
       $scope.formData.push(
-      "q" + i + " " + selection 
+      "q" + i + " " + selection
     );
     }
 
   }//selectChoice
 
   //when submit button is clicked at bottom of page, send signData answers
-  $scope.submitForm=function(signData){
+  $scope.submitForm=function(){
     //push signature details to array
-    $scope.formData.push(
-      $scope.signData.name + " " + $scope.signData.position + " " + $scope.signData.sign + " " + $scope.signData.date + " " + $scope.signData.frequency
-    );
+    
+    for (var j = 0; j < $scope.formData.length; ++j){
+    $scope.combinedData[j] = $scope.formData[j];
+  }
     //for testing only
     for(j=0; j<i+1; j++){
-     console.log($scope.formData[j]);
+     console.log($scope.signData[j]);
       }
   }//submitForm
 
@@ -185,14 +193,14 @@ angular.module('starter.controllers', ['ionic.wheel'])
            } else {
               //push the question number and corrective answer to the array
               $scope.formData.push(
-                "q" + i + " No " + $scope.data.correctiveAction 
+                "q" + i + " No " + $scope.data.correctiveAction
               );
              return $scope.data.correctiveAction;
            }
          }
        },
      ]
-   });  
+   });
 
    //for testing
    /*myPopup.then(function(res) {
@@ -201,17 +209,17 @@ angular.module('starter.controllers', ['ionic.wheel'])
      console.log($scope.arrayActions[j]);
       }
    });*/
-   
+
   };//popup
 
 
 
 })//HygieneCtrl
 
+.controller('DeliveryCtrl', function($scope, AuthService, $ionicPopup, $state, $cordovaCamera) {
 
-.controller('DeliveryCtrl', function($scope) {
-  
   $scope.deliveryForm={};
+  $scope.toggle=false;
 
   $scope.submitForm=function(deliveryForm){
     // Testing
@@ -224,23 +232,42 @@ angular.module('starter.controllers', ['ionic.wheel'])
     console.log($scope.deliveryForm.vehicle);
     console.log($scope.deliveryForm.comment);
     console.log($scope.deliveryForm.sign);
-    console.log($scope.deliveryForm.checkon);
-    console.log($scope.deliveryForm.managersign);
+
   }//submitForm
 
-  
+  $scope.takePicture = function() {
+        var options = { 
+            quality : 75, 
+            destinationType : Camera.DestinationType.DATA_URL, 
+            sourceType : Camera.PictureSourceType.CAMERA, 
+            allowEdit : true,
+            encodingType: Camera.EncodingType.JPEG,
+            targetWidth: 300,
+            targetHeight: 300,
+            popoverOptions: CameraPopoverOptions,
+            cameraDirection: 1,
+            saveToPhotoAlbum: false
+        };
+ 
+        $cordovaCamera.getPicture(options).then(function(imageData) {
+            $scope.imgURI = "data:image/jpeg;base64," + imageData;
+            $scope.toggle=true;
+        }, function(err) {
+            // An error occured. Show a message to the user
+        });
+    }
 
 
 })//DeliveryCtrl
 
-.controller('TemperatureCtrl', function($scope, ionicTimePicker) {
-  
-  $scope.cookcoolForm = {}; 
+.controller('TemperatureCtrl', function($scope, AuthService, $ionicPopup, $state, ionicTimePicker) {
+
+  $scope.cookcoolForm = {};
 
   $scope.openTimePicker=function(value){
 
     var ipObj1 = {
-    callback: function (val) {      
+    callback: function (val) {
       if (typeof (val) === 'undefined') {
         console.log('Time not selected');
       }
@@ -248,7 +275,7 @@ angular.module('starter.controllers', ['ionic.wheel'])
         var selectedTime = new Date(val * 1000);
         $scope.time=selectedTime.getUTCHours() + 'H :' + selectedTime.getUTCMinutes() + 'M';
         //console.log('Selected epoch is : ', val, 'and the time is ', selectedTime.getUTCHours(), 'H :', selectedTime.getUTCMinutes(), 'M');
-            
+
         if(value===1){
           $scope.cookcoolForm.startTime=$scope.time;
         }
@@ -259,12 +286,12 @@ angular.module('starter.controllers', ['ionic.wheel'])
           $scope.cookcoolForm.fridgeTime=$scope.time;
         }
 
-  
+
       }
     },
-    inputTime: 50400,  
-    format: 12,         
-    step: 1,          
+    inputTime: 50400,
+    format: 12,
+    step: 1,
     setLabel: 'Select'
   };
 
@@ -273,10 +300,10 @@ angular.module('starter.controllers', ['ionic.wheel'])
 
 
 
-  
+
   //prints formData array to DOM console after form is filled and submitted
   $scope.submitForm = function(cookcoolForm) {
-   
+
     /* Testing
     console.log($scope.cookcoolForm.date);
     console.log($scope.cookcoolForm.food);
@@ -289,20 +316,19 @@ angular.module('starter.controllers', ['ionic.wheel'])
     console.log($scope.cookcoolForm.reheatTemp);
     console.log($scope.cookcoolForm.reheatSign);
     console.log($scope.cookcoolForm.comment);
-    console.log($scope.cookcoolForm.checkon);
-    console.log($scope.cookcoolForm.managersign);*/
+*/
   };
 
 })//TemperatureCtrl
 
-.controller('HotholdCtrl', function($scope, ionicTimePicker) {
-  
-  $scope.hotholdForm = {}; 
+.controller('HotholdCtrl', function($scope, AuthService, $ionicPopup, $state, ionicTimePicker) {
+
+  $scope.hotholdForm = {};
 
   $scope.openTimePicker=function(){
 
     var ipObj1 = {
-    callback: function (val) {      
+    callback: function (val) {
       if (typeof (val) === 'undefined') {
         console.log('Time not selected');
       }
@@ -310,12 +336,12 @@ angular.module('starter.controllers', ['ionic.wheel'])
         var selectedTime = new Date(val * 1000);
         $scope.hotholdForm.time=selectedTime.getUTCHours() + 'H :' + selectedTime.getUTCMinutes() + 'M';
         //console.log('Selected epoch is : ', val, 'and the time is ', selectedTime.getUTCHours(), 'H :', selectedTime.getUTCMinutes(), 'M');
-     
+
       }
     },
-    inputTime: 50400,  
-    format: 12,         
-    step: 1,          
+    inputTime: 50400,
+    format: 12,
+    step: 1,
     setLabel: 'Select'
   };
 
@@ -324,7 +350,7 @@ angular.module('starter.controllers', ['ionic.wheel'])
 
   //prints formData array to DOM console after form is filled and submitted
   $scope.submitForm = function(hotholdForm) {
-   
+
     /*Testing
     console.log($scope.hotholdForm.date);
     console.log($scope.hotholdForm.food);
@@ -334,14 +360,27 @@ angular.module('starter.controllers', ['ionic.wheel'])
     console.log($scope.hotholdForm.thirdTemp);
     console.log($scope.hotholdForm.comment);
     console.log($scope.hotholdForm.sign);
-    console.log($scope.hotholdForm.checkon);
-    console.log($scope.hotholdForm.managersign);*/
+*/
+  };
+
+  $scope.submit = function() {
+  AuthService.hothold($scope.hotholdForm).then(function(msg) {
+    var alertPopup = $ionicPopup.alert({
+      title: 'Success!',
+      template: msg
+      });
+   }, function(errMsg) {
+    var alertPopup = $ionicPopup.alert({
+      title: 'Error',
+      template: errMsg
+    });
+  });
   };
 
 })//HotholdCtrl
 
-.controller('FridgeCtrl', function($scope) {
-  
+.controller('FridgeCtrl', function($scope, AuthService, $ionicPopup, $state) {
+
   $scope.units=[{
     name: 'Fridge 1',
     temp: ''
@@ -350,17 +389,16 @@ angular.module('starter.controllers', ['ionic.wheel'])
     temp: ''
   }]
 
-  
+
 
 
 })//FridgeCtrl
 
-//controller for Hygiene Training Page
-.controller('TrainingCtrl', function($scope) {
-   
-  $scope.trainingForm = {};  
+.controller('TrainingCtrl', function($scope, AuthService, $ionicPopup, $state) {
 
-  
+  $scope.trainingForm = {};
+
+
   //prints formData array to DOM console after form is filled and submitted
   $scope.submitForm = function(trainingForm) {
     console.log($scope.trainingForm.name);
@@ -377,10 +415,26 @@ angular.module('starter.controllers', ['ionic.wheel'])
     console.log($scope.trainingForm.empsignfurther);
   };
 
+    $scope.submit = function() {
+    AuthService.training($scope.trainingForm).then(function(msg) {
+     //redirect to home??
+      //$state.go('login');
+      var alertPopup = $ionicPopup.alert({
+        title: 'Success!',
+        template: msg
+        });
+     }, function(errMsg) {
+      var alertPopup = $ionicPopup.alert({
+        title: 'Error',
+        template: errMsg
+      });
+    });
+  };
+
 })//TrainingCtrl
 
-.controller('TransportCtrl', function($scope) {
-  
+.controller('TransportCtrl', function($scope, AuthService, $ionicPopup, $state) {
+
   $scope.transportForm={};
 
   $scope.submitForm=function(transportForm){
@@ -393,19 +447,29 @@ angular.module('starter.controllers', ['ionic.wheel'])
     console.log($scope.transportForm.temp);
     console.log($scope.transportForm.comment);
     console.log($scope.transportForm.sign);
-    console.log($scope.transportForm.checkon);
-    console.log($scope.transportForm.managersign);
-   
+
   }//submitForm
 
-  
+  $scope.submit = function() {
+  AuthService.transport($scope.transportForm).then(function(msg) {
+   //redirect to home??
+    //$state.go('login');
+    var alertPopup = $ionicPopup.alert({
+      title: 'Success!',
+      template: msg
+      });
+   }, function(errMsg) {
+    var alertPopup = $ionicPopup.alert({
+      title: 'Error',
+      template: errMsg
+    });
+  });
+  };
 
+})//TransportCtrl
 
-})//TransportCtrl 
+.controller('SettingsCtrl', function($scope, AuthService, $ionicPopup, $state) {
 
-//controls Settings page
-.controller('SettingsCtrl', function($scope) {
-  
   $scope.suppliersSelect=false;
   $scope.shouldShowDelete = false;
   $scope.listCanSwipe = true;
@@ -435,11 +499,11 @@ angular.module('starter.controllers', ['ionic.wheel'])
   };
   //delete selected supplier (slide selection and delete)
   $scope.deleteSupplier = function(supplier) {
-      
+
     $scope.suppliers.splice($scope.suppliers.indexOf(supplier), 1);
-      
+
   };
-  
+
   //open/close Refridgeration menu
   $scope.openRefridgeration = function(){
 
@@ -459,9 +523,9 @@ angular.module('starter.controllers', ['ionic.wheel'])
   };
   //delete selected unit (slide selection and delete)
   $scope.deleteUnit = function(unit) {
-      
+
     $scope.units.splice($scope.units.indexOf(unit), 1);
-      
+
   };
 
   //open/close Food menu
@@ -483,12 +547,18 @@ angular.module('starter.controllers', ['ionic.wheel'])
   };
   //delete selected food (slide selection and delete)
   $scope.deleteFood = function(food) {
-      
+
     $scope.foods.splice($scope.foods.indexOf(food), 1);
-      
+
   };
 
 })//SettingsCtrl
+
+.controller('HomeCtrl', function($scope) {
+  //home controller
+})
+
+
 
 .controller('NavCtrl', function($scope, $ionicSideMenuDelegate) {
   $scope.showMenu = function () {
@@ -500,5 +570,3 @@ angular.module('starter.controllers', ['ionic.wheel'])
 
 
 });
-
-
