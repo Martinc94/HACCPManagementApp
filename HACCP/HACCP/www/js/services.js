@@ -117,24 +117,6 @@ angular.module('starter.services', [])
         });
       };
 
-    var getSettings = function() {
-         return $q(function(resolve, reject) {
-           $http.get(API_ENDPOINT.url + '/settings').then(function(resp) {
-             if (resp.data.success) {
-               //console.log('Success', resp);
-
-               console.log(resp.data.msg);
-               console.log(resp.data.Nofridges);
-
-               //save to localStorage
-
-
-             }//end if
-
-           });
-         });
-       };
-
     var hothold = function(hotholdForm) {
           return $q(function(resolve, reject) {
             $http.post(API_ENDPOINT.url + '/hothold', hotholdForm).then(function(result) {
@@ -169,10 +151,42 @@ angular.module('starter.services', [])
           return $q(function(resolve, reject) {
             $http.post(API_ENDPOINT.url + '/hygieneInspection', fData,signData).then(function(result) {
             //console.log(signData,formData);
-            //console.log(fData.question);
+            //console.log(fData);
             //console.log(signData);
               if (result.data.success) {
                 //
+
+                resolve(result.data.msg);
+              } else {
+                reject(result.data.msg);
+              }
+            });
+          });
+        };
+
+    var getSettings = function() {
+         return $q(function(resolve, reject) {
+           $http.get(API_ENDPOINT.url + '/settings').then(function(resp) {
+             if (resp.data.success) {
+               //console.log('Success', resp);
+
+               console.log(resp.data.msg);
+               console.log(resp.data.Nofridges);
+
+               //save to localStorage
+
+
+             }//end if
+
+           });
+         });
+       };
+
+    var putSettings = function(settings) {
+          return $q(function(resolve, reject) {
+            $http.post(API_ENDPOINT.url + '/settings', settings).then(function(result) {
+            console.log(settings);
+              if (result.data.success) {
 
                 resolve(result.data.msg);
               } else {
@@ -186,6 +200,8 @@ angular.module('starter.services', [])
     var logout = function() {
       destroyUserCredentials();
     };
+
+
 
 
 
@@ -203,6 +219,7 @@ angular.module('starter.services', [])
       hothold:hothold,
       temperature:temperature,
       hygieneInspection:hygieneInspection,
+      putSettings:putSettings,
       isAuthenticated: function() {return isAuthenticated;},
     };
   })
