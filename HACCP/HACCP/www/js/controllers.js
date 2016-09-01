@@ -217,7 +217,7 @@ angular.module('starter.controllers', ['ionic.wheel'])
   };//popup
 
   $scope.submit = function() {
-  AuthService.hygieneInspection($scope.formData,$scope.signData).then(function(msg) {
+  AuthService.hygieneInspection($scope.fData,$scope.signData).then(function(msg) {
     var alertPopup = $ionicPopup.alert({
       title: 'Success!',
       template: msg
@@ -567,11 +567,19 @@ angular.module('starter.controllers', ['ionic.wheel'])
     $scope.foods.splice($scope.foods.indexOf(food), 1);
 
   };
-  //when page is loaded
+  //when page is entered
   $scope.$on('$ionicView.enter', function(){
     //calls server for settings
     AuthService.getSettings();
 
+  });
+
+  //when page is exited
+  $scope.$on('$ionicView.leave', function(){
+
+    //AuthService.getSettings();
+    console.log('Exiting Settings');
+    //Push settings if changes
   });
 
 
