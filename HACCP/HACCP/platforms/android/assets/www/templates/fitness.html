@@ -1,5 +1,5 @@
 <ion-view view-title="Fitness to Work">
- 
+
 	<ion-content class="fitness-to-Work">
 
 
@@ -7,8 +7,8 @@
 
         	<h3>Fitness to Work Assessment Form</h3>
 
-          
-        
+
+
 <form name="assForm" ng-submit="submitForm(formData)">
 	<div class="list">
   		<label class="item item-input">
@@ -22,17 +22,17 @@
 
   		<label class="item">
     		<span class="input-label">Reason for Assessment:</span>
-    	
+
     	<ion-radio name="q3" ng-model="formData.q3" ng-value="'Existing food handler'">Existing food handler</ion-radio>
  		 <ion-radio name="q3" ng-model="formData.q3" ng-value="'Pre-employment assessment'">Pre-employment assessment</ion-radio>
  		 <ion-radio name="q3" ng-model="formData.q3" ng-value="'Return to work after illness'">Return to work after illness</ion-radio>
  	</label>
-  		
+
   		<label class="item item-select item-text-wrap">
-    <div class="input-label" style="width: 1000px">
+    <div class="input-label" style="width: 90%">
       Have you suffered from diarrhoea and/or vomiting within the last 48 hours?
     </div>
-    <select ng-model="formData.q4" style="width: 20">
+    <select ng-model="formData.q4" >
       <option ng-value="'Yes'">Yes</option>
       <option ng-value="'No'">No</option>
     </select>
@@ -55,7 +55,7 @@
       <option ng-value="'No'">No</option>
     </select>
   </label>
-	
+
 	<label class="item item-input item-select item-text-wrap">
     <div class="input-label" style="width: 500px">
       In the last 21 days have you been in contact with anyone, at home or abroad, who may have been suffering from typhoid or paratyphoid?
@@ -65,7 +65,7 @@
       <option ng-value="'No'">No</option>
     </select>
   </label>
-	
+
 
 	<label class="item item-input">
     		<span class="input-label">Action taken</span>
@@ -82,7 +82,7 @@
     		<input type="date" placeholder="16/04/16" ng-model="formData.q12">
   		</label>
 
-  		<button class="button button-full button-clear" type="submit">
+  		<button class="button button-full button-clear" ng-click="submit()" type="submit">
   		Submit
 		</button>
 	<br>
@@ -93,5 +93,3 @@
 </ion-content>
 
 </ion-view>
-
-
