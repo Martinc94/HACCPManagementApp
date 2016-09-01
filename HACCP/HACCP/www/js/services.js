@@ -130,7 +130,7 @@ angular.module('starter.services', [])
 
 
              }//end if
-               
+
            });
          });
        };
@@ -165,10 +165,12 @@ angular.module('starter.services', [])
            });
          };
 
-    var hygieneInspection = function(signData,formData) {
+    var hygieneInspection = function(signData,fData) {
           return $q(function(resolve, reject) {
-            $http.post(API_ENDPOINT.url + '/hygieneInspection', formData,signData).then(function(result) {
-            console.log(signData,formData);
+            $http.post(API_ENDPOINT.url + '/hygieneInspection', fData,signData).then(function(result) {
+            //console.log(signData,formData);
+            //console.log(fData.question);
+            //console.log(signData);
               if (result.data.success) {
                 //
 

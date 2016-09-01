@@ -134,40 +134,43 @@ angular.module('starter.controllers', ['ionic.wheel'])
 
 .controller('HygieneCtrl', function($scope, AuthService, $ionicPopup, $state){
 
- //variable for page data to be sent to server
- $scope.formData = [];
- //variable for manager signing details
- $scope.signData = {};
- //controls question number
- var i=0;
+   $scope.fData = {};
+   $scope.fData.question = [];
 
- //function for yes/no selection
- $scope.selectChoice=function(selection){
-    //increment i for every question answered
-    i++;
-    //if user selects No, show popup for corrective action input
-    if(selection=='No'){
-      showPopup();
-    }
-    else{
-      //if user selects Yes, push question number and answer to array
-      $scope.formData.push(
-      "q" + i + " " + selection
-    );
-    }
+   //variable for manager signing details
+   $scope.signData = {};
 
-  }//selectChoice
+   //controls question number
+   var i=0;
+
+   //function for yes/no selection
+   $scope.selectChoice=function(selection){
+      //increment i for every question answered
+      i++;
+      //if user selects No, show popup for corrective action input
+      if(selection=='No'){
+        showPopup();
+      }
+      else{
+        //if user selects Yes, push question number and answer to array
+        /*$scope.formData.push(
+        "q" + i + " " + selection
+      );*/
+        $scope.fData.question[i]="q" + i + " " + selection;
+      }
+
+    }//selectChoice
 
   //when submit button is clicked at bottom of page, send signData answers
   $scope.submitForm=function(signData){
     //push signature details to array
-    $scope.formData.push(
+    /*$scope.formData.push(
       $scope.signData.name + " " + $scope.signData.position + " " + $scope.signData.sign + " " + $scope.signData.date + " " + $scope.signData.frequency
-    );
+    );*/
     //for testing only
     for(j=0; j<i+1; j++){
-     //console.log($scope.formData[j]);
-     console.log($scope.formData);
+     console.log($scope.fData.question[j]);
+     //console.log($scope.formData);
      //console.log($scope.signData);
       }
   }//submitForm
@@ -568,7 +571,7 @@ angular.module('starter.controllers', ['ionic.wheel'])
   $scope.$on('$ionicView.enter', function(){
     //calls server for settings
     AuthService.getSettings();
-    
+
   });
 
 
