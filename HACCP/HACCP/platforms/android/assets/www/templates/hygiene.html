@@ -3,9 +3,8 @@
   <ion-content>
       
 
-    <div class="hygiene-Inspection">
-    <h3>Hygiene of Food Rooms & Equipment</h3>
-    </div>
+    <h3 class="hygiene-Inspection">Hygiene of Food Rooms & Equipment</h3>
+
 
     <form name="hyInspForm" ng-submit="submitForm(formData)">
     
@@ -545,6 +544,17 @@
         <span class="input-label">Date</span>
         <input type="date" placeholder="16/04/16" ng-model="signData.date">
       </label>
+
+
+      <label class="item item-text-wrap">
+
+        Tick frequency checks carrried out by manager or supervisor:
+
+      <ion-radio ng-model="signData.frequency" ng-value="'Weekly'">Weekly</ion-radio>
+     <ion-radio ng-model="signData.frequency" ng-value="'Fortnightly'">Fortnightly</ion-radio>
+     <ion-radio ng-model="signData.frequency" ng-value="'Monthly'">Monthly</ion-radio>
+  </label>
+
 
       <button class="button button-full button-energized" ng-click="submit()" type="submit">
       Submit
