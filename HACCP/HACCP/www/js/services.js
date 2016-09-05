@@ -237,6 +237,54 @@ angular.module('starter.services', [])
            });
          };
 
+   var getSuppliers = function() {
+        return $q(function(resolve, reject) {
+          $http.get(API_ENDPOINT.url + '/suppliers').then(function(resp) {
+            if (resp.data.success) {
+
+              //save to localStorage
+              window.localStorage.setItem( 'Supplier1', resp.data.Supplier1 );
+              window.localStorage.setItem( 'Supplier2', resp.data.Supplier2 );
+              window.localStorage.setItem( 'Supplier3', resp.data.Supplier3 );
+              window.localStorage.setItem( 'Supplier4', resp.data.Supplier4 );
+              window.localStorage.setItem( 'Supplier5', resp.data.Supplier5 );
+              window.localStorage.setItem( 'Supplier6', resp.data.Supplier6 );
+              window.localStorage.setItem( 'Supplier7', resp.data.Supplier7 );
+              window.localStorage.setItem( 'Supplier8', resp.data.Supplier8 );
+              window.localStorage.setItem( 'Supplier9', resp.data.Supplier9 );
+              window.localStorage.setItem( 'Supplier10', resp.data.Supplier10 );
+
+              window.localStorage.setItem( 'Food1', resp.data.Food1 );
+              window.localStorage.setItem( 'Food2', resp.data.Food2 );
+              window.localStorage.setItem( 'Food3', resp.data.Food3 );
+              window.localStorage.setItem( 'Food4', resp.data.Food4 );
+              window.localStorage.setItem( 'Food5', resp.data.Food5 );
+              window.localStorage.setItem( 'Food6', resp.data.Food6 );
+              window.localStorage.setItem( 'Food7', resp.data.Food7 );
+              window.localStorage.setItem( 'Food8', resp.data.Food8 );
+              window.localStorage.setItem( 'Food9', resp.data.Food9 );
+              window.localStorage.setItem( 'Food10', resp.data.Food10 );
+
+            }//end if
+
+          });
+        });
+      };
+
+   var putSuppliers = function(units) {
+          return $q(function(resolve, reject) {
+            $http.post(API_ENDPOINT.url + '/suppliers', suppliers).then(function(result) {
+            console.log(suppliers);
+              if (result.data.success) {
+
+                resolve(result.data.msg);
+              } else {
+                reject(result.data.msg);
+              }
+            });
+          });
+        };
+
     var logout = function() {
       destroyUserCredentials();
     };
@@ -262,6 +310,8 @@ angular.module('starter.services', [])
       putSettings:putSettings,
       getRefridgerators:getRefridgerators,
       putRefridgerators:putRefridgerators,
+      getSuppliers:getSuppliers,
+      putSuppliers:putSuppliers,
       isAuthenticated: function() {return isAuthenticated;},
     };
   })

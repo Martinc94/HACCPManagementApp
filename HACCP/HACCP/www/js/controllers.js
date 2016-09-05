@@ -84,7 +84,7 @@ angular.module('starter.controllers', ['ionic.wheel'])
 .controller('FittCtrl', function($scope, AuthService, $ionicPopup, $state) {
 
   $scope.formData = {};
-  
+
   $scope.submit = function() {
     AuthService.fitness($scope.formData).then(function(msg) {
      //redirect to home??
@@ -235,10 +235,10 @@ angular.module('starter.controllers', ['ionic.wheel'])
   }//submitForm
 
   $scope.takePicture = function() {
-        var options = { 
-            quality : 75, 
-            destinationType : Camera.DestinationType.DATA_URL, 
-            sourceType : Camera.PictureSourceType.CAMERA, 
+        var options = {
+            quality : 75,
+            destinationType : Camera.DestinationType.DATA_URL,
+            sourceType : Camera.PictureSourceType.CAMERA,
             allowEdit : true,
             encodingType: Camera.EncodingType.JPEG,
             targetWidth: 300,
@@ -247,7 +247,7 @@ angular.module('starter.controllers', ['ionic.wheel'])
             cameraDirection: 1,
             saveToPhotoAlbum: false
         };
- 
+
         $cordovaCamera.getPicture(options).then(function(imageData) {
             $scope.imgURI = "data:image/jpeg;base64," + imageData;
             $scope.toggle=true;
@@ -312,7 +312,7 @@ angular.module('starter.controllers', ['ionic.wheel'])
       template: errMsg
     });
   });
-  
+
   $scope.cookcoolForm = {};
 
   };
@@ -345,7 +345,7 @@ angular.module('starter.controllers', ['ionic.wheel'])
 
   ionicTimePicker.openTimePicker(ipObj1);
   };
-  
+
   $scope.submit = function() {
   AuthService.hothold($scope.hotholdForm).then(function(msg) {
     var alertPopup = $ionicPopup.alert({
@@ -515,6 +515,7 @@ angular.module('starter.controllers', ['ionic.wheel'])
     //calls server for settings
     AuthService.getSettings();
     AuthService.getRefridgerators();
+    AuthService.getSuppliers();
 
   });
 
@@ -526,7 +527,9 @@ angular.module('starter.controllers', ['ionic.wheel'])
     //Push settings if changed
     //AuthService.putRefridgerators(units);
     var appData = window.localStorage.getItem( 'Fridge1' );
-    console.log(appData);
+    var appData2 = window.localStorage.getItem( 'Supplier1' );
+    var appData3 = window.localStorage.getItem( 'Food1' );
+    console.log(appData,appData2,appData3);
   });
 
 
