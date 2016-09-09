@@ -47,6 +47,7 @@ angular.module('starter.services', [])
 
     var login = function(user) {
       return $q(function(resolve, reject) {
+        //$http.defaults.headers.common['Access-Control-Allow-Origin'] = '*';
         $http.post(API_ENDPOINT.url + '/authenticate', user).then(function(result) {
           if (result.data.success) {
             storeUserCredentials(result.data.token);
