@@ -86,6 +86,19 @@ angular.module('starter.controllers', ['ionic.wheel'])
   $scope.formData = {};
 
   $scope.submit = function() {
+    if(!$scope.formData.q5){
+      console.log("no 5");
+      $scope.formData.q5=false;
+    }
+    if(!$scope.formData.q6){
+      console.log("no 6");
+      $scope.formData.q6=false;
+    }
+    if(!$scope.formData.q7){
+      console.log("no 7");
+      $scope.formData.q7=false;
+    }
+
     AuthService.fitness($scope.formData).then(function(msg) {
      //redirect to home??
       //$state.go('login');

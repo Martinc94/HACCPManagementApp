@@ -1,13 +1,13 @@
 <ion-view view-title="Hygiene Inspection">
 
-	<ion-content>
+  <ion-content>
       
 
-		<div class="hygiene-Inspection">
-		<h3>Hygiene of Food Rooms & Equipment</h3>
+    <div class="hygiene-Inspection">
+    <h3>Hygiene of Food Rooms & Equipment</h3>
     </div>
 
-		<form name="hyInspForm" ng-submit="submitForm(formData)">
+    <form name="hyInspForm" ng-submit="submitForm(formData)">
     
     <!-- COLUMNS BUT SELECT CHANGES
     <div class="row">
@@ -57,7 +57,7 @@
   </label>
     
   
-		<label class="item item-select item-text-wrap">
+    <label class="item item-select item-text-wrap">
     <div class="input-label" style="width: 90%">
      Are all food and hand contact surfaces e.g. work surfaces, delivery areas, slicers, fridge handles, food probe, in good condition and cleaned/disinfected regularly?
     </div>
@@ -89,13 +89,13 @@
     </select>
   
   </label>
-  			
+        
 
-		</ion-list>
+    </ion-list>
 
 
   <div class="hygiene-Inspection">
-		<h3>Food Storage</h3>
+    <h3>Food Storage</h3>
   </div>
 
       <label class="item item-select item-text-wrap">
@@ -148,7 +148,7 @@
       <option>No</option>
     </select>  
     </label>
-    			
+          
       <label class="item item-select item-text-wrap">
     <div class="input-label" style="width: 90%">
      Are freezers working properly?
@@ -167,12 +167,12 @@
       <option>Yes</option>
       <option>No</option>
     </select>  
-    </label>	
+    </label>  
 
-		</ion-list>
+    </ion-list>
 
   <div class="hygiene-Inspection">
-		<h3>Food Handling Practices</h3>
+    <h3>Food Handling Practices</h3>
   </div>
 
   <label class="item item-select item-text-wrap">
@@ -235,7 +235,7 @@
     </select>  
     </label>  
 
-	   <label class="item item-select item-text-wrap">
+     <label class="item item-select item-text-wrap">
     <div class="input-label" style="width: 90%">
      Are ready to eat fruits/salads/vegetables trimmed and washed thoroughly?
     </div>
@@ -244,8 +244,8 @@
       <option>No</option>
     </select>  
     </label>  
-				
-		<label class="item item-select item-text-wrap">
+        
+    <label class="item item-select item-text-wrap">
     <div class="input-label" style="width: 90%">
      Is food on display screened from customers?
     </div>
@@ -263,7 +263,7 @@
       <option>Yes</option>
       <option>No</option>
     </select>  
-    </label>  			
+    </label>        
 
     <label class="item item-select item-text-wrap">
     <div class="input-label" style="width: 90%">
@@ -273,7 +273,7 @@
       <option>Yes</option>
       <option>No</option>
     </select>  
-    </label>    			
+    </label>          
 
     <label class="item item-select item-text-wrap">
     <div class="input-label" style="width: 90%">
@@ -283,7 +283,7 @@
       <option>Yes</option>
       <option>No</option>
     </select>  
-    </label>   			
+    </label>        
 
     <label class="item item-select item-text-wrap">
     <div class="input-label" style="width: 90%">
@@ -305,10 +305,10 @@
     </select>  
     </label>    
 
-    	
-		</ion-list>
+      
+    </ion-list>
   <div class="hygiene-Inspection">
-		<h3>Personal Hygiene</h3>
+    <h3>Personal Hygiene</h3>
   </div>
 
   <label class="item item-select item-text-wrap">
@@ -361,11 +361,11 @@
     </select>  
     </label>  
 
-		</ion-list>
+    </ion-list>
 
 
   <div class="hygiene-Inspection">
-		<h3>Pest Control</h3>
+    <h3>Pest Control</h3>
   </div>
 
   <label class="item item-select item-text-wrap">
@@ -407,11 +407,11 @@
       <option>No</option>
     </select>  
     </label>     
-  			
-		</ion-list>
+        
+    </ion-list>
 
   <div class="hygiene-Inspection">
-		<h3>Waste Control</h3>
+    <h3>Waste Control</h3>
   </div>
   
   <label class="item item-select item-text-wrap">
@@ -444,10 +444,10 @@
     </select>  
     </label>   
 
-		</ion-list>
+    </ion-list>
 
   <div class="hygiene-Inspection">
-		<h3>Checks and Record Keeping</h3>
+    <h3>Checks and Record Keeping</h3>
   </div>
 
   <label class="item item-select item-text-wrap">
@@ -490,10 +490,10 @@
     </select>  
     </label>   
 
-		</ion-list>
+    </ion-list>
 
   <div class="hygiene-Inspection">
-		<h3>Review (4 Weekly)</h3>
+    <h3>Review (4 Weekly)</h3>
   </div>
 
   <label class="item item-select item-text-wrap">
@@ -525,10 +525,10 @@
       <option>No</option>
     </select>  
     </label>      
-			
-		</ion-list>
+      
+    </ion-list>
 
-    <form name="hygForm" ng-submit="submitForm(signData)">
+    <form name="hygForm">
     <label class="item item-input">
         <span class="input-label">Name</span>
         <input type="text" placeholder="John Smith" ng-model="signData.name">
@@ -546,7 +546,18 @@
         <input type="date" placeholder="16/04/16" ng-model="signData.date">
       </label>
 
-      <button class="button button-full button-energized" type="submit">
+
+      <label class="item item-text-wrap">
+
+        Tick frequency checks carrried out by manager or supervisor:
+
+      <ion-radio ng-model="signData.frequency" ng-value="'Weekly'">Weekly</ion-radio>
+     <ion-radio ng-model="signData.frequency" ng-value="'Fortnightly'">Fortnightly</ion-radio>
+     <ion-radio ng-model="signData.frequency" ng-value="'Monthly'">Monthly</ion-radio>
+  </label>
+
+
+      <button class="button button-full button-energized" ng-click="submit()" type="submit">
       Submit
     </button>
     </form>
