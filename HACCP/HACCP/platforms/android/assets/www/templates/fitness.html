@@ -1,13 +1,7 @@
 <ion-view view-title="Fitness to Work">
 
-	<ion-content class="fitness-to-Work">
-
-
-
-
-        	<h3>Fitness to Work Assessment Form</h3>
-
-
+	<ion-content>
+  	<h3 class="fitness-to-Work">Fitness to Work Assessment Form</h3>
 
 <form name="assForm" ng-submit="submitForm(formData)">
 	<div class="list">
@@ -81,12 +75,13 @@
     		<span class="input-label">Date:</span>
     		<input type="date" placeholder="16/04/16" ng-model="formData.q12">
   		</label>
-
+    
+    <div class="fitness-to-Work">
   		<button class="button button-full button-clear" ng-click="submit()" type="submit">
   		Submit
 		</button>
-	<br>
-	<br>
+  </div>
+	
 	</div>
 </form>
 

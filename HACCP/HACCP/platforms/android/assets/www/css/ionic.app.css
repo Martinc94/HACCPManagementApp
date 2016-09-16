@@ -26,35 +26,28 @@ $button-balanced-bg:              #e57d25 !default;//delivery
   background-color: #26b99b; }
 
 .food-delivery {
-  background-color: #e57d24;
-  height: 100%; }
+  background-color: #e57d24; }
 
 .refridgeration {
-  background-color: #0398dc;
-  height: 100%; }
+  background-color: #0398dc; }
 
 .cook-reheat-records {
-  background-color: #4eba6e;
-  height: 100%; }
+  background-color: #4eba6e; }
 
 .hot-Holding {
-  background-color: #e64b3b;
-  height: 100%; }
+  background-color: #e64b3b; }
 
 .hygiene-Inspection {
   background-color: #25b99a; }
 
 .hygiene-Training {
-  background-color: #9757a3;
-  height: 100%; }
+  background-color: #9757a3; }
 
 .fitness-to-Work {
-  background-color: #60b36d;
-  height: 100%; }
+  background-color: #60b36d; }
 
 .transport-and-Delivery {
-  background-color: #f0c419;
-  height: auto; }
+  background-color: #f0c419; }
 
 button.align-left {
   display: inline;
@@ -65,11 +58,15 @@ button.align-left {
   margin: 0;
   border: 1;
   height: 70px;
-  text-align: left;
   width: 400px;
   font: inherit;
   font-size: 100%;
   background-color: #fff; }
+
+.center {
+  margin-left: auto;
+  margin-right: auto;
+  display: block; }
 
 .wrapping-list .item-content, .wrapping-list .item {
   overflow: initial;
