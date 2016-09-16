@@ -46,22 +46,21 @@ $energized:                       #26b99b !default; //hygiene
 }
 .hot-Holding {
     background-color: #e64b3b;
-    height:100%;
 }
 .hygiene-Inspection {
     background-color: #25b99a;
 }
 .hygiene-Training {
     background-color: #9757a3;
-    height:100%;
+
 }
 .fitness-to-Work {
     background-color: #60b36d;
-    height:100%;
+
 }
 .transport-and-Delivery {
     background-color: #f0c419;
-    height: auto;
+
 }
 
 button.align-left {
@@ -78,6 +77,12 @@ button.align-left {
     font: inherit;
     font-size: 100%;
     background-color: #fff;
+}
+
+.center {
+    margin-left: auto;
+    margin-right: auto;
+    display: block;
 }
 
 
