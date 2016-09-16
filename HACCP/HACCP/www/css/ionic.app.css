@@ -38,23 +38,19 @@ $button-balanced-bg:              #e57d25 !default;//delivery
   height: 100%; }
 
 .hot-Holding {
-  background-color: #e64b3b;
-  height: 100%; }
+  background-color: #e64b3b; }
 
 .hygiene-Inspection {
   background-color: #25b99a; }
 
 .hygiene-Training {
-  background-color: #9757a3;
-  height: 100%; }
+  background-color: #9757a3; }
 
 .fitness-to-Work {
-  background-color: #60b36d;
-  height: 100%; }
+  background-color: #60b36d; }
 
 .transport-and-Delivery {
-  background-color: #f0c419;
-  height: auto; }
+  background-color: #f0c419; }
 
 button.align-left {
   display: inline;
@@ -70,6 +66,11 @@ button.align-left {
   font: inherit;
   font-size: 100%;
   background-color: #fff; }
+
+.center {
+  margin-left: auto;
+  margin-right: auto;
+  display: block; }
 
 .wrapping-list .item-content, .wrapping-list .item {
   overflow: initial;
