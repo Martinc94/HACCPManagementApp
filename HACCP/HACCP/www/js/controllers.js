@@ -59,7 +59,9 @@ angular.module('starter.controllers', ['ionic.wheel'])
   };
 })
 
-.controller('MenuCtrl', function($scope) {
+.controller('MenuCtrl', function($scope, $window) {
+
+  $scope.pageWidth = $window.innerWidth;
 
   var circles = document.getElementsByClassName('circle');
 

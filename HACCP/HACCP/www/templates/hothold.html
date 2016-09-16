@@ -1,8 +1,8 @@
 <ion-view view-title="Hot Hold/Display">
 
-  <ion-content class="hot-Holding">
+  <ion-content scroll="false">
 
-  <h3> Hot Hold/Display Records</h3>
+  <h3 class="hot-Holding"> Hot Hold/Display Records</h3>
 
   <form name="hhForm" ng-submit="submitForm(hotholdForm)">
        <div class="list">
@@ -52,14 +52,13 @@
         <span class="input-label">Sign</span>
         <input type="text" placeholder="John Smith" ng-model="hotholdForm.sign">
       </label>
-
+      <div class="hot-Holding">
       <button class="button button-full button-clear" ng-click="submit()" type="submit">
       Submit
     </button>
+  </div>
 
   </div>
 </form>
-
-  </ion-content>
-
+</ion-content>
 </ion-view>
