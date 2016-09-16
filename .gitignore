@@ -244,3 +244,4 @@ ModelManifest.xml
 # FAKE - F# Make
 .fake/
 HACCP/HACCP/platforms/
+HACCP/HACCP/plugins/

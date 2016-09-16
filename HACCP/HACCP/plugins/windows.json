@@ -30,6 +30,9 @@
         },
         "cordova-plugin-camera": {
             "PACKAGE_NAME": "HAACP APZ.com"
+        },
+        "cordova-plugin-inappbrowser": {
+            "PACKAGE_NAME": "HAACP APZ.com"
         }
     },
     "dependent_plugins": {

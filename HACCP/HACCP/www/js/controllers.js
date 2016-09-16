@@ -84,8 +84,21 @@ angular.module('starter.controllers', ['ionic.wheel'])
 .controller('FittCtrl', function($scope, AuthService, $ionicPopup, $state) {
 
   $scope.formData = {};
-  
+
   $scope.submit = function() {
+    if(!$scope.formData.q5){
+      console.log("no 5");
+      $scope.formData.q5=false;
+    }
+    if(!$scope.formData.q6){
+      console.log("no 6");
+      $scope.formData.q6=false;
+    }
+    if(!$scope.formData.q7){
+      console.log("no 7");
+      $scope.formData.q7=false;
+    }
+
     AuthService.fitness($scope.formData).then(function(msg) {
      //redirect to home??
       //$state.go('login');
@@ -145,13 +158,12 @@ angular.module('starter.controllers', ['ionic.wheel'])
       $scope.fData.question[i]="q" + i + " " + selection;
     }
 
-  }//selectChoice
+    }//selectChoice
 
   //when submit button is clicked at bottom of page, send signData answers
   $scope.submitForm=function(){
     //push signature details to array
-    console.log($scope.fData);
-    
+
   }//submitForm
 
   //text input popup if user selects no to a question
@@ -236,10 +248,10 @@ angular.module('starter.controllers', ['ionic.wheel'])
   }//submitForm
 
   $scope.takePicture = function() {
-        var options = { 
-            quality : 75, 
-            destinationType : Camera.DestinationType.DATA_URL, 
-            sourceType : Camera.PictureSourceType.CAMERA, 
+        var options = {
+            quality : 75,
+            destinationType : Camera.DestinationType.DATA_URL,
+            sourceType : Camera.PictureSourceType.CAMERA,
             allowEdit : true,
             encodingType: Camera.EncodingType.JPEG,
             targetWidth: 300,
@@ -248,7 +260,7 @@ angular.module('starter.controllers', ['ionic.wheel'])
             cameraDirection: 1,
             saveToPhotoAlbum: false
         };
- 
+
         $cordovaCamera.getPicture(options).then(function(imageData) {
             $scope.imgURI = "data:image/jpeg;base64," + imageData;
             $scope.toggle=true;
@@ -313,7 +325,7 @@ angular.module('starter.controllers', ['ionic.wheel'])
       template: errMsg
     });
   });
-  
+
   $scope.cookcoolForm = {};
 
   };
@@ -346,7 +358,7 @@ angular.module('starter.controllers', ['ionic.wheel'])
 
   ionicTimePicker.openTimePicker(ipObj1);
   };
-  
+
   $scope.submit = function() {
   AuthService.hothold($scope.hotholdForm).then(function(msg) {
     var alertPopup = $ionicPopup.alert({
@@ -511,11 +523,26 @@ angular.module('starter.controllers', ['ionic.wheel'])
     $scope.foods.splice($scope.foods.indexOf(food), 1);
 
   };
-  //when page is loaded
+  //when page is entered
   $scope.$on('$ionicView.enter', function(){
     //calls server for settings
     AuthService.getSettings();
-    
+    AuthService.getRefridgerators();
+    AuthService.getSuppliers();
+
+  });
+
+  //when page is exited
+  $scope.$on('$ionicView.leave', function(){
+
+    //AuthService.getSettings();
+    console.log('Exiting Settings');
+    //Push settings if changed
+    //AuthService.putRefridgerators(units);
+    var appData = window.localStorage.getItem( 'Fridge1' );
+    var appData2 = window.localStorage.getItem( 'Supplier1' );
+    var appData3 = window.localStorage.getItem( 'Food1' );
+    console.log(appData,appData2,appData3);
   });
 
 

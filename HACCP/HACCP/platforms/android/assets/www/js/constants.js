@@ -5,5 +5,6 @@ angular.module('starter')
 })
 
 .constant('API_ENDPOINT', {
-  url: 'http://localhost:8100/api'
+  //url: 'http://localhost:8100/api'
+  url: 'http://haccpapz.northeurope.cloudapp.azure.com:8080/api'
 });

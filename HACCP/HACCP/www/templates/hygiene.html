@@ -546,6 +546,17 @@
         <input type="date" placeholder="16/04/16" ng-model="signData.date">
       </label>
 
+
+      <label class="item item-text-wrap">
+
+        Tick frequency checks carrried out by manager or supervisor:
+
+      <ion-radio ng-model="signData.frequency" ng-value="'Weekly'">Weekly</ion-radio>
+     <ion-radio ng-model="signData.frequency" ng-value="'Fortnightly'">Fortnightly</ion-radio>
+     <ion-radio ng-model="signData.frequency" ng-value="'Monthly'">Monthly</ion-radio>
+  </label>
+
+
       <button class="button button-full button-energized" ng-click="submit()" type="submit">
       Submit
     </button>
