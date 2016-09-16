@@ -25,7 +25,7 @@
     <feature name="Camera">
         <param name="android-package" value="org.apache.cordova.camera.CameraLauncher" />
     </feature>
-    <name>HAACP APZ.com</name>
+    <name>HACCP APZ.com</name>
     <description>
         An Ionic Framework and Cordova project.
     </description>
