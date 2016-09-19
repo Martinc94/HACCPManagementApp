@@ -3,9 +3,8 @@
   <ion-content>
       
 
-    <div class="hygiene-Inspection">
-    <h3>Hygiene of Food Rooms & Equipment</h3>
-    </div>
+    <h3 class="hygiene-Inspection">Hygiene of Food Rooms & Equipment</h3>
+
 
     <form name="hyInspForm" ng-submit="submitForm(formData)">
     
@@ -27,68 +26,97 @@
     <div class="input-label" style="width: 90%">
       Are food rooms and equipment in good condition and well maintained?
     </div>
-    <select ng-model="mySelect1" ng-change="selectChoice(mySelect1)">
+    <select ng-model="formData.q1.selection" ng-change="selectChoice(formData.q1.selection)">
       <option>Yes</option>
       <option>No</option>
     </select>
-  
   </label>
+  <div class="item">
+    <label>
+        <input type="text" placeholder="Corrective Action" ng-model="formData.q1.action">
+      </label>
+    </div>
 
   <label class="item item-select item-text-wrap">
     <div class="input-label" style="width: 90%">
       Are food rooms clean and tidy and do staff clean as they go including difficult areas?
     </div>
-    <select ng-model="mySelect2" ng-change="selectChoice(mySelect2)" >
+    <select ng-model="formData.q2.selection" ng-change="selectChoice(formData.q2.selection)">
       <option>Yes</option>
       <option>No</option>
     </select>
-  
   </label>
+  <div class="item">
+    <label>
+    
+        <input type="text" placeholder="Corrective Action" ng-model="formData.q2.action">
+      </label>
+    </div>
 
   <label class="item item-select item-text-wrap">
     <div class="input-label" style="width: 90%">
       Is equipment easy to clean and kept in a clean condition?
     </div>
-    <select ng-model="mySelect3" ng-change="selectChoice(mySelect3)" >
+    <select ng-model="formData.q3.selection" ng-change="selectChoice(formData.q3.selection)">
       <option>Yes</option>
       <option>No</option>
     </select>
-  
   </label>
+  <div class="item">
+    <label>
+    
+        <input type="text" placeholder="Corrective Action" ng-model="formData.q3.action">
+      </label>
+    </div>
     
   
     <label class="item item-select item-text-wrap">
     <div class="input-label" style="width: 90%">
      Are all food and hand contact surfaces e.g. work surfaces, delivery areas, slicers, fridge handles, food probe, in good condition and cleaned/disinfected regularly?
     </div>
-    <select ng-model="mySelect4" ng-change="selectChoice(mySelect4)" >
-      <option>Yes</option>
+    <select ng-model="formData.q4.selection" ng-change="selectChoice(formData.q4.selection)">
+       <option>Yes</option>
       <option>No</option>
     </select>
-  
   </label>
+  <div class="item">
+    <label>
+    
+        <input type="text" placeholder="Corrective Action" ng-model="formData.q4.action">
+      </label>
+    </div>
 
   <label class="item item-select item-text-wrap">
     <div class="input-label" style="width: 90%">
      Are suitable cleaning chemicals available and stored correctly and are proper clean methods used?
     </div>
-    <select ng-model="mySelect5" ng-change="selectChoice(mySelect5)" >
-      <option>Yes</option>
+    <select ng-model="formData.q5.selection" ng-change="selectChoice(formData.q5.selection)">
+       <option>Yes</option>
       <option>No</option>
     </select>
-  
   </label>
+  <div class="item">
+    <label>
+    
+        <input type="text" placeholder="Corrective Action" ng-model="formData.q5.action">
+      </label>
+    </div>
 
   <label class="item item-select item-text-wrap">
     <div class="input-label" style="width: 90%">
      Are cleaning cloths suitable for use and regularly cleaned and disinfected and used properly?
     </div>
-    <select ng-model="mySelect6" ng-change="selectChoice(mySelect6)" >
+    <select ng-model="formData.q6.selection" ng-change="selectChoice(formData.q6.selection)">
       <option>Yes</option>
       <option>No</option>
     </select>
-  
   </label>
+  <div class="item">
+    <label>
+    
+        <input type="text" placeholder="Corrective Action" ng-model="formData.q6.action">
+      </label>
+    </div>
         
 
     </ion-list>
@@ -102,72 +130,114 @@
     <div class="input-label" style="width: 90%">
      Are deliveries appropriately stored immediately?
     </div>
-    <select ng-model="mySelect7" ng-change="selectChoice(mySelect7)" >
-      <option>Yes</option>
+    <select ng-model="formData.q7.selection" ng-change="selectChoice(formData.q7.selection)">
+       <option>Yes</option>
       <option>No</option>
     </select>
-    </label>
+  </label>
+  <div class="item">
+    <label>
+    
+        <input type="text" placeholder="Corrective Action" ng-model="formData.q7.action">
+      </label>
+    </div>
 
 
     <label class="item item-select item-text-wrap">
     <div class="input-label" style="width: 90%">
      Is ready-to-eat food stored above/separate from raw food in the fridges and freezers?
     </div>
-    <select ng-model="mySelect8" ng-change="selectChoice(mySelect8)" >
-      <option>Yes</option>
+    <select ng-model="formData.q8.selection" ng-change="selectChoice(formData.q8.selection)">
+       <option>Yes</option>
       <option>No</option>
     </select>
-    </label>
+  </label>
+  <div class="item">
+    <label>
+    
+        <input type="text" placeholder="Corrective Action" ng-model="formData.q8.action">
+      </label>
+    </div>
 
     <label class="item item-select item-text-wrap">
     <div class="input-label" style="width: 90%">
      Is food in fridges/freezers covered?
     </div>
-    <select ng-model="mySelect9" ng-change="selectChoice(mySelect9)" >
-      <option>Yes</option>
+    <select ng-model="formData.q9.selection" ng-change="selectChoice(formData.q9.selection)">
+       <option>Yes</option>
       <option>No</option>
     </select>
-    </label>
+  </label>
+  <div class="item">
+    <label>
+    
+        <input type="text" placeholder="Corrective Action" ng-model="formData.q9.action">
+      </label>
+    </div>
 
       <label class="item item-select item-text-wrap">
     <div class="input-label" style="width: 90%">
      Are high risk foods date coded, codes checked daily and stock rotated?
     </div>
-    <select ng-model="mySelect10" ng-change="selectChoice(mySelect10)" >
-      <option>Yes</option>
+    <select ng-model="formData.q10.selection" ng-change="selectChoice(formData.q10.selection)">
+       <option>Yes</option>
       <option>No</option>
-    </select>  
-    </label>
+    </select>
+  </label>
+  <div class="item">
+    <label>
+    
+        <input type="text" placeholder="Corrective Action" ng-model="formData.q10.action">
+      </label>
+    </div>
 
     <label class="item item-select item-text-wrap">
     <div class="input-label" style="width: 90%">
      Are dried goods stored correctly e.g. in suitable room, off the floor, in covered containers?
     </div>
-    <select ng-model="mySelect11" ng-change="selectChoice(mySelect11)" >
-      <option>Yes</option>
+    <select ng-model="formData.q11.selection" ng-change="selectChoice(formData.q11.selection)">
+       <option>Yes</option>
       <option>No</option>
-    </select>  
-    </label>
+    </select>
+  </label>
+  <div class="item">
+    <label>
+    
+        <input type="text" placeholder="Corrective Action" ng-model="formData.q11.action">
+      </label>
+    </div>
           
       <label class="item item-select item-text-wrap">
     <div class="input-label" style="width: 90%">
      Are freezers working properly?
     </div>
-    <select ng-model="mySelect12" ng-change="selectChoice(mySelect12)" >
-      <option>Yes</option>
+    <select ng-model="formData.q12.selection" ng-change="selectChoice(formData.q12.selection)">
+       <option>Yes</option>
       <option>No</option>
-    </select>  
-    </label>
+    </select>
+  </label>
+  <div class="item">
+    <label>
+    
+        <input type="text" placeholder="Corrective Action" ng-model="formData.q12.action">
+      </label>
+    </div>
 
       <label class="item item-select item-text-wrap">
     <div class="input-label" style="width: 90%">
      Are fridges and freezers defrosted regularly?
     </div>
-    <select ng-model="mySelect13" ng-change="selectChoice(mySelect13)" >
-      <option>Yes</option>
+    <select ng-model="formData.q13.selection" ng-change="selectChoice(formData.q13.selection)">
+       <option>Yes</option>
       <option>No</option>
-    </select>  
-    </label>  
+    </select>
+  </label>
+  <div class="item">
+    <label>
+    
+        <input type="text" placeholder="Corrective Action" ng-model="formData.q13.action">
+      </label>
+    </div>
 
     </ion-list>
 
@@ -179,131 +249,209 @@
     <div class="input-label" style="width: 90%">
      Are raw and ready-to-eat foods prepared in separate areas or are the work surfaces cleaned and disinfected between uses?
     </div>
-    <select ng-model="mySelect14" ng-change="selectChoice(mySelect14)" >
-      <option>Yes</option>
+    <select ng-model="formData.q14.selection" ng-change="selectChoice(formData.q14.selection)">
+       <option>Yes</option>
       <option>No</option>
-    </select>  
-    </label>  
+    </select>
+  </label>
+  <div class="item">
+    <label>
+    
+        <input type="text" placeholder="Corrective Action" ng-model="formData.q14.action">
+      </label>
+    </div>
 
     <label class="item item-select item-text-wrap">
     <div class="input-label" style="width: 90%">
      Separate complex equipment (e.g. vacuum packing machines, food mixers, etc) are used for raw and ready-to-eat foods?
     </div>
-    <select ng-model="mySelect15" ng-change="selectChoice(mySelect15)" >
-      <option>Yes</option>
+    <select ng-model="formData.q15.selection" ng-change="selectChoice(formData.q15.selection)">
+       <option>Yes</option>
       <option>No</option>
-    </select>  
-    </label>  
+    </select>
+  </label>
+  <div class="item">
+    <label>
+    
+        <input type="text" placeholder="Corrective Action" ng-model="formData.q15.action">
+      </label>
+    </div>  
 
     <label class="item item-select item-text-wrap">
     <div class="input-label" style="width: 90%">
      Are staff handling food as little as possible? (e.g. using tongs)
     </div>
-    <select ng-model="mySelect16" ng-change="selectChoice(mySelect16)" >
-      <option>Yes</option>
+    <select ng-model="formData.q16.selection" ng-change="selectChoice(formData.q16.selection)">
+       <option>Yes</option>
       <option>No</option>
-    </select>  
-    </label>  
+    </select>
+  </label>
+  <div class="item">
+    <label>
+    
+        <input type="text" placeholder="Corrective Action" ng-model="formData.q16.action">
+      </label>
+    </div>
 
     <label class="item item-select item-text-wrap">
     <div class="input-label" style="width: 90%">
      If colour coded equipment is provided (e.g. chopping boards), is it correctly used?
     </div>
-    <select ng-model="mySelect17" ng-change="selectChoice(mySelect17)" >
-      <option>Yes</option>
+    <select ng-model="formData.q17.selection" ng-change="selectChoice(formData.q17.selection)">
+       <option>Yes</option>
       <option>No</option>
-    </select>  
-    </label>  
+    </select>
+  </label>
+  <div class="item">
+    <label>
+    
+        <input type="text" placeholder="Corrective Action" ng-model="formData.q17.action">
+      </label>
+    </div>
 
     <label class="item item-select item-text-wrap">
     <div class="input-label" style="width: 90%">
      Are high risk foods prepared in small batches and returned to the fridge immediately after handling/preparation?
     </div>
-    <select ng-model="mySelect18" ng-change="selectChoice(mySelect18)" >
-      <option>Yes</option>
+    <select ng-model="formData.q18.selection" ng-change="selectChoice(formData.q18.selection)">
+       <option>Yes</option>
       <option>No</option>
-    </select>  
-    </label>  
+    </select>
+  </label>
+  <div class="item">
+    <label>
+    
+        <input type="text" placeholder="Corrective Action" ng-model="formData.q18.action">
+      </label>
+    </div>
 
     <label class="item item-select item-text-wrap">
     <div class="input-label" style="width: 90%">
      Is food cooled as quickly as possible away from raw food and other sources of contamination?
     </div>
-    <select ng-model="mySelect19" ng-change="selectChoice(mySelect19)" >
-      <option>Yes</option>
+    <select ng-model="formData.q19.selection" ng-change="selectChoice(formData.q19.selection)">
+       <option>Yes</option>
       <option>No</option>
-    </select>  
-    </label>  
+    </select>
+  </label>
+  <div class="item">
+    <label>
+    
+        <input type="text" placeholder="Corrective Action" ng-model="formData.q19.action">
+      </label>
+    </div>
 
      <label class="item item-select item-text-wrap">
     <div class="input-label" style="width: 90%">
      Are ready to eat fruits/salads/vegetables trimmed and washed thoroughly?
     </div>
-    <select ng-model="mySelect20" ng-change="selectChoice(mySelect20)" >
-      <option>Yes</option>
+    <select ng-model="formData.q20.selection" ng-change="selectChoice(formData.q20.selection)">
+       <option>Yes</option>
       <option>No</option>
-    </select>  
-    </label>  
+    </select>
+  </label>
+  <div class="item">
+    <label>
+    
+        <input type="text" placeholder="Corrective Action" ng-model="formData.q20.action">
+      </label>
+    </div>
         
     <label class="item item-select item-text-wrap">
     <div class="input-label" style="width: 90%">
      Is food on display screened from customers?
     </div>
-    <select ng-model="mySelect21" ng-change="selectChoice(mySelect21)" >
-      <option>Yes</option>
+    <select ng-model="formData.q21.selection" ng-change="selectChoice(formData.q21.selection)">
+       <option>Yes</option>
       <option>No</option>
-    </select>  
-    </label>  
+    </select>
+  </label>
+  <div class="item">
+    <label>
+    
+        <input type="text" placeholder="Corrective Action" ng-model="formData.q21.action">
+      </label>
+    </div>
 
     <label class="item item-select item-text-wrap">
     <div class="input-label" style="width: 90%">
      Are adequate clean utensils available for self service?
     </div>
-    <select ng-model="mySelect22" ng-change="selectChoice(mySelect22)" >
-      <option>Yes</option>
+    <select ng-model="formData.q22.selection" ng-change="selectChoice(formData.q22.selection)">
+       <option>Yes</option>
       <option>No</option>
-    </select>  
-    </label>        
+    </select>
+  </label>
+  <div class="item">
+    <label>
+    
+        <input type="text" placeholder="Corrective Action" ng-model="formData.q22.action">
+      </label>
+    </div>       
 
     <label class="item item-select item-text-wrap">
     <div class="input-label" style="width: 90%">
      Are frozen foods defrosted safely?
     </div>
-    <select ng-model="mySelect23" ng-change="selectChoice(mySelect23)" >
+    <select ng-model="formData.q23.selection" ng-change="selectChoice(formData.q23.selection)">
       <option>Yes</option>
       <option>No</option>
-    </select>  
-    </label>          
+    </select>
+  </label>
+  <div class="item">
+    <label>
+    
+        <input type="text" placeholder="Corrective Action" ng-model="formData.q23.action">
+      </label>
+    </div>    
 
     <label class="item item-select item-text-wrap">
     <div class="input-label" style="width: 90%">
      Are controls in place to prevent contamination by chemicals/foreign bodies e.g. glass, packaging materials, bolts, rust, cleaning chemicals?
     </div>
-    <select ng-model="mySelect24" ng-change="selectChoice(mySelect24)" >
-      <option>Yes</option>
+    <select ng-model="formData.q24.selection" ng-change="selectChoice(formData.q24.selection)">
+       <option>Yes</option>
       <option>No</option>
-    </select>  
-    </label>        
+    </select>
+  </label>
+  <div class="item">
+    <label>
+    
+        <input type="text" placeholder="Corrective Action" ng-model="formData.q24.action">
+      </label>
+    </div>   
 
     <label class="item item-select item-text-wrap">
     <div class="input-label" style="width: 90%">
      Are staff aware of food alergy hazards?
     </div>
-    <select ng-model="mySelect25" ng-change="selectChoice(mySelect25)" >
-      <option>Yes</option>
+    <select ng-model="formData.q25.selection" ng-change="selectChoice(formData.q25.selection)">
+       <option>Yes</option>
       <option>No</option>
-    </select>  
-    </label>     
+    </select>
+  </label>
+  <div class="item">
+    <label>
+    
+        <input type="text" placeholder="Corrective Action" ng-model="formData.q25.action">
+      </label>
+    </div>    
 
     <label class="item item-select item-text-wrap">
     <div class="input-label" style="width: 90%">
      Are probe thermometers correctly used and cleaned/disinfected before and after use?
     </div>
-    <select ng-model="mySelect26" ng-change="selectChoice(mySelect26)" >
-      <option>Yes</option>
+    <select ng-model="formData.q26.selection" ng-change="selectChoice(formData.q26.selection)">
+       <option>Yes</option>
       <option>No</option>
-    </select>  
-    </label>    
+    </select>
+  </label>
+  <div class="item">
+    <label>
+    
+        <input type="text" placeholder="Corrective Action" ng-model="formData.q26.action">
+      </label>
+    </div>
 
       
     </ion-list>
@@ -315,51 +463,81 @@
     <div class="input-label" style="width: 90%">
      Are staff fit to work, wearing clean, suitable protective clothing and following personal hygiene rules particularly hand washing?
     </div>
-    <select ng-model="mySelect27" ng-change="selectChoice(mySelect27)" >
-      <option>Yes</option>
+    <select ng-model="formData.q27.selection" ng-change="selectChoice(formData.q27.selection)">
+       <option>Yes</option>
       <option>No</option>
-    </select>  
-    </label>    
+    </select>
+  </label>
+  <div class="item">
+    <label>
+    
+        <input type="text" placeholder="Corrective Action" ng-model="formData.q27.action">
+      </label>
+    </div>  
 
     <label class="item item-select item-text-wrap">
     <div class="input-label" style="width: 90%">
      Are wash hand basins clean with warm water, soap and hygienic hand drying facilities?
     </div>
-    <select ng-model="mySelect28" ng-change="selectChoice(mySelect28)" >
-      <option>Yes</option>
+    <select ng-model="formData.q28.selection" ng-change="selectChoice(formData.q28.selection)">
+       <option>Yes</option>
       <option>No</option>
-    </select>  
-    </label>    
+    </select>
+  </label>
+  <div class="item">
+    <label>
+    
+        <input type="text" placeholder="Corrective Action" ng-model="formData.q28.action">
+      </label>
+    </div>  
 
     <label class="item item-select item-text-wrap">
     <div class="input-label" style="width: 90%">
      Are wash hand basins used for hand washing only and used regularly by staff?
     </div>
-    <select ng-model="mySelect29" ng-change="selectChoice(mySelect29)" >
-      <option>Yes</option>
+    <select ng-model="formData.q29.selection" ng-change="selectChoice(formData.q29.selection)">
+       <option>Yes</option>
       <option>No</option>
-    </select>  
-    </label>    
+    </select>
+  </label>
+  <div class="item">
+    <label>
+    
+        <input type="text" placeholder="Corrective Action" ng-model="formData.q29.action">
+      </label>
+    </div>
 
     <label class="item item-select item-text-wrap">
     <div class="input-label" style="width: 90%">
      Are staff handling food as little as possible?
     </div>
-    <select ng-model="mySelect30" ng-change="selectChoice(mySelect30)" >
-      <option>Yes</option>
+    <select ng-model="formData.q30.selection" ng-change="selectChoice(formData.q30.selection)">
+       <option>Yes</option>
       <option>No</option>
-    </select>  
-    </label>   
+    </select>
+  </label>
+  <div class="item">
+    <label>
+    
+        <input type="text" placeholder="Corrective Action" ng-model="formData.q30.action">
+      </label>
+    </div>
 
     <label class="item item-select item-text-wrap">
     <div class="input-label" style="width: 90%">
     Are staff toilets and changing facilities clean and tidy?
     </div>
-    <select ng-model="mySelect31" ng-change="selectChoice(mySelect31)" >
-      <option>Yes</option>
+    <select ng-model="formData.q31.selection" ng-change="selectChoice(formData.q31.selection)">
+       <option>Yes</option>
       <option>No</option>
-    </select>  
-    </label>  
+    </select>
+  </label>
+  <div class="item">
+    <label>
+    
+        <input type="text" placeholder="Corrective Action" ng-model="formData.q31.action">
+      </label>
+    </div>
 
     </ion-list>
 
@@ -372,41 +550,65 @@
     <div class="input-label" style="width: 90%">
     Are premises pest proofed and free from any signs of pests?
     </div>
-    <select ng-model="mySelect32" ng-change="selectChoice(mySelect32)" >
-      <option>Yes</option>
+    <select ng-model="formData.q32.selection" ng-change="selectChoice(formData.q32.selection)">
+       <option>Yes</option>
       <option>No</option>
-    </select>  
-    </label>  
+    </select>
+  </label>
+  <div class="item">
+    <label>
+    
+        <input type="text" placeholder="Corrective Action" ng-model="formData.q32.action">
+      </label>
+    </div>
 
     <label class="item item-select item-text-wrap">
     <div class="input-label" style="width: 90%">
     Where necessary are external doors/windows fitted with suitable flyscreens?
     </div>
-    <select ng-model="mySelect33" ng-change="selectChoice(mySelect33)" >
-      <option>Yes</option>
+    <select ng-model="formData.q33.selection" ng-change="selectChoice(formData.q33.selection)">
+       <option>Yes</option>
       <option>No</option>
-    </select>  
-    </label> 
+    </select>
+  </label>
+  <div class="item">
+    <label>
+    
+        <input type="text" placeholder="Corrective Action" ng-model="formData.q33.action">
+      </label>
+    </div>
 
     <label class="item item-select item-text-wrap">
     <div class="input-label" style="width: 90%">
     Are insectocutors (if provided) properly maintained?
     </div>
-    <select ng-model="mySelect34" ng-change="selectChoice(mySelect34)" >
-      <option>Yes</option>
+    <select ng-model="formData.q34.selection" ng-change="selectChoice(formData.q34.selection)">
+       <option>Yes</option>
       <option>No</option>
-    </select>  
-    </label> 
+    </select>
+  </label>
+  <div class="item">
+    <label>
+    
+        <input type="text" placeholder="Corrective Action" ng-model="formData.q34.action">
+      </label>
+    </div>
 
     <label class="item item-select item-text-wrap">
     <div class="input-label" style="width: 90%">
     Is food properly protected from risk of contamination by pests?
     </div>
-    <select ng-model="mySelect35" ng-change="selectChoice(mySelect35)" >
-      <option>Yes</option>
+    <select ng-model="formData.q35.selection" ng-change="selectChoice(formData.q35.selection)">
+       <option>Yes</option>
       <option>No</option>
-    </select>  
-    </label>     
+    </select>
+  </label>
+  <div class="item">
+    <label>
+    
+        <input type="text" placeholder="Corrective Action" ng-model="formData.q35.action">
+      </label>
+    </div>  
         
     </ion-list>
 
@@ -418,31 +620,49 @@
     <div class="input-label" style="width: 90%">
     Is waste in food rooms stored correctly?
     </div>
-    <select ng-model="mySelect36" ng-change="selectChoice(mySelect36)" >
-      <option>Yes</option>
+    <select ng-model="formData.q36.selection" ng-change="selectChoice(formData.q36.selection)">
+       <option>Yes</option>
       <option>No</option>
-    </select>  
-    </label>     
+    </select>
+  </label>
+  <div class="item">
+    <label>
+    
+        <input type="text" placeholder="Corrective Action" ng-model="formData.q36.action">
+      </label>
+    </div> 
 
      <label class="item item-select item-text-wrap">
     <div class="input-label" style="width: 90%">
     Is food waste stored correctly outside and is the refuse area kept clean?
     </div>
-    <select ng-model="mySelect37" ng-change="selectChoice(mySelect37)" >
-      <option>Yes</option>
+    <select ng-model="formData.q37.selection" ng-change="selectChoice(formData.q37.selection)">
+       <option>Yes</option>
       <option>No</option>
-    </select>  
-    </label>    
+    </select>
+  </label>
+  <div class="item">
+    <label>
+    
+        <input type="text" placeholder="Corrective Action" ng-model="formData.q37.action">
+      </label>
+    </div>
 
     <label class="item item-select item-text-wrap">
     <div class="input-label" style="width: 90%">
     Is unfit food clearly labelled and stored separately from other foods?
     </div>
-    <select ng-model="mySelect38" ng-change="selectChoice(mySelect38)" >
-      <option>Yes</option>
+    <select ng-model="formData.q38.selection" ng-change="selectChoice(formData.q38.selection)">
+       <option>Yes</option>
       <option>No</option>
-    </select>  
-    </label>   
+    </select>
+  </label>
+  <div class="item">
+    <label>
+    
+        <input type="text" placeholder="Corrective Action" ng-model="formData.q38.action">
+      </label>
+    </div>
 
     </ion-list>
 
@@ -454,41 +674,64 @@
     <div class="input-label" style="width: 90%">
     Are all checks properly taken and recorded?
     </div>
-    <select ng-model="mySelect39" ng-change="selectChoice(mySelect39)" >
-      <option>Yes</option>
+    <select ng-model="formData.q39.selection" ng-change="selectChoice(formData.q39.selection)">
+       <option>Yes</option>
       <option>No</option>
-    </select>  
-    </label>  
+    </select>
+  </label>
+  <div class="item">
+    <label>
+    
+        <input type="text" placeholder="Corrective Action" ng-model="formData.q39.action">
+      </label>
+    </div> 
 
     <label class="item item-select item-text-wrap">
     <div class="input-label" style="width: 90%">
     Has appropriate corrective action been taken where necessary?
     </div>
-    <select ng-model="mySelect40" ng-change="selectChoice(mySelect40)" >
-      <option>Yes</option>
+    <select ng-model="formData.q40.selection" ng-change="selectChoice(formData.q40.selection)">
+       <option>Yes</option>
       <option>No</option>
-    </select>  
-    </label>   
+    </select>
+  </label>
+  <div class="item">
+    <label>
+    
+        <input type="text" placeholder="Corrective Action" ng-model="formData.q40.action">
+      </label>
+    </div>
 
     <label class="item item-select item-text-wrap">
     <div class="input-label" style="width: 90%">
     Are record forms up-to-date, checked and verified?
     </div>
-    <select ng-model="mySelect41" ng-change="selectChoice(mySelect41)" >
-      <option>Yes</option>
+    <select ng-model="formData.q41.selection" ng-change="selectChoice(formData.q41.selection)">
+       <option>Yes</option>
       <option>No</option>
-    </select>  
-    </label>   
+    </select>
+  </label>
+  <div class="item">
+    <label>
+    
+        <input type="text" placeholder="Corrective Action" ng-model="formData.q41.action">
+      </label>
+    </div>
 
     <label class="item item-select item-text-wrap">
     <div class="input-label" style="width: 90%">
     Are equipment time/temperature combinations specified and regularly cross-checked?
     </div>
-    <select ng-model="mySelect42" ng-change="selectChoice(mySelect42)" >
-      <option>Yes</option>
+    <select ng-model="formData.q42.selection" ng-change="selectChoice(formData.q42.selection)">
+       <option>Yes</option>
       <option>No</option>
-    </select>  
-    </label>   
+    </select>
+  </label>
+  <div class="item">
+    <label>
+        <input type="text" placeholder="Corrective Action" placeholder="Action" ng-model="formData.q42.action">
+      </label>
+    </div>
 
     </ion-list>
 
@@ -500,50 +743,68 @@
     <div class="input-label" style="width: 90%">
     Any new suppliers and approved list updated?
     </div>
-    <select ng-model="mySelect43" ng-change="selectChoice(mySelect43)" >
-      <option>Yes</option>
+    <select ng-model="formData.q43.selection" ng-change="selectChoice(formData.q43.selection)">
+       <option>Yes</option>
       <option>No</option>
-    </select>  
-    </label>   
+    </select>
+  </label>
+  <div class="item">
+    <label>
+    
+        <input type="text" placeholder="Corrective Action" ng-model="formData.q43.action">
+      </label>
+    </div> 
 
     <label class="item item-select item-text-wrap">
     <div class="input-label" style="width: 90%">
     Any new menu items and steps in safe catering updated?
     </div>
-    <select ng-model="mySelect44" ng-change="selectChoice(mySelect44)" >
-      <option>Yes</option>
+    <select ng-model="formData.q44.selection" ng-change="selectChoice(formData.q44.selection)">
+       <option>Yes</option>
       <option>No</option>
-    </select>  
-    </label>   
+    </select>
+  </label>
+  <div class="item">
+    <label>
+    
+        <input type="text" placeholder="Corrective Action" ng-model="formData.q44.action">
+      </label>
+    </div>
 
     <label class="item item-select item-text-wrap">
     <div class="input-label" style="width: 90%">
     Any new food handling methods or equipment and steps in safe catering updated?
     </div>
-    <select ng-model="mySelect45" ng-change="selectChoice(mySelect45)" >
-      <option>Yes</option>
+    <select ng-model="formData.q45.selection" ng-change="selectChoice(formData.q45.selection)">
+       <option>Yes</option>
       <option>No</option>
-    </select>  
-    </label>      
+    </select>
+  </label>
+  <div class="item">
+    <label>
+    
+        <input type="text" placeholder="Corrective Action" ng-model="formData.q45.action">
+      </label>
+    </div>   
       
     </ion-list>
 
     <form name="hygForm">
     <label class="item item-input">
         <span class="input-label">Name</span>
-        <input type="text" placeholder="John Smith" ng-model="signData.name">
+        <input type="text" placeholder="John Smith" ng-model="formData.name">
       </label>
       <label class="item item-input">
         <span class="input-label">Position</span>
-        <input type="text" placeholder="Manager/Supervisor" ng-model="signData.position">
+        <input type="text" placeholder="Manager/Supervisor" ng-model="formData.position">
       </label>
       <label class="item item-input">
         <span class="input-label">Signed</span>
-        <input type="text" placeholder="John Smith" ng-model="signData.sign">
+        <input type="text" placeholder="John Smith" ng-model="formData.sign">
       </label>
       <label class="item item-input">
         <span class="input-label">Date</span>
-        <input type="date" placeholder="16/04/16" ng-model="signData.date">
+        <input type="date" placeholder="16/04/16" ng-model="formData.date">
       </label>
 
 
