@@ -148,12 +148,11 @@ angular.module('starter.services', [])
            });
          };
 
-    var hygieneInspection = function(signData,fData) {
+    var hygieneInspection = function(formData) {
           return $q(function(resolve, reject) {
-            $http.post(API_ENDPOINT.url + '/hygieneInspection', fData,signData).then(function(result) {
-            //console.log(signData,formData);
-            //console.log(fData);
-            //console.log(signData);
+            $http.post(API_ENDPOINT.url + '/hygieneInspection', formData).then(function(result) {
+            console.log(formData);
+          
               if (result.data.success) {
                 //
 
@@ -238,7 +237,7 @@ angular.module('starter.services', [])
            });
          };
 
-   var getSuppliers = function() {
+    var getSuppliers = function() {
         return $q(function(resolve, reject) {
           $http.get(API_ENDPOINT.url + '/suppliers').then(function(resp) {
             if (resp.data.success) {
@@ -272,7 +271,7 @@ angular.module('starter.services', [])
         });
       };
 
-   var putSuppliers = function(units) {
+    var putSuppliers = function(units) {
           return $q(function(resolve, reject) {
             $http.post(API_ENDPOINT.url + '/suppliers', suppliers).then(function(result) {
             console.log(suppliers);
@@ -296,7 +295,7 @@ angular.module('starter.services', [])
 
     loadUserCredentials();
 
-   return {
+    return {
       login: login,
       register: register,
       forgot: forgot,

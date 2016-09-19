@@ -137,7 +137,7 @@ angular.module('starter.controllers', ['ionic.wheel'])
  $scope.formData = {};
 
   $scope.submit = function() {
-  AuthService.hygieneInspection($scope.fData,$scope.signData).then(function(msg) {
+  AuthService.hygieneInspection($scope.formData).then(function(msg) {
     var alertPopup = $ionicPopup.alert({
       title: 'Success!',
       template: msg
@@ -152,8 +152,6 @@ angular.module('starter.controllers', ['ionic.wheel'])
   $scope.formData={};
 
   };
-
-
 
 })//HygieneCtrl
 
