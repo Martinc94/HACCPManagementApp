@@ -31,8 +31,7 @@
      Food Item
     </div>
     <select ng-model="deliveryForm.food" >
-      <option ng-value="'Chicken'">Chicken</option>
-      <option ng-value="'Beef'">Beef</option>
+      <option ng-repeat="f in foodItems">{{f.name}}</option>
     </select>
   </label>
 
@@ -43,11 +42,10 @@
 
   		<label class="item item-select item-text-wrap">
     <div class="input-label" style="width: 90%">
-    Supplied By
+     Supplied By
     </div>
     <select ng-model="deliveryForm.supplier" >
-      <option>McDonnells</option>
-      <option>O'Haras</option>
+      <option ng-repeat="s in suppliers">{{s.name}}</option>
     </select>
   </label>
 

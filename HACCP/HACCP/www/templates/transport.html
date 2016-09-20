@@ -13,14 +13,13 @@
   		</label>
 
   		<label class="item item-select item-text-wrap">
-		    <div class="input-label" style="width: 90%">
-		     Food Item
-		    </div>
-		    <select ng-model="transportForm.food" >
-		      <option ng-value="'Yes'">Chicken</option>
-		      <option ng-value="'No'">Beef</option>
-		    </select>
-		  </label>
+    <div class="input-label" style="width: 90%">
+     Food Item
+    </div>
+    <select ng-model="transportForm.food" >
+      <option ng-repeat="f in foodItems">{{f.name}}</option>
+    </select>
+  </label>
 
   		<label class="item item-input">
     		<span class="input-label">Batch Code/'Use-by' Date</span>
