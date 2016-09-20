@@ -14,11 +14,10 @@
 
       <label class="item item-select item-text-wrap">
     <div class="input-label" style="width: 90%">
-     Food
+     Food Item
     </div>
     <select ng-model="hotholdForm.food" >
-      <option>Chicken</option>
-      <option>Beef</option>
+      <option ng-repeat="f in foodItems">{{f.name}}</option>
     </select>
   </label>
 
