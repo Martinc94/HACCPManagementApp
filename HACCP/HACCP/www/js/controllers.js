@@ -638,10 +638,14 @@ angular.module('starter.controllers', ['ionic.wheel'])
     console.log('Exiting Settings');
     //Push settings if changed
     //AuthService.putRefridgerators(units);
-    var appData = window.localStorage.getItem( 'Fridge1' );
-    var appData2 = window.localStorage.getItem( 'Supplier1' );
-    var appData3 = window.localStorage.getItem( 'Food1' );
-    console.log(appData,appData2,appData3);
+
+    //var appData = window.localStorage.getItem( 'Fridge1' );
+    //var appData2 = window.localStorage.getItem( 'Supplier1' );
+    //var appData3 = window.localStorage.getItem( 'Food1' );
+    //console.log(appData,appData2,appData3);
+
+    var FridgeData = window.localStorage.getItem('FridgeData');
+    console.log(JSON.parse(FridgeData));
   });
 
 
