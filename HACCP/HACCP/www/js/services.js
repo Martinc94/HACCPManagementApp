@@ -152,7 +152,7 @@ angular.module('starter.services', [])
           return $q(function(resolve, reject) {
             $http.post(API_ENDPOINT.url + '/hygieneInspection', formData).then(function(result) {
             console.log(formData);
-          
+
               if (result.data.success) {
                 //
 
@@ -209,6 +209,8 @@ angular.module('starter.services', [])
                console.log(resp.data.Fridge5);
                console.log(resp.data.Fridge6);*/
 
+               //console.log(resp.data);
+
                //save to localStorage
                window.localStorage.setItem( 'Fridge1', resp.data.Fridge1 );
                window.localStorage.setItem( 'Fridge2', resp.data.Fridge2 );
@@ -216,6 +218,8 @@ angular.module('starter.services', [])
                window.localStorage.setItem( 'Fridge4', resp.data.Fridge4 );
                window.localStorage.setItem( 'Fridge5', resp.data.Fridge5 );
                window.localStorage.setItem( 'Fridge6', resp.data.Fridge6 );
+
+               window.localStorage.setItem( 'FridgeData', JSON.stringify(resp.data));
 
              }//end if
 
