@@ -199,7 +199,7 @@ angular.module('starter.services', [])
     var getRefridgerators = function() {
          return $q(function(resolve, reject) {
            $http.get(API_ENDPOINT.url + '/refridgerationUnit').then(function(resp) {
-             if (resp.data.success) {
+             //if (resp.data.success) {
 
                /*console.log(resp.data.msg);
                console.log(resp.data.Fridge1);
@@ -221,7 +221,7 @@ angular.module('starter.services', [])
 
                window.localStorage.setItem( 'FridgeData', JSON.stringify(resp.data));
 
-             }//end if
+            // }//end if
 
            });
          });
@@ -244,7 +244,7 @@ angular.module('starter.services', [])
     var getSuppliers = function() {
         return $q(function(resolve, reject) {
           $http.get(API_ENDPOINT.url + '/suppliers').then(function(resp) {
-            if (resp.data.success) {
+          //  if (resp.data.success) {
 
               //save to localStorage
             /*  window.localStorage.setItem( 'Supplier1', resp.data.Supplier1 );
@@ -259,7 +259,7 @@ angular.module('starter.services', [])
               window.localStorage.setItem( 'Supplier10', resp.data.Supplier10 );*/
 
               window.localStorage.setItem( 'SupplierData', JSON.stringify(resp.data));
-            }//end if
+          //  }//end if
 
           });
         });
@@ -282,7 +282,7 @@ angular.module('starter.services', [])
     var getFood = function() {
         return $q(function(resolve, reject) {
           $http.get(API_ENDPOINT.url + '/food').then(function(resp) {
-            if (resp.data.success) {
+            //if (resp.data.success) {
               //save to localStorage
               /*window.localStorage.setItem( 'Food1', resp.data.Food1 );
               window.localStorage.setItem( 'Food2', resp.data.Food2 );
@@ -297,7 +297,7 @@ angular.module('starter.services', [])
 
               window.localStorage.setItem( 'FoodData', JSON.stringify(resp.data));
 
-            }//end if
+            //}//end if
 
           });
         });
