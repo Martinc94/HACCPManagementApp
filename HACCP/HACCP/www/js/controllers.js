@@ -171,7 +171,7 @@ angular.module('starter.controllers', ['ionic.wheel'])
     var suppData9 = window.localStorage.getItem( 'Supplier9' );
     var suppData10 = window.localStorage.getItem( 'Supplier10' );
 
-    
+
     $scope.suppliers = [{
       name: suppData1},
       {
@@ -204,7 +204,7 @@ angular.module('starter.controllers', ['ionic.wheel'])
     var foodData9 = window.localStorage.getItem( 'Food9' );
     var foodData10 = window.localStorage.getItem( 'Food10' );
 
-    
+
     $scope.foodItems = [{
       name: foodData1},
       {
@@ -227,7 +227,7 @@ angular.module('starter.controllers', ['ionic.wheel'])
       name: foodData10}];
 
   $scope.submitForm=function(deliveryForm){
-    
+
   }//submitForm
 
   $scope.takePicture = function() {
@@ -270,7 +270,7 @@ angular.module('starter.controllers', ['ionic.wheel'])
     var foodData9 = window.localStorage.getItem( 'Food9' );
     var foodData10 = window.localStorage.getItem( 'Food10' );
 
-    
+
     $scope.foodItems = [{
       name: foodData1},
       {
@@ -363,7 +363,7 @@ angular.module('starter.controllers', ['ionic.wheel'])
     var foodData9 = window.localStorage.getItem( 'Food9' );
     var foodData10 = window.localStorage.getItem( 'Food10' );
 
-    
+
     $scope.foodItems = [{
       name: foodData1},
       {
@@ -434,7 +434,7 @@ angular.module('starter.controllers', ['ionic.wheel'])
     var fridData5 = window.localStorage.getItem( 'Fridge5' );
     var fridData6 = window.localStorage.getItem( 'Fridge6' );
 
-    
+
     $scope.units = [{
       name: fridData1,
       temp: 0},
@@ -496,7 +496,7 @@ angular.module('starter.controllers', ['ionic.wheel'])
     var foodData9 = window.localStorage.getItem( 'Food9' );
     var foodData10 = window.localStorage.getItem( 'Food10' );
 
-    
+
     $scope.foodItems = [{
       name: foodData1},
       {
@@ -625,9 +625,10 @@ angular.module('starter.controllers', ['ionic.wheel'])
   //when page is entered
   $scope.$on('$ionicView.enter', function(){
     //calls server for settings
-    AuthService.getSettings();
+    //AuthService.getSettings();
     AuthService.getRefridgerators();
     AuthService.getSuppliers();
+    AuthService.getFood();
 
   });
 
@@ -646,6 +647,12 @@ angular.module('starter.controllers', ['ionic.wheel'])
 
     var FridgeData = window.localStorage.getItem('FridgeData');
     console.log(JSON.parse(FridgeData));
+
+    var SupplierData = window.localStorage.getItem('SupplierData');
+    console.log(JSON.parse(SupplierData));
+
+    var FoodData = window.localStorage.getItem('FoodData');
+    console.log(JSON.parse(FoodData));
   });
 
 
