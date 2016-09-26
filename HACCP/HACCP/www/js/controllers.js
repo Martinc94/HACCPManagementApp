@@ -160,71 +160,13 @@ angular.module('starter.controllers', ['ionic.wheel'])
   $scope.deliveryForm={};
   $scope.toggle=false;
 
-    var suppData1 = window.localStorage.getItem( 'Supplier1' );
-    var suppData2 = window.localStorage.getItem( 'Supplier2' );
-    var suppData3 = window.localStorage.getItem( 'Supplier3' );
-    var suppData4 = window.localStorage.getItem( 'Supplier4' );
-    var suppData5 = window.localStorage.getItem( 'Supplier5' );
-    var suppData6 = window.localStorage.getItem( 'Supplier6' );
-    var suppData7 = window.localStorage.getItem( 'Supplier7' );
-    var suppData8 = window.localStorage.getItem( 'Supplier8' );
-    var suppData9 = window.localStorage.getItem( 'Supplier9' );
-    var suppData10 = window.localStorage.getItem( 'Supplier10' );
+  var supplierData = window.localStorage.getItem('SupplierData');
+  supplierData = ('supplierData: ', JSON.parse(supplierData));
+  $scope.suppliers = supplierData;
 
-
-    $scope.suppliers = [{
-      name: suppData1},
-      {
-      name: suppData2},
-      {
-      name: suppData3},
-      {
-      name: suppData4},
-      {
-      name: suppData5},
-      {
-      name: suppData6},
-      {
-      name: suppData7},
-      {
-      name: suppData8},
-      {
-      name: suppData9},
-      {
-      name: suppData10}];
-
-    var foodData1 = window.localStorage.getItem( 'Food1' );
-    var foodData2 = window.localStorage.getItem( 'Food2' );
-    var foodData3 = window.localStorage.getItem( 'Food3' );
-    var foodData4 = window.localStorage.getItem( 'Food4' );
-    var foodData5 = window.localStorage.getItem( 'Food5' );
-    var foodData6 = window.localStorage.getItem( 'Food6' );
-    var foodData7 = window.localStorage.getItem( 'Food7' );
-    var foodData8 = window.localStorage.getItem( 'Food8' );
-    var foodData9 = window.localStorage.getItem( 'Food9' );
-    var foodData10 = window.localStorage.getItem( 'Food10' );
-
-
-    $scope.foodItems = [{
-      name: foodData1},
-      {
-      name: foodData2},
-      {
-      name: foodData3},
-      {
-      name: foodData4},
-      {
-      name: foodData5},
-      {
-      name: foodData6},
-      {
-      name: foodData7},
-      {
-      name: foodData8},
-      {
-      name: foodData9},
-      {
-      name: foodData10}];
+  var foodData = window.localStorage.getItem('FoodData');
+  foodData = ('foodData: ', JSON.parse(foodData));
+  $scope.foods = foodData;
 
   $scope.submitForm=function(deliveryForm){
 
@@ -259,38 +201,9 @@ angular.module('starter.controllers', ['ionic.wheel'])
 
   $scope.cookcoolForm = {};
 
-  var foodData1 = window.localStorage.getItem( 'Food1' );
-    var foodData2 = window.localStorage.getItem( 'Food2' );
-    var foodData3 = window.localStorage.getItem( 'Food3' );
-    var foodData4 = window.localStorage.getItem( 'Food4' );
-    var foodData5 = window.localStorage.getItem( 'Food5' );
-    var foodData6 = window.localStorage.getItem( 'Food6' );
-    var foodData7 = window.localStorage.getItem( 'Food7' );
-    var foodData8 = window.localStorage.getItem( 'Food8' );
-    var foodData9 = window.localStorage.getItem( 'Food9' );
-    var foodData10 = window.localStorage.getItem( 'Food10' );
-
-
-    $scope.foodItems = [{
-      name: foodData1},
-      {
-      name: foodData2},
-      {
-      name: foodData3},
-      {
-      name: foodData4},
-      {
-      name: foodData5},
-      {
-      name: foodData6},
-      {
-      name: foodData7},
-      {
-      name: foodData8},
-      {
-      name: foodData9},
-      {
-      name: foodData10}];
+  var foodData = window.localStorage.getItem('FoodData');
+  foodData = ('foodData: ', JSON.parse(foodData));
+  $scope.foods = foodData;
 
   $scope.openTimePicker=function(value){
 
@@ -352,38 +265,9 @@ angular.module('starter.controllers', ['ionic.wheel'])
 
   $scope.hotholdForm = {};
 
-  var foodData1 = window.localStorage.getItem( 'Food1' );
-    var foodData2 = window.localStorage.getItem( 'Food2' );
-    var foodData3 = window.localStorage.getItem( 'Food3' );
-    var foodData4 = window.localStorage.getItem( 'Food4' );
-    var foodData5 = window.localStorage.getItem( 'Food5' );
-    var foodData6 = window.localStorage.getItem( 'Food6' );
-    var foodData7 = window.localStorage.getItem( 'Food7' );
-    var foodData8 = window.localStorage.getItem( 'Food8' );
-    var foodData9 = window.localStorage.getItem( 'Food9' );
-    var foodData10 = window.localStorage.getItem( 'Food10' );
-
-
-    $scope.foodItems = [{
-      name: foodData1},
-      {
-      name: foodData2},
-      {
-      name: foodData3},
-      {
-      name: foodData4},
-      {
-      name: foodData5},
-      {
-      name: foodData6},
-      {
-      name: foodData7},
-      {
-      name: foodData8},
-      {
-      name: foodData9},
-      {
-      name: foodData10}];
+  var foodData = window.localStorage.getItem('FoodData');
+  foodData = ('foodData: ', JSON.parse(foodData));
+  $scope.foods = foodData;
 
   $scope.openTimePicker=function(){
 
@@ -395,7 +279,7 @@ angular.module('starter.controllers', ['ionic.wheel'])
       else {
         var selectedTime = new Date(val * 1000);
         $scope.hotholdForm.time=selectedTime.getUTCHours() + 'H :' + selectedTime.getUTCMinutes() + 'M';
-        //console.log('Selected epoch is : ', val, 'and the time is ', selectedTime.getUTCHours(), 'H :', selectedTime.getUTCMinutes(), 'M');
+        
 
       }
     },
@@ -461,38 +345,9 @@ angular.module('starter.controllers', ['ionic.wheel'])
 
   $scope.transportForm={};
 
-  var foodData1 = window.localStorage.getItem( 'Food1' );
-    var foodData2 = window.localStorage.getItem( 'Food2' );
-    var foodData3 = window.localStorage.getItem( 'Food3' );
-    var foodData4 = window.localStorage.getItem( 'Food4' );
-    var foodData5 = window.localStorage.getItem( 'Food5' );
-    var foodData6 = window.localStorage.getItem( 'Food6' );
-    var foodData7 = window.localStorage.getItem( 'Food7' );
-    var foodData8 = window.localStorage.getItem( 'Food8' );
-    var foodData9 = window.localStorage.getItem( 'Food9' );
-    var foodData10 = window.localStorage.getItem( 'Food10' );
-
-
-    $scope.foodItems = [{
-      name: foodData1},
-      {
-      name: foodData2},
-      {
-      name: foodData3},
-      {
-      name: foodData4},
-      {
-      name: foodData5},
-      {
-      name: foodData6},
-      {
-      name: foodData7},
-      {
-      name: foodData8},
-      {
-      name: foodData9},
-      {
-      name: foodData10}];
+  var foodData = window.localStorage.getItem('FoodData');
+  foodData = ('foodData: ', JSON.parse(foodData));
+  $scope.foods = foodData;
 
   $scope.submit = function() {
   AuthService.transport($scope.transportForm).then(function(msg) {
@@ -523,9 +378,26 @@ angular.module('starter.controllers', ['ionic.wheel'])
   $scope.refridgerationSelect=false;
   $scope.foodSelect=false;
   //arrays to store information pulled from server and pushed to server
-  $scope.suppliers=[];
-  $scope.units=[];
-  $scope.foods=[];
+
+  //$scope.suppliers = window.localStorage.getItem('SupplierData');
+/*  var supplierData = ('SupplierData: ', JSON.parse(supplierData));
+  //$scope.suppliers = supplierData;
+  console.log("supplierdata"+ supplierData)
+  console.log("these are suppliers:" + $scope.suppliers);*/
+
+  var fridgeData = window.localStorage.getItem('FridgeData');
+  fridgeData = ('fridgeData: ', JSON.parse(fridgeData));
+  $scope.units = fridgeData;
+
+  var supplierData = window.localStorage.getItem('SupplierData');
+  supplierData = ('supplierData: ', JSON.parse(supplierData));
+  $scope.suppliers = supplierData;
+
+  var foodData = window.localStorage.getItem('FoodData');
+  foodData = ('foodData: ', JSON.parse(foodData));
+  $scope.foods = foodData;
+
+
 
   //open/close Suppliers menu
   $scope.openSuppliers = function(){
