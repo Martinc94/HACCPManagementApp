@@ -427,32 +427,9 @@ angular.module('starter.controllers', ['ionic.wheel'])
 
 .controller('FridgeCtrl', function($scope, AuthService, $ionicPopup, $state) {
 
-    var fridData1 = window.localStorage.getItem( 'Fridge1' );
-    var fridData2 = window.localStorage.getItem( 'Fridge2' );
-    var fridData3 = window.localStorage.getItem( 'Fridge3' );
-    var fridData4 = window.localStorage.getItem( 'Fridge4' );
-    var fridData5 = window.localStorage.getItem( 'Fridge5' );
-    var fridData6 = window.localStorage.getItem( 'Fridge6' );
-
-
-    $scope.units = [{
-      name: fridData1,
-      temp: 0},
-      {
-      name: fridData2,
-      temp: 0},
-      {
-      name: fridData3,
-      temp: 0},
-      {
-      name: fridData4,
-      temp: 0},
-      {
-      name: fridData5,
-      temp: 0},
-      {
-      name: fridData6,
-      temp: 0}];
+    var fridgeData = window.localStorage.getItem('FridgeData');
+    fridgeData = ('fridgeData: ', JSON.parse(fridgeData));
+    $scope.units = fridgeData;
 
 
 })//FridgeCtrl
