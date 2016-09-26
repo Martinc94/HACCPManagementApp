@@ -54,17 +54,20 @@
           <form ng-submit="addUnit(unit)">
           <div class="list">
           <label class="item item-input">
-            <input type="text" placeholder="Unit name" ng-model="unit.name">
+            <input type="text" placeholder="Unit name" ng-model="fridgeData">
             <button type="submit" class="button button-positive">Add</button>
             </label>
         </div>
       </form>
 
-          <ion-list show-delete="shouldShowDelete" can-swipe="listCanSwipe">
-           <ion-item ng-repeat="unit in units" >
+          <ion-list show-delete="shouldShowDelete" show-edit="shouldShowEdit" can-swipe="listCanSwipe">
+           <ion-item ng-repeat="(key, unit) in units" >
             {{unit}}
-             <ion-option-button ng-click="deleteUnit(unit)" class="button-positive">
+             <ion-option-button ng-click="deleteUnit(key)" class="button-positive">
               Delete
+            </ion-option-button>
+            <ion-option-button ng-click="EditUnit(key)" class="button-balanced">
+              Edit
             </ion-option-button>
             </ion-item>
           </ion-list>

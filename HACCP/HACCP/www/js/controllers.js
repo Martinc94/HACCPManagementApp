@@ -386,7 +386,7 @@ angular.module('starter.controllers', ['ionic.wheel'])
   console.log("these are suppliers:" + $scope.suppliers);*/
 
   var fridgeData = window.localStorage.getItem('FridgeData');
-  fridgeData = ('fridgeData: ', JSON.parse(fridgeData));
+  fridgeData = JSON.parse(fridgeData);
   $scope.units = fridgeData;
 
   var supplierData = window.localStorage.getItem('SupplierData');
@@ -435,17 +435,36 @@ angular.module('starter.controllers', ['ionic.wheel'])
   }
   //add new unit to (refridgeration) units array
   $scope.addUnit = function(unit) {
-    $scope.units.push({
-      name: unit.name
-    });
-    unit.name = "";
+    
+  };
+
+  //add new unit to (refridgeration) units array
+  $scope.editUnit = function(unit) {
+    
+
   };
   //delete selected unit (slide selection and delete)
-  $scope.deleteUnit = function(unit) {
+  $scope.deleteUnit = function(key) {
 
-    $scope.units.splice($scope.units.indexOf(unit), 1);
-
+    if(key == "Fridge1"){
+      delete fridgeData.Fridge1;
+    }
+    else if(key == "Fridge2"){
+      delete fridgeData.Fridge2;
+    }
+    else if(key == "Fridge3"){
+      delete fridgeData.Fridge3;
+    }
+    else if(key == "Fridge4"){
+      delete fridgeData.Fridge4;
+    }
+    else if(key == "Fridge5"){
+      delete fridgeData.Fridge5;
+    }    
+    console.log(fridgeData);
   };
+
+
 
   //open/close Food menu
   $scope.openFood = function(){
