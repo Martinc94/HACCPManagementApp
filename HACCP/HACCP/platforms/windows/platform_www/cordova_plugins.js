@@ -124,6 +124,22 @@ module.exports = [
         "merges": [
             ""
         ]
+    },
+    {
+        "file": "plugins/phonegap-plugin-push/www/push.js",
+        "id": "phonegap-plugin-push.PushNotification",
+        "pluginId": "phonegap-plugin-push",
+        "clobbers": [
+            "PushNotification"
+        ]
+    },
+    {
+        "file": "plugins/phonegap-plugin-push/src/windows/PushPluginProxy.js",
+        "id": "phonegap-plugin-push.PushPlugin",
+        "pluginId": "phonegap-plugin-push",
+        "merges": [
+            ""
+        ]
     }
 ];
 module.exports.metadata = 
@@ -137,7 +153,8 @@ module.exports.metadata =
     "cordova-plugin-ionic-keyboard": "1.0.5",
     "cordova-plugin-datepicker": "0.9.2",
     "cordova-plugin-compat": "1.0.0",
-    "cordova-plugin-camera": "2.2.0"
+    "cordova-plugin-camera": "2.2.0",
+    "phonegap-plugin-push": "1.8.2"
 };
 // BOTTOM OF METADATA
 });

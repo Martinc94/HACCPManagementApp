@@ -148,12 +148,11 @@ angular.module('starter.services', [])
            });
          };
 
-    var hygieneInspection = function(signData,fData) {
+    var hygieneInspection = function(formData) {
           return $q(function(resolve, reject) {
-            $http.post(API_ENDPOINT.url + '/hygieneInspection', fData,signData).then(function(result) {
-            //console.log(signData,formData);
-            //console.log(fData);
-            //console.log(signData);
+            $http.post(API_ENDPOINT.url + '/hygieneInspection', formData).then(function(result) {
+            console.log(formData);
+
               if (result.data.success) {
                 //
 
@@ -202,6 +201,7 @@ angular.module('starter.services', [])
            $http.get(API_ENDPOINT.url + '/refridgerationUnit').then(function(resp) {
              if (resp.data.success) {
 
+
                /*console.log(resp.data.msg);
                console.log(resp.data.Fridge1);
                console.log(resp.data.Fridge2);
@@ -210,6 +210,8 @@ angular.module('starter.services', [])
                console.log(resp.data.Fridge5);
                console.log(resp.data.Fridge6);*/
 
+               //console.log(resp.data);
+
                //save to localStorage
                window.localStorage.setItem( 'Fridge1', resp.data.Fridge1 );
                window.localStorage.setItem( 'Fridge2', resp.data.Fridge2 );
@@ -217,6 +219,10 @@ angular.module('starter.services', [])
                window.localStorage.setItem( 'Fridge4', resp.data.Fridge4 );
                window.localStorage.setItem( 'Fridge5', resp.data.Fridge5 );
                window.localStorage.setItem( 'Fridge6', resp.data.Fridge6 );
+
+               window.localStorage.setItem( 'FridgeData', JSON.stringify(resp.data));
+
+
 
              }//end if
 
@@ -227,7 +233,6 @@ angular.module('starter.services', [])
     var putRefridgerators = function(units) {
            return $q(function(resolve, reject) {
              $http.post(API_ENDPOINT.url + '/refridgerationUnit', units).then(function(result) {
-             console.log(units);
                if (result.data.success) {
 
                  resolve(result.data.msg);
@@ -238,7 +243,7 @@ angular.module('starter.services', [])
            });
          };
 
-   var getSuppliers = function() {
+    var getSuppliers = function() {
         return $q(function(resolve, reject) {
           $http.get(API_ENDPOINT.url + '/suppliers').then(function(resp) {
             if (resp.data.success) {
@@ -254,6 +259,8 @@ angular.module('starter.services', [])
               window.localStorage.setItem( 'Supplier8', resp.data.Supplier8 );
               window.localStorage.setItem( 'Supplier9', resp.data.Supplier9 );
               window.localStorage.setItem( 'Supplier10', resp.data.Supplier10 );
+
+              window.localStorage.setItem( 'SupplierData', JSON.stringify(resp.data));
 
               window.localStorage.setItem( 'Food1', resp.data.Food1 );
               window.localStorage.setItem( 'Food2', resp.data.Food2 );
@@ -272,7 +279,7 @@ angular.module('starter.services', [])
         });
       };
 
-   var putSuppliers = function(units) {
+    var putSuppliers = function(units) {
           return $q(function(resolve, reject) {
             $http.post(API_ENDPOINT.url + '/suppliers', suppliers).then(function(result) {
             console.log(suppliers);
@@ -296,7 +303,7 @@ angular.module('starter.services', [])
 
     loadUserCredentials();
 
-   return {
+    return {
       login: login,
       register: register,
       forgot: forgot,

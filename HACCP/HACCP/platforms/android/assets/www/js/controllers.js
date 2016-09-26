@@ -137,7 +137,7 @@ angular.module('starter.controllers', ['ionic.wheel'])
  $scope.formData = {};
 
   $scope.submit = function() {
-  AuthService.hygieneInspection($scope.fData,$scope.signData).then(function(msg) {
+  AuthService.hygieneInspection($scope.formData).then(function(msg) {
     var alertPopup = $ionicPopup.alert({
       title: 'Success!',
       template: msg
@@ -153,8 +153,6 @@ angular.module('starter.controllers', ['ionic.wheel'])
 
   };
 
-
-
 })//HygieneCtrl
 
 .controller('DeliveryCtrl', function($scope, AuthService, $ionicPopup, $state, $cordovaCamera) {
@@ -162,18 +160,74 @@ angular.module('starter.controllers', ['ionic.wheel'])
   $scope.deliveryForm={};
   $scope.toggle=false;
 
-  $scope.submitForm=function(deliveryForm){
-    // Testing
-    console.log($scope.deliveryForm.date);
-    console.log($scope.deliveryForm.food);
-    console.log($scope.deliveryForm.batch);
-    console.log($scope.deliveryForm.supplier);
-    console.log($scope.deliveryForm.useby);
-    console.log($scope.deliveryForm.temp);
-    console.log($scope.deliveryForm.vehicle);
-    console.log($scope.deliveryForm.comment);
-    console.log($scope.deliveryForm.sign);
+    var suppData1 = window.localStorage.getItem( 'Supplier1' );
+    var suppData2 = window.localStorage.getItem( 'Supplier2' );
+    var suppData3 = window.localStorage.getItem( 'Supplier3' );
+    var suppData4 = window.localStorage.getItem( 'Supplier4' );
+    var suppData5 = window.localStorage.getItem( 'Supplier5' );
+    var suppData6 = window.localStorage.getItem( 'Supplier6' );
+    var suppData7 = window.localStorage.getItem( 'Supplier7' );
+    var suppData8 = window.localStorage.getItem( 'Supplier8' );
+    var suppData9 = window.localStorage.getItem( 'Supplier9' );
+    var suppData10 = window.localStorage.getItem( 'Supplier10' );
 
+    
+    $scope.suppliers = [{
+      name: suppData1},
+      {
+      name: suppData2},
+      {
+      name: suppData3},
+      {
+      name: suppData4},
+      {
+      name: suppData5},
+      {
+      name: suppData6},
+      {
+      name: suppData7},
+      {
+      name: suppData8},
+      {
+      name: suppData9},
+      {
+      name: suppData10}];
+
+    var foodData1 = window.localStorage.getItem( 'Food1' );
+    var foodData2 = window.localStorage.getItem( 'Food2' );
+    var foodData3 = window.localStorage.getItem( 'Food3' );
+    var foodData4 = window.localStorage.getItem( 'Food4' );
+    var foodData5 = window.localStorage.getItem( 'Food5' );
+    var foodData6 = window.localStorage.getItem( 'Food6' );
+    var foodData7 = window.localStorage.getItem( 'Food7' );
+    var foodData8 = window.localStorage.getItem( 'Food8' );
+    var foodData9 = window.localStorage.getItem( 'Food9' );
+    var foodData10 = window.localStorage.getItem( 'Food10' );
+
+    
+    $scope.foodItems = [{
+      name: foodData1},
+      {
+      name: foodData2},
+      {
+      name: foodData3},
+      {
+      name: foodData4},
+      {
+      name: foodData5},
+      {
+      name: foodData6},
+      {
+      name: foodData7},
+      {
+      name: foodData8},
+      {
+      name: foodData9},
+      {
+      name: foodData10}];
+
+  $scope.submitForm=function(deliveryForm){
+    
   }//submitForm
 
   $scope.takePicture = function() {
@@ -204,6 +258,39 @@ angular.module('starter.controllers', ['ionic.wheel'])
 .controller('TemperatureCtrl', function($scope, AuthService, $ionicPopup, $state, ionicTimePicker) {
 
   $scope.cookcoolForm = {};
+
+  var foodData1 = window.localStorage.getItem( 'Food1' );
+    var foodData2 = window.localStorage.getItem( 'Food2' );
+    var foodData3 = window.localStorage.getItem( 'Food3' );
+    var foodData4 = window.localStorage.getItem( 'Food4' );
+    var foodData5 = window.localStorage.getItem( 'Food5' );
+    var foodData6 = window.localStorage.getItem( 'Food6' );
+    var foodData7 = window.localStorage.getItem( 'Food7' );
+    var foodData8 = window.localStorage.getItem( 'Food8' );
+    var foodData9 = window.localStorage.getItem( 'Food9' );
+    var foodData10 = window.localStorage.getItem( 'Food10' );
+
+    
+    $scope.foodItems = [{
+      name: foodData1},
+      {
+      name: foodData2},
+      {
+      name: foodData3},
+      {
+      name: foodData4},
+      {
+      name: foodData5},
+      {
+      name: foodData6},
+      {
+      name: foodData7},
+      {
+      name: foodData8},
+      {
+      name: foodData9},
+      {
+      name: foodData10}];
 
   $scope.openTimePicker=function(value){
 
@@ -265,6 +352,39 @@ angular.module('starter.controllers', ['ionic.wheel'])
 
   $scope.hotholdForm = {};
 
+    var foodData1 = window.localStorage.getItem( 'Food1' );
+    var foodData2 = window.localStorage.getItem( 'Food2' );
+    var foodData3 = window.localStorage.getItem( 'Food3' );
+    var foodData4 = window.localStorage.getItem( 'Food4' );
+    var foodData5 = window.localStorage.getItem( 'Food5' );
+    var foodData6 = window.localStorage.getItem( 'Food6' );
+    var foodData7 = window.localStorage.getItem( 'Food7' );
+    var foodData8 = window.localStorage.getItem( 'Food8' );
+    var foodData9 = window.localStorage.getItem( 'Food9' );
+    var foodData10 = window.localStorage.getItem( 'Food10' );
+
+    
+    $scope.foodItems = [{
+      name: foodData1},
+      {
+      name: foodData2},
+      {
+      name: foodData3},
+      {
+      name: foodData4},
+      {
+      name: foodData5},
+      {
+      name: foodData6},
+      {
+      name: foodData7},
+      {
+      name: foodData8},
+      {
+      name: foodData9},
+      {
+      name: foodData10}];
+
   $scope.openTimePicker=function(){
 
     var ipObj1 = {
@@ -307,17 +427,10 @@ angular.module('starter.controllers', ['ionic.wheel'])
 
 .controller('FridgeCtrl', function($scope, AuthService, $ionicPopup, $state) {
 
-  $scope.units=[{
-    name: 'Fridge 1',
-    temp: ''
-  }, {
-    name: 'Fridge 2',
-    temp: ''
-  }]
-
-
-
-
+    var fridgeData = window.localStorage.getItem('FridgeData');
+    fridgeData = ('fridgeData: ', JSON.parse(fridgeData));
+    $scope.units = fridgeData;
+    
 })//FridgeCtrl
 
 .controller('TrainingCtrl', function($scope, AuthService, $ionicPopup, $state) {
@@ -347,6 +460,39 @@ angular.module('starter.controllers', ['ionic.wheel'])
 .controller('TransportCtrl', function($scope, AuthService, $ionicPopup, $state) {
 
   $scope.transportForm={};
+
+  var foodData1 = window.localStorage.getItem( 'Food1' );
+    var foodData2 = window.localStorage.getItem( 'Food2' );
+    var foodData3 = window.localStorage.getItem( 'Food3' );
+    var foodData4 = window.localStorage.getItem( 'Food4' );
+    var foodData5 = window.localStorage.getItem( 'Food5' );
+    var foodData6 = window.localStorage.getItem( 'Food6' );
+    var foodData7 = window.localStorage.getItem( 'Food7' );
+    var foodData8 = window.localStorage.getItem( 'Food8' );
+    var foodData9 = window.localStorage.getItem( 'Food9' );
+    var foodData10 = window.localStorage.getItem( 'Food10' );
+
+    
+    $scope.foodItems = [{
+      name: foodData1},
+      {
+      name: foodData2},
+      {
+      name: foodData3},
+      {
+      name: foodData4},
+      {
+      name: foodData5},
+      {
+      name: foodData6},
+      {
+      name: foodData7},
+      {
+      name: foodData8},
+      {
+      name: foodData9},
+      {
+      name: foodData10}];
 
   $scope.submit = function() {
   AuthService.transport($scope.transportForm).then(function(msg) {
@@ -380,6 +526,7 @@ angular.module('starter.controllers', ['ionic.wheel'])
   $scope.suppliers=[];
   $scope.units=[];
   $scope.foods=[];
+  var i=0;
 
   //open/close Suppliers menu
   $scope.openSuppliers = function(){
@@ -420,6 +567,9 @@ angular.module('starter.controllers', ['ionic.wheel'])
     $scope.units.push({
       name: unit.name
     });
+    console.log($scope.units[0]);
+    console.log($scope.units[1]);
+    console.log($scope.units[2]);
     unit.name = "";
   };
   //delete selected unit (slide selection and delete)
@@ -466,12 +616,17 @@ angular.module('starter.controllers', ['ionic.wheel'])
 
     //AuthService.getSettings();
     console.log('Exiting Settings');
+    var fridgeUnits = $scope.units[0];
     //Push settings if changed
-    //AuthService.putRefridgerators(units);
-    var appData = window.localStorage.getItem( 'Fridge1' );
-    var appData2 = window.localStorage.getItem( 'Supplier1' );
-    var appData3 = window.localStorage.getItem( 'Food1' );
-    console.log(appData,appData2,appData3);
+    AuthService.putRefridgerators(fridgeUnits);
+
+    //var appData = window.localStorage.getItem( 'Fridge1' );
+    //var appData2 = window.localStorage.getItem( 'Supplier1' );
+    //var appData3 = window.localStorage.getItem( 'Food1' );
+    //console.log(appData,appData2,appData3);
+
+    var FridgeData = window.localStorage.getItem('FridgeData');
+    console.log(JSON.parse(FridgeData));
   });
 
 

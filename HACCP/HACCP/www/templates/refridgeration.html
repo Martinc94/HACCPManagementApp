@@ -3,12 +3,12 @@
   <ion-content class="refridgeration">
 
     <ion-list>
-      
+    
         <ion-item ng-repeat="unit in units track by $index">
 
 
 			<label class="item item-input">
-           <span class="input-label">{{unit.name}}</span>
+           <span class="input-label">{{unit}}</span>
 			<input type="number" placeholder="0" ng-model="unit.temp">
           </label>
         </ion-item></ion-list>

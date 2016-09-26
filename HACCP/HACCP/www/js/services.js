@@ -201,6 +201,7 @@ angular.module('starter.services', [])
            $http.get(API_ENDPOINT.url + '/refridgerationUnit').then(function(resp) {
              if (resp.data.success) {
 
+
                /*console.log(resp.data.msg);
                console.log(resp.data.Fridge1);
                console.log(resp.data.Fridge2);
@@ -221,6 +222,8 @@ angular.module('starter.services', [])
 
                window.localStorage.setItem( 'FridgeData', JSON.stringify(resp.data));
 
+
+
              }//end if
 
            });
@@ -230,7 +233,6 @@ angular.module('starter.services', [])
     var putRefridgerators = function(units) {
            return $q(function(resolve, reject) {
              $http.post(API_ENDPOINT.url + '/refridgerationUnit', units).then(function(result) {
-             console.log(units);
                if (result.data.success) {
 
                  resolve(result.data.msg);
@@ -257,6 +259,8 @@ angular.module('starter.services', [])
               window.localStorage.setItem( 'Supplier8', resp.data.Supplier8 );
               window.localStorage.setItem( 'Supplier9', resp.data.Supplier9 );
               window.localStorage.setItem( 'Supplier10', resp.data.Supplier10 );
+
+              window.localStorage.setItem( 'SupplierData', JSON.stringify(resp.data));
 
               window.localStorage.setItem( 'Food1', resp.data.Food1 );
               window.localStorage.setItem( 'Food2', resp.data.Food2 );

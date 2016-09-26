@@ -352,7 +352,7 @@ angular.module('starter.controllers', ['ionic.wheel'])
 
   $scope.hotholdForm = {};
 
-  var foodData1 = window.localStorage.getItem( 'Food1' );
+    var foodData1 = window.localStorage.getItem( 'Food1' );
     var foodData2 = window.localStorage.getItem( 'Food2' );
     var foodData3 = window.localStorage.getItem( 'Food3' );
     var foodData4 = window.localStorage.getItem( 'Food4' );
@@ -427,34 +427,10 @@ angular.module('starter.controllers', ['ionic.wheel'])
 
 .controller('FridgeCtrl', function($scope, AuthService, $ionicPopup, $state) {
 
-    var fridData1 = window.localStorage.getItem( 'Fridge1' );
-    var fridData2 = window.localStorage.getItem( 'Fridge2' );
-    var fridData3 = window.localStorage.getItem( 'Fridge3' );
-    var fridData4 = window.localStorage.getItem( 'Fridge4' );
-    var fridData5 = window.localStorage.getItem( 'Fridge5' );
-    var fridData6 = window.localStorage.getItem( 'Fridge6' );
-
+    var fridgeData = window.localStorage.getItem('FridgeData');
+    fridgeData = ('fridgeData: ', JSON.parse(fridgeData));
+    $scope.units = fridgeData;
     
-    $scope.units = [{
-      name: fridData1,
-      temp: 0},
-      {
-      name: fridData2,
-      temp: 0},
-      {
-      name: fridData3,
-      temp: 0},
-      {
-      name: fridData4,
-      temp: 0},
-      {
-      name: fridData5,
-      temp: 0},
-      {
-      name: fridData6,
-      temp: 0}];
-
-
 })//FridgeCtrl
 
 .controller('TrainingCtrl', function($scope, AuthService, $ionicPopup, $state) {
@@ -550,6 +526,7 @@ angular.module('starter.controllers', ['ionic.wheel'])
   $scope.suppliers=[];
   $scope.units=[];
   $scope.foods=[];
+  var i=0;
 
   //open/close Suppliers menu
   $scope.openSuppliers = function(){
@@ -590,6 +567,9 @@ angular.module('starter.controllers', ['ionic.wheel'])
     $scope.units.push({
       name: unit.name
     });
+    console.log($scope.units[0]);
+    console.log($scope.units[1]);
+    console.log($scope.units[2]);
     unit.name = "";
   };
   //delete selected unit (slide selection and delete)
@@ -636,8 +616,9 @@ angular.module('starter.controllers', ['ionic.wheel'])
 
     //AuthService.getSettings();
     console.log('Exiting Settings');
+    var fridgeUnits = $scope.units[0];
     //Push settings if changed
-    //AuthService.putRefridgerators(units);
+    AuthService.putRefridgerators(fridgeUnits);
 
     //var appData = window.localStorage.getItem( 'Fridge1' );
     //var appData2 = window.localStorage.getItem( 'Supplier1' );
