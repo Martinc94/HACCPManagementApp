@@ -352,7 +352,7 @@ angular.module('starter.controllers', ['ionic.wheel'])
 
   $scope.hotholdForm = {};
 
-    var foodData1 = window.localStorage.getItem( 'Food1' );
+  var foodData1 = window.localStorage.getItem( 'Food1' );
     var foodData2 = window.localStorage.getItem( 'Food2' );
     var foodData3 = window.localStorage.getItem( 'Food3' );
     var foodData4 = window.localStorage.getItem( 'Food4' );
@@ -431,6 +431,13 @@ angular.module('starter.controllers', ['ionic.wheel'])
     var fridgeData = window.localStorage.getItem('FridgeData');
     fridgeData = ('fridgeData: ', JSON.parse(fridgeData));
     $scope.units = fridgeData;
+
+
+=======
+<<<<<<< HEAD
+    var fridgeData = window.localStorage.getItem('FridgeData');
+    fridgeData = ('fridgeData: ', JSON.parse(fridgeData));
+    $scope.units = fridgeData;
     
 =======
     var fridData1 = window.localStorage.getItem( 'Fridge1' );
@@ -462,6 +469,7 @@ angular.module('starter.controllers', ['ionic.wheel'])
 
 
 >>>>>>> refs/remotes/origin/master
+>>>>>>> refs/remotes/origin/Yvonne
 })//FridgeCtrl
 
 .controller('TrainingCtrl', function($scope, AuthService, $ionicPopup, $state) {
@@ -557,7 +565,6 @@ angular.module('starter.controllers', ['ionic.wheel'])
   $scope.suppliers=[];
   $scope.units=[];
   $scope.foods=[];
-  var i=0;
 
   //open/close Suppliers menu
   $scope.openSuppliers = function(){
@@ -598,9 +605,6 @@ angular.module('starter.controllers', ['ionic.wheel'])
     $scope.units.push({
       name: unit.name
     });
-    console.log($scope.units[0]);
-    console.log($scope.units[1]);
-    console.log($scope.units[2]);
     unit.name = "";
   };
   //delete selected unit (slide selection and delete)
@@ -648,9 +652,8 @@ angular.module('starter.controllers', ['ionic.wheel'])
 
     //AuthService.getSettings();
     console.log('Exiting Settings');
-    var fridgeUnits = $scope.units[0];
     //Push settings if changed
-    AuthService.putRefridgerators(fridgeUnits);
+    //AuthService.putRefridgerators(units);
 
     //var appData = window.localStorage.getItem( 'Fridge1' );
     //var appData2 = window.localStorage.getItem( 'Supplier1' );
