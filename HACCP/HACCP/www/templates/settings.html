@@ -38,7 +38,7 @@
 
           <ion-list show-delete="shouldShowDelete" can-swipe="listCanSwipe">
            <ion-item ng-repeat="supplier in suppliers" >
-            {{supplier.name}}
+            {{supplier}}
              <ion-option-button ng-click="deleteSupplier(supplier)" class="button-positive">
               Delete
             </ion-option-button>
@@ -62,7 +62,7 @@
 
           <ion-list show-delete="shouldShowDelete" can-swipe="listCanSwipe">
            <ion-item ng-repeat="unit in units" >
-            {{unit.name}}
+            {{unit}}
              <ion-option-button ng-click="deleteUnit(unit)" class="button-positive">
               Delete
             </ion-option-button>
@@ -86,7 +86,7 @@
 
           <ion-list show-delete="shouldShowDelete" can-swipe="listCanSwipe">
            <ion-item ng-repeat="food in foods" >
-            {{food.name}}
+            {{food}}
              <ion-option-button ng-click="deleteFood(food)" class="button-positive">
               Delete
             </ion-option-button>
