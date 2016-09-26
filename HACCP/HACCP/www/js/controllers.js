@@ -171,7 +171,7 @@ angular.module('starter.controllers', ['ionic.wheel'])
     var suppData9 = window.localStorage.getItem( 'Supplier9' );
     var suppData10 = window.localStorage.getItem( 'Supplier10' );
 
-    
+
     $scope.suppliers = [{
       name: suppData1},
       {
@@ -204,7 +204,7 @@ angular.module('starter.controllers', ['ionic.wheel'])
     var foodData9 = window.localStorage.getItem( 'Food9' );
     var foodData10 = window.localStorage.getItem( 'Food10' );
 
-    
+
     $scope.foodItems = [{
       name: foodData1},
       {
@@ -227,7 +227,7 @@ angular.module('starter.controllers', ['ionic.wheel'])
       name: foodData10}];
 
   $scope.submitForm=function(deliveryForm){
-    
+
   }//submitForm
 
   $scope.takePicture = function() {
@@ -270,7 +270,7 @@ angular.module('starter.controllers', ['ionic.wheel'])
     var foodData9 = window.localStorage.getItem( 'Food9' );
     var foodData10 = window.localStorage.getItem( 'Food10' );
 
-    
+
     $scope.foodItems = [{
       name: foodData1},
       {
@@ -363,7 +363,7 @@ angular.module('starter.controllers', ['ionic.wheel'])
     var foodData9 = window.localStorage.getItem( 'Food9' );
     var foodData10 = window.localStorage.getItem( 'Food10' );
 
-    
+
     $scope.foodItems = [{
       name: foodData1},
       {
@@ -427,10 +427,41 @@ angular.module('starter.controllers', ['ionic.wheel'])
 
 .controller('FridgeCtrl', function($scope, AuthService, $ionicPopup, $state) {
 
+<<<<<<< HEAD
     var fridgeData = window.localStorage.getItem('FridgeData');
     fridgeData = ('fridgeData: ', JSON.parse(fridgeData));
     $scope.units = fridgeData;
     
+=======
+    var fridData1 = window.localStorage.getItem( 'Fridge1' );
+    var fridData2 = window.localStorage.getItem( 'Fridge2' );
+    var fridData3 = window.localStorage.getItem( 'Fridge3' );
+    var fridData4 = window.localStorage.getItem( 'Fridge4' );
+    var fridData5 = window.localStorage.getItem( 'Fridge5' );
+    var fridData6 = window.localStorage.getItem( 'Fridge6' );
+
+
+    $scope.units = [{
+      name: fridData1,
+      temp: 0},
+      {
+      name: fridData2,
+      temp: 0},
+      {
+      name: fridData3,
+      temp: 0},
+      {
+      name: fridData4,
+      temp: 0},
+      {
+      name: fridData5,
+      temp: 0},
+      {
+      name: fridData6,
+      temp: 0}];
+
+
+>>>>>>> refs/remotes/origin/master
 })//FridgeCtrl
 
 .controller('TrainingCtrl', function($scope, AuthService, $ionicPopup, $state) {
@@ -472,7 +503,7 @@ angular.module('starter.controllers', ['ionic.wheel'])
     var foodData9 = window.localStorage.getItem( 'Food9' );
     var foodData10 = window.localStorage.getItem( 'Food10' );
 
-    
+
     $scope.foodItems = [{
       name: foodData1},
       {
@@ -605,9 +636,10 @@ angular.module('starter.controllers', ['ionic.wheel'])
   //when page is entered
   $scope.$on('$ionicView.enter', function(){
     //calls server for settings
-    AuthService.getSettings();
+    //AuthService.getSettings();
     AuthService.getRefridgerators();
     AuthService.getSuppliers();
+    AuthService.getFood();
 
   });
 
@@ -627,6 +659,12 @@ angular.module('starter.controllers', ['ionic.wheel'])
 
     var FridgeData = window.localStorage.getItem('FridgeData');
     console.log(JSON.parse(FridgeData));
+
+    var SupplierData = window.localStorage.getItem('SupplierData');
+    console.log(JSON.parse(SupplierData));
+
+    var FoodData = window.localStorage.getItem('FoodData');
+    console.log(JSON.parse(FoodData));
   });
 
 
