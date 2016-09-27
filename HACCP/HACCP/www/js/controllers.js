@@ -436,6 +436,24 @@ angular.module('starter.controllers', ['ionic.wheel'])
   //add new unit to (refridgeration) units array
   $scope.addUnit = function(unit) {
       
+      if(fridgeData.Fridge1 == undefined){
+        fridgeData.Fridge1=unit;
+      }
+      else if(fridgeData.Fridge2 == undefined){
+        fridgeData.Fridge2=unit;
+      }
+      else if(fridgeData.Fridge3 == undefined){
+        fridgeData.Fridge3=unit;
+      }
+      else if(fridgeData.Fridge4 == undefined){
+        fridgeData.Fridge4=unit;
+      }
+      else if(fridgeData.Fridge5 == undefined){
+        fridgeData.Fridge5=unit;
+      }
+      else if(fridgeData.Fridge6 == undefined){
+        fridgeData.Fridge6=unit;
+      }
       
   };
 
@@ -498,23 +516,31 @@ angular.module('starter.controllers', ['ionic.wheel'])
 
     if(key == "Fridge1"){
       delete fridgeData.Fridge1;
+      fridgeData.Fridge1=undefined;
     }
     else if(key == "Fridge2"){
       delete fridgeData.Fridge2;
+      fridgeData.Fridge2=undefined;
     }
     else if(key == "Fridge3"){
       delete fridgeData.Fridge3;
+      fridgeData.Fridge3=undefined;
     }
     else if(key == "Fridge4"){
       delete fridgeData.Fridge4;
+      fridgeData.Fridge4=undefined;
     }
     else if(key == "Fridge5"){
       delete fridgeData.Fridge5;
+      fridgeData.Fridge5=undefined;
     }   
     else if(key == "Fridge6"){
       delete fridgeData.Fridge6;
+      fridgeData.Fridge6=undefined;
     }   
     console.log(fridgeData);
+
+    $ionicListDelegate.closeOptionButtons();
   };
 
 
@@ -558,7 +584,7 @@ angular.module('starter.controllers', ['ionic.wheel'])
     //AuthService.getSettings();
     console.log('Exiting Settings');
     //Push settings if changed
-    //AuthService.putRefridgerators(units);
+    AuthService.putRefridgerators(fridgeData);
 
     //var appData = window.localStorage.getItem( 'Fridge1' );
     //var appData2 = window.localStorage.getItem( 'Supplier1' );
