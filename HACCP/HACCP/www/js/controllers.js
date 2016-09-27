@@ -370,7 +370,7 @@ angular.module('starter.controllers', ['ionic.wheel'])
 
 })//TransportCtrl
 
-.controller('SettingsCtrl', function($scope, AuthService, $ionicPopup, $state) {
+.controller('SettingsCtrl', function($scope, AuthService, $ionicPopup, $state, $ionicListDelegate) {
 
   $scope.suppliersSelect=false;
   $scope.shouldShowDelete = false;
@@ -435,14 +435,64 @@ angular.module('starter.controllers', ['ionic.wheel'])
   }
   //add new unit to (refridgeration) units array
   $scope.addUnit = function(unit) {
-    
+      
+      
   };
 
   //add new unit to (refridgeration) units array
-  $scope.editUnit = function(unit) {
+  $scope.editUnit = function(key) {
     
+     showPopup(key);
+          
+    $ionicListDelegate.closeOptionButtons();
 
   };
+
+  showPopup = function(key) {
+   //variable for text input
+    console.log("hello popup");
+    $scope.data={};
+    // custom popup with user instructions. Has Cancel and Save buttons
+    var myPopup = $ionicPopup.show({
+      template: '<input type="text" ng-model="data.name">',
+      title: 'Enter Fridge Name',
+      scope: $scope,
+      buttons: [
+        { text: 'Cancel' },
+        {
+          text: '<b>Save</b>',
+          type: 'button-positive',
+          onTap: function(e) {
+            if (!$scope.data) {
+              //don't allow the user to save if text has not been entered
+              e.preventDefault();
+            } else {
+              
+               if(key == "Fridge1"){
+                  fridgeData.Fridge1=$scope.data.name;
+                }
+                else if(key == "Fridge2"){
+                  fridgeData.Fridge2=$scope.data.name;
+                }
+                else if(key == "Fridge3"){
+                  fridgeData.Fridge3=$scope.data.name;
+                }
+                else if(key == "Fridge4"){
+                  fridgeData.Fridge4=$scope.data.name;
+                }
+                else if(key == "Fridge5"){
+                  fridgeData.Fridge5=$scope.data.name;
+                }
+                else if(key == "Fridge6"){
+                  fridgeData.Fridge6=$scope.data.name;
+                }
+
+            }
+          }
+        }, 
+        ]
+      })
+  }
   //delete selected unit (slide selection and delete)
   $scope.deleteUnit = function(key) {
 
@@ -460,7 +510,10 @@ angular.module('starter.controllers', ['ionic.wheel'])
     }
     else if(key == "Fridge5"){
       delete fridgeData.Fridge5;
-    }    
+    }   
+    else if(key == "Fridge6"){
+      delete fridgeData.Fridge6;
+    }   
     console.log(fridgeData);
   };
 
