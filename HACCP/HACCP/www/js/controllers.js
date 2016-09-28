@@ -387,14 +387,17 @@ angular.module('starter.controllers', ['ionic.wheel'])
 
   var fridgeData = window.localStorage.getItem('FridgeData');
   fridgeData = JSON.parse(fridgeData);
+  console.log(fridgeData);
   $scope.units = fridgeData;
 
   var supplierData = window.localStorage.getItem('SupplierData');
   supplierData = ('supplierData: ', JSON.parse(supplierData));
+  console.log(supplierData);
   $scope.suppliers = supplierData;
 
   var foodData = window.localStorage.getItem('FoodData');
   foodData = ('foodData: ', JSON.parse(foodData));
+  console.log(foodData);
   $scope.foods = foodData;
 
 
@@ -572,22 +575,48 @@ angular.module('starter.controllers', ['ionic.wheel'])
   $scope.$on('$ionicView.enter', function(){
     //calls server for settings
     //AuthService.getSettings();
-    AuthService.getRefridgerators();
+
+    /*console.log("Before Get");
+    console.log(fridgeData);
+    console.log(supplierData);
+    console.log(foodData);*/
+    
     AuthService.getSuppliers();
+    AuthService.getRefridgerators();
+
     AuthService.getFood();
+
+    /*console.log("After Get");
+    console.log(fridgeData);
+    console.log(supplierData);
+    console.log(foodData);*/
 
   });
 
   //when page is exited
-  $scope.$on('$ionicView.leave', function(){
+  $scope.$on('$ionicView.beforeLeave', function(){
 
     //AuthService.getSettings();
-    console.log('Exiting Settings');
+    //console.log('Exiting Settings');
+
+    /*fridgeData=$scope.units;
+    supplierData=$scope.suppliers;
+    foodData=  $scope.foods;*/
+
+  /*  console.log("Before Get");
+    console.log(fridgeData);
+    console.log(supplierData);
+    console.log(foodData);*/
 
     //Push settings if changed
     AuthService.putRefridgerators(fridgeData);
     AuthService.putSuppliers(supplierData);
     AuthService.putFood(foodData);
+
+    /*console.log("After Put");
+    console.log(fridgeData);
+    console.log(supplierData);
+    console.log(foodData);*/
 
     //var appData = window.localStorage.getItem( 'Fridge1' );
     //var appData2 = window.localStorage.getItem( 'Supplier1' );
