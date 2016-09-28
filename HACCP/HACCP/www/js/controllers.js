@@ -279,7 +279,7 @@ angular.module('starter.controllers', ['ionic.wheel'])
       else {
         var selectedTime = new Date(val * 1000);
         $scope.hotholdForm.time=selectedTime.getUTCHours() + 'H :' + selectedTime.getUTCMinutes() + 'M';
-        
+
 
       }
     },
@@ -435,7 +435,7 @@ angular.module('starter.controllers', ['ionic.wheel'])
   }
   //add new unit to (refridgeration) units array
   $scope.addUnit = function(unit) {
-      
+
       if(fridgeData.Fridge1 == undefined){
         fridgeData.Fridge1=unit;
       }
@@ -454,14 +454,14 @@ angular.module('starter.controllers', ['ionic.wheel'])
       else if(fridgeData.Fridge6 == undefined){
         fridgeData.Fridge6=unit;
       }
-      
+
   };
 
   //add new unit to (refridgeration) units array
   $scope.editUnit = function(key) {
-    
+
      showPopup(key);
-          
+
     $ionicListDelegate.closeOptionButtons();
 
   };
@@ -485,7 +485,7 @@ angular.module('starter.controllers', ['ionic.wheel'])
               //don't allow the user to save if text has not been entered
               e.preventDefault();
             } else {
-              
+
                if(key == "Fridge1"){
                   fridgeData.Fridge1=$scope.data.name;
                 }
@@ -507,7 +507,7 @@ angular.module('starter.controllers', ['ionic.wheel'])
 
             }
           }
-        }, 
+        },
         ]
       })
   }
@@ -533,11 +533,11 @@ angular.module('starter.controllers', ['ionic.wheel'])
     else if(key == "Fridge5"){
       delete fridgeData.Fridge5;
       fridgeData.Fridge5=undefined;
-    }   
+    }
     else if(key == "Fridge6"){
       delete fridgeData.Fridge6;
       fridgeData.Fridge6=undefined;
-    }   
+    }
     console.log(fridgeData);
 
     $ionicListDelegate.closeOptionButtons();
@@ -583,22 +583,25 @@ angular.module('starter.controllers', ['ionic.wheel'])
 
     //AuthService.getSettings();
     console.log('Exiting Settings');
+
     //Push settings if changed
     AuthService.putRefridgerators(fridgeData);
+    AuthService.putSuppliers(supplierData);
+    AuthService.putFood(foodData);
 
     //var appData = window.localStorage.getItem( 'Fridge1' );
     //var appData2 = window.localStorage.getItem( 'Supplier1' );
     //var appData3 = window.localStorage.getItem( 'Food1' );
     //console.log(appData,appData2,appData3);
 
-    var FridgeData = window.localStorage.getItem('FridgeData');
+    /*var FridgeData = window.localStorage.getItem('FridgeData');
     console.log(JSON.parse(FridgeData));
 
     var SupplierData = window.localStorage.getItem('SupplierData');
     console.log(JSON.parse(SupplierData));
 
     var FoodData = window.localStorage.getItem('FoodData');
-    console.log(JSON.parse(FoodData));
+    console.log(JSON.parse(FoodData));*/
   });
 
 

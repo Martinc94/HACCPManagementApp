@@ -184,7 +184,7 @@ angular.module('starter.services', [])
 
     var putSettings = function(settings) {
           return $q(function(resolve, reject) {
-            $http.post(API_ENDPOINT.url + '/settings', settings).then(function(result) {
+            $http.put(API_ENDPOINT.url + '/settings', settings).then(function(result) {
             console.log(settings);
               if (result.data.success) {
 
@@ -229,13 +229,14 @@ angular.module('starter.services', [])
 
     var putRefridgerators = function(units) {
            return $q(function(resolve, reject) {
-             $http.post(API_ENDPOINT.url + '/refridgerationUnit', units).then(function(result) {
-             console.log(units);
+             $http.put(API_ENDPOINT.url + '/refridgerationUnit', units).then(function(result) {
+             //console.log(units);
                if (result.data.success) {
-
+                 console.log(result.data.msg);
                  resolve(result.data.msg);
                } else {
                  reject(result.data.msg);
+                 console.log(result.data.msg);
                }
              });
            });
@@ -265,10 +266,10 @@ angular.module('starter.services', [])
         });
       };
 
-    var putSuppliers = function(units) {
+    var putSuppliers = function(suppliers) {
           return $q(function(resolve, reject) {
-            $http.post(API_ENDPOINT.url + '/suppliers', suppliers).then(function(result) {
-            console.log(suppliers);
+            $http.put(API_ENDPOINT.url + '/suppliers', suppliers).then(function(result) {
+            //console.log(suppliers);
               if (result.data.success) {
 
                 resolve(result.data.msg);
@@ -303,10 +304,10 @@ angular.module('starter.services', [])
         });
       };
 
-    var putFood = function(units) {
+    var putFood = function(food) {
           return $q(function(resolve, reject) {
-            $http.post(API_ENDPOINT.url + '/food', food).then(function(result) {
-            console.log(food);
+            $http.put(API_ENDPOINT.url + '/food', food).then(function(result) {
+            //console.log(food);
               if (result.data.success) {
 
                 resolve(result.data.msg);
