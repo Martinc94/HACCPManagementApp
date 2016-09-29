@@ -155,19 +155,40 @@ angular.module('starter.controllers', ['ionic.wheel'])
 
 })//HygieneCtrl
 
-.controller('DeliveryCtrl', function($scope, AuthService, $ionicPopup, $state, $cordovaCamera) {
+.controller('DeliveryCtrl', function($scope, AuthService, $timeout, $ionicLoading, $ionicPopup, $state, $cordovaCamera) {
 
   $scope.deliveryForm={};
   $scope.toggle=false;
 
-  var supplierData = window.localStorage.getItem('SupplierData');
-  supplierData = ('supplierData: ', JSON.parse(supplierData));
-  $scope.suppliers = supplierData;
+  $scope.$on('$ionicView.enter', function(){
+    
+    console.log("get food and suppliers");
+    AuthService.getSuppliers();
+    AuthService.getFood();
 
-  var foodData = window.localStorage.getItem('FoodData');
-  foodData = ('foodData: ', JSON.parse(foodData));
-  $scope.foods = foodData;
-  console.log($scope.foods);
+    // loader icon show while data is being retrieved using ionic service $ionicLoading
+        $scope.loading = $ionicLoading.show({
+          content: '<i class="icon ion-loading-c"></i>',
+          animation: 'fade-in',
+          showBackdrop: false,
+          maxWidth: 50,
+          showDelay: 0
+        })
+
+        $timeout(function () {
+          $ionicLoading.hide();
+          var supplierData = window.localStorage.getItem('SupplierData');
+          supplierData = ('supplierData: ', JSON.parse(supplierData));
+          $scope.suppliers = supplierData;
+          console.log(supplierData);
+
+          var foodData = window.localStorage.getItem('FoodData');
+          foodData = ('foodData: ', JSON.parse(foodData));
+          $scope.foods = foodData;
+          console.log(foodData);
+        }, 2000);
+  
+    });
 
   $scope.submitForm=function(deliveryForm){
 
@@ -198,13 +219,35 @@ angular.module('starter.controllers', ['ionic.wheel'])
 
 })//DeliveryCtrl
 
-.controller('TemperatureCtrl', function($scope, AuthService, $ionicPopup, $state, ionicTimePicker) {
+.controller('TemperatureCtrl', function($scope, AuthService, $timeout, $ionicLoading, $ionicPopup, $state, ionicTimePicker) {
 
   $scope.cookcoolForm = {};
 
-  var foodData = window.localStorage.getItem('FoodData');
-  foodData = ('foodData: ', JSON.parse(foodData));
-  $scope.foods = foodData;
+  $scope.$on('$ionicView.enter', function(){
+    
+    console.log("get food and suppliers");
+    AuthService.getFood();
+
+    // loader icon show while data is being retrieved using ionic service $ionicLoading
+        $scope.loading = $ionicLoading.show({
+          content: '<i class="icon ion-loading-c"></i>',
+          animation: 'fade-in',
+          showBackdrop: false,
+          maxWidth: 50,
+          showDelay: 0
+        })
+
+        $timeout(function () {
+          $ionicLoading.hide();
+          var foodData = window.localStorage.getItem('FoodData');
+          foodData = ('foodData: ', JSON.parse(foodData));
+          $scope.foods = foodData;
+          console.log(foodData);
+        }, 1000);
+  
+    });
+
+  
 
   $scope.openTimePicker=function(value){
 
@@ -262,13 +305,33 @@ angular.module('starter.controllers', ['ionic.wheel'])
 
 })//TemperatureCtrl
 
-.controller('HotholdCtrl', function($scope, AuthService, $ionicPopup, $state, ionicTimePicker) {
+.controller('HotholdCtrl', function($scope, AuthService, $ionicLoading, $timeout, $ionicPopup, $state, ionicTimePicker) {
 
   $scope.hotholdForm = {};
 
-  var foodData = window.localStorage.getItem('FoodData');
-  foodData = ('foodData: ', JSON.parse(foodData));
-  $scope.foods = foodData;
+  $scope.$on('$ionicView.enter', function(){
+    
+    console.log("get food and suppliers");
+    AuthService.getFood();
+
+    // loader icon show while data is being retrieved using ionic service $ionicLoading
+        $scope.loading = $ionicLoading.show({
+          content: '<i class="icon ion-loading-c"></i>',
+          animation: 'fade-in',
+          showBackdrop: false,
+          maxWidth: 50,
+          showDelay: 0
+        })
+
+        $timeout(function () {
+          $ionicLoading.hide();
+          var foodData = window.localStorage.getItem('FoodData');
+          foodData = ('foodData: ', JSON.parse(foodData));
+          $scope.foods = foodData;
+          console.log(foodData);
+        }, 1000);
+  
+    });
 
   $scope.openTimePicker=function(){
 
@@ -310,11 +373,32 @@ angular.module('starter.controllers', ['ionic.wheel'])
 
 })//HotholdCtrl
 
-.controller('FridgeCtrl', function($scope, AuthService, $ionicPopup, $state) {
+.controller('FridgeCtrl', function($scope, AuthService, $timeout, $ionicPopup, $state, $ionicLoading) {
 
-    var fridgeData = window.localStorage.getItem('FridgeData');
-    fridgeData = ('fridgeData: ', JSON.parse(fridgeData));
-    $scope.units = fridgeData;
+    $scope.$on('$ionicView.enter', function(){
+    
+    console.log("get Fridges");
+    AuthService.getRefridgerators();
+
+    // loader icon show while data is being retrieved using ionic service $ionicLoading
+        $scope.loading = $ionicLoading.show({
+          content: '<i class="icon ion-loading-c"></i>',
+          animation: 'fade-in',
+          showBackdrop: false,
+          maxWidth: 50,
+          showDelay: 0
+        })
+
+        $timeout(function () {
+          $ionicLoading.hide();
+          var fridgeData = window.localStorage.getItem('FridgeData');
+          fridgeData = ('fridgeData: ', JSON.parse(fridgeData));
+          $scope.units = fridgeData;
+          console.log($scope.units);
+        }, 1000);
+  
+    });
+  
 
 })//FridgeCtrl
 
@@ -342,13 +426,33 @@ angular.module('starter.controllers', ['ionic.wheel'])
 
 })//TrainingCtrl
 
-.controller('TransportCtrl', function($scope, AuthService, $ionicPopup, $state) {
+.controller('TransportCtrl', function($scope, AuthService, $ionicLoading, $timeout, $ionicPopup, $state) {
 
   $scope.transportForm={};
 
-  var foodData = window.localStorage.getItem('FoodData');
-  foodData = ('foodData: ', JSON.parse(foodData));
-  $scope.foods = foodData;
+  $scope.$on('$ionicView.enter', function(){
+    
+    console.log("get food and suppliers");
+    AuthService.getFood();
+
+    // loader icon show while data is being retrieved using ionic service $ionicLoading
+        $scope.loading = $ionicLoading.show({
+          content: '<i class="icon ion-loading-c"></i>',
+          animation: 'fade-in',
+          showBackdrop: false,
+          maxWidth: 50,
+          showDelay: 0
+        })
+
+        $timeout(function () {
+          $ionicLoading.hide();
+          var foodData = window.localStorage.getItem('FoodData');
+          foodData = ('foodData: ', JSON.parse(foodData));
+          $scope.foods = foodData;
+          console.log(foodData);
+        }, 1000);
+  
+    });
 
   $scope.submit = function() {
   AuthService.transport($scope.transportForm).then(function(msg) {
@@ -371,7 +475,7 @@ angular.module('starter.controllers', ['ionic.wheel'])
 
 })//TransportCtrl
 
-.controller('SettingsCtrl', function($scope, AuthService, $ionicPopup, $state, $ionicListDelegate) {
+.controller('SettingsCtrl', function($scope, $timeout, AuthService, $ionicLoading, $ionicPopup, $state, $ionicListDelegate) {
 
   $scope.suppliersSelect=false;
   $scope.shouldShowDelete = false;
@@ -379,21 +483,39 @@ angular.module('starter.controllers', ['ionic.wheel'])
   $scope.refridgerationSelect=false;
   $scope.foodSelect=false;
 
-  var fridgeData = window.localStorage.getItem('FridgeData');
-  fridgeData = JSON.parse(fridgeData);
-  console.log(fridgeData);
-  $scope.units = fridgeData;
+  // loader icon show while data is being retrieved using ionic service $ionicLoading
+        $scope.loading = $ionicLoading.show({
+          content: '<i class="icon ion-loading-c"></i>',
+          animation: 'fade-in',
+          showBackdrop: false,
+          maxWidth: 50,
+          showDelay: 0
+        })
 
-  var supplierData = window.localStorage.getItem('SupplierData');
-  supplierData = ('supplierData: ', JSON.parse(supplierData));
-  console.log(supplierData);
-  $scope.suppliers = supplierData;
+        $timeout(function () {
+            $ionicLoading.hide();
+          }, 2000);
+          
+          var fridgeData = window.localStorage.getItem('FridgeData');
+          fridgeData = JSON.parse(fridgeData);
+          console.log(fridgeData);
+          $scope.units = fridgeData;
+
+          var supplierData = window.localStorage.getItem('SupplierData');
+          supplierData = ('supplierData: ', JSON.parse(supplierData));
+          console.log(supplierData);
+          $scope.suppliers = supplierData;
 
 
-  var foodData = window.localStorage.getItem('FoodData');
-  foodData = ('foodData: ', JSON.parse(foodData));
-  console.log(foodData);
-  $scope.foods = foodData;
+          var foodData = window.localStorage.getItem('FoodData');
+          foodData = ('foodData: ', JSON.parse(foodData));
+          console.log(foodData);
+          $scope.foods = foodData;
+        
+
+        
+
+  
 
   //open/close Suppliers menu
   $scope.openSuppliers = function(){
@@ -856,46 +978,31 @@ angular.module('starter.controllers', ['ionic.wheel'])
   $scope.$on('$ionicView.enter', function(){
     //calls server for settings
     //AuthService.getSettings();
-    /*console.log("Before Get");
-    console.log(fridgeData);
-    console.log(supplierData);
-    console.log(foodData);*/
-    
 
     console.log("entering settings");
     AuthService.getRefridgerators();
     AuthService.getSuppliers();
-    AuthService.getRefridgerators();
     AuthService.getFood();
-
-
-    /*console.log("After Get");
-    console.log(fridgeData);
-    console.log(supplierData);
-    console.log(foodData);*/
-
 
   });
 
   //when page is exited
   $scope.$on('$ionicView.beforeLeave', function(){
 
+    // loader icon show while data is being retrieved using ionic service $ionicLoading
+        $scope.loading = $ionicLoading.show({
+          content: '<i class="icon ion-loading-c"></i>',
+          animation: 'fade-in',
+          showBackdrop: false,
+          maxWidth: 50,
+          showDelay: 0
+        })
+
     console.log("before leave");
     console.log(fridgeData);
     console.log(supplierData);
     console.log(foodData);
-    //AuthService.getSettings();
-    //console.log('Exiting Settings');
-
-    /*fridgeData=$scope.units;
-    supplierData=$scope.suppliers;
-    foodData=  $scope.foods;*/
-
-  /*  console.log("Before Get");
-    console.log(fridgeData);
-    console.log(supplierData);
-    console.log(foodData);*/
-
+ 
     //Push settings if changed
     AuthService.putRefridgerators(fridgeData);
     AuthService.putSuppliers(supplierData);
@@ -905,24 +1012,12 @@ angular.module('starter.controllers', ['ionic.wheel'])
     console.log(supplierData);
     console.log(foodData);
 
-    /*console.log("After Put");
-    console.log(fridgeData);
-    console.log(supplierData);
-    console.log(foodData);*/
+    $timeout(function () {
+      $ionicLoading.hide();
+    }, 2000);
 
-    //var appData = window.localStorage.getItem( 'Fridge1' );
-    //var appData2 = window.localStorage.getItem( 'Supplier1' );
-    //var appData3 = window.localStorage.getItem( 'Food1' );
-    //console.log(appData,appData2,appData3);
 
-    /*var FridgeData = window.localStorage.getItem('FridgeData');
-    console.log(JSON.parse(FridgeData));
-
-    var SupplierData = window.localStorage.getItem('SupplierData');
-    console.log(JSON.parse(SupplierData));
-
-    var FoodData = window.localStorage.getItem('FoodData');
-    console.log(JSON.parse(FoodData));*/
+    
   });
 
 
