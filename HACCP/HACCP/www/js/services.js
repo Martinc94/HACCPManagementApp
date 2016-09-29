@@ -229,6 +229,7 @@ angular.module('starter.services', [])
 
                window.localStorage.setItem( 'FridgeData', JSON.stringify(resp.data));
 
+
              }//end if
 
            });
@@ -236,6 +237,8 @@ angular.module('starter.services', [])
        };
 
     var putRefridgerators = function(units) {
+      console.log("services.putRefridgerators");
+      console.log(units);
            return $q(function(resolve, reject) {
              $http.put(API_ENDPOINT.url + '/refridgerationUnit', units).then(function(result) {
              //console.log(units);
@@ -274,6 +277,7 @@ angular.module('starter.services', [])
               window.localStorage.setItem( 'Supplier10', resp.data.Supplier10 );*/
 
               window.localStorage.setItem( 'SupplierData', JSON.stringify(resp.data));
+              
             }//end if
 
           });
@@ -281,6 +285,8 @@ angular.module('starter.services', [])
       };
 
     var putSuppliers = function(suppliers) {
+      console.log("services.putSuppliers");
+      console.log(suppliers);
           return $q(function(resolve, reject) {
             $http.put(API_ENDPOINT.url + '/suppliers', suppliers).then(function(result) {
             //console.log(suppliers);
@@ -330,6 +336,8 @@ angular.module('starter.services', [])
       };
 
     var putFood = function(food) {
+      console.log("services.putFood");
+      console.log(food);
           return $q(function(resolve, reject) {
             $http.put(API_ENDPOINT.url + '/food', food).then(function(result) {
             //console.log(food);

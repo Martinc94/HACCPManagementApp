@@ -880,6 +880,10 @@ angular.module('starter.controllers', ['ionic.wheel'])
   //when page is exited
   $scope.$on('$ionicView.beforeLeave', function(){
 
+    console.log("before leave");
+    console.log(fridgeData);
+    console.log(supplierData);
+    console.log(foodData);
     //AuthService.getSettings();
     //console.log('Exiting Settings');
 
