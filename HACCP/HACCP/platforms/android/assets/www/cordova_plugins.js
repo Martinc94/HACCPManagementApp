@@ -72,6 +72,14 @@ module.exports = [
         "clobbers": [
             "CameraPopoverHandle"
         ]
+    },
+    {
+        "id": "phonegap-plugin-push.PushNotification",
+        "file": "plugins/phonegap-plugin-push/www/push.js",
+        "pluginId": "phonegap-plugin-push",
+        "clobbers": [
+            "PushNotification"
+        ]
     }
 ];
 module.exports.metadata = 
@@ -85,7 +93,8 @@ module.exports.metadata =
     "cordova-plugin-whitelist": "1.2.2",
     "ionic-plugin-keyboard": "1.0.9",
     "cordova-plugin-compat": "1.0.0",
-    "cordova-plugin-camera": "2.2.0"
+    "cordova-plugin-camera": "2.2.0",
+    "phonegap-plugin-push": "1.8.2"
 };
 // BOTTOM OF METADATA
 });

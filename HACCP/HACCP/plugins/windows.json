@@ -33,6 +33,10 @@
         },
         "cordova-plugin-inappbrowser": {
             "PACKAGE_NAME": "HAACP APZ.com"
+        },
+        "phonegap-plugin-push": {
+            "SENDER_ID": "GCM_PROJECT_NUMBER",
+            "PACKAGE_NAME": "HAACP APZ.com"
         }
     },
     "dependent_plugins": {
