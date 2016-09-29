@@ -385,12 +385,8 @@ angular.module('starter.controllers', ['ionic.wheel'])
   $scope.units = fridgeData;
 
   var supplierData = window.localStorage.getItem('SupplierData');
-<<<<<<< HEAD
   supplierData = ('supplierData: ', JSON.parse(supplierData));
   console.log(supplierData);
-=======
-  supplierData = JSON.parse(supplierData);
->>>>>>> refs/remotes/origin/Yvonne
   $scope.suppliers = supplierData;
 
 
@@ -860,29 +856,24 @@ angular.module('starter.controllers', ['ionic.wheel'])
   $scope.$on('$ionicView.enter', function(){
     //calls server for settings
     //AuthService.getSettings();
-<<<<<<< HEAD
-
     /*console.log("Before Get");
     console.log(fridgeData);
     console.log(supplierData);
     console.log(foodData);*/
     
-=======
+
     console.log("entering settings");
     AuthService.getRefridgerators();
->>>>>>> refs/remotes/origin/Yvonne
     AuthService.getSuppliers();
     AuthService.getRefridgerators();
-
     AuthService.getFood();
 
-<<<<<<< HEAD
+
     /*console.log("After Get");
     console.log(fridgeData);
     console.log(supplierData);
     console.log(foodData);*/
-=======
->>>>>>> refs/remotes/origin/Yvonne
+
 
   });
 
