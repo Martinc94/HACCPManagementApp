@@ -3,18 +3,17 @@
   <ion-content class="refridgeration">
 
     <ion-list>
-      
-        <ion-item ng-repeat="unit in units track by $index">
+    
+        <ion-item ng-repeat="unit in units">
 
-
-			<label class="item item-input">
-           <span class="input-label">{{unit.name}}</span>
-			<input type="number" placeholder="0" ng-model="unit.temp">
+      <label class="item item-input">
+           <span class="input-label">{{unit}}</span>
+      <input type="number" placeholder="0" ng-model="unit.temp">
           </label>
         </ion-item></ion-list>
 
 
-		<button class="button button-full button-clear" type="submit">
+    <button class="button button-full button-clear" type="submit">
       Submit
     </button>
     

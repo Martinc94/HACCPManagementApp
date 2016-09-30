@@ -184,7 +184,7 @@ angular.module('starter.services', [])
 
     var putSettings = function(settings) {
           return $q(function(resolve, reject) {
-            $http.post(API_ENDPOINT.url + '/settings', settings).then(function(result) {
+            $http.put(API_ENDPOINT.url + '/settings', settings).then(function(result) {
             console.log(settings);
               if (result.data.success) {
 
@@ -200,6 +200,14 @@ angular.module('starter.services', [])
          return $q(function(resolve, reject) {
            $http.get(API_ENDPOINT.url + '/refridgerationUnit').then(function(resp) {
              //if (resp.data.success) {
+
+             if (resp.status!==200) {
+                 console.log("Ref Error");
+                 console.log("Ref msg"+resp.status.msg);
+                 console.log("Ref Status"+resp.status);
+             }
+             if (resp.status==200) {
+               console.log("Ref Success");
 
                /*console.log(resp.data.msg);
                console.log(resp.data.Fridge1);
@@ -221,21 +229,25 @@ angular.module('starter.services', [])
 
                window.localStorage.setItem( 'FridgeData', JSON.stringify(resp.data));
 
-            // }//end if
+
+             }//end if
 
            });
          });
        };
 
     var putRefridgerators = function(units) {
+      console.log("services.putRefridgerators");
+      console.log(units);
            return $q(function(resolve, reject) {
-             $http.post(API_ENDPOINT.url + '/refridgerationUnit', units).then(function(result) {
-             console.log(units);
+             $http.put(API_ENDPOINT.url + '/refridgerationUnit', units).then(function(result) {
+             //console.log(units);
                if (result.data.success) {
-
+                 console.log(result.data.msg);
                  resolve(result.data.msg);
                } else {
                  reject(result.data.msg);
+                 console.log(result.data.msg);
                }
              });
            });
@@ -246,6 +258,12 @@ angular.module('starter.services', [])
           $http.get(API_ENDPOINT.url + '/suppliers').then(function(resp) {
           //  if (resp.data.success) {
 
+          if (resp.status!==200) {
+              console.log("Suppliers Error");
+              console.log(resp.status.msg);
+          }
+          if (resp.status==200) {
+              console.log("Suppliers Success");
               //save to localStorage
             /*  window.localStorage.setItem( 'Supplier1', resp.data.Supplier1 );
               window.localStorage.setItem( 'Supplier2', resp.data.Supplier2 );
@@ -259,21 +277,25 @@ angular.module('starter.services', [])
               window.localStorage.setItem( 'Supplier10', resp.data.Supplier10 );*/
 
               window.localStorage.setItem( 'SupplierData', JSON.stringify(resp.data));
-          //  }//end if
+              
+            }//end if
 
           });
         });
       };
 
-    var putSuppliers = function(units) {
+    var putSuppliers = function(suppliers) {
+      console.log("services.putSuppliers");
+      console.log(suppliers);
           return $q(function(resolve, reject) {
-            $http.post(API_ENDPOINT.url + '/suppliers', suppliers).then(function(result) {
-            console.log(suppliers);
+            $http.put(API_ENDPOINT.url + '/suppliers', suppliers).then(function(result) {
+            //console.log(suppliers);
               if (result.data.success) {
-
+                  console.log(result.data.msg);
                 resolve(result.data.msg);
               } else {
                 reject(result.data.msg);
+                console.log(result.data.msg);
               }
             });
           });
@@ -282,7 +304,17 @@ angular.module('starter.services', [])
     var getFood = function() {
         return $q(function(resolve, reject) {
           $http.get(API_ENDPOINT.url + '/food').then(function(resp) {
-            //if (resp.data.success) {
+            /*console.log(resp.data);
+            console.log(resp.data.msg);
+            console.log(resp.status);
+            console.log(resp.status.msg);*/
+
+            if (resp.status!==200) {
+                console.log("Food Error");
+                console.log(resp.status.msg);
+            }
+            if (resp.status==200) {
+              console.log("Food Success");
               //save to localStorage
               /*window.localStorage.setItem( 'Food1', resp.data.Food1 );
               window.localStorage.setItem( 'Food2', resp.data.Food2 );
@@ -297,21 +329,24 @@ angular.module('starter.services', [])
 
               window.localStorage.setItem( 'FoodData', JSON.stringify(resp.data));
 
-            //}//end if
+            }//end if
 
           });
         });
       };
 
-    var putFood = function(units) {
+    var putFood = function(food) {
+      console.log("services.putFood");
+      console.log(food);
           return $q(function(resolve, reject) {
-            $http.post(API_ENDPOINT.url + '/food', food).then(function(result) {
-            console.log(food);
+            $http.put(API_ENDPOINT.url + '/food', food).then(function(result) {
+            //console.log(food);
               if (result.data.success) {
-
+                  console.log(result.data.msg);
                 resolve(result.data.msg);
               } else {
                 reject(result.data.msg);
+                console.log(result.data.msg);
               }
             });
           });

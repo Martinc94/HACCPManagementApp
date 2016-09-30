@@ -30,6 +30,10 @@
         },
         "cordova-plugin-camera": {
             "PACKAGE_NAME": "com.ionicframework.ionictabs121641"
+        },
+        "phonegap-plugin-push": {
+            "SENDER_ID": "622954994573",
+            "PACKAGE_NAME": "com.ionicframework.ionictabs121641"
         }
     },
     "dependent_plugins": {

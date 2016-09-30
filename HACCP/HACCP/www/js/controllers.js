@@ -155,76 +155,40 @@ angular.module('starter.controllers', ['ionic.wheel'])
 
 })//HygieneCtrl
 
-.controller('DeliveryCtrl', function($scope, AuthService, $ionicPopup, $state, $cordovaCamera) {
+.controller('DeliveryCtrl', function($scope, AuthService, $timeout, $ionicLoading, $ionicPopup, $state, $cordovaCamera) {
 
   $scope.deliveryForm={};
   $scope.toggle=false;
 
-    var suppData1 = window.localStorage.getItem( 'Supplier1' );
-    var suppData2 = window.localStorage.getItem( 'Supplier2' );
-    var suppData3 = window.localStorage.getItem( 'Supplier3' );
-    var suppData4 = window.localStorage.getItem( 'Supplier4' );
-    var suppData5 = window.localStorage.getItem( 'Supplier5' );
-    var suppData6 = window.localStorage.getItem( 'Supplier6' );
-    var suppData7 = window.localStorage.getItem( 'Supplier7' );
-    var suppData8 = window.localStorage.getItem( 'Supplier8' );
-    var suppData9 = window.localStorage.getItem( 'Supplier9' );
-    var suppData10 = window.localStorage.getItem( 'Supplier10' );
+  $scope.$on('$ionicView.enter', function(){
+    
+    console.log("get food and suppliers");
+    AuthService.getSuppliers();
+    AuthService.getFood();
 
+    // loader icon show while data is being retrieved using ionic service $ionicLoading
+        $scope.loading = $ionicLoading.show({
+          content: '<i class="icon ion-loading-c"></i>',
+          animation: 'fade-in',
+          showBackdrop: false,
+          maxWidth: 50,
+          showDelay: 0
+        })
 
-    $scope.suppliers = [{
-      name: suppData1},
-      {
-      name: suppData2},
-      {
-      name: suppData3},
-      {
-      name: suppData4},
-      {
-      name: suppData5},
-      {
-      name: suppData6},
-      {
-      name: suppData7},
-      {
-      name: suppData8},
-      {
-      name: suppData9},
-      {
-      name: suppData10}];
+        $timeout(function () {
+          $ionicLoading.hide();
+          var supplierData = window.localStorage.getItem('SupplierData');
+          supplierData = ('supplierData: ', JSON.parse(supplierData));
+          $scope.suppliers = supplierData;
+          console.log(supplierData);
 
-    var foodData1 = window.localStorage.getItem( 'Food1' );
-    var foodData2 = window.localStorage.getItem( 'Food2' );
-    var foodData3 = window.localStorage.getItem( 'Food3' );
-    var foodData4 = window.localStorage.getItem( 'Food4' );
-    var foodData5 = window.localStorage.getItem( 'Food5' );
-    var foodData6 = window.localStorage.getItem( 'Food6' );
-    var foodData7 = window.localStorage.getItem( 'Food7' );
-    var foodData8 = window.localStorage.getItem( 'Food8' );
-    var foodData9 = window.localStorage.getItem( 'Food9' );
-    var foodData10 = window.localStorage.getItem( 'Food10' );
-
-
-    $scope.foodItems = [{
-      name: foodData1},
-      {
-      name: foodData2},
-      {
-      name: foodData3},
-      {
-      name: foodData4},
-      {
-      name: foodData5},
-      {
-      name: foodData6},
-      {
-      name: foodData7},
-      {
-      name: foodData8},
-      {
-      name: foodData9},
-      {
-      name: foodData10}];
+          var foodData = window.localStorage.getItem('FoodData');
+          foodData = ('foodData: ', JSON.parse(foodData));
+          $scope.foods = foodData;
+          console.log(foodData);
+        }, 2000);
+  
+    });
 
   $scope.submitForm=function(deliveryForm){
 
@@ -255,42 +219,35 @@ angular.module('starter.controllers', ['ionic.wheel'])
 
 })//DeliveryCtrl
 
-.controller('TemperatureCtrl', function($scope, AuthService, $ionicPopup, $state, ionicTimePicker) {
+.controller('TemperatureCtrl', function($scope, AuthService, $timeout, $ionicLoading, $ionicPopup, $state, ionicTimePicker) {
 
   $scope.cookcoolForm = {};
 
-  var foodData1 = window.localStorage.getItem( 'Food1' );
-    var foodData2 = window.localStorage.getItem( 'Food2' );
-    var foodData3 = window.localStorage.getItem( 'Food3' );
-    var foodData4 = window.localStorage.getItem( 'Food4' );
-    var foodData5 = window.localStorage.getItem( 'Food5' );
-    var foodData6 = window.localStorage.getItem( 'Food6' );
-    var foodData7 = window.localStorage.getItem( 'Food7' );
-    var foodData8 = window.localStorage.getItem( 'Food8' );
-    var foodData9 = window.localStorage.getItem( 'Food9' );
-    var foodData10 = window.localStorage.getItem( 'Food10' );
+  $scope.$on('$ionicView.enter', function(){
+    
+    console.log("get food and suppliers");
+    AuthService.getFood();
 
+    // loader icon show while data is being retrieved using ionic service $ionicLoading
+        $scope.loading = $ionicLoading.show({
+          content: '<i class="icon ion-loading-c"></i>',
+          animation: 'fade-in',
+          showBackdrop: false,
+          maxWidth: 50,
+          showDelay: 0
+        })
 
-    $scope.foodItems = [{
-      name: foodData1},
-      {
-      name: foodData2},
-      {
-      name: foodData3},
-      {
-      name: foodData4},
-      {
-      name: foodData5},
-      {
-      name: foodData6},
-      {
-      name: foodData7},
-      {
-      name: foodData8},
-      {
-      name: foodData9},
-      {
-      name: foodData10}];
+        $timeout(function () {
+          $ionicLoading.hide();
+          var foodData = window.localStorage.getItem('FoodData');
+          foodData = ('foodData: ', JSON.parse(foodData));
+          $scope.foods = foodData;
+          console.log(foodData);
+        }, 1000);
+  
+    });
+
+  
 
   $scope.openTimePicker=function(value){
 
@@ -348,42 +305,33 @@ angular.module('starter.controllers', ['ionic.wheel'])
 
 })//TemperatureCtrl
 
-.controller('HotholdCtrl', function($scope, AuthService, $ionicPopup, $state, ionicTimePicker) {
+.controller('HotholdCtrl', function($scope, AuthService, $ionicLoading, $timeout, $ionicPopup, $state, ionicTimePicker) {
 
   $scope.hotholdForm = {};
 
-  var foodData1 = window.localStorage.getItem( 'Food1' );
-    var foodData2 = window.localStorage.getItem( 'Food2' );
-    var foodData3 = window.localStorage.getItem( 'Food3' );
-    var foodData4 = window.localStorage.getItem( 'Food4' );
-    var foodData5 = window.localStorage.getItem( 'Food5' );
-    var foodData6 = window.localStorage.getItem( 'Food6' );
-    var foodData7 = window.localStorage.getItem( 'Food7' );
-    var foodData8 = window.localStorage.getItem( 'Food8' );
-    var foodData9 = window.localStorage.getItem( 'Food9' );
-    var foodData10 = window.localStorage.getItem( 'Food10' );
+  $scope.$on('$ionicView.enter', function(){
+    
+    console.log("get food and suppliers");
+    AuthService.getFood();
 
+    // loader icon show while data is being retrieved using ionic service $ionicLoading
+        $scope.loading = $ionicLoading.show({
+          content: '<i class="icon ion-loading-c"></i>',
+          animation: 'fade-in',
+          showBackdrop: false,
+          maxWidth: 50,
+          showDelay: 0
+        })
 
-    $scope.foodItems = [{
-      name: foodData1},
-      {
-      name: foodData2},
-      {
-      name: foodData3},
-      {
-      name: foodData4},
-      {
-      name: foodData5},
-      {
-      name: foodData6},
-      {
-      name: foodData7},
-      {
-      name: foodData8},
-      {
-      name: foodData9},
-      {
-      name: foodData10}];
+        $timeout(function () {
+          $ionicLoading.hide();
+          var foodData = window.localStorage.getItem('FoodData');
+          foodData = ('foodData: ', JSON.parse(foodData));
+          $scope.foods = foodData;
+          console.log(foodData);
+        }, 1000);
+  
+    });
 
   $scope.openTimePicker=function(){
 
@@ -395,7 +343,7 @@ angular.module('starter.controllers', ['ionic.wheel'])
       else {
         var selectedTime = new Date(val * 1000);
         $scope.hotholdForm.time=selectedTime.getUTCHours() + 'H :' + selectedTime.getUTCMinutes() + 'M';
-        //console.log('Selected epoch is : ', val, 'and the time is ', selectedTime.getUTCHours(), 'H :', selectedTime.getUTCMinutes(), 'M');
+
 
       }
     },
@@ -425,35 +373,32 @@ angular.module('starter.controllers', ['ionic.wheel'])
 
 })//HotholdCtrl
 
-.controller('FridgeCtrl', function($scope, AuthService, $ionicPopup, $state) {
+.controller('FridgeCtrl', function($scope, AuthService, $timeout, $ionicPopup, $state, $ionicLoading) {
 
-    var fridData1 = window.localStorage.getItem( 'Fridge1' );
-    var fridData2 = window.localStorage.getItem( 'Fridge2' );
-    var fridData3 = window.localStorage.getItem( 'Fridge3' );
-    var fridData4 = window.localStorage.getItem( 'Fridge4' );
-    var fridData5 = window.localStorage.getItem( 'Fridge5' );
-    var fridData6 = window.localStorage.getItem( 'Fridge6' );
+    $scope.$on('$ionicView.enter', function(){
+    
+    console.log("get Fridges");
+    AuthService.getRefridgerators();
 
+    // loader icon show while data is being retrieved using ionic service $ionicLoading
+        $scope.loading = $ionicLoading.show({
+          content: '<i class="icon ion-loading-c"></i>',
+          animation: 'fade-in',
+          showBackdrop: false,
+          maxWidth: 50,
+          showDelay: 0
+        })
 
-    $scope.units = [{
-      name: fridData1,
-      temp: 0},
-      {
-      name: fridData2,
-      temp: 0},
-      {
-      name: fridData3,
-      temp: 0},
-      {
-      name: fridData4,
-      temp: 0},
-      {
-      name: fridData5,
-      temp: 0},
-      {
-      name: fridData6,
-      temp: 0}];
-
+        $timeout(function () {
+          $ionicLoading.hide();
+          var fridgeData = window.localStorage.getItem('FridgeData');
+          fridgeData = ('fridgeData: ', JSON.parse(fridgeData));
+          $scope.units = fridgeData;
+          console.log($scope.units);
+        }, 1000);
+  
+    });
+  
 
 })//FridgeCtrl
 
@@ -481,42 +426,33 @@ angular.module('starter.controllers', ['ionic.wheel'])
 
 })//TrainingCtrl
 
-.controller('TransportCtrl', function($scope, AuthService, $ionicPopup, $state) {
+.controller('TransportCtrl', function($scope, AuthService, $ionicLoading, $timeout, $ionicPopup, $state) {
 
   $scope.transportForm={};
 
-  var foodData1 = window.localStorage.getItem( 'Food1' );
-    var foodData2 = window.localStorage.getItem( 'Food2' );
-    var foodData3 = window.localStorage.getItem( 'Food3' );
-    var foodData4 = window.localStorage.getItem( 'Food4' );
-    var foodData5 = window.localStorage.getItem( 'Food5' );
-    var foodData6 = window.localStorage.getItem( 'Food6' );
-    var foodData7 = window.localStorage.getItem( 'Food7' );
-    var foodData8 = window.localStorage.getItem( 'Food8' );
-    var foodData9 = window.localStorage.getItem( 'Food9' );
-    var foodData10 = window.localStorage.getItem( 'Food10' );
+  $scope.$on('$ionicView.enter', function(){
+    
+    console.log("get food and suppliers");
+    AuthService.getFood();
 
+    // loader icon show while data is being retrieved using ionic service $ionicLoading
+        $scope.loading = $ionicLoading.show({
+          content: '<i class="icon ion-loading-c"></i>',
+          animation: 'fade-in',
+          showBackdrop: false,
+          maxWidth: 50,
+          showDelay: 0
+        })
 
-    $scope.foodItems = [{
-      name: foodData1},
-      {
-      name: foodData2},
-      {
-      name: foodData3},
-      {
-      name: foodData4},
-      {
-      name: foodData5},
-      {
-      name: foodData6},
-      {
-      name: foodData7},
-      {
-      name: foodData8},
-      {
-      name: foodData9},
-      {
-      name: foodData10}];
+        $timeout(function () {
+          $ionicLoading.hide();
+          var foodData = window.localStorage.getItem('FoodData');
+          foodData = ('foodData: ', JSON.parse(foodData));
+          $scope.foods = foodData;
+          console.log(foodData);
+        }, 1000);
+  
+    });
 
   $scope.submit = function() {
   AuthService.transport($scope.transportForm).then(function(msg) {
@@ -539,17 +475,47 @@ angular.module('starter.controllers', ['ionic.wheel'])
 
 })//TransportCtrl
 
-.controller('SettingsCtrl', function($scope, AuthService, $ionicPopup, $state) {
+.controller('SettingsCtrl', function($scope, $timeout, AuthService, $ionicLoading, $ionicPopup, $state, $ionicListDelegate) {
 
   $scope.suppliersSelect=false;
   $scope.shouldShowDelete = false;
   $scope.listCanSwipe = true;
   $scope.refridgerationSelect=false;
   $scope.foodSelect=false;
-  //arrays to store information pulled from server and pushed to server
-  $scope.suppliers=[];
-  $scope.units=[];
-  $scope.foods=[];
+
+  // loader icon show while data is being retrieved using ionic service $ionicLoading
+        $scope.loading = $ionicLoading.show({
+          content: '<i class="icon ion-loading-c"></i>',
+          animation: 'fade-in',
+          showBackdrop: false,
+          maxWidth: 50,
+          showDelay: 0
+        })
+
+        $timeout(function () {
+            $ionicLoading.hide();
+          }, 2000);
+          
+          var fridgeData = window.localStorage.getItem('FridgeData');
+          fridgeData = JSON.parse(fridgeData);
+          console.log(fridgeData);
+          $scope.units = fridgeData;
+
+          var supplierData = window.localStorage.getItem('SupplierData');
+          supplierData = ('supplierData: ', JSON.parse(supplierData));
+          console.log(supplierData);
+          $scope.suppliers = supplierData;
+
+
+          var foodData = window.localStorage.getItem('FoodData');
+          foodData = ('foodData: ', JSON.parse(foodData));
+          console.log(foodData);
+          $scope.foods = foodData;
+        
+
+        
+
+  
 
   //open/close Suppliers menu
   $scope.openSuppliers = function(){
@@ -563,15 +529,154 @@ angular.module('starter.controllers', ['ionic.wheel'])
   }
   //add new supplier to suppliers array
   $scope.addSupplier = function(supplier) {
-    $scope.suppliers.push({
-      name: supplier.name
-    });
-    supplier.name = "";
+    
+    if(supplierData.Supplier1 == undefined){
+        supplierData.Supplier1=supplier;
+      }
+      else if(supplierData.Supplier2 == undefined){
+        supplierData.Supplier2=supplier;
+      }
+      else if(supplierData.Supplier3 == undefined){
+        supplierData.Supplier3=supplier;
+      }
+      else if(supplierData.Supplier4 == undefined){
+        supplierData.Supplier4=supplier;
+      }
+      else if(supplierData.Supplier5 == undefined){
+        supplierData.Supplier5=supplier;
+      }
+      else if(supplierData.Supplier6 == undefined){
+        supplierData.Supplier6=supplier;
+      }
+      else if(supplierData.Supplier7 == undefined){
+        supplierData.Supplier7=supplier;
+      }
+      else if(supplierData.Supplier8 == undefined){
+        supplierData.Supplier8=supplier;
+      }
+      else if(supplierData.Supplier9 == undefined){
+        supplierData.Supplier9=supplier;
+      }
+      else if(supplierData.Supplier10 == undefined){
+        supplierData.Supplier10=supplier;
+      }
   };
-  //delete selected supplier (slide selection and delete)
-  $scope.deleteSupplier = function(supplier) {
 
-    $scope.suppliers.splice($scope.suppliers.indexOf(supplier), 1);
+  //edit existing supplier
+  $scope.editSupplier = function(key) {
+
+     showPopupSupplier(key);
+
+    $ionicListDelegate.closeOptionButtons();
+
+
+  };
+
+  showPopupSupplier = function(key) {
+   //variable for text input
+    $scope.suppliername={};
+    // custom popup with user instructions. Has Cancel and Save buttons
+    var myPopup = $ionicPopup.show({
+      template: '<input type="text" ng-model="suppliername.name">',
+      title: 'Enter Supplier Name',
+      scope: $scope,
+      buttons: [
+        { text: 'Cancel' },
+        {
+          text: '<b>Save</b>',
+          type: 'button-positive',
+          onTap: function(e) {
+            if (!$scope.suppliername) {
+              //don't allow the user to save if text has not been entered
+              e.preventDefault();
+            } else {
+
+               if(key == "Supplier1"){
+                  supplierData.Supplier1=$scope.suppliername.name;
+                }
+                else if(key == "Supplier2"){
+                  supplierData.Supplier2=$scope.suppliername.name;
+                }
+                else if(key == "Supplier3"){
+                  supplierData.Supplier3=$scope.suppliername.name;
+                }
+                else if(key == "Supplier4"){
+                  supplierData.Supplier4=$scope.suppliername.name;
+                }
+                else if(key == "Supplier5"){
+                  supplierData.Supplier5=$scope.suppliername.name;
+                }
+                else if(key == "Supplier6"){
+                  supplierData.Supplier6=$scope.suppliername.name;
+                }
+                else if(key == "Supplier7"){
+                  supplierData.Supplier7=$scope.suppliername.name;
+                }
+                else if(key == "Supplier8"){
+                  supplierData.Supplier8=$scope.suppliername.name;
+                }
+                else if(key == "Supplier9"){
+                  supplierData.Supplier9=$scope.suppliername.name;
+                }
+                else if(key == "Supplier10"){
+                  supplierData.Supplier10=$scope.suppliername.name;
+                }
+                $scope.suppliername={};
+
+            }
+          }
+        },
+        ]
+      })
+  }
+
+  
+
+  //delete selected supplier (slide selection and delete)
+  $scope.deleteSupplier = function(key) {
+
+   if(key == "Supplier1"){
+      delete supplierData.Supplier1;
+      supplierData.Supplier1=undefined;
+    }
+    else if(key == "Supplier2"){
+      delete supplierData.Supplier2;
+      supplierData.Supplier2=undefined;
+    }
+    else if(key == "Supplier3"){
+      delete supplierData.Supplier3;
+      supplierData.Supplier3=undefined;
+    }
+    else if(key == "Supplier4"){
+      delete supplierData.Supplier4;
+      supplierData.Supplier4=undefined;
+    }
+    else if(key == "Supplier5"){
+      delete supplierData.Supplier5;
+      supplierData.Supplier5=undefined;
+    }
+    else if(key == "Supplier6"){
+      delete supplierData.Supplier6;
+      supplierData.Supplier6=undefined;
+    }
+    else if(key == "Supplier7"){
+      delete supplierData.Supplier7;
+      supplierData.Supplier7=undefined;
+    }
+    else if(key == "Supplier8"){
+      delete supplierData.Supplier8;
+      supplierData.Supplier8=undefined;
+    }
+    else if(key == "Supplier9"){
+      delete supplierData.Supplier9;
+      supplierData.Supplier9=undefined;
+    }
+    else if(key == "Supplier10"){
+      delete supplierData.Supplier10;
+      supplierData.Supplier10=undefined;
+    }
+
+    $ionicListDelegate.closeOptionButtons();
 
   };
 
@@ -587,17 +692,115 @@ angular.module('starter.controllers', ['ionic.wheel'])
   }
   //add new unit to (refridgeration) units array
   $scope.addUnit = function(unit) {
-    $scope.units.push({
-      name: unit.name
-    });
-    unit.name = "";
+
+      if(fridgeData.Fridge1 == undefined){
+        fridgeData.Fridge1=unit;
+      }
+      else if(fridgeData.Fridge2 == undefined){
+        fridgeData.Fridge2=unit;
+      }
+      else if(fridgeData.Fridge3 == undefined){
+        fridgeData.Fridge3=unit;
+      }
+      else if(fridgeData.Fridge4 == undefined){
+        fridgeData.Fridge4=unit;
+      }
+      else if(fridgeData.Fridge5 == undefined){
+        fridgeData.Fridge5=unit;
+      }
+      else if(fridgeData.Fridge6 == undefined){
+        fridgeData.Fridge6=unit;
+      }
+
   };
+
+  //edit existing unit
+  $scope.editUnit = function(key) {
+
+     showPopupFridge(key);
+
+    $ionicListDelegate.closeOptionButtons();
+
+  };
+
+  showPopupFridge = function(key) {
+   //variable for text input
+    $scope.fridgename={};
+    // custom popup with user instructions. Has Cancel and Save buttons
+    var myPopup = $ionicPopup.show({
+      template: '<input type="text" ng-model="fridgename.name">',
+      title: 'Enter Fridge Name',
+      scope: $scope,
+      buttons: [
+        { text: 'Cancel' },
+        {
+          text: '<b>Save</b>',
+          type: 'button-positive',
+          onTap: function(e) {
+            if (!$scope.fridgename) {
+              //don't allow the user to save if text has not been entered
+              e.preventDefault();
+            } else {
+
+               if(key == "Fridge1"){
+                  fridgeData.Fridge1=$scope.fridgename.name;
+                }
+                else if(key == "Fridge2"){
+                  fridgeData.Fridge2=$scope.fridgename.name;
+                }
+                else if(key == "Fridge3"){
+                  fridgeData.Fridge3=$scope.fridgename.name;
+                }
+                else if(key == "Fridge4"){
+                  fridgeData.Fridge4=$scope.fridgename.name;
+                }
+                else if(key == "Fridge5"){
+                  fridgeData.Fridge5=$scope.fridgename.name;
+                }
+                else if(key == "Fridge6"){
+                  fridgeData.Fridge6=$scope.fridgename.name;
+                }
+
+                $scope.fridgename={};
+
+            }
+          }
+        },
+        ]
+      })
+  }
   //delete selected unit (slide selection and delete)
-  $scope.deleteUnit = function(unit) {
+  $scope.deleteUnit = function(key) {
 
-    $scope.units.splice($scope.units.indexOf(unit), 1);
+    if(key == "Fridge1"){
+      delete fridgeData.Fridge1;
+      fridgeData.Fridge1=undefined;
+    }
+    else if(key == "Fridge2"){
+      delete fridgeData.Fridge2;
+      fridgeData.Fridge2=undefined;
+    }
+    else if(key == "Fridge3"){
+      delete fridgeData.Fridge3;
+      fridgeData.Fridge3=undefined;
+    }
+    else if(key == "Fridge4"){
+      delete fridgeData.Fridge4;
+      fridgeData.Fridge4=undefined;
+    }
+    else if(key == "Fridge5"){
+      delete fridgeData.Fridge5;
+      fridgeData.Fridge5=undefined;
+    }
+    else if(key == "Fridge6"){
+      delete fridgeData.Fridge6;
+      fridgeData.Fridge6=undefined;
+    }
 
+    $ionicListDelegate.closeOptionButtons();
   };
+
+
 
   //open/close Food menu
   $scope.openFood = function(){
@@ -609,23 +812,174 @@ angular.module('starter.controllers', ['ionic.wheel'])
         $scope.foodSelect=true;
       }
   }
-  //add new food to foods array
-  $scope.addFood = function(food) {
-    $scope.foods.push({
-      name: food.name
-    });
-    food.name = "";
+
+    $scope.addFood = function(food) {
+    
+    if(foodData.Food1 == undefined){
+        foodData.Food1=food;
+      }
+      else if(foodData.Food2 == undefined){
+        foodData.Food2=food;
+      }
+      else if(foodData.foodData3 == undefined){
+        foodData.Food3=food;
+      }
+      else if(foodData.Food4 == undefined){
+        foodData.Food4=food;
+      }
+      else if(foodData.Food5 == undefined){
+        foodData.Food5=food;
+      }
+      else if(foodData.Food6 == undefined){
+        foodData.Food6=food;
+      }
+      else if(foodData.Food7 == undefined){
+        foodData.Food7=food;
+      }
+      else if(foodData.Food8 == undefined){
+        foodData.Food8=food;
+      }
+      else if(foodData.Food9 == undefined){
+        foodData.Food9=food;
+      }
+      else if(foodData.Food10 == undefined){
+        foodData.Food10=food;
+      }
+
+      console.log("addfood");
+      console.log(foodData);
+
   };
+
+  //edit existing food
+  $scope.editFood = function(key) {
+
+     showPopupFood(key);
+
+    $ionicListDelegate.closeOptionButtons();
+
+  };
+
+  showPopupFood = function(key) {
+   //variable for text input
+    $scope.foodstuffname={};
+    // custom popup with user instructions. Has Cancel and Save buttons
+    var myPopup = $ionicPopup.show({
+      template: '<input type="text" ng-model="foodstuffname.name">',
+      title: 'Enter Food Name',
+      scope: $scope,
+      buttons: [
+        { text: 'Cancel' },
+        {
+          text: '<b>Save</b>',
+          type: 'button-positive',
+          onTap: function(e) {
+            if (!$scope.foodstuffname) {
+              //don't allow the user to save if text has not been entered
+              e.preventDefault();
+            } else {
+
+               if(key == "Food1"){
+                  foodData.Food1=$scope.foodstuffname.name;
+                }
+                else if(key == "Food2"){
+                  foodData.Food2=$scope.foodstuffname.name;
+                }
+                else if(key == "Food3"){
+                  foodData.Food3=$scope.foodstuffname.name;
+                }
+                else if(key == "Food4"){
+                  foodData.Food4=$scope.foodstuffname.name;
+                }
+                else if(key == "Food5"){
+                  foodData.Food5=$scope.foodstuffname.name;
+                }
+                else if(key == "Food6"){
+                  foodData.Food6=$scope.foodstuffname.name;
+                }
+                else if(key == "Food7"){
+                  foodData.Food7=$scope.foodstuffname.name;
+                }
+                else if(key == "Food8"){
+                  foodData.Food8=$scope.foodstuffname.name;
+                }
+                else if(key == "Food9"){
+                  foodData.Food9=$scope.foodstuffname.name;
+                }
+                else if(key == "Food10"){
+                  foodData.Food10=$scope.foodstuffname.name;
+                }
+
+                $scope.foodstuffname={};
+                console.log("editfood");
+                console.log(foodData);
+
+            }
+          }
+        },
+        ]
+      })
+  }
+
+  
+
   //delete selected food (slide selection and delete)
-  $scope.deleteFood = function(food) {
+  $scope.deleteFood = function(key) {
 
-    $scope.foods.splice($scope.foods.indexOf(food), 1);
+   if(key == "Food1"){
+      delete foodData.Food1;
+      foodData.Food1=undefined;
+    }
+    else if(key == "Food2"){
+      delete foodData.Food2;
+      foodData.Food2=undefined;
+    }
+    else if(key == "Food3"){
+      delete foodData.Food3;
+      foodData.Food3=undefined;
+    }
+    else if(key == "Food4"){
+      delete foodData.Food4;
+      foodData.Food4=undefined;
+    }
+    else if(key == "Food5"){
+      delete foodData.Food5;
+      foodData.Food5=undefined;
+    }
+    else if(key == "Food6"){
+      delete foodData.Food6;
+      foodData.Food6=undefined;
+    }
+    else if(key == "Food7"){
+      delete foodData.Food7;
+      foodData.Food7=undefined;
+    }
+    else if(key == "Food8"){
+      delete foodData.Food8;
+      foodData.Food8=undefined;
+    }
+    else if(key == "Food9"){
+      delete foodData.Food9;
+      foodData.Food9=undefined;
+    }
+    else if(key == "Food10"){
+      delete foodData.Food10;
+      foodData.Food10=undefined;
+    }
+
+    $ionicListDelegate.closeOptionButtons();
+
+    console.log("deletefood");
+    console.log(foodData);
 
   };
+
   //when page is entered
   $scope.$on('$ionicView.enter', function(){
     //calls server for settings
     //AuthService.getSettings();
+
+    console.log("entering settings");
     AuthService.getRefridgerators();
     AuthService.getSuppliers();
     AuthService.getFood();
@@ -633,26 +987,37 @@ angular.module('starter.controllers', ['ionic.wheel'])
   });
 
   //when page is exited
-  $scope.$on('$ionicView.leave', function(){
+  $scope.$on('$ionicView.beforeLeave', function(){
 
-    //AuthService.getSettings();
-    console.log('Exiting Settings');
+    // loader icon show while data is being retrieved using ionic service $ionicLoading
+        $scope.loading = $ionicLoading.show({
+          content: '<i class="icon ion-loading-c"></i>',
+          animation: 'fade-in',
+          showBackdrop: false,
+          maxWidth: 50,
+          showDelay: 0
+        })
+
+    console.log("before leave");
+    console.log(fridgeData);
+    console.log(supplierData);
+    console.log(foodData);
+ 
     //Push settings if changed
-    //AuthService.putRefridgerators(units);
+    AuthService.putRefridgerators(fridgeData);
+    AuthService.putSuppliers(supplierData);
+    AuthService.putFood(foodData);
+    console.log("put settings");
+    console.log(fridgeData);
+    console.log(supplierData);
+    console.log(foodData);
 
-    //var appData = window.localStorage.getItem( 'Fridge1' );
-    //var appData2 = window.localStorage.getItem( 'Supplier1' );
-    //var appData3 = window.localStorage.getItem( 'Food1' );
-    //console.log(appData,appData2,appData3);
+    $timeout(function () {
+      $ionicLoading.hide();
+    }, 2000);
 
-    var FridgeData = window.localStorage.getItem('FridgeData');
-    console.log(JSON.parse(FridgeData));
 
-    var SupplierData = window.localStorage.getItem('SupplierData');
-    console.log(JSON.parse(SupplierData));
-
-    var FoodData = window.localStorage.getItem('FoodData');
-    console.log(JSON.parse(FoodData));
+    
   });
 
 
