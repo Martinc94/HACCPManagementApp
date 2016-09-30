@@ -373,7 +373,9 @@ angular.module('starter.controllers', ['ionic.wheel'])
 
 })//HotholdCtrl
 
-.controller('FridgeCtrl', function($scope, AuthService, $timeout, $ionicPopup, $state, $ionicLoading) {
+.controller('FridgeCtrl', function($scope, AuthService, $timeout, $ionicPopup, $state, $ionicLoading, $cordovaCamera) {
+
+    $scope.fridge={};
 
     $scope.$on('$ionicView.enter', function(){
     
@@ -398,6 +400,47 @@ angular.module('starter.controllers', ['ionic.wheel'])
         }, 1000);
   
     });
+
+    $scope.takePicture = function() {
+        var options = {
+            quality : 75,
+            destinationType : Camera.DestinationType.DATA_URL,
+            sourceType : Camera.PictureSourceType.CAMERA,
+            allowEdit : true,
+            encodingType: Camera.EncodingType.JPEG,
+            targetWidth: 300,
+            targetHeight: 300,
+            popoverOptions: CameraPopoverOptions,
+            cameraDirection: 1,
+            saveToPhotoAlbum: false
+        };
+
+        $cordovaCamera.getPicture(options).then(function(imageData) {
+            $scope.imgURI = "data:image/jpeg;base64," + imageData;
+            $scope.toggle=true;
+        }, function(err) {
+            // An error occured. Show a message to the user
+        });
+    }
+
+    $scope.submit = function() {
+    AuthService.transport($scope.fridge).then(function(msg) {
+   //redirect to home??
+    //$state.go('login');
+    var alertPopup = $ionicPopup.alert({
+      title: 'Success!',
+      template: msg
+      });
+   }, function(errMsg) {
+    var alertPopup = $ionicPopup.alert({
+      title: 'Error',
+      template: errMsg
+    });
+  });
+
+  $scope.fridge={};
+
+  };
   
 
 })//FridgeCtrl
@@ -1023,8 +1066,11 @@ angular.module('starter.controllers', ['ionic.wheel'])
 
 })//SettingsCtrl
 
-.controller('HomeCtrl', function($scope) {
+.controller('HomeCtrl', function($scope, $ionicSideMenuDelegate) {
   //home controller
+  $scope.toggleLeftSideMenu = function() {
+    $ionicSideMenuDelegate.toggleLeft();
+  };
 })
 
 

@@ -1,22 +1,42 @@
 <ion-view view-title="Refrigeration Records">
    
-  <ion-content class="refridgeration">
+  <ion-content>
+    <div class="bar bar-header bar-calm">
 
-    <ion-list>
+        <div class="h1 title">Temperature Records</div>
+       <button class="button button-icon icon ion-camera" ng-click="takePicture()"></button>
+    </div>
+    <br>
+    <br>
+    <div ng-show="toggle">
+      <img ng-show="imgURI !== undefined" ng-src="{{imgURI}}" class="center">
+      <label class="item item-input">
+        <span class="input-label">Photo Comment</span>
+        <input type="text" ng-model="fridge.photoComment">
+      </label>
+    </div>
     
-        <ion-item ng-repeat="unit in units track by $index">
+    <br>
+    <h4 class="center">Select a fridge and input temperature</h4>
+    <br>
+    <label class="item item-select item-text-wrap">
+      <div class="input-label" style="width: 90%">
+       Select Refridgerator
+      </div>
+      <select ng-model="fridge.name" >
+        <option ng-repeat="unit in units">{{unit}}</option>
+      </select>
+    </label>
 
-
-			<label class="item item-input">
-           <span class="input-label">{{unit}}</span>
-			<input type="number" placeholder="0" ng-model="unit.temp">
+          <label class="item item-input">
+           <span class="input-label">Enter Temp</span>
+      <input type="number" placeholder="0" ng-model="fridge.temp">
           </label>
-        </ion-item></ion-list>
-
-
-		<button class="button button-full button-clear" type="submit">
+          <button class="button button-full button-calm" type="submit" ng-click="saveFridge()">
+          
       Submit
     </button>
+
     
 
   </ion-content>
