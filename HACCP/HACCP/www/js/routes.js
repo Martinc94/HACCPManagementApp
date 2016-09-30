@@ -15,6 +15,17 @@ angular.module('starter.routes', [])
             controller: 'MenuCtrl'
        })
 
+      .state('app.home', {
+            url: '/home',
+            views: {
+              'menuContent': {
+                templateUrl: 'templates/home.html',
+                controller: 'HomeCtrl'
+              }
+            }
+
+        })
+
       .state('app.hygiene', {
             url: '/hygiene',
             views: {

@@ -184,7 +184,7 @@ angular.module('starter.services', [])
 
     var putSettings = function(settings) {
           return $q(function(resolve, reject) {
-            $http.post(API_ENDPOINT.url + '/settings', settings).then(function(result) {
+            $http.put(API_ENDPOINT.url + '/settings', settings).then(function(result) {
             console.log(settings);
               if (result.data.success) {
 
@@ -199,8 +199,15 @@ angular.module('starter.services', [])
     var getRefridgerators = function() {
          return $q(function(resolve, reject) {
            $http.get(API_ENDPOINT.url + '/refridgerationUnit').then(function(resp) {
-             if (resp.data.success) {
+             //if (resp.data.success) {
 
+             if (resp.status!==200) {
+                 console.log("Ref Error");
+                 console.log("Ref msg"+resp.status.msg);
+                 console.log("Ref Status"+resp.status);
+             }
+             if (resp.status==200) {
+               console.log("Ref Success");
 
                /*console.log(resp.data.msg);
                console.log(resp.data.Fridge1);
@@ -213,15 +220,14 @@ angular.module('starter.services', [])
                //console.log(resp.data);
 
                //save to localStorage
-               window.localStorage.setItem( 'Fridge1', resp.data.Fridge1 );
+              /* window.localStorage.setItem( 'Fridge1', resp.data.Fridge1 );
                window.localStorage.setItem( 'Fridge2', resp.data.Fridge2 );
                window.localStorage.setItem( 'Fridge3', resp.data.Fridge3 );
                window.localStorage.setItem( 'Fridge4', resp.data.Fridge4 );
                window.localStorage.setItem( 'Fridge5', resp.data.Fridge5 );
-               window.localStorage.setItem( 'Fridge6', resp.data.Fridge6 );
+               window.localStorage.setItem( 'Fridge6', resp.data.Fridge6 );*/
 
                window.localStorage.setItem( 'FridgeData', JSON.stringify(resp.data));
-
 
 
              }//end if
@@ -231,13 +237,17 @@ angular.module('starter.services', [])
        };
 
     var putRefridgerators = function(units) {
+      console.log("services.putRefridgerators");
+      console.log(units);
            return $q(function(resolve, reject) {
-             $http.post(API_ENDPOINT.url + '/refridgerationUnit', units).then(function(result) {
+             $http.put(API_ENDPOINT.url + '/refridgerationUnit', units).then(function(result) {
+             //console.log(units);
                if (result.data.success) {
-
+                 console.log(result.data.msg);
                  resolve(result.data.msg);
                } else {
                  reject(result.data.msg);
+                 console.log(result.data.msg);
                }
              });
            });
@@ -246,10 +256,16 @@ angular.module('starter.services', [])
     var getSuppliers = function() {
         return $q(function(resolve, reject) {
           $http.get(API_ENDPOINT.url + '/suppliers').then(function(resp) {
-            if (resp.data.success) {
+          //  if (resp.data.success) {
 
+          if (resp.status!==200) {
+              console.log("Suppliers Error");
+              console.log(resp.status.msg);
+          }
+          if (resp.status==200) {
+              console.log("Suppliers Success");
               //save to localStorage
-              window.localStorage.setItem( 'Supplier1', resp.data.Supplier1 );
+            /*  window.localStorage.setItem( 'Supplier1', resp.data.Supplier1 );
               window.localStorage.setItem( 'Supplier2', resp.data.Supplier2 );
               window.localStorage.setItem( 'Supplier3', resp.data.Supplier3 );
               window.localStorage.setItem( 'Supplier4', resp.data.Supplier4 );
@@ -258,11 +274,49 @@ angular.module('starter.services', [])
               window.localStorage.setItem( 'Supplier7', resp.data.Supplier7 );
               window.localStorage.setItem( 'Supplier8', resp.data.Supplier8 );
               window.localStorage.setItem( 'Supplier9', resp.data.Supplier9 );
-              window.localStorage.setItem( 'Supplier10', resp.data.Supplier10 );
+              window.localStorage.setItem( 'Supplier10', resp.data.Supplier10 );*/
 
               window.localStorage.setItem( 'SupplierData', JSON.stringify(resp.data));
+              
+            }//end if
 
-              window.localStorage.setItem( 'Food1', resp.data.Food1 );
+          });
+        });
+      };
+
+    var putSuppliers = function(suppliers) {
+      console.log("services.putSuppliers");
+      console.log(suppliers);
+          return $q(function(resolve, reject) {
+            $http.put(API_ENDPOINT.url + '/suppliers', suppliers).then(function(result) {
+            //console.log(suppliers);
+              if (result.data.success) {
+                  console.log(result.data.msg);
+                resolve(result.data.msg);
+              } else {
+                reject(result.data.msg);
+                console.log(result.data.msg);
+              }
+            });
+          });
+        };
+
+    var getFood = function() {
+        return $q(function(resolve, reject) {
+          $http.get(API_ENDPOINT.url + '/food').then(function(resp) {
+            /*console.log(resp.data);
+            console.log(resp.data.msg);
+            console.log(resp.status);
+            console.log(resp.status.msg);*/
+
+            if (resp.status!==200) {
+                console.log("Food Error");
+                console.log(resp.status.msg);
+            }
+            if (resp.status==200) {
+              console.log("Food Success");
+              //save to localStorage
+              /*window.localStorage.setItem( 'Food1', resp.data.Food1 );
               window.localStorage.setItem( 'Food2', resp.data.Food2 );
               window.localStorage.setItem( 'Food3', resp.data.Food3 );
               window.localStorage.setItem( 'Food4', resp.data.Food4 );
@@ -271,7 +325,9 @@ angular.module('starter.services', [])
               window.localStorage.setItem( 'Food7', resp.data.Food7 );
               window.localStorage.setItem( 'Food8', resp.data.Food8 );
               window.localStorage.setItem( 'Food9', resp.data.Food9 );
-              window.localStorage.setItem( 'Food10', resp.data.Food10 );
+              window.localStorage.setItem( 'Food10', resp.data.Food10 );*/
+
+              window.localStorage.setItem( 'FoodData', JSON.stringify(resp.data));
 
             }//end if
 
@@ -279,15 +335,18 @@ angular.module('starter.services', [])
         });
       };
 
-    var putSuppliers = function(units) {
+    var putFood = function(food) {
+      console.log("services.putFood");
+      console.log(food);
           return $q(function(resolve, reject) {
-            $http.post(API_ENDPOINT.url + '/suppliers', suppliers).then(function(result) {
-            console.log(suppliers);
+            $http.put(API_ENDPOINT.url + '/food', food).then(function(result) {
+            //console.log(food);
               if (result.data.success) {
-
+                  console.log(result.data.msg);
                 resolve(result.data.msg);
               } else {
                 reject(result.data.msg);
+                console.log(result.data.msg);
               }
             });
           });
@@ -296,10 +355,6 @@ angular.module('starter.services', [])
     var logout = function() {
       destroyUserCredentials();
     };
-
-
-
-
 
     loadUserCredentials();
 
@@ -320,6 +375,8 @@ angular.module('starter.services', [])
       putRefridgerators:putRefridgerators,
       getSuppliers:getSuppliers,
       putSuppliers:putSuppliers,
+      getFood:getFood,
+      putFood:putFood,
       isAuthenticated: function() {return isAuthenticated;},
     };
   })
