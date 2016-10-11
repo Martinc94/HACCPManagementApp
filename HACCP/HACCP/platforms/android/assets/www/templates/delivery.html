@@ -31,7 +31,7 @@
      Food Item
     </div>
     <select ng-model="deliveryForm.food" >
-      <option ng-repeat="f in foodItems">{{f.name}}</option>
+      <option ng-repeat="food in foods">{{food}}</option>
     </select>
   </label>
 
@@ -45,7 +45,7 @@
      Supplied By
     </div>
     <select ng-model="deliveryForm.supplier" >
-      <option ng-repeat="s in suppliers">{{s.name}}</option>
+      <option ng-repeat="supplier in suppliers">{{supplier}}</option>
     </select>
   </label>
 
