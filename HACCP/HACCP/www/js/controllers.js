@@ -9,7 +9,7 @@ angular.module('starter.controllers', ['ionic.wheel'])
 
   $scope.login = function() {
     AuthService.login($scope.user).then(function(msg) {
-      $state.go('app.hygiene');
+      $state.go('app.home');
     }, function(errMsg) {
       var alertPopup = $ionicPopup.alert({
         title: 'Login failed!',
@@ -161,7 +161,7 @@ angular.module('starter.controllers', ['ionic.wheel'])
   $scope.toggle=false;
 
   $scope.$on('$ionicView.enter', function(){
-    
+
     console.log("get food and suppliers");
     AuthService.getSuppliers();
     AuthService.getFood();
@@ -187,7 +187,7 @@ angular.module('starter.controllers', ['ionic.wheel'])
           $scope.foods = foodData;
           console.log(foodData);
         }, 2000);
-  
+
     });
 
   $scope.submitForm=function(deliveryForm){
@@ -224,7 +224,7 @@ angular.module('starter.controllers', ['ionic.wheel'])
   $scope.cookcoolForm = {};
 
   $scope.$on('$ionicView.enter', function(){
-    
+
     console.log("get food and suppliers");
     AuthService.getFood();
 
@@ -244,10 +244,10 @@ angular.module('starter.controllers', ['ionic.wheel'])
           $scope.foods = foodData;
           console.log(foodData);
         }, 1000);
-  
+
     });
 
-  
+
 
   $scope.openTimePicker=function(value){
 
@@ -310,7 +310,7 @@ angular.module('starter.controllers', ['ionic.wheel'])
   $scope.hotholdForm = {};
 
   $scope.$on('$ionicView.enter', function(){
-    
+
     console.log("get food and suppliers");
     AuthService.getFood();
 
@@ -330,7 +330,7 @@ angular.module('starter.controllers', ['ionic.wheel'])
           $scope.foods = foodData;
           console.log(foodData);
         }, 1000);
-  
+
     });
 
   $scope.openTimePicker=function(){
@@ -378,7 +378,7 @@ angular.module('starter.controllers', ['ionic.wheel'])
     $scope.fridge={};
 
     $scope.$on('$ionicView.enter', function(){
-    
+
     console.log("get Fridges");
     AuthService.getRefridgerators();
 
@@ -398,7 +398,7 @@ angular.module('starter.controllers', ['ionic.wheel'])
           $scope.units = fridgeData;
           console.log($scope.units);
         }, 1000);
-  
+
     });
 
     $scope.takePicture = function() {
@@ -441,7 +441,7 @@ angular.module('starter.controllers', ['ionic.wheel'])
   $scope.fridge={};
 
   };
-  
+
 
 })//FridgeCtrl
 
@@ -474,7 +474,7 @@ angular.module('starter.controllers', ['ionic.wheel'])
   $scope.transportForm={};
 
   $scope.$on('$ionicView.enter', function(){
-    
+
     console.log("get food and suppliers");
     AuthService.getFood();
 
@@ -494,7 +494,7 @@ angular.module('starter.controllers', ['ionic.wheel'])
           $scope.foods = foodData;
           console.log(foodData);
         }, 1000);
-  
+
     });
 
   $scope.submit = function() {
@@ -538,7 +538,7 @@ angular.module('starter.controllers', ['ionic.wheel'])
         $timeout(function () {
             $ionicLoading.hide();
           }, 2000);
-          
+
           var fridgeData = window.localStorage.getItem('FridgeData');
           fridgeData = JSON.parse(fridgeData);
           console.log(fridgeData);
@@ -554,11 +554,11 @@ angular.module('starter.controllers', ['ionic.wheel'])
           foodData = ('foodData: ', JSON.parse(foodData));
           console.log(foodData);
           $scope.foods = foodData;
-        
 
-        
 
-  
+
+
+
 
   //open/close Suppliers menu
   $scope.openSuppliers = function(){
@@ -572,7 +572,7 @@ angular.module('starter.controllers', ['ionic.wheel'])
   }
   //add new supplier to suppliers array
   $scope.addSupplier = function(supplier) {
-    
+
     if(supplierData.Supplier1 == undefined){
         supplierData.Supplier1=supplier;
       }
@@ -673,7 +673,7 @@ angular.module('starter.controllers', ['ionic.wheel'])
       })
   }
 
-  
+
 
   //delete selected supplier (slide selection and delete)
   $scope.deleteSupplier = function(key) {
@@ -857,7 +857,7 @@ angular.module('starter.controllers', ['ionic.wheel'])
   }
 
     $scope.addFood = function(food) {
-    
+
     if(foodData.Food1 == undefined){
         foodData.Food1=food;
       }
@@ -964,7 +964,7 @@ angular.module('starter.controllers', ['ionic.wheel'])
       })
   }
 
-  
+
 
   //delete selected food (slide selection and delete)
   $scope.deleteFood = function(key) {
@@ -1045,7 +1045,7 @@ angular.module('starter.controllers', ['ionic.wheel'])
     console.log(fridgeData);
     console.log(supplierData);
     console.log(foodData);
- 
+
     //Push settings if changed
     AuthService.putRefridgerators(fridgeData);
     AuthService.putSuppliers(supplierData);
@@ -1060,7 +1060,7 @@ angular.module('starter.controllers', ['ionic.wheel'])
     }, 2000);
 
 
-    
+
   });
 
 
