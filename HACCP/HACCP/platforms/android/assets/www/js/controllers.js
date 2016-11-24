@@ -9,7 +9,11 @@ angular.module('starter.controllers', ['ionic.wheel'])
 
   $scope.login = function() {
     AuthService.login($scope.user).then(function(msg) {
-      $state.go('app.hygiene');
+      AuthService.getSuppliers();
+      AuthService.getFood();
+      AuthService.getRefridgerators();
+      $state.go('app.home');
+
     }, function(errMsg) {
       var alertPopup = $ionicPopup.alert({
         title: 'Login failed!',
@@ -89,16 +93,28 @@ angular.module('starter.controllers', ['ionic.wheel'])
 
   $scope.submit = function() {
     if(!$scope.formData.q5){
-      console.log("no 5");
-      $scope.formData.q5=false;
+      //console.log("no 5");
+      //$scope.formData.q5=false;
+      $scope.formData.q5="No";
+    }
+    else{
+      $scope.formData.q5="Yes";
     }
     if(!$scope.formData.q6){
-      console.log("no 6");
-      $scope.formData.q6=false;
+      //console.log("no 6");
+      //$scope.formData.q6=false;
+        $scope.formData.q6="No";
+    }
+    else{
+      $scope.formData.q6="Yes";
     }
     if(!$scope.formData.q7){
-      console.log("no 7");
-      $scope.formData.q7=false;
+      //console.log("no 7");
+      //$scope.formData.q7=false;
+      $scope.formData.q7="No";
+    }
+    else{
+      $scope.formData.q7="Yes";
     }
 
     AuthService.fitness($scope.formData).then(function(msg) {
@@ -161,7 +177,7 @@ angular.module('starter.controllers', ['ionic.wheel'])
   $scope.toggle=false;
 
   $scope.$on('$ionicView.enter', function(){
-    
+
     console.log("get food and suppliers");
     AuthService.getSuppliers();
     AuthService.getFood();
@@ -187,7 +203,7 @@ angular.module('starter.controllers', ['ionic.wheel'])
           $scope.foods = foodData;
           console.log(foodData);
         }, 2000);
-  
+
     });
 
   $scope.submitForm=function(deliveryForm){
@@ -224,7 +240,7 @@ angular.module('starter.controllers', ['ionic.wheel'])
   $scope.cookcoolForm = {};
 
   $scope.$on('$ionicView.enter', function(){
-    
+
     console.log("get food and suppliers");
     AuthService.getFood();
 
@@ -244,10 +260,10 @@ angular.module('starter.controllers', ['ionic.wheel'])
           $scope.foods = foodData;
           console.log(foodData);
         }, 1000);
-  
+
     });
 
-  
+
 
   $scope.openTimePicker=function(value){
 
@@ -310,7 +326,7 @@ angular.module('starter.controllers', ['ionic.wheel'])
   $scope.hotholdForm = {};
 
   $scope.$on('$ionicView.enter', function(){
-    
+
     console.log("get food and suppliers");
     AuthService.getFood();
 
@@ -330,7 +346,7 @@ angular.module('starter.controllers', ['ionic.wheel'])
           $scope.foods = foodData;
           console.log(foodData);
         }, 1000);
-  
+
     });
 
   $scope.openTimePicker=function(){
@@ -378,7 +394,7 @@ angular.module('starter.controllers', ['ionic.wheel'])
     $scope.fridge={};
 
     $scope.$on('$ionicView.enter', function(){
-    
+
     console.log("get Fridges");
     AuthService.getRefridgerators();
 
@@ -398,7 +414,7 @@ angular.module('starter.controllers', ['ionic.wheel'])
           $scope.units = fridgeData;
           console.log($scope.units);
         }, 1000);
-  
+
     });
 
     $scope.takePicture = function() {
@@ -441,7 +457,7 @@ angular.module('starter.controllers', ['ionic.wheel'])
   $scope.fridge={};
 
   };
-  
+
 
 })//FridgeCtrl
 
@@ -474,7 +490,7 @@ angular.module('starter.controllers', ['ionic.wheel'])
   $scope.transportForm={};
 
   $scope.$on('$ionicView.enter', function(){
-    
+
     console.log("get food and suppliers");
     AuthService.getFood();
 
@@ -494,7 +510,7 @@ angular.module('starter.controllers', ['ionic.wheel'])
           $scope.foods = foodData;
           console.log(foodData);
         }, 1000);
-  
+
     });
 
   $scope.submit = function() {
@@ -519,7 +535,7 @@ angular.module('starter.controllers', ['ionic.wheel'])
 })//TransportCtrl
 
 .controller('SettingsCtrl', function($scope, $timeout, AuthService, $ionicLoading, $ionicPopup, $state, $ionicListDelegate) {
-
+  //console.log("Start SettingsCtrl");
   $scope.suppliersSelect=false;
   $scope.shouldShowDelete = false;
   $scope.listCanSwipe = true;
@@ -538,27 +554,36 @@ angular.module('starter.controllers', ['ionic.wheel'])
         $timeout(function () {
             $ionicLoading.hide();
           }, 2000);
-          
-          var fridgeData = window.localStorage.getItem('FridgeData');
-          fridgeData = JSON.parse(fridgeData);
-          console.log(fridgeData);
-          $scope.units = fridgeData;
 
+          //console.log("get suppliers");
+          AuthService.getSuppliers();
           var supplierData = window.localStorage.getItem('SupplierData');
+          if(supplierData == undefined)
+          {
+            //console.log("undefined");
+          }
           supplierData = ('supplierData: ', JSON.parse(supplierData));
-          console.log(supplierData);
+          //console.log("create supplier "+supplierData);
           $scope.suppliers = supplierData;
 
+          //console.log("get fridges");
+          AuthService.getRefridgerators();
+          var fridgeData = window.localStorage.getItem('FridgeData');
+          fridgeData = JSON.parse(fridgeData);
+          //console.log(fridgeData);
+          $scope.units = fridgeData;
 
+          //console.log("get foods");
+          AuthService.getFood();
           var foodData = window.localStorage.getItem('FoodData');
           foodData = ('foodData: ', JSON.parse(foodData));
-          console.log(foodData);
+          //console.log(foodData);
           $scope.foods = foodData;
-        
 
-        
 
-  
+
+
+
 
   //open/close Suppliers menu
   $scope.openSuppliers = function(){
@@ -572,7 +597,7 @@ angular.module('starter.controllers', ['ionic.wheel'])
   }
   //add new supplier to suppliers array
   $scope.addSupplier = function(supplier) {
-    
+
     if(supplierData.Supplier1 == undefined){
         supplierData.Supplier1=supplier;
       }
@@ -673,7 +698,7 @@ angular.module('starter.controllers', ['ionic.wheel'])
       })
   }
 
-  
+
 
   //delete selected supplier (slide selection and delete)
   $scope.deleteSupplier = function(key) {
@@ -857,7 +882,7 @@ angular.module('starter.controllers', ['ionic.wheel'])
   }
 
     $scope.addFood = function(food) {
-    
+
     if(foodData.Food1 == undefined){
         foodData.Food1=food;
       }
@@ -964,7 +989,7 @@ angular.module('starter.controllers', ['ionic.wheel'])
       })
   }
 
-  
+
 
   //delete selected food (slide selection and delete)
   $scope.deleteFood = function(key) {
@@ -1018,14 +1043,16 @@ angular.module('starter.controllers', ['ionic.wheel'])
   };
 
   //when page is entered
-  $scope.$on('$ionicView.enter', function(){
+  $scope.$on('$ionicView.beforeEnter', function(){
     //calls server for settings
     //AuthService.getSettings();
 
-    console.log("entering settings");
-    AuthService.getRefridgerators();
-    AuthService.getSuppliers();
-    AuthService.getFood();
+    console.log("before entering settings");
+  //////  AuthService.getRefridgerators();
+//AuthService.getSuppliers();
+    //AuthService.getFood();
+
+    console.log("Leaving beforeenter");
 
   });
 
@@ -1041,29 +1068,29 @@ angular.module('starter.controllers', ['ionic.wheel'])
           showDelay: 0
         })
 
-    console.log("before leave");
-    console.log(fridgeData);
-    console.log(supplierData);
-    console.log(foodData);
- 
+    //console.log("before leave");
+    //console.log(fridgeData);
+    //console.log(supplierData);
+    //console.log(foodData);
+
     //Push settings if changed
-    AuthService.putRefridgerators(fridgeData);
-    AuthService.putSuppliers(supplierData);
-    AuthService.putFood(foodData);
-    console.log("put settings");
-    console.log(fridgeData);
-    console.log(supplierData);
-    console.log(foodData);
+    //AuthService.putRefridgerators(fridgeData);
+    //AuthService.putSuppliers(supplierData);
+    //AuthService.putFood(foodData);
+    //console.log("put settings");
+    //console.log(fridgeData);
+    //console.log(supplierData);
+    //console.log(foodData);
 
     $timeout(function () {
       $ionicLoading.hide();
     }, 2000);
 
 
-    
+
   });
 
-
+console.log("leaving SettingsCtrl");
 })//SettingsCtrl
 
 .controller('HomeCtrl', function($scope, $ionicSideMenuDelegate) {

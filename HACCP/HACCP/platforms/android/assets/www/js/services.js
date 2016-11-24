@@ -255,15 +255,15 @@ angular.module('starter.services', [])
 
     var getSuppliers = function() {
         return $q(function(resolve, reject) {
-          $http.get(API_ENDPOINT.url + '/suppliers').then(function(resp) {
+          $http.get(API_ENDPOINT.url + '/suppliers').then(function(respS) {
           //  if (resp.data.success) {
 
-          if (resp.status!==200) {
+          if (respS.status!==200) {
               console.log("Suppliers Error");
-              console.log(resp.status.msg);
+              console.log(respS.status.msg);
           }
-          if (resp.status==200) {
-              console.log("Suppliers Success");
+          if (respS.status==200) {
+              console.log("Suppliers Success "+respS.data);
               //save to localStorage
             /*  window.localStorage.setItem( 'Supplier1', resp.data.Supplier1 );
               window.localStorage.setItem( 'Supplier2', resp.data.Supplier2 );
@@ -276,8 +276,8 @@ angular.module('starter.services', [])
               window.localStorage.setItem( 'Supplier9', resp.data.Supplier9 );
               window.localStorage.setItem( 'Supplier10', resp.data.Supplier10 );*/
 
-              window.localStorage.setItem( 'SupplierData', JSON.stringify(resp.data));
-              
+              window.localStorage.setItem( 'SupplierData', JSON.stringify(respS.data));
+
             }//end if
 
           });
