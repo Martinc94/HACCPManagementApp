@@ -93,16 +93,28 @@ angular.module('starter.controllers', ['ionic.wheel'])
 
   $scope.submit = function() {
     if(!$scope.formData.q5){
-      console.log("no 5");
-      $scope.formData.q5=false;
+      //console.log("no 5");
+      //$scope.formData.q5=false;
+      $scope.formData.q5="No";
+    }
+    else{
+      $scope.formData.q5="Yes";
     }
     if(!$scope.formData.q6){
-      console.log("no 6");
-      $scope.formData.q6=false;
+      //console.log("no 6");
+      //$scope.formData.q6=false;
+        $scope.formData.q6="No";
+    }
+    else{
+      $scope.formData.q6="Yes";
     }
     if(!$scope.formData.q7){
-      console.log("no 7");
-      $scope.formData.q7=false;
+      //console.log("no 7");
+      //$scope.formData.q7=false;
+      $scope.formData.q7="No";
+    }
+    else{
+      $scope.formData.q7="Yes";
     }
 
     AuthService.fitness($scope.formData).then(function(msg) {
