@@ -1,7 +1,7 @@
 <ion-view view-title="Settings">
     <ion-content>
 
-        <ul class="list">
+        <!--<ul class="list">
           <li class="item item-toggle">
              Setting 1
              <label class="toggle toggle-assertive">
@@ -20,7 +20,7 @@
                  <div class="handle"></div>
                </div>
              </label>
-          </li>
+          </li>-->
 
           <button class="button button-block button-positive" type="button" ng-click="openSuppliers()">
               Supplier Settings
@@ -35,8 +35,9 @@
             </label>
         </div>
       </form>
- 
+
           <ion-list show-delete="shouldShowDelete" show-edit="shouldShowEdit" can-swipe="listCanSwipe">
+            <h4 class="center">Swipe to edit or delete</h4>
            <ion-item ng-repeat="(key, supplier) in suppliers" >
             {{supplier}}
              <ion-option-button ng-click="deleteSupplier(key)" class="button-positive">
@@ -46,6 +47,7 @@
               Edit
             </ion-option-button>
             </ion-item>
+            <button class="button button-block button-positive" type="button" ng-click="submitSuppliers()">Submit Suppliers</button>
           </ion-list>
         </div>
 
@@ -64,6 +66,7 @@
       </form>
 
           <ion-list show-delete="shouldShowDelete" show-edit="shouldShowEdit" can-swipe="listCanSwipe">
+            <h4 class="center">Swipe to edit or delete</h4>
            <ion-item ng-repeat="(key, unit) in units" >
             {{unit}}
              <ion-option-button ng-click="deleteUnit(key)" class="button-positive">
@@ -73,6 +76,7 @@
               Edit
             </ion-option-button>
             </ion-item>
+            <button class="button button-block button-positive" type="button" ng-click="submitFridges()">Submit Fridges</button>
           </ion-list>
         </div>
 
@@ -91,6 +95,7 @@
       </form>
 
           <ion-list show-delete="shouldShowDelete" show-edit="shouldShowEdit"  can-swipe="listCanSwipe">
+            <h4 class="center">Swipe to edit or delete</h4>
            <ion-item ng-repeat="(key, food) in foods" >
             {{food}}
              <ion-option-button ng-click="deleteFood(key)" class="button-positive">
@@ -100,6 +105,7 @@
               Edit
             </ion-option-button>
             </ion-item>
+            <button class="button button-block button-positive" type="button" ng-click="submitFood()">Submit Food</button>
           </ion-list>
         </div>
 

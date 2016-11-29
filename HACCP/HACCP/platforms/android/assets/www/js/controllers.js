@@ -440,9 +440,8 @@ angular.module('starter.controllers', ['ionic.wheel'])
     }
 
     $scope.submit = function() {
-    AuthService.transport($scope.fridge).then(function(msg) {
-   //redirect to home??
-    //$state.go('login');
+    AuthService.fridge($scope.fridge).then(function(msg) {
+
     var alertPopup = $ionicPopup.alert({
       title: 'Success!',
       template: msg
@@ -989,6 +988,25 @@ angular.module('starter.controllers', ['ionic.wheel'])
       })
   }
 
+  $scope.submitFridges = function() {
+
+    //console.log(fridgeData);
+
+    if(fridgeData){
+      AuthService.putRefridgerators(fridgeData).then(function(msg) {
+        var alertPopup = $ionicPopup.alert({
+          title: 'Successfully Updated Fridges!',
+          template: msg
+          });
+       }, function(errMsg) {
+        var alertPopup = $ionicPopup.alert({
+          title: 'Error Updating Fridges',
+          template: errMsg
+        });
+      });
+    }
+
+  };
 
 
   //delete selected food (slide selection and delete)

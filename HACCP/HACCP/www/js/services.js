@@ -356,6 +356,20 @@ angular.module('starter.services', [])
       destroyUserCredentials();
     };
 
+    var fridge = function(fridge) {
+        return $q(function(resolve, reject) {
+          $http.post(API_ENDPOINT.url + '/fridgetemp', fridge).then(function(result) {
+          console.log(fridge);
+            if (result.data.success) {
+              //
+
+              resolve(result.data.msg);
+            } else {
+              reject(result.data.msg);
+            }
+          });
+        });
+      };
     loadUserCredentials();
 
     return {
@@ -377,6 +391,7 @@ angular.module('starter.services', [])
       putSuppliers:putSuppliers,
       getFood:getFood,
       putFood:putFood,
+      fridge: fridge,
       isAuthenticated: function() {return isAuthenticated;},
     };
   })

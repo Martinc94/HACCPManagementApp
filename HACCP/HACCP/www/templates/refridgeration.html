@@ -1,5 +1,5 @@
 <ion-view view-title="Refrigeration Records">
-   
+
   <ion-content>
     <div class="bar bar-header bar-calm">
 
@@ -15,7 +15,7 @@
         <input type="text" ng-model="fridge.photoComment">
       </label>
     </div>
-    
+
     <br>
     <h4 class="center">Select a fridge and input temperature</h4>
     <br>
@@ -28,16 +28,31 @@
       </select>
     </label>
 
+    <label class="item item-input">
+      <span class="input-label">Date</span>
+      <input type="date" placeholder="16/04/16" ng-model="fridge.date">
+    </label>
+
+    <label class="item item-select">
+  <div class="input-label" style="width: 90%">
+    AM or PM
+  </div>
+  <select ng-model="fridge.timeAMPM" >
+    <option ng-value="'AM'">AM</option>
+    <option ng-value="'PM'">PM</option>
+  </select>
+</label>
+
           <label class="item item-input">
            <span class="input-label">Enter Temp</span>
       <input type="number" placeholder="0" ng-model="fridge.temp">
           </label>
-          <button class="button button-full button-calm" type="submit" ng-click="saveFridge()">
-          
+          <button class="button button-full button-calm" type="submit" ng-click="submit()">
+
       Submit
     </button>
 
-    
+
 
   </ion-content>
 
