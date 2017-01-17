@@ -210,6 +210,22 @@ angular.module('starter.controllers', ['ionic.wheel'])
 
   }//submitForm
 
+  $scope.submit = function() {
+    AuthService.foodDelivery($scope.deliveryForm).then(function(msg) {
+      var alertPopup = $ionicPopup.alert({
+        title: 'Success!',
+        template: msg
+        });
+     }, function(errMsg) {
+      var alertPopup = $ionicPopup.alert({
+        title: 'Error',
+        template: errMsg
+      });
+    });
+
+    $scope.deliveryForm = {};
+  };
+
   $scope.takePicture = function() {
         var options = {
             quality : 75,
@@ -231,7 +247,6 @@ angular.module('starter.controllers', ['ionic.wheel'])
             // An error occured. Show a message to the user
         });
     }
-
 
 })//DeliveryCtrl
 
