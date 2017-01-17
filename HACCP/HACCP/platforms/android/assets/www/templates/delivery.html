@@ -1,8 +1,5 @@
 <ion-view view-title="Food Delivery Records">
-
-       
 	<ion-content>
-
 		<div class="bar bar-header bar-royal">
 
   			<div class="h1 title">Food Delivery Records</div>
@@ -17,7 +14,7 @@
         <input type="text" ng-model="deliveryForm.photoComment">
       </label>
     </div>
-	
+
     <form name="dForm" ng-submit="submitForm(deliveryForm)">
 	     <div class="list">
 
@@ -37,7 +34,7 @@
 
   		<label class="item item-input">
     		<span class="input-label">Batch Code</span>
-    		<input type="text" placeholder="" ng-model="deliveryForm.batch">
+    		<input type="text" placeholder="" ng-model="deliveryForm.batchCode">
   		</label>
 
   		<label class="item item-select item-text-wrap">
@@ -51,7 +48,7 @@
 
   <label class="item item-input">
     		<span class="input-label">'Use-by' Date</span>
-    		<input type="date" placeholder="16/04/16" ng-model="deliveryForm.useby">
+    		<input type="date" placeholder="16/04/16" ng-model="deliveryForm.useBy">
   		</label>
 
   		<label class="item item-input">
@@ -61,7 +58,7 @@
 
   		<label class="item item-input">
     		<span class="input-label">Delivery Vehicle Check</span>
-    		<input type="text" placeholder="Dirty" ng-model="deliveryForm.vehicle">
+    		<input type="text" placeholder="" ng-model="deliveryForm.vehicleCheck">
   		</label>
 
   		<label class="item item-input">
@@ -74,7 +71,7 @@
     		<input type="text" placeholder="" ng-model="deliveryForm.sign">
   		</label>
 
-  		<button class="button button-full button-royal" type="submit">
+  		<button class="button button-full button-royal" ng-click="submit()" type="submit">
   		Submit
 		</button>
 	<br>
