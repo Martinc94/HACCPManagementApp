@@ -207,7 +207,7 @@ angular.module('starter.services', [])
                  console.log("Ref Status"+resp.status);
              }
              if (resp.status==200) {
-               console.log("Ref Success");
+              // console.log("Ref Success");
 
                /*console.log(resp.data.msg);
                console.log(resp.data.Fridge1);
@@ -237,8 +237,8 @@ angular.module('starter.services', [])
        };
 
     var putRefridgerators = function(units) {
-      console.log("services.putRefridgerators");
-      console.log(units);
+      //console.log("services.putRefridgerators");
+      //console.log(units);
            return $q(function(resolve, reject) {
              $http.put(API_ENDPOINT.url + '/refridgerationUnit', units).then(function(result) {
              //console.log(units);
@@ -263,7 +263,7 @@ angular.module('starter.services', [])
               console.log(respS.status.msg);
           }
           if (respS.status==200) {
-              console.log("Suppliers Success "+respS.data);
+              //console.log("Suppliers Success "+respS.data);
               //save to localStorage
             /*  window.localStorage.setItem( 'Supplier1', resp.data.Supplier1 );
               window.localStorage.setItem( 'Supplier2', resp.data.Supplier2 );
@@ -285,8 +285,8 @@ angular.module('starter.services', [])
       };
 
     var putSuppliers = function(suppliers) {
-      console.log("services.putSuppliers");
-      console.log(suppliers);
+      //console.log("services.putSuppliers");
+      //console.log(suppliers);
           return $q(function(resolve, reject) {
             $http.put(API_ENDPOINT.url + '/suppliers', suppliers).then(function(result) {
             //console.log(suppliers);
@@ -314,7 +314,7 @@ angular.module('starter.services', [])
                 console.log(resp.status.msg);
             }
             if (resp.status==200) {
-              console.log("Food Success");
+              //console.log("Food Success");
               //save to localStorage
               /*window.localStorage.setItem( 'Food1', resp.data.Food1 );
               window.localStorage.setItem( 'Food2', resp.data.Food2 );
