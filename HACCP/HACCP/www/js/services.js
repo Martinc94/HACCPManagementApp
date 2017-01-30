@@ -366,10 +366,19 @@ angular.module('starter.services', [])
                 }
               });
             });
-        };
+    };
 
-    var logout = function() {
-      destroyUserCredentials();
+    var postPhoto = function(imageData) {
+            return $q(function(resolve, reject) {
+              $http.post(API_ENDPOINT.url + '/foodDeliveryPhoto', imageData).then(function(result) {
+                if (result.data.success) {
+                  console.log(result.data.msg);
+                  resolve(result.data.msg);
+                } else {
+                  reject(result.data.msg);
+                }
+              });
+          });
     };
 
     var fridge = function(fridge) {
@@ -385,7 +394,12 @@ angular.module('starter.services', [])
             }
           });
         });
-      };
+    };
+
+    var logout = function() {
+      destroyUserCredentials();
+    };
+  
     loadUserCredentials();
 
     return {
@@ -409,6 +423,7 @@ angular.module('starter.services', [])
       putFood:putFood,
       fridge: fridge,
       foodDelivery:foodDelivery,
+      postPhoto:postPhoto,
       isAuthenticated: function() {return isAuthenticated;},
     };
   })
