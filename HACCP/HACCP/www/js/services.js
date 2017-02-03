@@ -13,6 +13,17 @@ angular.module('starter.services', [])
       }
     }
 
+    function isLoggedIn() {
+      var token = window.localStorage.getItem(LOCAL_TOKEN_KEY);
+      if (token) {
+        //useCredentials(token);
+        return true;
+      }
+      else{
+        return false;
+      }
+    }
+
     function storeUserCredentials(token) {
       window.localStorage.setItem(LOCAL_TOKEN_KEY, token);
       useCredentials(token);
@@ -399,7 +410,7 @@ angular.module('starter.services', [])
     var logout = function() {
       destroyUserCredentials();
     };
-  
+
     loadUserCredentials();
 
     return {
@@ -424,6 +435,7 @@ angular.module('starter.services', [])
       fridge: fridge,
       foodDelivery:foodDelivery,
       postPhoto:postPhoto,
+      isLoggedIn:isLoggedIn,
       isAuthenticated: function() {return isAuthenticated;},
     };
   })

@@ -7,6 +7,12 @@ angular.module('starter.controllers', ['ionic.wheel'])
     password: ''
   };
 
+  //if has token redirects to home
+  if(AuthService.isLoggedIn()==true){
+    //console.log("Found token");
+    $state.go('app.home');
+  }
+
   $scope.login = function() {
     AuthService.login($scope.user).then(function(msg) {
       AuthService.getSuppliers();
@@ -1127,6 +1133,10 @@ angular.module('starter.controllers', ['ionic.wheel'])
       console.log(foodData);
 
     };
+
+    $scope.logout = function() {
+      AuthService.logout();
+    };//end logout
 
     //when page is entered
     $scope.$on('$ionicView.beforeEnter', function(){
