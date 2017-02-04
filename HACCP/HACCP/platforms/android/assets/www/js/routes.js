@@ -81,8 +81,6 @@ angular.module('starter.routes', [])
 
         })
 
-
-
       .state('app.hothold', {
             url: '/hothold',
             views: {
@@ -125,9 +123,6 @@ angular.module('starter.routes', [])
       }
     }
   })
-
-
-
         .state('login', {
             url: '/login',
             templateUrl: 'templates/login.html',
@@ -145,10 +140,6 @@ angular.module('starter.routes', [])
            templateUrl: 'templates/forgot.html',
            controller: 'ForgotCtrl'
        })
-
-
-
-
 
   // if none of the above states are matched, use this as the fallback
   $urlRouterProvider.otherwise('/login');
