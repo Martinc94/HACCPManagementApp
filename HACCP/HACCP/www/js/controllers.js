@@ -226,16 +226,18 @@ angular.module('starter.controllers', ['ionic.wheel'])
             saveToPhotoAlbum: false
         };
 
-        $cordovaCamera.getPicture(options).then(function(imageData) {
+        /*$cordovaCamera.getPicture(options).then(function(imageData) {
             $scope.imgURI = "data:image/jpeg;base64," + imageData;
             $scope.toggle=true;
         }, function(err) {
             // An error occured. Show a message to the user
-        });
+        });*/
 
         $cordovaCamera.getPicture(options).then(function (imageData) {
           $scope.imageDate = imageDate;
           $scope.imgURI = "data:image/jpeg;base64," + imageData;
+
+          $scope.toggle=true;
           }, function (err) {
           // An error occured. Show a message to the user
         });
@@ -257,9 +259,9 @@ angular.module('starter.controllers', ['ionic.wheel'])
       $scope.deliveryForm = {};
     };
 
-//testing submitPhoto
+  //testing submitwithPhoto
   $scope.submit = function() {
-      AuthService.postPhoto($scope.imageData).then(function(msg) {
+      AuthService.postPhoto($scope.deliveryForm,$scope.imageData).then(function(msg) {
         var alertPopup = $ionicPopup.alert({
           title: 'Success!',
           template: msg
@@ -272,8 +274,9 @@ angular.module('starter.controllers', ['ionic.wheel'])
       });
 
       $scope.deliveryForm = {};
+      //reset image
+      //$scope.imageData = {};
     };
-
 
 })//DeliveryCtrl
 
@@ -1154,20 +1157,6 @@ angular.module('starter.controllers', ['ionic.wheel'])
           showDelay: 0
         })
 
-    //console.log("before leave");
-    //console.log(fridgeData);
-    //console.log(supplierData);
-    //console.log(foodData);
-
-    //Push settings if changed
-    //AuthService.putRefridgerators(fridgeData);
-    //AuthService.putSuppliers(supplierData);
-    //AuthService.putFood(foodData);
-    //console.log("put settings");
-    //console.log(fridgeData);
-    //console.log(supplierData);
-    //console.log(foodData);
-
     AuthService.getSuppliers();
     AuthService.getFood();
     AuthService.getRefridgerators();
@@ -1194,6 +1183,5 @@ angular.module('starter.controllers', ['ionic.wheel'])
   $scope.showRightMenu = function () {
     $ionicSideMenuDelegate.toggleRight();
   };
-
 
 });
