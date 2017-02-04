@@ -90,5 +90,13 @@
         "variables": {
             "SENDER_ID": "622954994573"
         }
+    },
+    "cordova-plugin-image-picker": {
+        "source": {
+            "type": "registry",
+            "id": "cordova-plugin-image-picker"
+        },
+        "is_top_level": true,
+        "variables": {}
     }
 }
