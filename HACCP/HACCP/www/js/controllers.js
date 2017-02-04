@@ -213,35 +213,26 @@ angular.module('starter.controllers', ['ionic.wheel'])
   }//submitForm*/
 
   $scope.takePicture = function() {
-        var options = {
-            quality : 75,
-            destinationType : Camera.DestinationType.DATA_URL,
-            sourceType : Camera.PictureSourceType.CAMERA,
-            allowEdit : true,
-            encodingType: Camera.EncodingType.JPEG,
-            targetWidth: 300,
-            targetHeight: 300,
-            popoverOptions: CameraPopoverOptions,
-            cameraDirection: 1,
-            saveToPhotoAlbum: false
-        };
+      var options = {
+          quality : 75,
+          destinationType : Camera.DestinationType.DATA_URL,
+          sourceType : Camera.PictureSourceType.CAMERA,
+          allowEdit : true,
+          encodingType: Camera.EncodingType.JPEG,
+          targetWidth: 300,
+          targetHeight: 300,
+          popoverOptions: CameraPopoverOptions,
+          cameraDirection: 1,
+          saveToPhotoAlbum: false
+      };
 
-        /*$cordovaCamera.getPicture(options).then(function(imageData) {
-            $scope.imgURI = "data:image/jpeg;base64," + imageData;
-            $scope.toggle=true;
-        }, function(err) {
-            // An error occured. Show a message to the user
-        });*/
-
-        $cordovaCamera.getPicture(options).then(function (imageData) {
-          $scope.imageDate = imageDate;
+      $cordovaCamera.getPicture(options).then(function(imageData) {
           $scope.imgURI = "data:image/jpeg;base64," + imageData;
-
           $scope.toggle=true;
-          }, function (err) {
+      }, function(err) {
           // An error occured. Show a message to the user
-        });
-    }
+      });
+  }
 
   $scope.submitWorking = function() {
       AuthService.foodDelivery($scope.deliveryForm).then(function(msg) {
