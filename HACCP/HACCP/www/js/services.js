@@ -395,107 +395,41 @@ angular.module('starter.services', [])
     };
 
     var postPhoto = function(deliveryForm,imageData) {
-
-      //console.log(deliveryForm);
-      //console.log(imageData);
-
-      //make form data
-      /*var formData = new FormData();
-      formData.append('date',deliveryForm.date);
-      formData.append('food',deliveryForm.food);
-      formData.append('batchCode',deliveryForm.batchCode);
-      formData.append('supplier',deliveryForm.supplier);
-      formData.append('useBy',deliveryForm.useBy);
-      formData.append('temp',deliveryForm.temp);
-      formData.append('vehicleCheck',deliveryForm.vehicleCheck);
-      formData.append('comment',deliveryForm.comment);
-      formData.append('sign',deliveryForm.sign);
-      //formData.append('photo',imageData);
-
-
-      console.log(formData.entries());
-      console.log(formData.entries);
-      console.log(formData.get("date"));*/
-
-      /*
-      var xhr = new XMLHttpRequest;
-      xhr.open('POST', '/', true);
-      xhr.send(data);
-      */
-
       return $q(function(resolve, reject) {
 
-      let formData = new FormData();
-    //  formData.append('photo',imageData);
+        let formData = new FormData();
 
-      //formData.append("filename", "myVarFilename.jpg"); //filename first, otherwise req.body is empty in multer
-      //formData.append("folder", "myFolder");
-      //formData.append("myfile", dialog.files[0]); //dialog is the result from camera-api-mock
+        if(imageData != undefined){
+          //formData.append('filename',imageData);
+          formData.append('photo',imageData);
+          formData.append('photoComment',deliveryForm.photoComment);
+        }
 
-      formData.append('date',deliveryForm.date);
-      formData.append('food',deliveryForm.food);
-      formData.append('batchCode',deliveryForm.batchCode);
-      formData.append('supplier',deliveryForm.supplier);
-      formData.append('useBy',deliveryForm.useBy);
-      formData.append('temp',deliveryForm.temp);
-      formData.append('vehicleCheck',deliveryForm.vehicleCheck);
-      formData.append('comment',deliveryForm.comment);
-      formData.append('sign',deliveryForm.sign);
-      //formData.append('photo',imageData);
+        formData.append('date',deliveryForm.date);
+        formData.append('food',deliveryForm.food);
+        formData.append('batchCode',deliveryForm.batchCode);
+        formData.append('supplier',deliveryForm.supplier);
+        formData.append('useBy',deliveryForm.useBy);
+        formData.append('temp',deliveryForm.temp);
+        formData.append('vehicleCheck',deliveryForm.vehicleCheck);
+        formData.append('comment',deliveryForm.comment);
+        formData.append('sign',deliveryForm.sign);
 
-        $http({
-           url: API_ENDPOINT.url+"/foodDelivery",
-           method: "POST",
-           data: formData,
-           headers: {"Content-Type": undefined}
-        }).then((result) => {
-           //console.log("success");
-           resolve(result.data.msg);
-        }).catch(() => {
-           console.log("error");
-           reject(result.data.msg);
-        });
-
-
-
-
-
-
+          $http({
+             url: API_ENDPOINT.url+"/foodDelivery",
+             method: "POST",
+             data: formData,
+             headers: {"Content-Type": undefined}
+          }).then((result) => {
+             //console.log("success");
+             resolve(result.data.msg);
+          }).catch(() => {
+             console.log("error");
+             reject(result.data.msg);
+          });
 
       });
-
-
-
-
-
-      /*$http({
-         url: "http://SERVERIP:PORT/file/upload",
-         method: "POST",
-         data: formData,
-         headers: {"Content-Type": undefined}
-      }).then(() => {
-         console.log("success");
-      }).catch(() => {
-         console.log("error");
-      });*/
-
-
-
-
-
-
-    /*  return $q(function(resolve, reject) {
-        $http.post(API_ENDPOINT.url + '/foodDelivery', formData).then(function(result) {
-
-          if (result.data.success) {
-            console.log(result.data.msg);
-            resolve(result.data.msg);
-          } else {
-            reject(result.data.msg);
-          }
-        });
-      });*/
-    };
+    };//end postPhoto
 
     var logout = function() {
       destroyUserCredentials();

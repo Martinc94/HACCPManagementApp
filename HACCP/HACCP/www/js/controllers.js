@@ -252,7 +252,7 @@ angular.module('starter.controllers', ['ionic.wheel'])
 
   //testing submitwithPhoto
   $scope.submit = function() {
-      AuthService.postPhoto($scope.deliveryForm,$scope.imageData).then(function(msg) {
+      AuthService.postPhoto($scope.deliveryForm,$scope.imgURI).then(function(msg) {
         var alertPopup = $ionicPopup.alert({
           title: 'Success!',
           template: msg
