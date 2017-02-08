@@ -117,10 +117,8 @@ angular.module('starter.services', [])
     var transport = function(transportForm) {
         return $q(function(resolve, reject) {
           $http.post(API_ENDPOINT.url + '/transport', transportForm).then(function(result) {
-          console.log(transportForm);
+            //console.log(transportForm);
             if (result.data.success) {
-              //
-
               resolve(result.data.msg);
             } else {
               reject(result.data.msg);
@@ -478,6 +476,37 @@ angular.module('starter.services', [])
 
   .config(function ($httpProvider) {
     $httpProvider.interceptors.push('AuthInterceptor');
-  });
-
+  })//;
 //end AUTH
+
+.service('LocationService', function($q,$cordovaGeolocation) {
+    var getLocation = function() {
+          return $q(function(resolve, reject) {
+            var loc = {}
+            var lat;
+            var long;
+
+            $cordovaGeolocation.getCurrentPosition().then(function(position) {
+               lat  = position.coords.latitude
+               long = position.coords.longitude
+
+               loc.lat=lat;
+               loc.long=long;
+
+               resolve(loc);
+
+            }, function(err) {
+              // Error
+              console.log("GPS Error");
+              loc.lat=0;
+              loc.long=0;
+              reject(loc);
+           });
+        });
+      };
+
+    return {
+      getLocation: getLocation,
+    };
+  });
+  //end LocationService
