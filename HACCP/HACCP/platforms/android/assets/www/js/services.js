@@ -515,17 +515,22 @@ angular.module('starter.services', [])
       var connectionStatus = function() {
             return $q(function(resolve, reject) {
 
-              var isOffline = $cordovaNetwork.isOffline();
+              try{
+                  var isOffline = $cordovaNetwork.isOffline();
 
-              if(isOffline){
-                resolve("offline");
-              }
+                    if(isOffline){
+                      resolve("offline");
+                    }
 
-              var isOnline = $cordovaNetwork.isOnline();
+                    var isOnline = $cordovaNetwork.isOnline();
 
-              if(isOnline){
-                resolve("online");
-              }
+                    if(isOnline){
+                      resolve("online");
+                    }
+                }
+                catch(err) {
+                    resolve("offline");
+                }
 
           });
         };
@@ -533,5 +538,57 @@ angular.module('starter.services', [])
       return {
         connectionStatus: connectionStatus,
       };
-    });
+    })//;
     //end dataService
+
+    .service('StorageService', function($q) {
+        var storeTransportForm = function(transportForm) {
+                var transportForms = [];
+
+                //load array
+                var transportForms = JSON.parse(localStorage.getItem("transportForms"));
+
+                //if empty array
+                if(transportForms == undefined)
+                {
+                  transportForms = [];
+                  transportForms[0] = JSON.stringify(transportForm);
+                }
+                else{
+                  //add to array
+                  transportForms[transportForms.length] = JSON.stringify(transportForm);
+                }
+
+                console.log(transportForms);
+
+                //save array
+                localStorage.setItem("transportForms", JSON.stringify(transportForms));
+          };//end storeTransportForm
+
+          var postTransportForms = function() {
+                  var transportForms = [];
+
+                  //load array
+                  var transportForms = JSON.parse(localStorage.getItem("transportForms"));
+
+                  //if empty array
+                  if(transportForms == undefined)
+                  {
+                    //alert no forms
+                  }
+                  else{
+                    //attempt to post or return form and remove
+                  }
+
+                  console.log(transportForms);
+
+                  //save array
+                  localStorage.setItem("transportForms", JSON.stringify(transportForms));
+            };//end postTransportForms
+
+        return {
+          storeTransportForm: storeTransportForm,
+          postTransportForms: postTransportForms,
+        };
+      });
+      //end StorageService
