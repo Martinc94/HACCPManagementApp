@@ -508,5 +508,30 @@ angular.module('starter.services', [])
     return {
       getLocation: getLocation,
     };
-  });
+  })//;
   //end LocationService
+
+  .service('DataService', function($q,$cordovaNetwork,$rootScope) {
+      var connectionStatus = function() {
+            return $q(function(resolve, reject) {
+
+              var isOffline = $cordovaNetwork.isOffline();
+
+              if(isOffline){
+                resolve("offline");
+              }
+
+              var isOnline = $cordovaNetwork.isOnline();
+
+              if(isOnline){
+                resolve("online");
+              }
+
+          });
+        };
+
+      return {
+        connectionStatus: connectionStatus,
+      };
+    });
+    //end dataService

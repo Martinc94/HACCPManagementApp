@@ -508,5 +508,70 @@ angular.module('starter.services', [])
     return {
       getLocation: getLocation,
     };
-  });
+  })//;
   //end LocationService
+
+  .service('DataService', function($q,$cordovaNetwork,$rootScope) {
+      var connectionStatus = function() {
+            return $q(function(resolve, reject) {
+
+              var isOffline = $cordovaNetwork.isOffline();
+
+              if(isOffline){
+                resolve("offline");
+              }
+
+              var isOnline = $cordovaNetwork.isOnline();
+
+              if(isOnline){
+                resolve("online");
+              }
+
+          });
+        };
+
+      return {
+        connectionStatus: connectionStatus,
+      };
+    })//;
+    //end dataService
+
+    .service('StorageService', function($q) {
+        var storeTransportForm = function(transportForm) {
+              //return $q(function(resolve, reject) {
+
+                //load array
+              /*  var transportArray = window.localStorage.getItem('transportArray');
+                if(transportArray == undefined)
+                {
+                  //window.localStorage.setItem( 'transportArray', JSON.stringify(transportForm));
+                }
+                transportArray = ('transportArray: ', JSON.parse(transportArray));*/
+
+                var transportForms = [];
+                transportForms[0] = prompt("test1");
+                transportForms[1] = prompt("test2");
+
+                console.log(transportForms);
+
+                localStorage.setItem("transportForms", JSON.stringify(transportForms));
+
+                var storedForms = JSON.parse(localStorage.getItem("transportForms"));
+
+                console.log(storedForms);
+
+
+
+
+                //add Form
+
+                //save array
+
+            //});
+          };
+
+        return {
+          storeTransportForm: storeTransportForm,
+        };
+      });
+      //end StorageService
