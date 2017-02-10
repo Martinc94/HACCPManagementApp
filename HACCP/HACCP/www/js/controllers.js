@@ -531,6 +531,8 @@ angular.module('starter.controllers', ['ionic.wheel'])
   //adds lat and long to Form
   $scope.getLocation();
 
+  //var alertPopup = $ionicPopup.alert({title: 'Success!',template: $scope.transportForm.lat+" long "+$scope.transportForm.long});
+
   // loader icon show while data is being retrieved using ionic service $ionicLoading
   $scope.loading = $ionicLoading.show({
           content: '<i class="icon ion-loading-c"></i>',
@@ -554,11 +556,15 @@ angular.module('starter.controllers', ['ionic.wheel'])
       LocationService.getLocation().then(function(loc) {
         $scope.transportForm.lat=loc.lat;
         $scope.transportForm.long=loc.long;
+        //var alertPopup = $ionicPopup.alert({title: 'Success!',template: loc.lat+" "+loc.long});
       });
   }//end getLocation
 
   $scope.submit = function() {
     $scope.getLocation();
+
+    //var alertPopup = $ionicPopup.alert({title: 'Geo lat!',template: $scope.transportForm.lat});
+    //var alertPopup = $ionicPopup.alert({title: 'Geo long!',template: $scope.transportForm.long});
 
     AuthService.transport($scope.transportForm).then(function(msg) {
       var alertPopup = $ionicPopup.alert({
