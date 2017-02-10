@@ -520,7 +520,7 @@ angular.module('starter.controllers', ['ionic.wheel'])
 
 })//TrainingCtrl
 
-.controller('TransportCtrl', function($scope, AuthService, $ionicLoading, $timeout, $ionicPopup, $state,LocationService,DataService) {
+.controller('TransportCtrl', function($scope, AuthService, $ionicLoading, $timeout, $ionicPopup, $state,LocationService,DataService,StorageService) {
 
   $scope.transportForm={};
   $scope.conn;
@@ -567,7 +567,7 @@ angular.module('starter.controllers', ['ionic.wheel'])
   $scope.connectionStatus = function(){
     DataService.connectionStatus().then(function(status) {
 
-      var alertPopup = $ionicPopup.alert({title: 'Status!',template: status});
+      //var alertPopup = $ionicPopup.alert({title: 'Status!',template: status});
 
       if(status=="online"){
           $scope.conn=1;
@@ -581,11 +581,11 @@ angular.module('starter.controllers', ['ionic.wheel'])
 }//end connectionStatus
 
   $scope.submit = function() {
+    //refresh
     $scope.getLocation();
     $scope.connectionStatus();
 
   //  var alertPopup = $ionicPopup.alert({title: 'Conn!',template: $scope.conn});
-
 
     if($scope.conn==1){
         AuthService.transport($scope.transportForm).then(function(msg) {
@@ -602,6 +602,7 @@ angular.module('starter.controllers', ['ionic.wheel'])
     }//end if
   else{
       var alertPopup = $ionicPopup.alert({title: 'No Internet Connection!',template: "Saving form to device"});
+      StorageService.storeTransportForm($scope.transportForm);
   }
 
   $scope.transportForm={};

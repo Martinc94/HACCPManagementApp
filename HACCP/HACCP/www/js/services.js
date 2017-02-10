@@ -515,17 +515,22 @@ angular.module('starter.services', [])
       var connectionStatus = function() {
             return $q(function(resolve, reject) {
 
-              var isOffline = $cordovaNetwork.isOffline();
+              try{
+                  var isOffline = $cordovaNetwork.isOffline();
 
-              if(isOffline){
-                resolve("offline");
-              }
+                    if(isOffline){
+                      resolve("offline");
+                    }
 
-              var isOnline = $cordovaNetwork.isOnline();
+                    var isOnline = $cordovaNetwork.isOnline();
 
-              if(isOnline){
-                resolve("online");
-              }
+                    if(isOnline){
+                      resolve("online");
+                    }
+                }
+                catch(err) {
+                    resolve("offline");
+                }
 
           });
         };
@@ -538,40 +543,52 @@ angular.module('starter.services', [])
 
     .service('StorageService', function($q) {
         var storeTransportForm = function(transportForm) {
-              //return $q(function(resolve, reject) {
+                var transportForms = [];
 
                 //load array
-              /*  var transportArray = window.localStorage.getItem('transportArray');
-                if(transportArray == undefined)
-                {
-                  //window.localStorage.setItem( 'transportArray', JSON.stringify(transportForm));
-                }
-                transportArray = ('transportArray: ', JSON.parse(transportArray));*/
+                var transportForms = JSON.parse(localStorage.getItem("transportForms"));
 
-                var transportForms = [];
-                transportForms[0] = prompt("test1");
-                transportForms[1] = prompt("test2");
+                //if empty array
+                if(transportForms == undefined)
+                {
+                  transportForms = [];
+                  transportForms[0] = JSON.stringify(transportForm);
+                }
+                else{
+                  //add to array
+                  transportForms[transportForms.length] = JSON.stringify(transportForm);
+                }
 
                 console.log(transportForms);
 
-                localStorage.setItem("transportForms", JSON.stringify(transportForms));
-
-                var storedForms = JSON.parse(localStorage.getItem("transportForms"));
-
-                console.log(storedForms);
-
-
-
-
-                //add Form
-
                 //save array
+                localStorage.setItem("transportForms", JSON.stringify(transportForms));
+          };//end storeTransportForm
 
-            //});
-          };
+          var postTransportForms = function() {
+                  var transportForms = [];
+
+                  //load array
+                  var transportForms = JSON.parse(localStorage.getItem("transportForms"));
+
+                  //if empty array
+                  if(transportForms == undefined)
+                  {
+                    //alert no forms
+                  }
+                  else{
+                    //attempt to post or return form and remove
+                  }
+
+                  console.log(transportForms);
+
+                  //save array
+                  localStorage.setItem("transportForms", JSON.stringify(transportForms));
+            };//end postTransportForms
 
         return {
           storeTransportForm: storeTransportForm,
+          postTransportForms: postTransportForms,
         };
       });
       //end StorageService

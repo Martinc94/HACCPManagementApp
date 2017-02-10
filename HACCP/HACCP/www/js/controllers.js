@@ -520,7 +520,7 @@ angular.module('starter.controllers', ['ionic.wheel'])
 
 })//TrainingCtrl
 
-.controller('TransportCtrl', function($scope, AuthService, $ionicLoading, $timeout, $ionicPopup, $state,LocationService,DataService) {
+.controller('TransportCtrl', function($scope, AuthService, $ionicLoading, $timeout, $ionicPopup, $state,LocationService,DataService,StorageService) {
 
   $scope.transportForm={};
   $scope.conn;
@@ -602,6 +602,7 @@ angular.module('starter.controllers', ['ionic.wheel'])
     }//end if
   else{
       var alertPopup = $ionicPopup.alert({title: 'No Internet Connection!',template: "Saving form to device"});
+      StorageService.storeTransportForm($scope.transportForm);
   }
 
   $scope.transportForm={};
