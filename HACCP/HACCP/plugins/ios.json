@@ -47,6 +47,9 @@
         "cordova-plugin-geolocation": {
             "GEOLOCATION_USAGE_DESCRIPTION": " ",
             "PACKAGE_NAME": "com.ionicframework.ionictabs121641"
+        },
+        "cordova-plugin-network-information": {
+            "PACKAGE_NAME": "com.ionicframework.ionictabs121641"
         }
     },
     "dependent_plugins": {

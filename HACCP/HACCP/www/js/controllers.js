@@ -520,16 +520,22 @@ angular.module('starter.controllers', ['ionic.wheel'])
 
 })//TrainingCtrl
 
-.controller('TransportCtrl', function($scope, AuthService, $ionicLoading, $timeout, $ionicPopup, $state,LocationService) {
+.controller('TransportCtrl', function($scope, AuthService, $ionicLoading, $timeout, $ionicPopup, $state,LocationService,DataService,StorageService) {
 
   $scope.transportForm={};
+  $scope.conn;
 
   $scope.$on('$ionicView.enter', function(){
+
+  //checks if device has internet
+  $scope.connectionStatus();
+
   //console.log("get food and suppliers");
   AuthService.getFood();
 
   //adds lat and long to Form
   $scope.getLocation();
+
 
   // loader icon show while data is being retrieved using ionic service $ionicLoading
   $scope.loading = $ionicLoading.show({
@@ -554,23 +560,50 @@ angular.module('starter.controllers', ['ionic.wheel'])
       LocationService.getLocation().then(function(loc) {
         $scope.transportForm.lat=loc.lat;
         $scope.transportForm.long=loc.long;
+        //var alertPopup = $ionicPopup.alert({title: 'Success!',template: loc.lat+" "+loc.long});
       });
   }//end getLocation
 
-  $scope.submit = function() {
-    $scope.getLocation();
+  $scope.connectionStatus = function(){
+    DataService.connectionStatus().then(function(status) {
 
-    AuthService.transport($scope.transportForm).then(function(msg) {
-      var alertPopup = $ionicPopup.alert({
-        title: 'Success!',
-        template: msg
-        });
-      }, function(errMsg) {
-      var alertPopup = $ionicPopup.alert({
-        title: 'Error',
-        template: errMsg
+      //var alertPopup = $ionicPopup.alert({title: 'Status!',template: status});
+
+      if(status=="online"){
+          $scope.conn=1;
+          //$scope.conn = Boolean(true);
+      }
+      else{
+        $scope.conn=0;
+      }
+
+    });
+}//end connectionStatus
+
+  $scope.submit = function() {
+    //refresh
+    $scope.getLocation();
+    $scope.connectionStatus();
+
+  //  var alertPopup = $ionicPopup.alert({title: 'Conn!',template: $scope.conn});
+
+    if($scope.conn==1){
+        AuthService.transport($scope.transportForm).then(function(msg) {
+          var alertPopup = $ionicPopup.alert({
+            title: 'Success!',
+            template: msg
+            });
+          }, function(errMsg) {
+          var alertPopup = $ionicPopup.alert({
+            title: 'Error',
+            template: errMsg
+          });
       });
-  });
+    }//end if
+  else{
+      var alertPopup = $ionicPopup.alert({title: 'No Internet Connection!',template: "Saving form to device"});
+      StorageService.storeTransportForm($scope.transportForm);
+  }
 
   $scope.transportForm={};
 
