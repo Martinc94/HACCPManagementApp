@@ -252,7 +252,7 @@ angular.module('starter.controllers', ['ionic.wheel'])
 
   //testing submitwithPhoto
   $scope.submit = function() {
-      AuthService.postPhoto($scope.deliveryForm,$scope.imageData).then(function(msg) {
+      AuthService.postPhoto($scope.deliveryForm,$scope.imgURI).then(function(msg) {
         var alertPopup = $ionicPopup.alert({
           title: 'Success!',
           template: msg
@@ -520,17 +520,19 @@ angular.module('starter.controllers', ['ionic.wheel'])
 
 })//TrainingCtrl
 
-.controller('TransportCtrl', function($scope, AuthService, $ionicLoading, $timeout, $ionicPopup, $state) {
+.controller('TransportCtrl', function($scope, AuthService, $ionicLoading, $timeout, $ionicPopup, $state,LocationService) {
 
   $scope.transportForm={};
 
   $scope.$on('$ionicView.enter', function(){
+  //console.log("get food and suppliers");
+  AuthService.getFood();
 
-    console.log("get food and suppliers");
-    AuthService.getFood();
+  //adds lat and long to Form
+  $scope.getLocation();
 
-    // loader icon show while data is being retrieved using ionic service $ionicLoading
-        $scope.loading = $ionicLoading.show({
+  // loader icon show while data is being retrieved using ionic service $ionicLoading
+  $scope.loading = $ionicLoading.show({
           content: '<i class="icon ion-loading-c"></i>',
           animation: 'fade-in',
           showBackdrop: false,
@@ -543,24 +545,31 @@ angular.module('starter.controllers', ['ionic.wheel'])
           var foodData = window.localStorage.getItem('FoodData');
           foodData = ('foodData: ', JSON.parse(foodData));
           $scope.foods = foodData;
-          console.log(foodData);
+          //console.log(foodData);
         }, 1000);
 
     });
 
-  $scope.submit = function() {
-  AuthService.transport($scope.transportForm).then(function(msg) {
-   //redirect to home??
-    //$state.go('login');
-    var alertPopup = $ionicPopup.alert({
-      title: 'Success!',
-      template: msg
+  $scope.getLocation = function(){
+      LocationService.getLocation().then(function(loc) {
+        $scope.transportForm.lat=loc.lat;
+        $scope.transportForm.long=loc.long;
       });
-   }, function(errMsg) {
-    var alertPopup = $ionicPopup.alert({
-      title: 'Error',
-      template: errMsg
-    });
+  }//end getLocation
+
+  $scope.submit = function() {
+    $scope.getLocation();
+
+    AuthService.transport($scope.transportForm).then(function(msg) {
+      var alertPopup = $ionicPopup.alert({
+        title: 'Success!',
+        template: msg
+        });
+      }, function(errMsg) {
+      var alertPopup = $ionicPopup.alert({
+        title: 'Error',
+        template: errMsg
+      });
   });
 
   $scope.transportForm={};
