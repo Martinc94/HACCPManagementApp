@@ -93,11 +93,63 @@ angular.module('starter.controllers', ['ionic.wheel'])
 
 })
 
-.controller('FittCtrl', function($scope, AuthService, $ionicPopup, $state) {
+.controller('FittCtrl', function($scope, AuthService, $ionicPopup, $state, $ionicLoading, $timeout, LocationService, DataService, StorageService) {
 
   $scope.formData = {};
+  $scope.conn;
+
+  $scope.$on('$ionicView.enter', function(){
+
+  //checks if device has internet
+  $scope.connectionStatus();
+
+  //adds lat and long to Form
+  $scope.getLocation();
+
+  // loader icon show while data is being retrieved using ionic service $ionicLoading
+  $scope.loading = $ionicLoading.show({
+          content: '<i class="icon ion-loading-c"></i>',
+          animation: 'fade-in',
+          showBackdrop: false,
+          maxWidth: 50,
+          showDelay: 0
+        })
+
+        $timeout(function () {
+          $ionicLoading.hide();
+
+        }, 1000);
+
+    });
+
+  $scope.getLocation = function(){
+      LocationService.getLocation().then(function(loc) {
+        $scope.formData.lat=loc.lat;
+        $scope.formData.long=loc.long;
+        //var alertPopup = $ionicPopup.alert({title: 'Success!',template: loc.lat+" "+loc.long});
+      });
+  }//end getLocation
+
+  $scope.connectionStatus = function(){
+    DataService.connectionStatus().then(function(status) {
+
+      //var alertPopup = $ionicPopup.alert({title: 'Status!',template: status});
+
+      if(status=="online"){
+          $scope.conn=1;
+      }
+      else{
+        $scope.conn=0;
+      }
+
+    });
+}//end connectionStatus
 
   $scope.submit = function() {
+    //refresh
+    $scope.getLocation();
+    $scope.connectionStatus();
+
     if(!$scope.formData.q5){
       //console.log("no 5");
       //$scope.formData.q5=false;
@@ -123,19 +175,23 @@ angular.module('starter.controllers', ['ionic.wheel'])
       $scope.formData.q7="Yes";
     }
 
-    AuthService.fitness($scope.formData).then(function(msg) {
-     //redirect to home??
-      //$state.go('login');
-      var alertPopup = $ionicPopup.alert({
-        title: 'Success!',
-        template: msg
+    if($scope.conn==1){
+      AuthService.fitness($scope.formData).then(function(msg) {
+        var alertPopup = $ionicPopup.alert({
+          title: 'Success!',
+          template: msg
+          });
+       }, function(errMsg) {
+        var alertPopup = $ionicPopup.alert({
+          title: 'Error',
+          template: errMsg
         });
-     }, function(errMsg) {
-      var alertPopup = $ionicPopup.alert({
-        title: 'Error',
-        template: errMsg
       });
-    });
+    }
+    else{
+        var alertPopup = $ionicPopup.alert({title: 'No Internet Connection!',template: "Saving form to device"});
+        StorageService.storeForm($scope.formData,"FitnessForms");
+    }
 
     $scope.formData = {};
   };
@@ -520,7 +576,7 @@ angular.module('starter.controllers', ['ionic.wheel'])
 
 })//TrainingCtrl
 
-.controller('TransportCtrl', function($scope, AuthService, $ionicLoading, $timeout, $ionicPopup, $state,LocationService,DataService,StorageService) {
+.controller('TransportCtrl', function($scope, AuthService, $ionicLoading, $timeout, $ionicPopup, $state, LocationService, DataService, StorageService) {
 
   $scope.transportForm={};
   $scope.conn;
@@ -1266,7 +1322,7 @@ angular.module('starter.controllers', ['ionic.wheel'])
     };//submitStorageFitness
 
     $scope.submitStorageFitness = function() {
-        StorageService.postForms("fitnessForms","hothold").then(function(msg) {
+        StorageService.postForms("FitnessForms","fitnessToWork").then(function(msg) {
           var alertPopup = $ionicPopup.alert({
             title: 'Alert!',
             template: msg
