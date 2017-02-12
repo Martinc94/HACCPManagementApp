@@ -541,7 +541,7 @@ angular.module('starter.services', [])
     })//;
     //end dataService
 
-    .service('StorageService', function($q) {
+    .service('StorageService', function($q,$http, API_ENDPOINT) {
         var storeForm = function(Form,name) {
                 var Forms = [];
 
@@ -559,14 +559,16 @@ angular.module('starter.services', [])
                   Forms[Forms.length] = JSON.stringify(Form);
                 }
 
-                console.log(Forms);
+                //console.log(Forms);
 
                 //save array
                 localStorage.setItem(name, JSON.stringify(Forms));
           };//end storeForm
 
-          var postForms = function(name) {
+          var postForms = function(name,url) {
+            return $q(function(resolve, reject) {
                   var Forms = [];
+                  var Form = {};
 
                   //load array
                   var Forms = JSON.parse(localStorage.getItem(name));
@@ -575,16 +577,60 @@ angular.module('starter.services', [])
                   if(Forms == undefined)
                   {
                     //alert no forms
+                    resolve("No Forms saved!");
                   }
                   else{
                     //attempt to post or return form and remove
-                  }
 
-                  console.log(Forms);
+                    var promises = [];
+                      for(var i = 0; i < Forms.length; i++) {
 
-                  //save array
-                  localStorage.setItem(name, JSON.stringify(Forms));
+                        form = Forms[i];
+
+                        var promise =$http.post(API_ENDPOINT.url + '/'+url, form);
+
+                      	promises.push(promise);
+                      }//end for
+
+                     $q.all(promises).then(function(results) {
+                      // console.log(results);
+
+                       for(var j = Forms.length; j > 0; j--) {
+
+                        if (results[j-1].data.success) {
+                          //console.log("Removing"+Forms[j-1]);
+
+                          Forms.splice(j-1, 1);
+
+                          //resolve(result.data.msg);
+                        }
+                        else {
+                          //invalid form
+                          //leave in array
+                          //console.log("Invalid"+Forms[j]);
+                        }//end else
+
+                      }//end for
+
+                      //console.log(Forms);
+                      if(Forms.length==0){
+                        //remove forms
+                        localStorage.removeItem(name);
+                        resolve("All forms posted successfully");
+                      }
+                      else{
+                        //save Forms
+                        localStorage.setItem(name, JSON.stringify(Forms));
+                        reject("Some forms unable to post");
+                      }
+
+                  });//end q.all(promises)
+
+                }//end else
+
+              });
             };//end postForms
+
 
         return {
           storeForm: storeForm,
