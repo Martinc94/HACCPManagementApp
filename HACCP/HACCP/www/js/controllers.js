@@ -611,7 +611,7 @@ angular.module('starter.controllers', ['ionic.wheel'])
 
 })//TransportCtrl
 
-.controller('SettingsCtrl', function($scope, $timeout, AuthService, $ionicLoading, $ionicPopup, $state, $ionicListDelegate) {
+.controller('SettingsCtrl', function($scope, $timeout, AuthService, $ionicLoading, $ionicPopup, $state, $ionicListDelegate,StorageService) {
     //console.log("Start SettingsCtrl");
     $scope.suppliersSelect=false;
     $scope.shouldShowDelete = false;
@@ -1180,6 +1180,120 @@ angular.module('starter.controllers', ['ionic.wheel'])
           $scope.savedSelect=true;
         }
     }
+
+    $scope.submitStorageFoodDelivery = function() {
+        StorageService.postForms("FoodDeliveryForms","foodDelivery").then(function(msg) {
+          var alertPopup = $ionicPopup.alert({
+            title: 'Alert!',
+            template: msg
+            });
+         }, function(errMsg) {
+          var alertPopup = $ionicPopup.alert({
+            title: 'Alert',
+            template: errMsg
+          });
+        });
+    };//submitStorageFoodDelivery
+
+    $scope.submitStorageFridgetemp = function() {
+        StorageService.postForms("FridgetempForms","fridgetemp").then(function(msg) {
+          var alertPopup = $ionicPopup.alert({
+            title: 'Alert!',
+            template: msg
+            });
+         }, function(errMsg) {
+          var alertPopup = $ionicPopup.alert({
+            title: 'Alert',
+            template: errMsg
+          });
+        });
+    };//submitStorageFridgetemp
+
+    $scope.submitStorageTemperature = function() {
+        StorageService.postForms("TemperatureForms","temperature").then(function(msg) {
+          var alertPopup = $ionicPopup.alert({
+            title: 'Alert!',
+            template: msg
+            });
+         }, function(errMsg) {
+          var alertPopup = $ionicPopup.alert({
+            title: 'Alert',
+            template: errMsg
+          });
+        });
+    };//submitStorageTemperature
+
+    $scope.submitStorageHothold = function() {
+        StorageService.postForms("HotholdForms","hothold").then(function(msg) {
+          var alertPopup = $ionicPopup.alert({
+            title: 'Alert!',
+            template: msg
+            });
+         }, function(errMsg) {
+          var alertPopup = $ionicPopup.alert({
+            title: 'Alert',
+            template: errMsg
+          });
+        });
+    };//submitStorageHothold
+
+    $scope.submitStorageHygieneInspection = function() {
+        StorageService.postForms("HygieneInspectionForms","hygieneInspection").then(function(msg) {
+          var alertPopup = $ionicPopup.alert({
+            title: 'Alert!',
+            template: msg
+            });
+         }, function(errMsg) {
+          var alertPopup = $ionicPopup.alert({
+            title: 'Alert',
+            template: errMsg
+          });
+        });
+    };//submitStorageHygieneInspection
+
+    $scope.submitStorageHygieneTra = function() {
+        StorageService.postForms("HygieneTrainingForms","hygieneTraining").then(function(msg) {
+          var alertPopup = $ionicPopup.alert({
+            title: 'Alert!',
+            template: msg
+            });
+         }, function(errMsg) {
+          var alertPopup = $ionicPopup.alert({
+            title: 'Alert',
+            template: errMsg
+          });
+        });
+    };//submitStorageFitness
+
+    $scope.submitStorageFitness = function() {
+        StorageService.postForms("fitnessForms","hothold").then(function(msg) {
+          var alertPopup = $ionicPopup.alert({
+            title: 'Alert!',
+            template: msg
+            });
+         }, function(errMsg) {
+          var alertPopup = $ionicPopup.alert({
+            title: 'Alert',
+            template: errMsg
+          });
+        });
+    };//submitStorageFitness
+
+    $scope.submitStorageTransport = function() {
+        StorageService.postForms("transportForms","transport").then(function(msg) {
+          var alertPopup = $ionicPopup.alert({
+            title: 'Alert!',
+            template: msg
+            });
+         }, function(errMsg) {
+          var alertPopup = $ionicPopup.alert({
+            title: 'Alert',
+            template: errMsg
+          });
+        });
+    };//submitStorageTransport
+
+
 
     $scope.logout = function() {
       AuthService.logout();
