@@ -573,6 +573,8 @@ angular.module('starter.services', [])
                   //load array
                   var Forms = JSON.parse(localStorage.getItem(name));
 
+                  //console.log(Forms);
+
                   //if empty array
                   if(Forms == undefined)
                   {
@@ -595,10 +597,10 @@ angular.module('starter.services', [])
                      $q.all(promises).then(function(results) {
                       // console.log(results);
 
-                       for(var j = Forms.length; j > 0; j--) {
+                       for(var j = Forms.length; j > 0; j--) {                
 
                         if (results[j-1].data.success) {
-                          //console.log("Removing"+Forms[j-1]);
+                          console.log("Removing: "+Forms[j-1]);
 
                           Forms.splice(j-1, 1);
 
@@ -607,7 +609,7 @@ angular.module('starter.services', [])
                         else {
                           //invalid form
                           //leave in array
-                          //console.log("Invalid"+Forms[j]);
+                          console.log("Invalid: "+Forms[j-1]);
                         }//end else
 
                       }//end for
