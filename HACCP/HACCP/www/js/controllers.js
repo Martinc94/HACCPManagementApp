@@ -602,7 +602,7 @@ angular.module('starter.controllers', ['ionic.wheel'])
     }//end if
   else{
       var alertPopup = $ionicPopup.alert({title: 'No Internet Connection!',template: "Saving form to device"});
-      StorageService.storeTransportForm($scope.transportForm);
+      StorageService.storeForm($scope.transportForm,"transportForms");
   }
 
   $scope.transportForm={};
@@ -1169,6 +1169,17 @@ angular.module('starter.controllers', ['ionic.wheel'])
       console.log(foodData);
 
     };
+
+    //open/close SavedForms menu
+    $scope.openSavedForms = function(){
+
+        if($scope.savedSelect==true){
+          $scope.savedSelect=false;
+        }
+        else{
+          $scope.savedSelect=true;
+        }
+    }
 
     $scope.logout = function() {
       AuthService.logout();

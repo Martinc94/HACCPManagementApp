@@ -542,37 +542,37 @@ angular.module('starter.services', [])
     //end dataService
 
     .service('StorageService', function($q) {
-        var storeTransportForm = function(transportForm) {
-                var transportForms = [];
+        var storeForm = function(Form,name) {
+                var Forms = [];
 
                 //load array
-                var transportForms = JSON.parse(localStorage.getItem("transportForms"));
+                var Forms = JSON.parse(localStorage.getItem(name));
 
                 //if empty array
-                if(transportForms == undefined)
+                if(Forms == undefined)
                 {
-                  transportForms = [];
-                  transportForms[0] = JSON.stringify(transportForm);
+                  Forms = [];
+                  Forms[0] = JSON.stringify(Form);
                 }
                 else{
                   //add to array
-                  transportForms[transportForms.length] = JSON.stringify(transportForm);
+                  Forms[Forms.length] = JSON.stringify(Form);
                 }
 
-                console.log(transportForms);
+                console.log(Forms);
 
                 //save array
-                localStorage.setItem("transportForms", JSON.stringify(transportForms));
-          };//end storeTransportForm
+                localStorage.setItem(name, JSON.stringify(Forms));
+          };//end storeForm
 
-          var postTransportForms = function() {
-                  var transportForms = [];
+          var postForms = function(name) {
+                  var Forms = [];
 
                   //load array
-                  var transportForms = JSON.parse(localStorage.getItem("transportForms"));
+                  var Forms = JSON.parse(localStorage.getItem(name));
 
                   //if empty array
-                  if(transportForms == undefined)
+                  if(Forms == undefined)
                   {
                     //alert no forms
                   }
@@ -580,15 +580,15 @@ angular.module('starter.services', [])
                     //attempt to post or return form and remove
                   }
 
-                  console.log(transportForms);
+                  console.log(Forms);
 
                   //save array
-                  localStorage.setItem("transportForms", JSON.stringify(transportForms));
-            };//end postTransportForms
+                  localStorage.setItem(name, JSON.stringify(Forms));
+            };//end postForms
 
         return {
-          storeTransportForm: storeTransportForm,
-          postTransportForms: postTransportForms,
+          storeForm: storeForm,
+          postForms: postForms,
         };
       });
       //end StorageService
