@@ -109,7 +109,28 @@
           </ion-list>
         </div>
 
-        <!--Temp link to login page will become logout button -->
+
+
+        <button class="button button-block button-positive" type="button" ng-click="openSavedForms()">
+            Saved Forms
+        </button>
+
+        <div ng-show="savedSelect">
+          <div class="list">
+            <label class="item item-input">
+              <button class="button button-block button-positive" type="button" ng-click="submitStorageTransport()">Submit Delivery Forms</button>
+            </label>
+            <label class="item item-input">
+              <button class="button button-block button-positive" type="button" ng-click="submitStorageTransport()">Submit Hothold Forms</button>
+            </label>
+            <label class="item item-input">
+              <button class="button button-block button-positive" type="button" ng-click="submitStorageTransport()">Submit Transport Forms</button>
+            </label>
+          </div>
+        </div>
+
+
+        <!--logout -->
         <button class="button button-block button-positive" ng-click="logout()" ui-sref="login">
             Logout
         </button>
