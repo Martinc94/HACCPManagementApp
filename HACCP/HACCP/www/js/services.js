@@ -596,8 +596,8 @@ angular.module('starter.services', [])
 
                      $q.all(promises).then(function(results) {
                       // console.log(results);
-
-                       for(var j = Forms.length; j > 0; j--) {                
+                
+                       for(var j = Forms.length; j > 0; j--) {
 
                         if (results[j-1].data.success) {
                           console.log("Removing: "+Forms[j-1]);
