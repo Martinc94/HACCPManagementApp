@@ -541,54 +541,102 @@ angular.module('starter.services', [])
     })//;
     //end dataService
 
-    .service('StorageService', function($q) {
-        var storeTransportForm = function(transportForm) {
-                var transportForms = [];
+    .service('StorageService', function($q,$http, API_ENDPOINT) {
+        var storeForm = function(Form,name) {
+                var Forms = [];
 
                 //load array
-                var transportForms = JSON.parse(localStorage.getItem("transportForms"));
+                var Forms = JSON.parse(localStorage.getItem(name));
 
                 //if empty array
-                if(transportForms == undefined)
+                if(Forms == undefined)
                 {
-                  transportForms = [];
-                  transportForms[0] = JSON.stringify(transportForm);
+                  Forms = [];
+                  Forms[0] = JSON.stringify(Form);
                 }
                 else{
                   //add to array
-                  transportForms[transportForms.length] = JSON.stringify(transportForm);
+                  Forms[Forms.length] = JSON.stringify(Form);
                 }
 
-                console.log(transportForms);
+                //console.log(Forms);
 
                 //save array
-                localStorage.setItem("transportForms", JSON.stringify(transportForms));
-          };//end storeTransportForm
+                localStorage.setItem(name, JSON.stringify(Forms));
+          };//end storeForm
 
-          var postTransportForms = function() {
-                  var transportForms = [];
+          var postForms = function(name,url) {
+            return $q(function(resolve, reject) {
+                  var Forms = [];
+                  var Form = {};
 
                   //load array
-                  var transportForms = JSON.parse(localStorage.getItem("transportForms"));
+                  var Forms = JSON.parse(localStorage.getItem(name));
+
+                  //console.log(Forms);
 
                   //if empty array
-                  if(transportForms == undefined)
+                  if(Forms == undefined)
                   {
                     //alert no forms
+                    resolve("No Forms saved!");
                   }
                   else{
                     //attempt to post or return form and remove
-                  }
 
-                  console.log(transportForms);
+                    var promises = [];
+                      for(var i = 0; i < Forms.length; i++) {
 
-                  //save array
-                  localStorage.setItem("transportForms", JSON.stringify(transportForms));
-            };//end postTransportForms
+                        form = Forms[i];
+
+                        var promise =$http.post(API_ENDPOINT.url + '/'+url, form);
+
+                      	promises.push(promise);
+                      }//end for
+
+                     $q.all(promises).then(function(results) {
+                      // console.log(results);
+
+                       for(var j = Forms.length; j > 0; j--) {
+
+                        if (results[j-1].data.success) {
+                          console.log("Removing: "+Forms[j-1]);
+
+                          Forms.splice(j-1, 1);
+
+                          //resolve(result.data.msg);
+                        }
+                        else {
+                          //invalid form
+                          //leave in array
+                          console.log("Invalid: "+Forms[j-1]);
+                        }//end else
+
+                      }//end for
+
+                      //console.log(Forms);
+                      if(Forms.length==0){
+                        //remove forms
+                        localStorage.removeItem(name);
+                        resolve("All forms posted successfully");
+                      }
+                      else{
+                        //save Forms
+                        localStorage.setItem(name, JSON.stringify(Forms));
+                        reject("Some forms unable to post");
+                      }
+
+                  });//end q.all(promises)
+
+                }//end else
+
+              });
+            };//end postForms
+
 
         return {
-          storeTransportForm: storeTransportForm,
-          postTransportForms: postTransportForms,
+          storeForm: storeForm,
+          postForms: postForms,
         };
       });
       //end StorageService

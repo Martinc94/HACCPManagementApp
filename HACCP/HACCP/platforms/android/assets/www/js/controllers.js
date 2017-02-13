@@ -93,11 +93,51 @@ angular.module('starter.controllers', ['ionic.wheel'])
 
 })
 
-.controller('FittCtrl', function($scope, AuthService, $ionicPopup, $state) {
+.controller('FittCtrl', function($scope, AuthService, $ionicPopup, $state, $ionicLoading, $timeout, DataService, StorageService) {
 
   $scope.formData = {};
+  $scope.conn;
+
+  $scope.$on('$ionicView.enter', function(){
+
+  //checks if device has internet
+  $scope.connectionStatus();
+
+  // loader icon show while data is being retrieved using ionic service $ionicLoading
+  $scope.loading = $ionicLoading.show({
+          content: '<i class="icon ion-loading-c"></i>',
+          animation: 'fade-in',
+          showBackdrop: false,
+          maxWidth: 50,
+          showDelay: 0
+        })
+
+        $timeout(function () {
+          $ionicLoading.hide();
+
+        }, 1000);
+
+    });
+
+  $scope.connectionStatus = function(){
+    DataService.connectionStatus().then(function(status) {
+
+      //var alertPopup = $ionicPopup.alert({title: 'Status!',template: status});
+
+      if(status=="online"){
+          $scope.conn=1;
+      }
+      else{
+        $scope.conn=0;
+      }
+
+    });
+  }//end connectionStatus
 
   $scope.submit = function() {
+    //refresh
+    $scope.connectionStatus();
+
     if(!$scope.formData.q5){
       //console.log("no 5");
       //$scope.formData.q5=false;
@@ -123,19 +163,23 @@ angular.module('starter.controllers', ['ionic.wheel'])
       $scope.formData.q7="Yes";
     }
 
-    AuthService.fitness($scope.formData).then(function(msg) {
-     //redirect to home??
-      //$state.go('login');
-      var alertPopup = $ionicPopup.alert({
-        title: 'Success!',
-        template: msg
+    if($scope.conn==1){
+      AuthService.fitness($scope.formData).then(function(msg) {
+        var alertPopup = $ionicPopup.alert({
+          title: 'Success!',
+          template: msg
+          });
+       }, function(errMsg) {
+        var alertPopup = $ionicPopup.alert({
+          title: 'Error',
+          template: errMsg
         });
-     }, function(errMsg) {
-      var alertPopup = $ionicPopup.alert({
-        title: 'Error',
-        template: errMsg
       });
-    });
+    }
+    else{
+        var alertPopup = $ionicPopup.alert({title: 'No Internet Connection!',template: "Saving form to device"});
+        StorageService.storeForm($scope.formData,"FitnessForms");
+    }
 
     $scope.formData = {};
   };
@@ -151,22 +195,67 @@ angular.module('starter.controllers', ['ionic.wheel'])
     }
 })
 
-.controller('HygieneCtrl', function($scope, AuthService, $ionicPopup, $state){
+.controller('HygieneCtrl', function($scope, AuthService, $ionicPopup, $state, $ionicLoading, $timeout, DataService, StorageService){
 
  $scope.formData = {};
+ $scope.conn;
 
-  $scope.submit = function() {
-  AuthService.hygieneInspection($scope.formData).then(function(msg) {
-    var alertPopup = $ionicPopup.alert({
-      title: 'Success!',
-      template: msg
+ $scope.$on('$ionicView.enter', function(){
+
+ //checks if device has internet
+ $scope.connectionStatus();
+
+ // loader icon show while data is being retrieved using ionic service $ionicLoading
+ $scope.loading = $ionicLoading.show({
+         content: '<i class="icon ion-loading-c"></i>',
+         animation: 'fade-in',
+         showBackdrop: false,
+         maxWidth: 50,
+         showDelay: 0
+       })
+
+       $timeout(function () {
+         $ionicLoading.hide();
+
+       }, 1000);
+
+   });
+
+ $scope.connectionStatus = function(){
+   DataService.connectionStatus().then(function(status) {
+
+     //var alertPopup = $ionicPopup.alert({title: 'Status!',template: status});
+
+     if(status=="online"){
+         $scope.conn=1;
+     }
+     else{
+       $scope.conn=0;
+     }
+
+   });
+ }//end connectionStatus
+
+ $scope.submit = function() {
+   //refresh
+   $scope.connectionStatus();
+   if($scope.conn==1){
+      AuthService.hygieneInspection($scope.formData).then(function(msg) {
+        var alertPopup = $ionicPopup.alert({
+          title: 'Success!',
+          template: msg
+          });
+       }, function(errMsg) {
+        var alertPopup = $ionicPopup.alert({
+          title: 'Error',
+          template: errMsg
+        });
       });
-   }, function(errMsg) {
-    var alertPopup = $ionicPopup.alert({
-      title: 'Error',
-      template: errMsg
-    });
-  });
+    }//end if
+    else{
+        var alertPopup = $ionicPopup.alert({title: 'No Internet Connection!',template: "Saving form to device"});
+        StorageService.storeForm($scope.formData,"HygieneInspectionForms");
+    }
 
   $scope.formData={};
 
@@ -174,15 +263,22 @@ angular.module('starter.controllers', ['ionic.wheel'])
 
 })//HygieneCtrl
 
-.controller('DeliveryCtrl', function($scope, AuthService, $timeout, $ionicLoading, $ionicPopup, $state, $cordovaCamera) {
+.controller('DeliveryCtrl', function($scope, AuthService, $timeout, $ionicLoading, $ionicPopup, $state, $cordovaCamera, LocationService, DataService, StorageService) {
 
   $scope.deliveryForm={};
   $scope.toggle=false;
+  $scope.conn;
 
   $scope.$on('$ionicView.enter', function(){
     //gets settings
     AuthService.getSuppliers();
     AuthService.getFood();
+
+    //checks if device has internet
+    $scope.connectionStatus();
+
+    //adds lat and long to Form
+    $scope.getLocation();
 
     // loader icon show while data is being retrieved using ionic service $ionicLoading
     $scope.loading = $ionicLoading.show({
@@ -208,61 +304,47 @@ angular.module('starter.controllers', ['ionic.wheel'])
 
     });
 
-  /*$scope.submitForm=function(deliveryForm){
-
-  }//submitForm*/
-
-  $scope.takePicture = function() {
-      var options = {
-          quality : 75,
-          destinationType : Camera.DestinationType.DATA_URL,
-          sourceType : Camera.PictureSourceType.CAMERA,
-          allowEdit : true,
-          encodingType: Camera.EncodingType.JPEG,
-          targetWidth: 300,
-          targetHeight: 300,
-          popoverOptions: CameraPopoverOptions,
-          cameraDirection: 1,
-          saveToPhotoAlbum: false
-      };
-
-      $cordovaCamera.getPicture(options).then(function(imageData) {
-          $scope.imgURI = "data:image/jpeg;base64," + imageData;
-          $scope.toggle=true;
-      }, function(err) {
-          // An error occured. Show a message to the user
-      });
-  }
-
-  $scope.submitWorking = function() {
-      AuthService.foodDelivery($scope.deliveryForm).then(function(msg) {
-        var alertPopup = $ionicPopup.alert({
-          title: 'Success!',
-          template: msg
-          });
-       }, function(errMsg) {
-        var alertPopup = $ionicPopup.alert({
-          title: 'Error',
-          template: errMsg
+    $scope.getLocation = function(){
+        LocationService.getLocation().then(function(loc) {
+          $scope.deliveryForm.lat=loc.lat;
+          $scope.deliveryForm.long=loc.long;
         });
+    }//end getLocation
+
+    $scope.connectionStatus = function(){
+      DataService.connectionStatus().then(function(status) {
+        if(status=="online"){
+            $scope.conn=1;
+        }
+        else{
+          $scope.conn=0;
+        }
       });
+  }//end connectionStatus
 
-      $scope.deliveryForm = {};
-    };
-
-  //testing submitwithPhoto
+  //submit with Photo
   $scope.submit = function() {
-      AuthService.postPhoto($scope.deliveryForm,$scope.imgURI).then(function(msg) {
-        var alertPopup = $ionicPopup.alert({
-          title: 'Success!',
-          template: msg
-          });
-       }, function(errMsg) {
-        var alertPopup = $ionicPopup.alert({
-          title: 'Error',
-          template: errMsg
+      //refresh
+      $scope.connectionStatus();
+      $scope.getLocation();
+
+      if($scope.conn==1){
+        AuthService.postPhoto($scope.deliveryForm,$scope.imgURI).then(function(msg) {
+          var alertPopup = $ionicPopup.alert({
+            title: 'Success!',
+            template: msg
+            });
+           }, function(errMsg) {
+            var alertPopup = $ionicPopup.alert({
+              title: 'Error',
+              template: errMsg
+            });
         });
-      });
+      }//end if
+      else{
+          var alertPopup = $ionicPopup.alert({title: 'No Internet Connection!',template: "Saving form to device"});
+          StorageService.storeForm($scope.deliveryForm,"FoodDeliveryForms");
+      }
 
       $scope.deliveryForm = {};
       //reset image
@@ -271,13 +353,16 @@ angular.module('starter.controllers', ['ionic.wheel'])
 
 })//DeliveryCtrl
 
-.controller('TemperatureCtrl', function($scope, AuthService, $timeout, $ionicLoading, $ionicPopup, $state, ionicTimePicker) {
+.controller('TemperatureCtrl', function($scope, AuthService, $timeout, $ionicLoading, $ionicPopup, $state, ionicTimePicker, DataService, StorageService) {
 
   $scope.cookcoolForm = {};
+  $scope.conn;
 
   $scope.$on('$ionicView.enter', function(){
 
-    console.log("get food and suppliers");
+    //checks if device has internet
+    $scope.connectionStatus();
+
     AuthService.getFood();
 
     // loader icon show while data is being retrieved using ionic service $ionicLoading
@@ -299,7 +384,21 @@ angular.module('starter.controllers', ['ionic.wheel'])
 
     });
 
+    $scope.connectionStatus = function(){
+      DataService.connectionStatus().then(function(status) {
 
+        //var alertPopup = $ionicPopup.alert({title: 'Status!',template: status});
+
+        if(status=="online"){
+            $scope.conn=1;
+            //$scope.conn = Boolean(true);
+        }
+        else{
+          $scope.conn=0;
+        }
+
+      });
+  }//end connectionStatus
 
   $scope.openTimePicker=function(value){
 
@@ -336,20 +435,27 @@ angular.module('starter.controllers', ['ionic.wheel'])
   };
 
 
-
-
   $scope.submit = function() {
-  AuthService.temperature($scope.cookcoolForm).then(function(msg) {
-    var alertPopup = $ionicPopup.alert({
-      title: 'Success!',
-      template: msg
-      });
-   }, function(errMsg) {
-    var alertPopup = $ionicPopup.alert({
+    //refresh
+    $scope.connectionStatus();
+
+    if($scope.conn==1){
+      AuthService.temperature($scope.cookcoolForm).then(function(msg) {
+        var alertPopup = $ionicPopup.alert({
+          title: 'Success!',
+          template: msg
+          });
+       }, function(errMsg) {
+         var alertPopup = $ionicPopup.alert({
       title: 'Error',
       template: errMsg
     });
-  });
+      });
+    }//end if
+  else{
+      var alertPopup = $ionicPopup.alert({title: 'No Internet Connection!',template: "Saving form to device"});
+      StorageService.storeForm($scope.cookcoolForm,"TemperatureForms");
+  }
 
   $scope.cookcoolForm = {};
 
@@ -357,13 +463,16 @@ angular.module('starter.controllers', ['ionic.wheel'])
 
 })//TemperatureCtrl
 
-.controller('HotholdCtrl', function($scope, AuthService, $ionicLoading, $timeout, $ionicPopup, $state, ionicTimePicker) {
+.controller('HotholdCtrl', function($scope, AuthService, $ionicLoading, $timeout, $ionicPopup, $state, ionicTimePicker, DataService, StorageService) {
 
   $scope.hotholdForm = {};
+  $scope.conn;
 
   $scope.$on('$ionicView.enter', function(){
 
-    console.log("get food and suppliers");
+    //checks if device has internet
+    $scope.connectionStatus();
+
     AuthService.getFood();
 
     // loader icon show while data is being retrieved using ionic service $ionicLoading
@@ -384,6 +493,22 @@ angular.module('starter.controllers', ['ionic.wheel'])
         }, 1000);
 
     });
+
+    $scope.connectionStatus = function(){
+      DataService.connectionStatus().then(function(status) {
+
+        //var alertPopup = $ionicPopup.alert({title: 'Status!',template: status});
+
+        if(status=="online"){
+            $scope.conn=1;
+            //$scope.conn = Boolean(true);
+        }
+        else{
+          $scope.conn=0;
+        }
+
+      });
+  }//end connectionStatus
 
   $scope.openTimePicker=function(){
 
@@ -409,33 +534,43 @@ angular.module('starter.controllers', ['ionic.wheel'])
   };
 
   $scope.submit = function() {
-  AuthService.hothold($scope.hotholdForm).then(function(msg) {
-    var alertPopup = $ionicPopup.alert({
-      title: 'Success!',
-      template: msg
-      });
-   }, function(errMsg) {
-    var alertPopup = $ionicPopup.alert({
-      title: 'Error',
-      template: errMsg
-    });
-  });
+      if($scope.conn==1){
+        AuthService.hothold($scope.hotholdForm).then(function(msg) {
+          var alertPopup = $ionicPopup.alert({
+            title: 'Success!',
+            template: msg
+            });
+         }, function(errMsg) {
+          var alertPopup = $ionicPopup.alert({
+            title: 'Error',
+            template: errMsg
+          });
+        });
+      }//end if
+    else{
+        var alertPopup = $ionicPopup.alert({title: 'No Internet Connection!',template: "Saving form to device"});
+        StorageService.storeForm($scope.hotholdForm,"HotholdForms");
+    }
+
   $scope.hotholdForm={};
   };
 
 })//HotholdCtrl
 
-.controller('FridgeCtrl', function($scope, AuthService, $timeout, $ionicPopup, $state, $ionicLoading, $cordovaCamera) {
+.controller('FridgeCtrl', function($scope, AuthService, $timeout, $ionicPopup, $state, $ionicLoading, $cordovaCamera, DataService, StorageService) {
 
     $scope.fridge={};
+    $scope.conn;
 
     $scope.$on('$ionicView.enter', function(){
 
-    console.log("get Fridges");
-    AuthService.getRefridgerators();
+      //checks if device has internet
+      $scope.connectionStatus();
 
-    // loader icon show while data is being retrieved using ionic service $ionicLoading
-        $scope.loading = $ionicLoading.show({
+      AuthService.getRefridgerators();
+
+      // loader icon show while data is being retrieved using ionic service $ionicLoading
+      $scope.loading = $ionicLoading.show({
           content: '<i class="icon ion-loading-c"></i>',
           animation: 'fade-in',
           showBackdrop: false,
@@ -452,6 +587,22 @@ angular.module('starter.controllers', ['ionic.wheel'])
         }, 1000);
 
     });
+
+    $scope.connectionStatus = function(){
+      DataService.connectionStatus().then(function(status) {
+
+        //var alertPopup = $ionicPopup.alert({title: 'Status!',template: status});
+
+        if(status=="online"){
+            $scope.conn=1;
+            //$scope.conn = Boolean(true);
+        }
+        else{
+          $scope.conn=0;
+        }
+
+      });
+  }//end connectionStatus
 
     $scope.takePicture = function() {
         var options = {
@@ -476,18 +627,28 @@ angular.module('starter.controllers', ['ionic.wheel'])
     }
 
     $scope.submit = function() {
-    AuthService.fridge($scope.fridge).then(function(msg) {
+      //refresh
+      $scope.connectionStatus();
 
-    var alertPopup = $ionicPopup.alert({
-      title: 'Success!',
-      template: msg
-      });
-   }, function(errMsg) {
-    var alertPopup = $ionicPopup.alert({
-      title: 'Error',
-      template: errMsg
-    });
-  });
+      if($scope.conn==1){
+        AuthService.fridge($scope.fridge).then(function(msg) {
+
+        var alertPopup = $ionicPopup.alert({
+          title: 'Success!',
+          template: msg
+          });
+         }, function(errMsg) {
+          var alertPopup = $ionicPopup.alert({
+            title: 'Error',
+            template: errMsg
+          });
+        });
+      }//end if
+      else{
+          var alertPopup = $ionicPopup.alert({title: 'No Internet Connection!',template: "Saving form to device"});
+          StorageService.storeForm($scope.fridge,"FridgeTempForms");
+      }
+
 
   $scope.fridge={};
 
@@ -496,31 +657,83 @@ angular.module('starter.controllers', ['ionic.wheel'])
 
 })//FridgeCtrl
 
-.controller('TrainingCtrl', function($scope, AuthService, $ionicPopup, $state) {
+.controller('TrainingCtrl', function($scope, AuthService, $ionicLoading, $timeout, $ionicPopup, $state, DataService, StorageService) {
 
   $scope.trainingForm = {};
+  $scope.conn;
+
+  $scope.$on('$ionicView.enter', function(){
+
+    //checks if device has internet
+    $scope.connectionStatus();
+
+    AuthService.getRefridgerators();
+
+    // loader icon show while data is being retrieved using ionic service $ionicLoading
+    $scope.loading = $ionicLoading.show({
+        content: '<i class="icon ion-loading-c"></i>',
+        animation: 'fade-in',
+        showBackdrop: false,
+        maxWidth: 50,
+        showDelay: 0
+      })
+
+      $timeout(function () {
+        $ionicLoading.hide();
+        var fridgeData = window.localStorage.getItem('FridgeData');
+        fridgeData = ('fridgeData: ', JSON.parse(fridgeData));
+        $scope.units = fridgeData;
+        console.log($scope.units);
+      }, 1000);
+
+    });
+
+    $scope.connectionStatus = function(){
+      DataService.connectionStatus().then(function(status) {
+
+        //var alertPopup = $ionicPopup.alert({title: 'Status!',template: status});
+
+        if(status=="online"){
+            $scope.conn=1;
+            //$scope.conn = Boolean(true);
+        }
+        else{
+          $scope.conn=0;
+        }
+
+      });
+    }//end connectionStatus
 
     $scope.submit = function() {
-    AuthService.training($scope.trainingForm).then(function(msg) {
-     //redirect to home??
-      //$state.go('login');
-      var alertPopup = $ionicPopup.alert({
-        title: 'Success!',
-        template: msg
+      //refresh
+      $scope.connectionStatus();
+
+      if($scope.conn==1){
+        AuthService.training($scope.trainingForm).then(function(msg) {
+         //redirect to home??
+          //$state.go('login');
+          var alertPopup = $ionicPopup.alert({
+            title: 'Success!',
+            template: msg
+            });
+         }, function(errMsg) {
+          var alertPopup = $ionicPopup.alert({
+            title: 'Error',
+            template: errMsg
+          });
         });
-     }, function(errMsg) {
-      var alertPopup = $ionicPopup.alert({
-        title: 'Error',
-        template: errMsg
-      });
-    });
+      }//end if
+      else{
+          var alertPopup = $ionicPopup.alert({title: 'No Internet Connection!',template: "Saving form to device"});
+          StorageService.storeForm($scope.trainingForm,"HygieneTrainingForms");
+      }
 
     $scope.trainingForm={};
   };
 
 })//TrainingCtrl
 
-.controller('TransportCtrl', function($scope, AuthService, $ionicLoading, $timeout, $ionicPopup, $state,LocationService,DataService,StorageService) {
+.controller('TransportCtrl', function($scope, AuthService, $ionicLoading, $timeout, $ionicPopup, $state, LocationService, DataService, StorageService) {
 
   $scope.transportForm={};
   $scope.conn;
@@ -578,7 +791,7 @@ angular.module('starter.controllers', ['ionic.wheel'])
       }
 
     });
-}//end connectionStatus
+  }//end connectionStatus
 
   $scope.submit = function() {
     //refresh
@@ -602,7 +815,7 @@ angular.module('starter.controllers', ['ionic.wheel'])
     }//end if
   else{
       var alertPopup = $ionicPopup.alert({title: 'No Internet Connection!',template: "Saving form to device"});
-      StorageService.storeTransportForm($scope.transportForm);
+      StorageService.storeForm($scope.transportForm,"transportForms");
   }
 
   $scope.transportForm={};
@@ -611,7 +824,7 @@ angular.module('starter.controllers', ['ionic.wheel'])
 
 })//TransportCtrl
 
-.controller('SettingsCtrl', function($scope, $timeout, AuthService, $ionicLoading, $ionicPopup, $state, $ionicListDelegate) {
+.controller('SettingsCtrl', function($scope, $timeout, AuthService, $ionicLoading, $ionicPopup, $state, $ionicListDelegate,StorageService) {
     //console.log("Start SettingsCtrl");
     $scope.suppliersSelect=false;
     $scope.shouldShowDelete = false;
@@ -1169,6 +1382,131 @@ angular.module('starter.controllers', ['ionic.wheel'])
       console.log(foodData);
 
     };
+
+    //open/close SavedForms menu
+    $scope.openSavedForms = function(){
+
+        if($scope.savedSelect==true){
+          $scope.savedSelect=false;
+        }
+        else{
+          $scope.savedSelect=true;
+        }
+    }
+
+    $scope.submitStorageFoodDelivery = function() {
+        StorageService.postForms("FoodDeliveryForms","foodDelivery").then(function(msg) {
+          var alertPopup = $ionicPopup.alert({
+            title: 'Alert!',
+            template: msg
+            });
+         }, function(errMsg) {
+          var alertPopup = $ionicPopup.alert({
+            title: 'Alert',
+            template: errMsg
+          });
+        });
+    };//submitStorageFoodDelivery
+
+    $scope.submitStorageFridgetemp = function() {
+        StorageService.postForms("FridgeTempForms","fridgetemp").then(function(msg) {
+          var alertPopup = $ionicPopup.alert({
+            title: 'Alert!',
+            template: msg
+            });
+         }, function(errMsg) {
+          var alertPopup = $ionicPopup.alert({
+            title: 'Alert',
+            template: errMsg
+          });
+        });
+    };//submitStorageFridgetemp
+
+    $scope.submitStorageTemperature = function() {
+        StorageService.postForms("TemperatureForms","temperature").then(function(msg) {
+          var alertPopup = $ionicPopup.alert({
+            title: 'Alert!',
+            template: msg
+            });
+         }, function(errMsg) {
+          var alertPopup = $ionicPopup.alert({
+            title: 'Alert',
+            template: errMsg
+          });
+        });
+    };//submitStorageTemperature
+
+    $scope.submitStorageHothold = function() {
+        StorageService.postForms("HotholdForms","hothold").then(function(msg) {
+          var alertPopup = $ionicPopup.alert({
+            title: 'Alert!',
+            template: msg
+            });
+         }, function(errMsg) {
+          var alertPopup = $ionicPopup.alert({
+            title: 'Alert',
+            template: errMsg
+          });
+        });
+    };//submitStorageHothold
+
+    $scope.submitStorageHygieneInspection = function() {
+        StorageService.postForms("HygieneInspectionForms","hygieneInspection").then(function(msg) {
+          var alertPopup = $ionicPopup.alert({
+            title: 'Alert!',
+            template: msg
+            });
+         }, function(errMsg) {
+          var alertPopup = $ionicPopup.alert({
+            title: 'Alert',
+            template: errMsg
+          });
+        });
+    };//submitStorageHygieneInspection
+
+    $scope.submitStorageHygieneTra = function() {
+        StorageService.postForms("HygieneTrainingForms","hygieneTraining").then(function(msg) {
+          var alertPopup = $ionicPopup.alert({
+            title: 'Alert!',
+            template: msg
+            });
+         }, function(errMsg) {
+          var alertPopup = $ionicPopup.alert({
+            title: 'Alert',
+            template: errMsg
+          });
+        });
+    };//submitStorageFitness
+
+    $scope.submitStorageFitness = function() {
+        StorageService.postForms("FitnessForms","fitnessToWork").then(function(msg) {
+          var alertPopup = $ionicPopup.alert({
+            title: 'Alert!',
+            template: msg
+            });
+         }, function(errMsg) {
+          var alertPopup = $ionicPopup.alert({
+            title: 'Alert',
+            template: errMsg
+          });
+        });
+    };//submitStorageFitness
+
+    $scope.submitStorageTransport = function() {
+        StorageService.postForms("transportForms","transport").then(function(msg) {
+          var alertPopup = $ionicPopup.alert({
+            title: 'Alert!',
+            template: msg
+            });
+         }, function(errMsg) {
+          var alertPopup = $ionicPopup.alert({
+            title: 'Alert',
+            template: errMsg
+          });
+        });
+    };//submitStorageTransport
+
+
 
     $scope.logout = function() {
       AuthService.logout();
