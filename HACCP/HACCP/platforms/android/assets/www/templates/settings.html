@@ -109,8 +109,43 @@
           </ion-list>
         </div>
 
-        <!--Temp link to login page will become logout button -->
-        <button class="button button-block button-positive" ng-click="logout()" ui-sref="login">
+
+
+        <button class="button button-block button-positive" type="button" ng-click="openSavedForms()">
+            Saved Forms
+        </button>
+
+        <div ng-show="savedSelect">
+          <div class="list">
+            <label class="item item-input">
+              <button class="button button-block button-energized" type="button" ng-click="submitStorageFoodDelivery()">Submit Food & Delivery Forms</button>
+            </label>
+            <label class="item item-input">
+              <button class="button button-block button-energized" type="button" ng-click="submitStorageFridgetemp()">Submit Refrigeration Forms</button>
+            </label>
+            <label class="item item-input">
+              <button class="button button-block button-energized" type="button" ng-click="submitStorageTemperature()">Submit Temperature Forms</button>
+            </label>
+            <label class="item item-input">
+              <button class="button button-block button-energized" type="button" ng-click="submitStorageHothold()">Submit Hot Holding Forms</button>
+            </label>
+            <label class="item item-input">
+              <button class="button button-block button-energized" type="button" ng-click="submitStorageHygieneInspection()">Submit Hygiene Inspection Forms</button>
+            </label>
+            <label class="item item-input">
+              <button class="button button-block button-energized" type="button" ng-click="submitStorageHygieneTra()">Submit Hygiene Training Forms</button>
+            </label>
+            <label class="item item-input">
+              <button class="button button-block button-energized" type="button" ng-click="submitStorageFitness()">Submit Fitness to Work Forms</button>
+            </label>
+            <label class="item item-input">
+              <button class="button button-block button-energized" type="button" ng-click="submitStorageTransport()">Submit Transport & Delivery Forms</button>
+            </label>
+          </div>
+        </div>
+
+        <!--logout -->
+        <button class="button button-block button-assertive" ng-click="logout()" ui-sref="login">
             Logout
         </button>
 
