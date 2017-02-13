@@ -3,7 +3,7 @@
   <ion-content class="hygiene-Training">
 
 	<h3>Hygiene Training Records</h3>
-     
+
      <form name="tForm" ng-submit="submitForm(trainingForm)">
        <div class="list">
 
@@ -24,11 +24,11 @@
 
       <div class="hygiene-Training">
        <h3>In House Training/Instruction on Safe Catering Pack</h3>
-      </div> 
+      </div>
 
       <label class="item">
     		<span class="input-label">Nature of Training</span>
-    	
+
     	<ion-radio class="wrapping-list" ng-model="trainingForm.type" ng-value="'Instruction on Basic Hygiene Rules'">Instruction on Basic Hygiene Rules</ion-radio>
  		 <ion-radio class="wrapping-list" ng-model="trainingForm.type" ng-value="'Purchase, Delivery/Receipt, Collection'">Purchase, Delivery/Receipt, Collection</ion-radio>
  		 <ion-radio class="wrapping-list" ng-model="trainingForm.type" ng-value="'Storage'">Storage</ion-radio>
@@ -54,7 +54,7 @@
         <span class="input-label">Date</span>
         <input type="date" placeholder="16/04/16" ng-model="trainingForm.date">
       </label>
-            
+
 
       <label class="item item-input">
         <span class="input-label">Trainer</span>
@@ -68,7 +68,7 @@
 
       <div class="hygiene-Training">
        <h3>Further Training</h3>
-      </div> 
+      </div>
 
       <label class="item item-input">
         <span class="input-label">Nature of Training</span>
@@ -89,17 +89,17 @@
         <span class="input-label">Employee Signature</span>
         <input type="text" placeholder="John Smith" ng-model="trainingForm.empsignfurther">
       </label>
-   
-      <label class="item item-input">
+
+      <!--<label class="item item-input">
         <span class="input-label">Employee Signature</span>
         <input type="text" placeholder="John Smith" ng-model="trainingForm.empsignfurther">
-      </label>
+      </label>-->
 
 
       <button class="button button-full button-clear" ng-click="submit()" type="submit">
       Submit
     </button>
-  
+
   </div>
 </form>
 
@@ -107,4 +107,3 @@
   </ion-content>
 
 </ion-view>
-
