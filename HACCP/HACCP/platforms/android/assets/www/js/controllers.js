@@ -7,12 +7,16 @@ angular.module('starter.controllers', ['ionic.wheel'])
     password: ''
   };
 
-  //if has token redirects to home
-  if(AuthService.isLoggedIn()==true){
-    //console.log("Found token");
-    $state.go('app.home');
+  try {
+    //if has token redirects to home
+    if(AuthService.isLoggedIn()==true){
+      //console.log("Found token");
+      $state.go('app.home');
+    }
   }
-
+  catch(err) {
+     //
+  }
   $scope.login = function() {
     AuthService.login($scope.user).then(function(msg) {
       AuthService.getSuppliers();
@@ -59,7 +63,6 @@ angular.module('starter.controllers', ['ionic.wheel'])
 
   $scope.forgot = function() {
     AuthService.forgot($scope.user).then(function(msg) {
-      //$state.go('login');
     }, function(errMsg) {
       var alertPopup = $ionicPopup.alert({
         title: 'password',
@@ -121,9 +124,6 @@ angular.module('starter.controllers', ['ionic.wheel'])
 
   $scope.connectionStatus = function(){
     DataService.connectionStatus().then(function(status) {
-
-      //var alertPopup = $ionicPopup.alert({title: 'Status!',template: status});
-
       if(status=="online"){
           $scope.conn=1;
       }
@@ -139,24 +139,18 @@ angular.module('starter.controllers', ['ionic.wheel'])
     $scope.connectionStatus();
 
     if(!$scope.formData.q5){
-      //console.log("no 5");
-      //$scope.formData.q5=false;
       $scope.formData.q5="No";
     }
     else{
       $scope.formData.q5="Yes";
     }
     if(!$scope.formData.q6){
-      //console.log("no 6");
-      //$scope.formData.q6=false;
         $scope.formData.q6="No";
     }
     else{
       $scope.formData.q6="Yes";
     }
     if(!$scope.formData.q7){
-      //console.log("no 7");
-      //$scope.formData.q7=false;
       $scope.formData.q7="No";
     }
     else{
@@ -223,9 +217,6 @@ angular.module('starter.controllers', ['ionic.wheel'])
 
  $scope.connectionStatus = function(){
    DataService.connectionStatus().then(function(status) {
-
-     //var alertPopup = $ionicPopup.alert({title: 'Status!',template: status});
-
      if(status=="online"){
          $scope.conn=1;
      }
@@ -410,7 +401,6 @@ angular.module('starter.controllers', ['ionic.wheel'])
       else {
         var selectedTime = new Date(val * 1000);
         $scope.time=selectedTime.getUTCHours() + 'H :' + selectedTime.getUTCMinutes() + 'M';
-        //console.log('Selected epoch is : ', val, 'and the time is ', selectedTime.getUTCHours(), 'H :', selectedTime.getUTCMinutes(), 'M');
 
         if(value===1){
           $scope.cookcoolForm.startTime=$scope.time;
@@ -433,7 +423,6 @@ angular.module('starter.controllers', ['ionic.wheel'])
 
   ionicTimePicker.openTimePicker(ipObj1);
   };
-
 
   $scope.submit = function() {
     //refresh
@@ -496,17 +485,12 @@ angular.module('starter.controllers', ['ionic.wheel'])
 
     $scope.connectionStatus = function(){
       DataService.connectionStatus().then(function(status) {
-
-        //var alertPopup = $ionicPopup.alert({title: 'Status!',template: status});
-
         if(status=="online"){
             $scope.conn=1;
-            //$scope.conn = Boolean(true);
         }
         else{
           $scope.conn=0;
         }
-
       });
   }//end connectionStatus
 
@@ -520,8 +504,6 @@ angular.module('starter.controllers', ['ionic.wheel'])
       else {
         var selectedTime = new Date(val * 1000);
         $scope.hotholdForm.time=selectedTime.getUTCHours() + 'H :' + selectedTime.getUTCMinutes() + 'M';
-
-
       }
     },
     inputTime: 50400,
@@ -590,17 +572,12 @@ angular.module('starter.controllers', ['ionic.wheel'])
 
     $scope.connectionStatus = function(){
       DataService.connectionStatus().then(function(status) {
-
-        //var alertPopup = $ionicPopup.alert({title: 'Status!',template: status});
-
         if(status=="online"){
             $scope.conn=1;
-            //$scope.conn = Boolean(true);
         }
         else{
           $scope.conn=0;
         }
-
       });
   }//end connectionStatus
 
@@ -690,17 +667,12 @@ angular.module('starter.controllers', ['ionic.wheel'])
 
     $scope.connectionStatus = function(){
       DataService.connectionStatus().then(function(status) {
-
-        //var alertPopup = $ionicPopup.alert({title: 'Status!',template: status});
-
         if(status=="online"){
             $scope.conn=1;
-            //$scope.conn = Boolean(true);
         }
         else{
           $scope.conn=0;
         }
-
       });
     }//end connectionStatus
 
@@ -710,8 +682,6 @@ angular.module('starter.controllers', ['ionic.wheel'])
 
       if($scope.conn==1){
         AuthService.training($scope.trainingForm).then(function(msg) {
-         //redirect to home??
-          //$state.go('login');
           var alertPopup = $ionicPopup.alert({
             title: 'Success!',
             template: msg
@@ -773,23 +743,17 @@ angular.module('starter.controllers', ['ionic.wheel'])
       LocationService.getLocation().then(function(loc) {
         $scope.transportForm.lat=loc.lat;
         $scope.transportForm.long=loc.long;
-        //var alertPopup = $ionicPopup.alert({title: 'Success!',template: loc.lat+" "+loc.long});
       });
   }//end getLocation
 
   $scope.connectionStatus = function(){
     DataService.connectionStatus().then(function(status) {
-
-      //var alertPopup = $ionicPopup.alert({title: 'Status!',template: status});
-
       if(status=="online"){
           $scope.conn=1;
-          //$scope.conn = Boolean(true);
       }
       else{
         $scope.conn=0;
       }
-
     });
   }//end connectionStatus
 
@@ -797,8 +761,6 @@ angular.module('starter.controllers', ['ionic.wheel'])
     //refresh
     $scope.getLocation();
     $scope.connectionStatus();
-
-  //  var alertPopup = $ionicPopup.alert({title: 'Conn!',template: $scope.conn});
 
     if($scope.conn==1){
         AuthService.transport($scope.transportForm).then(function(msg) {
@@ -848,26 +810,18 @@ angular.module('starter.controllers', ['ionic.wheel'])
     //console.log("get suppliers");
     AuthService.getSuppliers();
     var supplierData = window.localStorage.getItem('SupplierData');
-    if(supplierData == undefined)
-    {
-      //console.log("undefined");
-    }
+
     supplierData = ('supplierData: ', JSON.parse(supplierData));
-    //console.log("create supplier "+supplierData);
     $scope.suppliers = supplierData;
 
-    //console.log("get fridges");
     AuthService.getRefridgerators();
     var fridgeData = window.localStorage.getItem('FridgeData');
     fridgeData = JSON.parse(fridgeData);
-    //console.log(fridgeData);
     $scope.units = fridgeData;
 
-    //console.log("get foods");
     AuthService.getFood();
     var foodData = window.localStorage.getItem('FoodData');
     foodData = ('foodData: ', JSON.parse(foodData));
-    //console.log(foodData);
     $scope.foods = foodData;
 
     //open/close Suppliers menu
@@ -921,8 +875,6 @@ angular.module('starter.controllers', ['ionic.wheel'])
        showPopupSupplier(key);
 
       $ionicListDelegate.closeOptionButtons();
-
-
     };
 
     showPopupSupplier = function(key) {
@@ -1196,10 +1148,6 @@ angular.module('starter.controllers', ['ionic.wheel'])
         else if(foodData.Food10 == undefined){
           foodData.Food10=food;
         }
-
-        console.log("addfood");
-        console.log(foodData);
-
     };
 
     //edit existing food
@@ -1262,8 +1210,6 @@ angular.module('starter.controllers', ['ionic.wheel'])
                   }
 
                   $scope.foodstuffname={};
-                  console.log("editfood");
-                  console.log(foodData);
 
               }
             }
@@ -1377,10 +1323,7 @@ angular.module('starter.controllers', ['ionic.wheel'])
       }
 
       $ionicListDelegate.closeOptionButtons();
-
-      console.log("deletefood");
-      console.log(foodData);
-
+      
     };
 
     //open/close SavedForms menu

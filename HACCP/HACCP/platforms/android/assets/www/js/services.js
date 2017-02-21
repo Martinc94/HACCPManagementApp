@@ -14,15 +14,24 @@ angular.module('starter.services', [])
     }
 
     function isLoggedIn() {
-      var token = window.localStorage.getItem(LOCAL_TOKEN_KEY);
-      if (token) {
-        //useCredentials(token);
-        return true;
+      var isLogged=false;
+      try {
+        var token = window.localStorage.getItem(LOCAL_TOKEN_KEY);
+        if (token) {
+          //useCredentials(token);
+          isLogged=true;
+          //return true;
+        }
+        else{
+        //  return false;
+        isLogged=false;
+        }
       }
-      else{
-        return false;
+      catch(err) {
+        isLogged=false;
       }
-    }
+      return isLogged;
+    }//end isLogged
 
     function storeUserCredentials(token) {
       window.localStorage.setItem(LOCAL_TOKEN_KEY, token);
@@ -32,8 +41,6 @@ angular.module('starter.services', [])
     function useCredentials(token) {
       isAuthenticated = true;
       authToken = token;
-
-      // Set the token as header for your requests!
       $http.defaults.headers.common.Authorization = authToken;
     }
 
@@ -89,8 +96,6 @@ angular.module('starter.services', [])
          $http.post(API_ENDPOINT.url + '/fitnessToWork', formData).then(function(result) {
          console.log(formData);
            if (result.data.success) {
-             //
-
              resolve(result.data.msg);
            } else {
              reject(result.data.msg);
@@ -104,8 +109,6 @@ angular.module('starter.services', [])
          $http.post(API_ENDPOINT.url + '/hygieneTraining', trainingForm).then(function(result) {
          console.log(trainingForm);
            if (result.data.success) {
-             //
-
              resolve(result.data.msg);
            } else {
              reject(result.data.msg);
@@ -117,7 +120,6 @@ angular.module('starter.services', [])
     var transport = function(transportForm) {
         return $q(function(resolve, reject) {
           $http.post(API_ENDPOINT.url + '/transport', transportForm).then(function(result) {
-            //console.log(transportForm);
             if (result.data.success) {
               resolve(result.data.msg);
             } else {
@@ -132,8 +134,6 @@ angular.module('starter.services', [])
             $http.post(API_ENDPOINT.url + '/hothold', hotholdForm).then(function(result) {
             console.log(hotholdForm);
               if (result.data.success) {
-                //
-
                 resolve(result.data.msg);
               } else {
                 reject(result.data.msg);
@@ -147,8 +147,6 @@ angular.module('starter.services', [])
              $http.post(API_ENDPOINT.url + '/temperature', cookcoolForm).then(function(result) {
              console.log(cookcoolForm);
                if (result.data.success) {
-                 //
-
                  resolve(result.data.msg);
                } else {
                  reject(result.data.msg);
@@ -163,8 +161,6 @@ angular.module('starter.services', [])
             console.log(formData);
 
               if (result.data.success) {
-                //
-
                 resolve(result.data.msg);
               } else {
                 reject(result.data.msg);
@@ -177,14 +173,6 @@ angular.module('starter.services', [])
          return $q(function(resolve, reject) {
            $http.get(API_ENDPOINT.url + '/settings').then(function(resp) {
              if (resp.data.success) {
-               //console.log('Success', resp);
-
-               console.log(resp.data.msg);
-               console.log(resp.data.Nofridges);
-
-               //save to localStorage
-
-
              }//end if
 
            });
@@ -194,9 +182,7 @@ angular.module('starter.services', [])
     var putSettings = function(settings) {
           return $q(function(resolve, reject) {
             $http.put(API_ENDPOINT.url + '/settings', settings).then(function(result) {
-            console.log(settings);
               if (result.data.success) {
-
                 resolve(result.data.msg);
               } else {
                 reject(result.data.msg);
@@ -208,37 +194,13 @@ angular.module('starter.services', [])
     var getRefridgerators = function() {
          return $q(function(resolve, reject) {
            $http.get(API_ENDPOINT.url + '/refridgerationUnit').then(function(resp) {
-             //if (resp.data.success) {
-
              if (resp.status!==200) {
                  console.log("Ref Error");
                  console.log("Ref msg"+resp.status.msg);
                  console.log("Ref Status"+resp.status);
              }
              if (resp.status==200) {
-              // console.log("Ref Success");
-
-               /*console.log(resp.data.msg);
-               console.log(resp.data.Fridge1);
-               console.log(resp.data.Fridge2);
-               console.log(resp.data.Fridge3);
-               console.log(resp.data.Fridge4);
-               console.log(resp.data.Fridge5);
-               console.log(resp.data.Fridge6);*/
-
-               //console.log(resp.data);
-
-               //save to localStorage
-              /* window.localStorage.setItem( 'Fridge1', resp.data.Fridge1 );
-               window.localStorage.setItem( 'Fridge2', resp.data.Fridge2 );
-               window.localStorage.setItem( 'Fridge3', resp.data.Fridge3 );
-               window.localStorage.setItem( 'Fridge4', resp.data.Fridge4 );
-               window.localStorage.setItem( 'Fridge5', resp.data.Fridge5 );
-               window.localStorage.setItem( 'Fridge6', resp.data.Fridge6 );*/
-
-               window.localStorage.setItem( 'FridgeData', JSON.stringify(resp.data));
-
-
+                window.localStorage.setItem( 'FridgeData', JSON.stringify(resp.data));
              }//end if
 
            });
@@ -246,11 +208,8 @@ angular.module('starter.services', [])
        };
 
     var putRefridgerators = function(units) {
-      //console.log("services.putRefridgerators");
-      //console.log(units);
            return $q(function(resolve, reject) {
              $http.put(API_ENDPOINT.url + '/refridgerationUnit', units).then(function(result) {
-             //console.log(units);
                if (result.data.success) {
                  console.log(result.data.msg);
                  resolve(result.data.msg);
@@ -265,28 +224,12 @@ angular.module('starter.services', [])
     var getSuppliers = function() {
         return $q(function(resolve, reject) {
           $http.get(API_ENDPOINT.url + '/suppliers').then(function(respS) {
-          //  if (resp.data.success) {
-
           if (respS.status!==200) {
               console.log("Suppliers Error");
               console.log(respS.status.msg);
           }
           if (respS.status==200) {
-              //console.log("Suppliers Success "+respS.data);
-              //save to localStorage
-            /*  window.localStorage.setItem( 'Supplier1', resp.data.Supplier1 );
-              window.localStorage.setItem( 'Supplier2', resp.data.Supplier2 );
-              window.localStorage.setItem( 'Supplier3', resp.data.Supplier3 );
-              window.localStorage.setItem( 'Supplier4', resp.data.Supplier4 );
-              window.localStorage.setItem( 'Supplier5', resp.data.Supplier5 );
-              window.localStorage.setItem( 'Supplier6', resp.data.Supplier6 );
-              window.localStorage.setItem( 'Supplier7', resp.data.Supplier7 );
-              window.localStorage.setItem( 'Supplier8', resp.data.Supplier8 );
-              window.localStorage.setItem( 'Supplier9', resp.data.Supplier9 );
-              window.localStorage.setItem( 'Supplier10', resp.data.Supplier10 );*/
-
               window.localStorage.setItem( 'SupplierData', JSON.stringify(respS.data));
-
             }//end if
 
           });
@@ -294,13 +237,9 @@ angular.module('starter.services', [])
       };
 
     var putSuppliers = function(suppliers) {
-      //console.log("services.putSuppliers");
-      //console.log(suppliers);
           return $q(function(resolve, reject) {
             $http.put(API_ENDPOINT.url + '/suppliers', suppliers).then(function(result) {
-            //console.log(suppliers);
               if (result.data.success) {
-                  console.log(result.data.msg);
                 resolve(result.data.msg);
               } else {
                 reject(result.data.msg);
@@ -313,31 +252,12 @@ angular.module('starter.services', [])
     var getFood = function() {
         return $q(function(resolve, reject) {
           $http.get(API_ENDPOINT.url + '/food').then(function(resp) {
-            /*console.log(resp.data);
-            console.log(resp.data.msg);
-            console.log(resp.status);
-            console.log(resp.status.msg);*/
-
             if (resp.status!==200) {
                 console.log("Food Error");
                 console.log(resp.status.msg);
             }
             if (resp.status==200) {
-              //console.log("Food Success");
-              //save to localStorage
-              /*window.localStorage.setItem( 'Food1', resp.data.Food1 );
-              window.localStorage.setItem( 'Food2', resp.data.Food2 );
-              window.localStorage.setItem( 'Food3', resp.data.Food3 );
-              window.localStorage.setItem( 'Food4', resp.data.Food4 );
-              window.localStorage.setItem( 'Food5', resp.data.Food5 );
-              window.localStorage.setItem( 'Food6', resp.data.Food6 );
-              window.localStorage.setItem( 'Food7', resp.data.Food7 );
-              window.localStorage.setItem( 'Food8', resp.data.Food8 );
-              window.localStorage.setItem( 'Food9', resp.data.Food9 );
-              window.localStorage.setItem( 'Food10', resp.data.Food10 );*/
-
-              window.localStorage.setItem( 'FoodData', JSON.stringify(resp.data));
-
+                window.localStorage.setItem( 'FoodData', JSON.stringify(resp.data));
             }//end if
 
           });
@@ -349,7 +269,6 @@ angular.module('starter.services', [])
       console.log(food);
           return $q(function(resolve, reject) {
             $http.put(API_ENDPOINT.url + '/food', food).then(function(result) {
-            //console.log(food);
               if (result.data.success) {
                   console.log(result.data.msg);
                 resolve(result.data.msg);
@@ -362,19 +281,15 @@ angular.module('starter.services', [])
       };
 
     var foodDelivery = function(formData) {
-            return $q(function(resolve, reject) {
+          return $q(function(resolve, reject) {
               $http.post(API_ENDPOINT.url + '/foodDelivery', formData).then(function(result) {
-              console.log(formData);
-
                 if (result.data.success) {
-                  console.log(result.data.msg);
-
                   resolve(result.data.msg);
                 } else {
                   reject(result.data.msg);
                 }
               });
-            });
+          });
     };
 
     var fridge = function(fridge) {
@@ -382,8 +297,6 @@ angular.module('starter.services', [])
           $http.post(API_ENDPOINT.url + '/fridgetemp', fridge).then(function(result) {
           console.log(fridge);
             if (result.data.success) {
-              //
-
               resolve(result.data.msg);
             } else {
               reject(result.data.msg);
@@ -394,11 +307,9 @@ angular.module('starter.services', [])
 
     var postPhoto = function(deliveryForm,imageData) {
       return $q(function(resolve, reject) {
-
         let formData = new FormData();
 
         if(imageData != undefined){
-          //formData.append('filename',imageData);
           formData.append('photo',imageData);
           formData.append('photoComment',deliveryForm.photoComment);
         }
@@ -412,6 +323,8 @@ angular.module('starter.services', [])
         formData.append('vehicleCheck',deliveryForm.vehicleCheck);
         formData.append('comment',deliveryForm.comment);
         formData.append('sign',deliveryForm.sign);
+        formData.append('lat',deliveryForm.lat);
+        formData.append('long',deliveryForm.long);
 
           $http({
              url: API_ENDPOINT.url+"/foodDelivery",
@@ -425,7 +338,6 @@ angular.module('starter.services', [])
              console.log("error");
              reject(result.data.msg);
           });
-
       });
     };//end postPhoto
 
@@ -469,7 +381,6 @@ angular.module('starter.services', [])
           401: AUTH_EVENTS.notAuthenticated,
         }[response.status], response);
         return $q.reject(response);
-        //console.log("Not authenticated");
       }
     };
   })
@@ -508,8 +419,7 @@ angular.module('starter.services', [])
     return {
       getLocation: getLocation,
     };
-  })//;
-  //end LocationService
+  })//end LocationService
 
   .service('DataService', function($q,$cordovaNetwork,$rootScope) {
       var connectionStatus = function() {
@@ -531,15 +441,13 @@ angular.module('starter.services', [])
                 catch(err) {
                     resolve("offline");
                 }
-
           });
         };
 
       return {
         connectionStatus: connectionStatus,
       };
-    })//;
-    //end dataService
+    })//end dataService
 
     .service('StorageService', function($q,$http, API_ENDPOINT) {
         var storeForm = function(Form,name) {
@@ -559,8 +467,6 @@ angular.module('starter.services', [])
                   Forms[Forms.length] = JSON.stringify(Form);
                 }
 
-                //console.log(Forms);
-
                 //save array
                 localStorage.setItem(name, JSON.stringify(Forms));
           };//end storeForm
@@ -572,8 +478,6 @@ angular.module('starter.services', [])
 
                   //load array
                   var Forms = JSON.parse(localStorage.getItem(name));
-
-                  //console.log(Forms);
 
                   //if empty array
                   if(Forms == undefined)
@@ -632,7 +536,6 @@ angular.module('starter.services', [])
 
               });
             };//end postForms
-
 
         return {
           storeForm: storeForm,
