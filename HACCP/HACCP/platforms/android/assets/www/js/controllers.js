@@ -1323,7 +1323,7 @@ angular.module('starter.controllers', ['ionic.wheel'])
       }
 
       $ionicListDelegate.closeOptionButtons();
-      
+
     };
 
     //open/close SavedForms menu

@@ -19,10 +19,22 @@
         "cordova-plugin-device": {
             "PACKAGE_NAME": "com.ionicframework.ionictabs121641"
         },
+        "cordova-plugin-file-transfer": {
+            "PACKAGE_NAME": "com.ionicframework.ionictabs121641"
+        },
+        "cordova-plugin-geolocation": {
+            "PACKAGE_NAME": "com.ionicframework.ionictabs121641"
+        },
+        "cordova-plugin-image-picker": {
+            "PACKAGE_NAME": "com.ionicframework.ionictabs121641"
+        },
         "cordova-plugin-inappbrowser": {
             "PACKAGE_NAME": "com.ionicframework.ionictabs121641"
         },
         "cordova-plugin-ionic-keyboard": {
+            "PACKAGE_NAME": "com.ionicframework.ionictabs121641"
+        },
+        "cordova-plugin-network-information": {
             "PACKAGE_NAME": "com.ionicframework.ionictabs121641"
         },
         "cordova-plugin-statusbar": {
@@ -32,18 +44,6 @@
             "PACKAGE_NAME": "com.ionicframework.ionictabs121641"
         },
         "ionic-plugin-keyboard": {
-            "PACKAGE_NAME": "com.ionicframework.ionictabs121641"
-        },
-        "cordova-plugin-image-picker": {
-            "PACKAGE_NAME": "com.ionicframework.ionictabs121641"
-        },
-        "cordova-plugin-file-transfer": {
-            "PACKAGE_NAME": "com.ionicframework.ionictabs121641"
-        },
-        "cordova-plugin-geolocation": {
-            "PACKAGE_NAME": "com.ionicframework.ionictabs121641"
-        },
-        "cordova-plugin-network-information": {
             "PACKAGE_NAME": "com.ionicframework.ionictabs121641"
         }
     },

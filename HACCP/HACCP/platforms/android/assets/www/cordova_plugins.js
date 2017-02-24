@@ -49,48 +49,6 @@ module.exports = [
         ]
     },
     {
-        "id": "cordova-plugin-inappbrowser.inappbrowser",
-        "file": "plugins/cordova-plugin-inappbrowser/www/inappbrowser.js",
-        "pluginId": "cordova-plugin-inappbrowser",
-        "clobbers": [
-            "cordova.InAppBrowser.open",
-            "window.open"
-        ]
-    },
-    {
-        "id": "cordova-plugin-ionic-keyboard.keyboard",
-        "file": "plugins/cordova-plugin-ionic-keyboard/www/keyboard.js",
-        "pluginId": "cordova-plugin-ionic-keyboard",
-        "clobbers": [
-            "cordova.plugins.Keyboard"
-        ]
-    },
-    {
-        "id": "cordova-plugin-statusbar.statusbar",
-        "file": "plugins/cordova-plugin-statusbar/www/statusbar.js",
-        "pluginId": "cordova-plugin-statusbar",
-        "clobbers": [
-            "window.StatusBar"
-        ]
-    },
-    {
-        "id": "ionic-plugin-keyboard.keyboard",
-        "file": "plugins/ionic-plugin-keyboard/www/android/keyboard.js",
-        "pluginId": "ionic-plugin-keyboard",
-        "clobbers": [
-            "cordova.plugins.Keyboard"
-        ],
-        "runs": true
-    },
-    {
-        "id": "cordova-plugin-image-picker.ImagePicker",
-        "file": "plugins/cordova-plugin-image-picker/www/imagepicker.js",
-        "pluginId": "cordova-plugin-image-picker",
-        "clobbers": [
-            "plugins.imagePicker"
-        ]
-    },
-    {
         "id": "cordova-plugin-file.DirectoryEntry",
         "file": "plugins/cordova-plugin-file/www/DirectoryEntry.js",
         "pluginId": "cordova-plugin-file",
@@ -294,6 +252,31 @@ module.exports = [
         "runs": true
     },
     {
+        "id": "cordova-plugin-image-picker.ImagePicker",
+        "file": "plugins/cordova-plugin-image-picker/www/imagepicker.js",
+        "pluginId": "cordova-plugin-image-picker",
+        "clobbers": [
+            "plugins.imagePicker"
+        ]
+    },
+    {
+        "id": "cordova-plugin-inappbrowser.inappbrowser",
+        "file": "plugins/cordova-plugin-inappbrowser/www/inappbrowser.js",
+        "pluginId": "cordova-plugin-inappbrowser",
+        "clobbers": [
+            "cordova.InAppBrowser.open",
+            "window.open"
+        ]
+    },
+    {
+        "id": "cordova-plugin-ionic-keyboard.keyboard",
+        "file": "plugins/cordova-plugin-ionic-keyboard/www/keyboard.js",
+        "pluginId": "cordova-plugin-ionic-keyboard",
+        "clobbers": [
+            "cordova.plugins.Keyboard"
+        ]
+    },
+    {
         "id": "cordova-plugin-network-information.network",
         "file": "plugins/cordova-plugin-network-information/www/network.js",
         "pluginId": "cordova-plugin-network-information",
@@ -309,6 +292,23 @@ module.exports = [
         "clobbers": [
             "Connection"
         ]
+    },
+    {
+        "id": "cordova-plugin-statusbar.statusbar",
+        "file": "plugins/cordova-plugin-statusbar/www/statusbar.js",
+        "pluginId": "cordova-plugin-statusbar",
+        "clobbers": [
+            "window.StatusBar"
+        ]
+    },
+    {
+        "id": "ionic-plugin-keyboard.keyboard",
+        "file": "plugins/ionic-plugin-keyboard/www/android/keyboard.js",
+        "pluginId": "ionic-plugin-keyboard",
+        "clobbers": [
+            "cordova.plugins.Keyboard"
+        ],
+        "runs": true
     }
 ];
 module.exports.metadata = 
@@ -319,16 +319,16 @@ module.exports.metadata =
     "cordova-plugin-console": "1.0.3",
     "cordova-plugin-datepicker": "0.9.2",
     "cordova-plugin-device": "1.1.2",
-    "cordova-plugin-inappbrowser": "1.4.1-dev",
-    "cordova-plugin-ionic-keyboard": "1.0.5",
-    "cordova-plugin-statusbar": "2.1.3",
-    "cordova-plugin-whitelist": "1.2.2",
-    "ionic-plugin-keyboard": "1.0.9",
-    "cordova-plugin-image-picker": "1.1.1",
     "cordova-plugin-file": "4.3.1",
     "cordova-plugin-file-transfer": "1.6.1",
     "cordova-plugin-geolocation": "2.4.1",
-    "cordova-plugin-network-information": "1.3.1"
+    "cordova-plugin-image-picker": "1.1.1",
+    "cordova-plugin-inappbrowser": "1.4.1-dev",
+    "cordova-plugin-ionic-keyboard": "1.0.5",
+    "cordova-plugin-network-information": "1.3.1",
+    "cordova-plugin-statusbar": "2.1.3",
+    "cordova-plugin-whitelist": "1.2.2",
+    "ionic-plugin-keyboard": "1.0.9"
 };
 // BOTTOM OF METADATA
 });

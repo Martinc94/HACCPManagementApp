@@ -14,7 +14,7 @@ angular.module('starter', ['ionic','ionic.service.core', 'starter.controllers', 
     var push = new Ionic.Push({
       "debug": true
     });
- 
+
     push.register(function(token) {
       console.log("My Device token:",token.token);
       push.saveToken(token);  // persist the token in the Ionic Platform
@@ -24,7 +24,7 @@ angular.module('starter', ['ionic','ionic.service.core', 'starter.controllers', 
 
 
 
- 
+
 /*.run(function ($rootScope, $state, AuthService, AUTH_EVENTS) {
   $rootScope.$on('$stateChangeStart', function (event,next, nextParams, fromState) {
     if (!AuthService.isAuthenticated()) {

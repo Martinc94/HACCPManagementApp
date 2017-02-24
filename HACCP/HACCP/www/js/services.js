@@ -307,7 +307,7 @@ angular.module('starter.services', [])
 
     var postPhoto = function(deliveryForm,imageData) {
       return $q(function(resolve, reject) {
-        let formData = new FormData();
+        var formData = new FormData();
 
         if(imageData != undefined){
           formData.append('photo',imageData);
@@ -331,10 +331,13 @@ angular.module('starter.services', [])
              method: "POST",
              data: formData,
              headers: {"Content-Type": undefined}
-          }).then((result) => {
+          //}).then((result) => {
+          //}).then(function(result) => {
+          }).then(function(result) {
              //console.log("success");
              resolve(result.data.msg);
-          }).catch(() => {
+          //}).catch(() => {
+          }).catch(function(){
              console.log("error");
              reject(result.data.msg);
           });
