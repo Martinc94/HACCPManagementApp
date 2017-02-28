@@ -91,8 +91,9 @@
     },
     "cordova-plugin-image-picker": {
         "source": {
-            "type": "registry",
-            "id": "cordova-plugin-image-picker"
+            "type": "git",
+            "url": "https://github.com/wymsee/cordova-imagePicker.git",
+            "subdir": "."
         },
         "is_top_level": true,
         "variables": {}
