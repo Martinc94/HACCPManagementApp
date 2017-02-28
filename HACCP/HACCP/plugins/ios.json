@@ -7,19 +7,10 @@
         "files": {}
     },
     "installed_plugins": {
-        "cordova-plugin-camera": {
-            "PACKAGE_NAME": "com.ionicframework.ionictabs121641"
-        },
         "cordova-plugin-compat": {
             "PACKAGE_NAME": "com.ionicframework.ionictabs121641"
         },
-        "cordova-plugin-console": {
-            "PACKAGE_NAME": "com.ionicframework.ionictabs121641"
-        },
         "cordova-plugin-datepicker": {
-            "PACKAGE_NAME": "com.ionicframework.ionictabs121641"
-        },
-        "cordova-plugin-device": {
             "PACKAGE_NAME": "com.ionicframework.ionictabs121641"
         },
         "cordova-plugin-ionic-keyboard": {
@@ -37,10 +28,6 @@
         "cordova-plugin-inappbrowser": {
             "PACKAGE_NAME": "com.ionicframework.ionictabs121641"
         },
-        "cordova-plugin-image-picker": {
-            "PHOTO_LIBRARY_USAGE_DESCRIPTION": " ",
-            "PACKAGE_NAME": "com.ionicframework.ionictabs121641"
-        },
         "cordova-plugin-file-transfer": {
             "PACKAGE_NAME": "com.ionicframework.ionictabs121641"
         },
@@ -49,6 +36,21 @@
             "PACKAGE_NAME": "com.ionicframework.ionictabs121641"
         },
         "cordova-plugin-network-information": {
+            "PACKAGE_NAME": "com.ionicframework.ionictabs121641"
+        },
+        "cordova-plugin-image-picker": {
+            "PHOTO_LIBRARY_USAGE_DESCRIPTION": " ",
+            "PACKAGE_NAME": "com.ionicframework.ionictabs121641"
+        },
+        "cordova-plugin-camera": {
+            "CAMERA_USAGE_DESCRIPTION": " ",
+            "PHOTOLIBRARY_USAGE_DESCRIPTION": " ",
+            "PACKAGE_NAME": "com.ionicframework.ionictabs121641"
+        },
+        "cordova-plugin-console": {
+            "PACKAGE_NAME": "com.ionicframework.ionictabs121641"
+        },
+        "cordova-plugin-device": {
             "PACKAGE_NAME": "com.ionicframework.ionictabs121641"
         }
     },

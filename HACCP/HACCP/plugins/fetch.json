@@ -1,20 +1,4 @@
 {
-    "cordova-plugin-device": {
-        "source": {
-            "type": "registry",
-            "id": "cordova-plugin-device@~1.1.1"
-        },
-        "is_top_level": true,
-        "variables": {}
-    },
-    "cordova-plugin-console": {
-        "source": {
-            "type": "registry",
-            "id": "cordova-plugin-console@~1.0.2"
-        },
-        "is_top_level": true,
-        "variables": {}
-    },
     "cordova-plugin-whitelist": {
         "source": {
             "type": "registry",
@@ -56,22 +40,6 @@
         "is_top_level": true,
         "variables": {}
     },
-    "cordova-plugin-compat": {
-        "source": {
-            "type": "registry",
-            "id": "cordova-plugin-compat"
-        },
-        "is_top_level": false,
-        "variables": {}
-    },
-    "cordova-plugin-camera": {
-        "source": {
-            "type": "registry",
-            "id": "cordova-plugin-camera"
-        },
-        "is_top_level": true,
-        "variables": {}
-    },
     "cordova-plugin-inappbrowser": {
         "source": {
             "type": "git",
@@ -85,14 +53,6 @@
         "source": {
             "type": "registry",
             "id": "phonegap-plugin-push@1.8.1"
-        },
-        "is_top_level": true,
-        "variables": {}
-    },
-    "cordova-plugin-image-picker": {
-        "source": {
-            "type": "registry",
-            "id": "cordova-plugin-image-picker"
         },
         "is_top_level": true,
         "variables": {}
@@ -125,6 +85,46 @@
         "source": {
             "type": "registry",
             "id": "cordova-plugin-network-information"
+        },
+        "is_top_level": true,
+        "variables": {}
+    },
+    "cordova-plugin-image-picker": {
+        "source": {
+            "type": "registry",
+            "id": "cordova-plugin-image-picker"
+        },
+        "is_top_level": true,
+        "variables": {}
+    },
+    "cordova-plugin-camera": {
+        "source": {
+            "type": "registry",
+            "id": "cordova-plugin-camera"
+        },
+        "is_top_level": true,
+        "variables": {}
+    },
+    "cordova-plugin-compat": {
+        "source": {
+            "type": "registry",
+            "id": "cordova-plugin-compat"
+        },
+        "is_top_level": true,
+        "variables": {}
+    },
+    "cordova-plugin-console": {
+        "source": {
+            "type": "registry",
+            "id": "cordova-plugin-console@~1.0.2"
+        },
+        "is_top_level": true,
+        "variables": {}
+    },
+    "cordova-plugin-device": {
+        "source": {
+            "type": "registry",
+            "id": "cordova-plugin-device@~1.1.1"
         },
         "is_top_level": true,
         "variables": {}
