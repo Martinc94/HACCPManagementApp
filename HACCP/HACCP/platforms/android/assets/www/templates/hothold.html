@@ -2,17 +2,17 @@
 
   <ion-content scroll="false">
 
-  <h3 class="hot-Holding"> Hot Hold/Display Records</h3>
+    <h3 class="hot-Holding"> Hot Hold/Display Records</h3>
 
-  <form name="hhForm" ng-submit="submitForm(hotholdForm)">
-       <div class="list">
+    <form name="hhForm" ng-submit="submitForm(hotholdForm)">
+      <div class="list">
 
-    <label class="item item-input">
+        <label class="item item-input">
         <span class="input-label">Date</span>
         <input type="date" placeholder="16/04/16" ng-model="hotholdForm.date">
       </label>
 
-      <label class="item item-select item-text-wrap">
+        <label class="item item-select item-text-wrap">
     <div class="input-label" style="width: 90%">
      Food Item
     </div>
@@ -21,43 +21,43 @@
     </select>
   </label>
 
-    <div>
-        <button class="align-left" type="button" ng-click="openTimePicker()">
+        <div>
+          <button class="align-left" type="button" ng-click="openTimePicker()">
         Time Into Hot Hold {{hotholdForm.time}}
         </button>
-    </div>
+        </div>
 
-      <label class="item item-input">
+        <label class="item item-input">
         <span class="input-label">Core Temp. (1st check)</span>
         <input type="number" placeholder="0" ng-model="hotholdForm.firstTemp">
       </label>
 
-      <label class="item item-input">
+        <label class="item item-input">
         <span class="input-label">Core Temp. (2nd check)</span>
         <input type="number" placeholder="0" ng-model="hotholdForm.secondTemp">
       </label>
 
-      <label class="item item-input">
+        <label class="item item-input">
         <span class="input-label">Core Temp. (3rd check)</span>
         <input type="number" placeholder="0" ng-model="hotholdForm.thirdTemp">
       </label>
 
-      <label class="item item-input">
+        <label class="item item-input">
         <span class="input-label">Comments/Action</span>
         <input type="text" placeholder="" ng-model="hotholdForm.comment">
       </label>
 
-      <label class="item item-input">
+        <label class="item item-input">
         <span class="input-label">Sign</span>
         <input type="text" placeholder="John Smith" ng-model="hotholdForm.sign">
       </label>
-      <div class="hot-Holding">
-      <button class="button button-full button-clear" ng-click="submit()" type="submit">
+        <div class="hot-Holding">
+          <button class="button button-full button-clear" ng-click="submit()" type="submit">
       Submit
     </button>
-  </div>
+        </div>
 
-  </div>
-</form>
-</ion-content>
+      </div>
+    </form>
+  </ion-content>
 </ion-view>

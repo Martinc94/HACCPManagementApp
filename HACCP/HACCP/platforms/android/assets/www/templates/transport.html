@@ -1,18 +1,18 @@
 <ion-view view-title="Transport and Delivery">
 
-  <ion-content>
+	<ion-content>
 
-	<h3 class="transport-and-Delivery">Transport and Delivery Records</h3>
+		<h3 class="transport-and-Delivery">Transport and Delivery Records</h3>
 
-    <form name="transForm" ng-submit="submitForm(transportForm)">
-	     <div class="list">
+		<form name="transForm" ng-submit="submitForm(transportForm)">
+			<div class="list">
 
-  		<label class="item item-input">
+				<label class="item item-input">
     		<span class="input-label">Date</span>
     		<input type="date" placeholder="16/04/16" ng-model="transportForm.date">
   		</label>
 
-  		<label class="item item-select item-text-wrap">
+				<label class="item item-select item-text-wrap">
     <div class="input-label" style="width: 90%">
      Food Item
     </div>
@@ -21,17 +21,17 @@
     </select>
   </label>
 
-  		<label class="item item-input">
+				<label class="item item-input">
     		<span class="input-label">Batch Code/'Use-by' Date</span>
         <input type="text" placeholder="" ng-model="transportForm.batch">
   		</label>
 
-  		<label class="item item-input">
+				<label class="item item-input">
     		<span class="input-label">Customer Details</span>
     		<input type="text" placeholder="" ng-model="transportForm.customer">
   		</label>
 
-  		<label class="item item-select item-text-wrap">
+				<label class="item item-select item-text-wrap">
 		    <div class="input-label" style="width: 90%">
 		    Adequate Separation of Raw and Ready-to-Eat Foods
 		    </div>
@@ -41,28 +41,28 @@
 		    </select>
 		  </label>
 
-		<label class="item item-input">
+				<label class="item item-input">
     		<span class="input-label wrapping-list">Delivery Temperature °C</span>
     		<input type="number" placeholder="0" ng-model="transportForm.temp">
   		</label>
 
-  		<label class="item item-input">
+				<label class="item item-input">
     		<span class="input-label">Comments/Action</span>
     		<input type="text" placeholder="" ng-model="transportForm.comment">
   		</label>
 
-  		<label class="item item-input">
+				<label class="item item-input">
     		<span class="input-label">Sign</span>
     		<input type="text" placeholder="" ng-model="transportForm.sign">
   		</label>
-      <div class="transport-and-Delivery">
-  		<button class="button button-full button-clear" ng-click="submit()" type="submit">
+				<div class="transport-and-Delivery">
+					<button class="button button-full button-clear" ng-click="submit()" type="submit">
   		Submit
 		</button>
-  </div>
-	</div>
-</form>
+				</div>
+			</div>
+		</form>
 
-  </ion-content>
+	</ion-content>
 
 </ion-view>

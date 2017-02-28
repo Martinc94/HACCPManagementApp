@@ -314,7 +314,6 @@ module.exports = [
 module.exports.metadata = 
 // TOP OF METADATA
 {
-    "cordova-plugin-compat": "1.0.0",
     "cordova-plugin-datepicker": "0.9.2",
     "cordova-plugin-file": "4.3.1",
     "cordova-plugin-file-transfer": "1.6.1",
@@ -328,7 +327,8 @@ module.exports.metadata =
     "cordova-plugin-image-picker": "1.1.1",
     "cordova-plugin-camera": "2.3.1",
     "cordova-plugin-console": "1.0.5",
-    "cordova-plugin-device": "1.1.4"
+    "cordova-plugin-device": "1.1.4",
+    "cordova-plugin-compat": "1.1.0"
 };
 // BOTTOM OF METADATA
 });

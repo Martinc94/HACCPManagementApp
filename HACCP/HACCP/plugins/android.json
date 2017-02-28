@@ -40,13 +40,13 @@
         "cordova-plugin-camera": {
             "PACKAGE_NAME": "com.ionicframework.ionictabs121641"
         },
-        "cordova-plugin-compat": {
-            "PACKAGE_NAME": "com.ionicframework.ionictabs121641"
-        },
         "cordova-plugin-console": {
             "PACKAGE_NAME": "com.ionicframework.ionictabs121641"
         },
         "cordova-plugin-device": {
+            "PACKAGE_NAME": "com.ionicframework.ionictabs121641"
+        },
+        "cordova-plugin-compat": {
             "PACKAGE_NAME": "com.ionicframework.ionictabs121641"
         }
     },
