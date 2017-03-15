@@ -9,39 +9,7 @@
                 "parents": {
                     "/*": [
                         {
-                            "xml": "<feature name=\"Camera\"><param name=\"android-package\" value=\"org.apache.cordova.camera.CameraLauncher\" /></feature>",
-                            "count": 1
-                        },
-                        {
                             "xml": "<feature name=\"DatePickerPlugin\"><param name=\"android-package\" value=\"com.plugin.datepicker.DatePickerPlugin\" /></feature>",
-                            "count": 1
-                        },
-                        {
-                            "xml": "<feature name=\"Device\"><param name=\"android-package\" value=\"org.apache.cordova.device.Device\" /></feature>",
-                            "count": 1
-                        },
-                        {
-                            "xml": "<feature name=\"InAppBrowser\"><param name=\"android-package\" value=\"org.apache.cordova.inappbrowser.InAppBrowser\" /></feature>",
-                            "count": 1
-                        },
-                        {
-                            "xml": "<feature name=\"Keyboard\"><param name=\"android-package\" value=\"com.ionic.keyboard.IonicKeyboard\" /><param name=\"onload\" value=\"true\" /></feature>",
-                            "count": 1
-                        },
-                        {
-                            "xml": "<feature name=\"StatusBar\"><param name=\"android-package\" value=\"org.apache.cordova.statusbar.StatusBar\" /><param name=\"onload\" value=\"true\" /></feature>",
-                            "count": 1
-                        },
-                        {
-                            "xml": "<feature name=\"Whitelist\"><param name=\"android-package\" value=\"org.apache.cordova.whitelist.WhitelistPlugin\" /><param name=\"onload\" value=\"true\" /></feature>",
-                            "count": 1
-                        },
-                        {
-                            "xml": "<feature name=\"Keyboard\"><param name=\"android-package\" value=\"io.ionic.keyboard.IonicKeyboard\" /><param name=\"onload\" value=\"true\" /></feature>",
-                            "count": 1
-                        },
-                        {
-                            "xml": "<feature name=\"ImagePicker\"><param name=\"android-package\" value=\"com.synconset.ImagePicker\" /></feature>",
                             "count": 1
                         },
                         {
@@ -61,7 +29,39 @@
                             "count": 1
                         },
                         {
+                            "xml": "<feature name=\"InAppBrowser\"><param name=\"android-package\" value=\"org.apache.cordova.inappbrowser.InAppBrowser\" /></feature>",
+                            "count": 1
+                        },
+                        {
+                            "xml": "<feature name=\"Keyboard\"><param name=\"android-package\" value=\"com.ionic.keyboard.IonicKeyboard\" /><param name=\"onload\" value=\"true\" /></feature>",
+                            "count": 1
+                        },
+                        {
                             "xml": "<feature name=\"NetworkStatus\"><param name=\"android-package\" value=\"org.apache.cordova.networkinformation.NetworkManager\" /></feature>",
+                            "count": 1
+                        },
+                        {
+                            "xml": "<feature name=\"StatusBar\"><param name=\"android-package\" value=\"org.apache.cordova.statusbar.StatusBar\" /><param name=\"onload\" value=\"true\" /></feature>",
+                            "count": 1
+                        },
+                        {
+                            "xml": "<feature name=\"Whitelist\"><param name=\"android-package\" value=\"org.apache.cordova.whitelist.WhitelistPlugin\" /><param name=\"onload\" value=\"true\" /></feature>",
+                            "count": 1
+                        },
+                        {
+                            "xml": "<feature name=\"Keyboard\"><param name=\"android-package\" value=\"io.ionic.keyboard.IonicKeyboard\" /><param name=\"onload\" value=\"true\" /></feature>",
+                            "count": 1
+                        },
+                        {
+                            "xml": "<feature name=\"ImagePicker\"><param name=\"android-package\" value=\"com.synconset.ImagePicker\" /></feature>",
+                            "count": 1
+                        },
+                        {
+                            "xml": "<feature name=\"Camera\"><param name=\"android-package\" value=\"org.apache.cordova.camera.CameraLauncher\" /></feature>",
+                            "count": 1
+                        },
+                        {
+                            "xml": "<feature name=\"Device\"><param name=\"android-package\" value=\"org.apache.cordova.device.Device\" /></feature>",
                             "count": 1
                         }
                     ]
@@ -102,31 +102,37 @@
                             "xml": "<uses-permission android:name=\"android.permission.WRITE_EXTERNAL_STORAGE\" />",
                             "count": 1
                         }
+                    ],
+                    "application": [
+                        {
+                            "xml": "<provider android:authorities=\"${applicationId}.provider\" android:exported=\"false\" android:grantUriPermissions=\"true\" android:name=\"android.support.v4.content.FileProvider\"><meta-data android:name=\"android.support.FILE_PROVIDER_PATHS\" android:resource=\"@xml/provider_paths\" /></provider>",
+                            "count": 1
+                        }
                     ]
                 }
             }
         }
     },
     "installed_plugins": {
-        "cordova-plugin-compat": {
-            "PACKAGE_NAME": "com.ionicframework.ionictabs121641"
-        },
-        "cordova-plugin-camera": {
-            "PACKAGE_NAME": "com.ionicframework.ionictabs121641"
-        },
-        "cordova-plugin-console": {
-            "PACKAGE_NAME": "com.ionicframework.ionictabs121641"
-        },
         "cordova-plugin-datepicker": {
             "PACKAGE_NAME": "com.ionicframework.ionictabs121641"
         },
-        "cordova-plugin-device": {
+        "cordova-plugin-file": {
+            "PACKAGE_NAME": "com.ionicframework.ionictabs121641"
+        },
+        "cordova-plugin-file-transfer": {
+            "PACKAGE_NAME": "com.ionicframework.ionictabs121641"
+        },
+        "cordova-plugin-geolocation": {
             "PACKAGE_NAME": "com.ionicframework.ionictabs121641"
         },
         "cordova-plugin-inappbrowser": {
             "PACKAGE_NAME": "com.ionicframework.ionictabs121641"
         },
         "cordova-plugin-ionic-keyboard": {
+            "PACKAGE_NAME": "com.ionicframework.ionictabs121641"
+        },
+        "cordova-plugin-network-information": {
             "PACKAGE_NAME": "com.ionicframework.ionictabs121641"
         },
         "cordova-plugin-statusbar": {
@@ -141,109 +147,27 @@
         "cordova-plugin-image-picker": {
             "PACKAGE_NAME": "com.ionicframework.ionictabs121641"
         },
-        "cordova-plugin-file": {
+        "cordova-plugin-camera": {
             "PACKAGE_NAME": "com.ionicframework.ionictabs121641"
         },
-        "cordova-plugin-file-transfer": {
+        "cordova-plugin-console": {
             "PACKAGE_NAME": "com.ionicframework.ionictabs121641"
         },
-        "cordova-plugin-geolocation": {
+        "cordova-plugin-device": {
             "PACKAGE_NAME": "com.ionicframework.ionictabs121641"
         },
-        "cordova-plugin-network-information": {
+        "cordova-plugin-compat": {
             "PACKAGE_NAME": "com.ionicframework.ionictabs121641"
         }
     },
     "dependent_plugins": {},
     "modules": [
         {
-            "id": "cordova-plugin-camera.Camera",
-            "file": "plugins/cordova-plugin-camera/www/CameraConstants.js",
-            "pluginId": "cordova-plugin-camera",
-            "clobbers": [
-                "Camera"
-            ]
-        },
-        {
-            "id": "cordova-plugin-camera.CameraPopoverOptions",
-            "file": "plugins/cordova-plugin-camera/www/CameraPopoverOptions.js",
-            "pluginId": "cordova-plugin-camera",
-            "clobbers": [
-                "CameraPopoverOptions"
-            ]
-        },
-        {
-            "id": "cordova-plugin-camera.camera",
-            "file": "plugins/cordova-plugin-camera/www/Camera.js",
-            "pluginId": "cordova-plugin-camera",
-            "clobbers": [
-                "navigator.camera"
-            ]
-        },
-        {
-            "id": "cordova-plugin-camera.CameraPopoverHandle",
-            "file": "plugins/cordova-plugin-camera/www/CameraPopoverHandle.js",
-            "pluginId": "cordova-plugin-camera",
-            "clobbers": [
-                "CameraPopoverHandle"
-            ]
-        },
-        {
             "id": "cordova-plugin-datepicker.DatePicker",
             "file": "plugins/cordova-plugin-datepicker/www/android/DatePicker.js",
             "pluginId": "cordova-plugin-datepicker",
             "clobbers": [
                 "datePicker"
-            ]
-        },
-        {
-            "id": "cordova-plugin-device.device",
-            "file": "plugins/cordova-plugin-device/www/device.js",
-            "pluginId": "cordova-plugin-device",
-            "clobbers": [
-                "device"
-            ]
-        },
-        {
-            "id": "cordova-plugin-inappbrowser.inappbrowser",
-            "file": "plugins/cordova-plugin-inappbrowser/www/inappbrowser.js",
-            "pluginId": "cordova-plugin-inappbrowser",
-            "clobbers": [
-                "cordova.InAppBrowser.open",
-                "window.open"
-            ]
-        },
-        {
-            "id": "cordova-plugin-ionic-keyboard.keyboard",
-            "file": "plugins/cordova-plugin-ionic-keyboard/www/keyboard.js",
-            "pluginId": "cordova-plugin-ionic-keyboard",
-            "clobbers": [
-                "cordova.plugins.Keyboard"
-            ]
-        },
-        {
-            "id": "cordova-plugin-statusbar.statusbar",
-            "file": "plugins/cordova-plugin-statusbar/www/statusbar.js",
-            "pluginId": "cordova-plugin-statusbar",
-            "clobbers": [
-                "window.StatusBar"
-            ]
-        },
-        {
-            "id": "ionic-plugin-keyboard.keyboard",
-            "file": "plugins/ionic-plugin-keyboard/www/android/keyboard.js",
-            "pluginId": "ionic-plugin-keyboard",
-            "clobbers": [
-                "cordova.plugins.Keyboard"
-            ],
-            "runs": true
-        },
-        {
-            "id": "cordova-plugin-image-picker.ImagePicker",
-            "file": "plugins/cordova-plugin-image-picker/www/imagepicker.js",
-            "pluginId": "cordova-plugin-image-picker",
-            "clobbers": [
-                "plugins.imagePicker"
             ]
         },
         {
@@ -450,6 +374,23 @@
             "runs": true
         },
         {
+            "id": "cordova-plugin-inappbrowser.inappbrowser",
+            "file": "plugins/cordova-plugin-inappbrowser/www/inappbrowser.js",
+            "pluginId": "cordova-plugin-inappbrowser",
+            "clobbers": [
+                "cordova.InAppBrowser.open",
+                "window.open"
+            ]
+        },
+        {
+            "id": "cordova-plugin-ionic-keyboard.keyboard",
+            "file": "plugins/cordova-plugin-ionic-keyboard/www/keyboard.js",
+            "pluginId": "cordova-plugin-ionic-keyboard",
+            "clobbers": [
+                "cordova.plugins.Keyboard"
+            ]
+        },
+        {
             "id": "cordova-plugin-network-information.network",
             "file": "plugins/cordova-plugin-network-information/www/network.js",
             "pluginId": "cordova-plugin-network-information",
@@ -465,23 +406,88 @@
             "clobbers": [
                 "Connection"
             ]
+        },
+        {
+            "id": "cordova-plugin-statusbar.statusbar",
+            "file": "plugins/cordova-plugin-statusbar/www/statusbar.js",
+            "pluginId": "cordova-plugin-statusbar",
+            "clobbers": [
+                "window.StatusBar"
+            ]
+        },
+        {
+            "id": "ionic-plugin-keyboard.keyboard",
+            "file": "plugins/ionic-plugin-keyboard/www/android/keyboard.js",
+            "pluginId": "ionic-plugin-keyboard",
+            "clobbers": [
+                "cordova.plugins.Keyboard"
+            ],
+            "runs": true
+        },
+        {
+            "id": "cordova-plugin-image-picker.ImagePicker",
+            "file": "plugins/cordova-plugin-image-picker/www/imagepicker.js",
+            "pluginId": "cordova-plugin-image-picker",
+            "clobbers": [
+                "plugins.imagePicker"
+            ]
+        },
+        {
+            "id": "cordova-plugin-camera.Camera",
+            "file": "plugins/cordova-plugin-camera/www/CameraConstants.js",
+            "pluginId": "cordova-plugin-camera",
+            "clobbers": [
+                "Camera"
+            ]
+        },
+        {
+            "id": "cordova-plugin-camera.CameraPopoverOptions",
+            "file": "plugins/cordova-plugin-camera/www/CameraPopoverOptions.js",
+            "pluginId": "cordova-plugin-camera",
+            "clobbers": [
+                "CameraPopoverOptions"
+            ]
+        },
+        {
+            "id": "cordova-plugin-camera.camera",
+            "file": "plugins/cordova-plugin-camera/www/Camera.js",
+            "pluginId": "cordova-plugin-camera",
+            "clobbers": [
+                "navigator.camera"
+            ]
+        },
+        {
+            "id": "cordova-plugin-camera.CameraPopoverHandle",
+            "file": "plugins/cordova-plugin-camera/www/CameraPopoverHandle.js",
+            "pluginId": "cordova-plugin-camera",
+            "clobbers": [
+                "CameraPopoverHandle"
+            ]
+        },
+        {
+            "id": "cordova-plugin-device.device",
+            "file": "plugins/cordova-plugin-device/www/device.js",
+            "pluginId": "cordova-plugin-device",
+            "clobbers": [
+                "device"
+            ]
         }
     ],
     "plugin_metadata": {
-        "cordova-plugin-compat": "1.0.0",
-        "cordova-plugin-camera": "2.2.0",
-        "cordova-plugin-console": "1.0.3",
         "cordova-plugin-datepicker": "0.9.2",
-        "cordova-plugin-device": "1.1.2",
+        "cordova-plugin-file": "4.3.1",
+        "cordova-plugin-file-transfer": "1.6.1",
+        "cordova-plugin-geolocation": "2.4.1",
         "cordova-plugin-inappbrowser": "1.4.1-dev",
         "cordova-plugin-ionic-keyboard": "1.0.5",
+        "cordova-plugin-network-information": "1.3.1",
         "cordova-plugin-statusbar": "2.1.3",
         "cordova-plugin-whitelist": "1.2.2",
         "ionic-plugin-keyboard": "1.0.9",
         "cordova-plugin-image-picker": "1.1.1",
-        "cordova-plugin-file": "4.3.1",
-        "cordova-plugin-file-transfer": "1.6.1",
-        "cordova-plugin-geolocation": "2.4.1",
-        "cordova-plugin-network-information": "1.3.1"
+        "cordova-plugin-camera": "2.3.1",
+        "cordova-plugin-console": "1.0.5",
+        "cordova-plugin-device": "1.1.4",
+        "cordova-plugin-compat": "1.1.0"
     }
 }

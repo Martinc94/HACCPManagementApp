@@ -2,28 +2,28 @@
 	<ion-content>
 		<div class="bar bar-header bar-royal">
 
-  			<div class="h1 title">Food Delivery Records</div>
- 			 <button class="button button-icon icon ion-camera" ng-click="takePicture()"></button>
+			<div class="h1 title">Food Delivery Records</div>
+			<button class="button button-icon icon ion-camera" ng-click="takePicture()"></button>
 		</div>
-    <br>
-    <br>
-    <div ng-show="toggle">
-      <img ng-show="imgURI !== undefined" ng-src="{{imgURI}}" class="center">
-      <label class="item item-input">
+		<br>
+		<br>
+		<div ng-show="toggle">
+			<img ng-show="imgURI !== undefined" ng-src="{{imgURI}}" class="center">
+			<label class="item item-input">
         <span class="input-label">Photo Comment</span>
         <input type="text" ng-model="deliveryForm.photoComment">
       </label>
-    </div>
+		</div>
 
-    <form name="dForm" ng-submit="submitForm(deliveryForm)">
-	     <div class="list">
+		<form name="dForm" ng-submit="submitForm(deliveryForm)">
+			<div class="list">
 
-		<label class="item item-input">
+				<label class="item item-input">
         <span class="input-label">Date</span>
         <input type="date" placeholder="16/04/16" ng-model="deliveryForm.date">
       </label>
 
-  		<label class="item item-select item-text-wrap">
+				<label class="item item-select item-text-wrap">
     <div class="input-label" style="width: 90%">
      Food Item
     </div>
@@ -32,12 +32,12 @@
     </select>
   </label>
 
-  		<label class="item item-input">
+				<label class="item item-input">
     		<span class="input-label">Batch Code</span>
     		<input type="text" placeholder="" ng-model="deliveryForm.batchCode">
   		</label>
 
-  		<label class="item item-select item-text-wrap">
+				<label class="item item-select item-text-wrap">
     <div class="input-label" style="width: 90%">
      Supplied By
     </div>
@@ -46,38 +46,38 @@
     </select>
   </label>
 
-  <label class="item item-input">
+				<label class="item item-input">
     		<span class="input-label">'Use-by' Date</span>
     		<input type="date" placeholder="16/04/16" ng-model="deliveryForm.useBy">
   		</label>
 
-  		<label class="item item-input">
+				<label class="item item-input">
     		<span class="input-label">Temp * °C</span>
     		<input type="number" placeholder="4" ng-model="deliveryForm.temp">
   		</label>
 
-  		<label class="item item-input">
+				<label class="item item-input">
     		<span class="input-label">Delivery Vehicle Check</span>
     		<input type="text" placeholder="" ng-model="deliveryForm.vehicleCheck">
   		</label>
 
-  		<label class="item item-input">
+				<label class="item item-input">
     		<span class="input-label">Comments/Action</span>
     		<input type="text" placeholder="" ng-model="deliveryForm.comment">
   		</label>
 
-  		<label class="item item-input">
+				<label class="item item-input">
     		<span class="input-label">Sign</span>
     		<input type="text" placeholder="" ng-model="deliveryForm.sign">
   		</label>
 
-  		<button class="button button-full button-royal" ng-click="submit()" type="submit">
+				<button class="button button-full button-royal" ng-click="submit()" type="submit">
   		Submit
 		</button>
-	<br>
-	<br>
-	</div>
-</form>
-  </ion-content>
+				<br>
+				<br>
+			</div>
+		</form>
+	</ion-content>
 
 </ion-view>
