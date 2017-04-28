@@ -1,6 +1,8 @@
 # HACCPAPZ Mobile App
 ###### Martin Coleman, G00312351
 
+###### Video of project https://www.youtube.com/watch?v=qeiWef3oKac
+
 ## Introduction
 This repository contains all the source code of the Haccpapz mobile application. 
 
